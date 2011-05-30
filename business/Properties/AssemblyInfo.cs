@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Epiworx Data")]
+[assembly: AssemblyTitle("business")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Epitec Group")]
-[assembly: AssemblyProduct("Epiworx")]
-[assembly: AssemblyCopyright("Copyright © Epitec Group 2011")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("business")]
+[assembly: AssemblyCopyright("Copyright © Microsoft 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1d29adf1-4200-456c-83a0-ff28d7c0666b")]
+[assembly: Guid("cb90ab27-63c5-4bdd-bc27-424375268b69")]
 
 // Version information for an assembly consists of the following four values:
 //

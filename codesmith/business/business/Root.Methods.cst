@@ -1,0 +1,88 @@
+<%@ CodeTemplate 
+    Language="C#" 
+    TargetLanguage="C#" 
+    Src="../../TemplateBase.cs" 
+	Inherits="CodeSmith.Csla.TemplateBase" 
+    Debug="False" 
+    CompilerVersion="v3.5" 
+	Description="Template description here." %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using <%= NamespaceName %>.Business.Security.Helpers;
+using <%= NamespaceName %>.Data;
+
+namespace <%= NamespaceName %>.Business
+{
+    public partial class <%= ClassName %>
+    {
+        public override string ToString()
+        {
+            <% if (ToStringFormatMembers == null || ToStringFormatMembers.Count == 0) { %>
+			return string.Format("{0}", this.<%= SourceTable.NonPrimaryKeyColumns[0].Name %>);
+            <% } else { %>         
+			return string.Format("<%= ToStringFormat %>"<% foreach (var formatMember in ToStringFormatMembers) { %>, this.<%= formatMember %><% } %>);
+            <% } %>
+        }
+
+        public <%= ClassName %>Info To<%= ClassName %>Info()
+        {
+            var result = new <%= ClassName %>Info();
+
+            Csla.Data.DataMapper.Map(this, result);
+
+            return result;
+        }
+
+        public <%= ClassName %>LookupInfo To<%= ClassName %>LookupInfo()
+        {
+            var result = new <%= ClassName %>LookupInfo();
+
+            Csla.Data.DataMapper.Map(this, result);
+
+            return result;
+        }
+
+        protected override void PropertyHasChanged(Csla.Core.IPropertyInfo property)
+        {
+            base.PropertyHasChanged(property);
+
+            switch (property.Name)
+            {
+                default:
+                    break;
+            }
+        }
+
+        internal static <%= ClassName %> New<%= ClassName %>()
+        {
+            return Csla.DataPortal.Create<<%= ClassName %>>();
+        }
+
+        internal static <%= ClassName %> Fetch<%= ClassName %>(<%= ClassName %>DataCriteria criteria)
+        {
+            return Csla.DataPortal.Fetch<<%= ClassName %>>(criteria);
+        }
+
+        internal static <%= ClassName %> Fetch<%= ClassName %>(<%= ClassName %>Data data)
+        {
+            var result = new <%= ClassName %>();
+
+            result.Fetch(data);
+            result.MarkOld();
+
+            return result;
+        }
+
+        internal static void Delete<%= ClassName %>(<%= ClassName %>DataCriteria criteria)
+        {
+            Csla.DataPortal.Delete<<%= ClassName %>>(criteria);
+        }
+    }
+}

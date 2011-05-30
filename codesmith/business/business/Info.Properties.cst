@@ -1,0 +1,48 @@
+<%@ CodeTemplate 
+    Language="C#" 
+    TargetLanguage="C#" 
+    Src="../../TemplateBase.cs" 
+	Inherits="CodeSmith.Csla.TemplateBase" 
+    Debug="False" 
+    CompilerVersion="v3.5" 
+	Description="Template description here." %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+<%@ Import Namespace="System.Linq" %>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using <%= NamespaceName %>.Business.Helpers;
+
+namespace <%= NamespaceName %>.Business
+{
+    public partial class <%= ClassName %>Info
+    {
+		<% foreach (var column in SourceTable.Columns) { %>
+        private static Csla.PropertyInfo<<%= ToDataType(column) %>> <%= column.Name %>Property =
+            RegisterProperty<<%= ToDataType(column) %>>(row => row.<%= column.Name %>, "<%= column.Name %>");
+        public <%= ToDataType(column) %> <%= column.Name %>
+        {
+            get { return this.GetProperty(<%= column.Name %>Property); }
+            set { this.LoadProperty(<%= column.Name %>Property, value); }
+        }
+            <% if (IsNotLastColumn(column)) { %>
+            
+            <% } %>
+            <% if (column.Name == "ModifiedBy" || column.Name == "CreatedBy") { %>
+        private static Csla.PropertyInfo<string> <%= column.Name %>NameProperty =
+            RegisterProperty<string>(row => row.<%= column.Name %>Name, "<%= column.Name %>Name");
+        public string <%= column.Name %>Name
+        {
+            get { return this.GetProperty(<%= column.Name %>NameProperty); }
+            set { this.LoadProperty(<%= column.Name %>NameProperty, value); }
+        }
+        
+            <% } %>
+ 		<% } %>
+    }
+}

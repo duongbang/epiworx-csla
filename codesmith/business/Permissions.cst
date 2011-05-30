@@ -1,0 +1,28 @@
+<%@ CodeTemplate 
+    Language="C#" 
+    TargetLanguage="C#" 
+    Src="../TemplateBase.cs" 
+	Inherits="CodeSmith.Csla.TemplateBase" 
+    Debug="False" 
+    CompilerVersion="v3.5" 
+	Description="Template description here." %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace <%= NamespaceName %>.Business
+{
+    public partial class Permissions
+    {
+        public const string <%= ClassName %>Create = "<%= ClassName %>Create";
+        public const string <%= ClassName %>Get = "<%= ClassName %>Get";
+        public const string <%= ClassName %>Delete = "<%= ClassName %>Delete";
+        public const string <%= ClassName %>Edit = "<%= ClassName %>Edit";
+    }
+}

@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1641C95F-FED3-4623-BC61-4B220B5BFF58}</ProjectGuid>
+    <ProjectGuid>{266B5D33-88BB-4502-91B7-952D4DBA06BB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Epiworx.Data</RootNamespace>
-    <AssemblyName>Epiworx.Data</AssemblyName>
+    <RootNamespace>Epiworx.Business.Security</RootNamespace>
+    <AssemblyName>Epiworx.Business.Security</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -35,7 +35,6 @@
       <HintPath>..\packages\CSLA-Core.4.1.0.1\Lib\NET4.0\Csla.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,36 +43,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessIdentityProject\BusinessIdentityProjectDataCriteria.cs" />
-    <Compile Include="BusinessIdentityProject\BusinessIdentityProjectData.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="BusinessIdentity\BusinessIdentityData.cs" />
-    <Compile Include="BusinessIdentity\BusinessIdentityDataCriteria.cs" />
-    <Compile Include="BusinessIdentity\IBusinessIdentityDataFactory.cs" />
-    <Compile Include="DataFactoryManager.cs" />
-    <Compile Include="DateRangeCriteria.cs" />
-    <Compile Include="IDataCriteria.cs" />
-    <Compile Include="IDataFactoryManager.cs" />
-    <Compile Include="ProjectUserMember\IProjectUserMemberDataFactory.cs" />
-    <Compile Include="ProjectUserMember\ProjectUserMemberData.cs" />
-    <Compile Include="ProjectUserMember\ProjectUserMemberDataCriteria.cs" />
-    <Compile Include="Project\IProjectDataFactory.cs" />
-    <Compile Include="Project\ProjectData.cs" />
-    <Compile Include="Project\ProjectDataCriteria.cs" />
+    <Compile Include="BusinessIdentityProject\BusinessIdentityProject.cs" />
+    <Compile Include="BusinessIdentityProject\BusinessIdentityProject.Data.cs" />
+    <Compile Include="BusinessIdentityProject\BusinessIdentityProject.Properties.cs" />
+    <Compile Include="BusinessIdentityProject\IBusinessIdentityProject.cs" />
+    <Compile Include="BusinessIdentity\BusinessIdentity.cs" />
+    <Compile Include="BusinessIdentity\BusinessIdentity.Data.cs" />
+    <Compile Include="BusinessIdentity\BusinessIdentity.Methods.cs" />
+    <Compile Include="BusinessIdentity\BusinessIdentity.Properties.cs" />
+    <Compile Include="BusinessPrincipal\BusinessPrincipal.cs" />
+    <Compile Include="BusinessPrincipal\BusinessPrincipal.Methods.cs" />
+    <Compile Include="BusinessPrincipal\BusinessPrincipal.Properties.cs" />
+    <Compile Include="IsInUser.cs" />
+    <Compile Include="Helpers\IPasswordValidator.cs" />
+    <Compile Include="Helpers\PasswordHelper.cs" />
+    <Compile Include="Helpers\PasswordValidator.cs" />
+    <Compile Include="BusinessIdentity\IBusinessIdentity.cs" />
+    <Compile Include="BusinessPrincipal\IBusinessPrincipal.cs" />
+    <Compile Include="InvalidPasswordException.cs" />
+    <Compile Include="InvalidUserException.cs" />
+    <Compile Include="IsInProjectAndRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User\IUserDataFactory.cs" />
-    <Compile Include="User\UserData.cs" />
-    <Compile Include="User\UserDataCriteria.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="UserLockedException.cs" />
+    <Compile Include="UserNotActiveException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\core\Epiworx.Core.csproj">
       <Project>{852839EC-23EA-43C8-AFF4-2FF2EACD4B55}</Project>
       <Name>Epiworx.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Packages.config" />
+    <ProjectReference Include="..\data\Epiworx.Data.csproj">
+      <Project>{1641C95F-FED3-4623-BC61-4B220B5BFF58}</Project>
+      <Name>Epiworx.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

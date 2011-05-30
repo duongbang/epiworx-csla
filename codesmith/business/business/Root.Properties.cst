@@ -1,0 +1,57 @@
+<%@ CodeTemplate 
+    Language="C#" 
+    TargetLanguage="C#" 
+    Src="../../TemplateBase.cs" 
+	Inherits="CodeSmith.Csla.TemplateBase" 
+    Debug="False" 
+    CompilerVersion="v3.5" 
+	Description="Template description here." %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Text;
+
+namespace <%= NamespaceName %>.Business
+{
+    public partial class <%= ClassName %>
+    {
+		<% foreach (var column in SourceTable.Columns) { %>
+        private static Csla.PropertyInfo<<%= ToDataType(column) %>> <%= column.Name %>Property =
+            RegisterProperty<<%= ToDataType(column) %>>(row => row.<%= column.Name %>, "<%= column.Name %>");
+            <% if (column.IsPrimaryKeyMember) { %>
+        [DataObjectField(true, false)]
+            <% } %>
+        public <%= ToDataType(column) %> <%= column.Name %>
+        {
+            get { return this.GetProperty(<%= column.Name %>Property); }
+            <% if (column.IsPrimaryKeyMember || IsColumn(column, "ModifiedBy", "ModifiedDate", "CreatedBy", "CreatedDate")) { %>private <% } %>set { this.SetProperty(<%= column.Name %>Property, value); }
+        }
+
+            <% if (column.Name == "ModifiedBy" || column.Name == "CreatedBy") { %>
+        private static Csla.PropertyInfo<string> <%= column.Name %>NameProperty =
+            RegisterProperty<string>(row => row.<%= column.Name %>Name, "<%= column.Name %>Name");
+        public string <%= column.Name %>Name
+        {
+            get { return this.GetProperty(<%= column.Name %>NameProperty); }
+            private set { this.SetProperty(<%= column.Name %>NameProperty, value); }
+        }
+        
+            <% } %>
+ 		<% } %>
+        // public static Csla.PropertyInfo<ChildPropertyType> ChildPropertyProperty =
+        //     RegisterProperty<ChildPropertyType>(row => row.ChildProperty);
+        // public ChildPropertyType ChildProperty
+        // {
+        //     get { return GetProperty(ChildPropertyProperty); }
+        //     private set { LoadProperty(ChildPropertyProperty, value); }
+        // }
+    }
+}

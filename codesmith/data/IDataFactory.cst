@@ -1,0 +1,25 @@
+<%@ CodeTemplate 
+    Language="C#" 
+    TargetLanguage="C#" 
+    Src="../TemplateBase.cs" 
+	Inherits="CodeSmith.Csla.TemplateBase" 
+    Debug="False" 
+    CompilerVersion="v3.5" 
+	Description="Template description here." %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+namespace <%= NamespaceName %>.Data
+{
+    public interface I<%= ClassName %>DataFactory
+    {
+        <%= ClassName %>Data Fetch(<%= this.ClassName %>DataCriteria criteria);
+        <%= ClassName %>Data[] FetchInfoList(<%= ClassName %>DataCriteria criteria);
+        <%= ClassName %>Data[] FetchLookupInfoList(<%= ClassName %>DataCriteria criteria);
+        <%= ClassName %>Data Update(<%= ClassName %>Data data);
+        <%= ClassName %>Data Insert(<%= ClassName %>Data data);
+        void Delete(<%= ClassName %>DataCriteria criteria);
+    }
+}

@@ -1,0 +1,350 @@
+<%@ CodeTemplate
+    Language="C#" 
+    TargetLanguage="C#" 
+    Src="TemplateBase.cs" 
+	Inherits="CodeSmith.Csla.TemplateBase" 
+    Debug="False" 
+    CompilerVersion="v3.5" 
+	Description="Template description here." %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="System.IO" %>
+
+<%@ Register Name="DataData" Template="data\Data.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="DataDataCriteria" Template="data\DataCriteria.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="DataDataFactory" Template="data\IDataFactory.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessInterface" Template="business\Interface.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessPermissions" Template="business\Permissions.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessRoot" Template="business\business\Root.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessRootData" Template="business\business\Root.Data.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessRootMethods" Template="business\business\Root.Methods.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessRootProperties" Template="business\business\Root.Properties.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessRootRules" Template="business\business\Root.Rules.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessInfo" Template="business\business\Info.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessInfoData" Template="business\business\Info.Data.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessInfoProperties" Template="business\business\Info.Properties.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessInfoList" Template="business\business\InfoList.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessInfoListData" Template="business\business\InfoList.Data.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessInfoListMethods" Template="business\business\InfoList.Methods.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessInfoListRules" Template="business\business\InfoList.Rules.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessLookupInfo" Template="business\business\LookupInfo.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessLookupInfoData" Template="business\business\LookupInfo.Data.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessLookupInfoProperties" Template="business\business\LookupInfo.Properties.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessLookupInfoList" Template="business\business\LookupInfoList.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessLookupInfoListData" Template="business\business\LookupInfoList.Data.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessLookupInfoListMethods" Template="business\business\LookupInfoList.Methods.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessLookupInfoListRules" Template="business\business\LookupInfoList.Rules.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="BusinessService" Template="business\service\Service.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="DataMockDataFactory" Template="data.mock\DataFactory.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="DataMockDataTestTest" Template="data.mock.test\Test.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+<%@ Register Name="DataMockDataTestTestHelper" Template="data.mock.test\TestHelper.cst" MergeProperties="True" ExcludeProperties="IncludeMeta" %>
+
+<%    
+    this.ValidatePath(this.OutputFolder.ToLower());
+    
+    this.ValidatePath(string.Format("{0}\\data", this.RootPath));
+    this.ValidatePath(string.Format("{0}\\data\\{1}", this.RootPath, this.ClassName));
+    this.ValidatePath(string.Format("{0}\\data.mock", this.RootPath));
+    this.ValidatePath(string.Format("{0}\\data.mock.test", this.RootPath));
+
+    this.ValidatePath(string.Format("{0}\\business", this.RootPath));
+    this.ValidatePath(string.Format("{0}\\business\\Business", this.RootPath));
+    this.ValidatePath(string.Format("{0}\\business\\Business\\{1}", this.RootPath, this.ClassName));
+    this.ValidatePath(string.Format("{0}\\business\\Business\\{1}\\{1}", this.RootPath, this.ClassName));
+    this.ValidatePath(string.Format("{0}\\business\\Business\\{1}\\{1}Info", this.RootPath, this.ClassName));
+    this.ValidatePath(string.Format("{0}\\business\\Business\\{1}\\{1}InfoList", this.RootPath, this.ClassName));
+    this.ValidatePath(string.Format("{0}\\business\\Business\\{1}\\{1}LookupInfo", this.RootPath, this.ClassName));
+    this.ValidatePath(string.Format("{0}\\business\\Business\\{1}\\{1}LookupInfoList", this.RootPath, this.ClassName));
+    this.ValidatePath(string.Format("{0}\\business\\Service", this.RootPath));
+
+    this.CreateDataData();
+    this.CreateDataDataCriteria();
+    this.CreateDataDataFactory();
+    this.CreateDataMockDataFactory();
+    this.CreateDataMockTestTest();
+    this.CreateDataMockTestTestHelper();
+    this.CreateBusinessInterface();
+    this.CreateBusinessPermissions();
+    this.CreateBusinessRoot();
+    this.CreateBusinessRootData();
+    this.CreateBusinessRootMethods();
+    this.CreateBusinessRootProperties();
+    this.CreateBusinessRootRules();
+    this.CreateBusinessInfo();
+    this.CreateBusinessInfoData();
+    this.CreateBusinessInfoProperties();
+    this.CreateBusinessInfoList();
+    this.CreateBusinessInfoListData();
+    this.CreateBusinessInfoListMethods();
+    this.CreateBusinessInfoListRules();
+    this.CreateBusinessLookupInfo();
+    this.CreateBusinessLookupInfoData();
+    this.CreateBusinessLookupInfoProperties();
+    this.CreateBusinessLookupInfoList();
+    this.CreateBusinessLookupInfoListData();
+    this.CreateBusinessLookupInfoListMethods();
+    this.CreateBusinessLookupInfoListRules();
+    this.CreateBusinessService();
+%>
+
+<script runat="template">
+    
+    [Category("4. Output")] 
+    [DefaultValue("C:\\Temp\\")] 
+    [Editor(typeof(System.Windows.Forms.Design.FolderNameEditor), typeof(System.Drawing.Design.UITypeEditor))]
+    public string OutputFolder { get; set;}
+
+    private string RootPath 
+    {
+        get 
+        {
+            return string.Format("{0}\\{1}\\{2}", this.OutputFolder.ToLower(), this.CustomerName.ToLower(), this.ProjectName.ToLower());
+        }
+    }
+    
+    private void ValidatePath(string path)
+    {
+        if (!System.IO.Directory.Exists(path))
+        {
+            System.IO.Directory.CreateDirectory(path);
+        }
+    }
+        
+    private string FilePath 
+    {
+        get
+        {
+            string result = this.OutputFolder;
+            if (result.EndsWith("\\"))
+            {
+                result = result.Substring(0, result.Length - 1);
+            }
+            return result;
+        }
+    }
+                 
+    public void CreateDataData()
+    {
+        var t = this.Create<DataData>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\data\\{1}\\{1}Data.cs", this.RootPath, this.ClassName), true);
+    }
+                     
+    public void CreateDataDataCriteria()
+    {
+        var t = this.Create<DataDataCriteria>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\data\\{1}\\{1}DataCriteria.cs", this.RootPath, this.ClassName), true);
+    }
+                     
+    public void CreateDataDataFactory()
+    {
+        var t = this.Create<DataDataFactory>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\data\\{1}\\I{1}DataFactory.cs", this.RootPath, this.ClassName), true);
+    }
+                  
+    public void CreateDataMockDataFactory()
+    {
+        var t = this.Create<DataMockDataFactory>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\data.mock\\{1}DataFactory.cs", this.RootPath, this.ClassName), true);
+    }
+                      
+    public void CreateDataMockTestTest()
+    {
+        var t = this.Create<DataMockDataTestTest>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\data.mock.test\\{1}\\{1}Test.cs", this.RootPath, this.ClassName), true);
+    }
+                       
+    public void CreateDataMockTestTestHelper()
+    {
+        var t = this.Create<DataMockDataTestTestHelper>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\data.mock.test\\{1}\\{1}TestHelper.cs", this.RootPath, this.ClassName), true);
+    }
+              
+    public void CreateBusinessInterface()
+    {
+        var t = this.Create<BusinessInterface>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\I{1}.cs", this.RootPath, this.ClassName), true);
+    }
+                       
+    public void CreateBusinessPermissions()
+    {
+        var t = this.Create<BusinessPermissions>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\Permissions.cs", this.RootPath, this.ClassName), true);
+    }
+                   
+    public void CreateBusinessRoot()
+    {
+        var t = this.Create<BusinessRoot>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}\\{1}.cs", this.RootPath, this.ClassName), true);
+    }
+                     
+    public void CreateBusinessRootData()
+    {
+        var t = this.Create<BusinessRootData>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}\\{1}.Data.cs", this.RootPath, this.ClassName), true);
+    }
+                     
+    public void CreateBusinessRootMethods()
+    {
+        var t = this.Create<BusinessRootMethods>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}\\{1}.Methods.cs", this.RootPath, this.ClassName), true);
+    }
+                     
+    public void CreateBusinessRootProperties()
+    {
+        var t = this.Create<BusinessRootProperties>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}\\{1}.Properties.cs", this.RootPath, this.ClassName), true);
+    }
+                     
+    public void CreateBusinessRootRules()
+    {
+        var t = this.Create<BusinessRootRules>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}\\{1}.Rules.cs", this.RootPath, this.ClassName), true);
+    }
+                   
+    public void CreateBusinessInfo()
+    {
+        var t = this.Create<BusinessInfo>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}Info\\{1}Info.cs", this.RootPath, this.ClassName), true);
+    }
+                   
+    public void CreateBusinessInfoData()
+    {
+        var t = this.Create<BusinessInfoData>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}Info\\{1}Info.Data.cs", this.RootPath, this.ClassName), true);
+    }
+                   
+    public void CreateBusinessInfoProperties()
+    {
+        var t = this.Create<BusinessInfoProperties>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}Info\\{1}Info.Properties.cs", this.RootPath, this.ClassName), true);
+    }
+                     
+    public void CreateBusinessInfoList()
+    {
+        var t = this.Create<BusinessInfoList>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}InfoList\\{1}InfoList.cs", this.RootPath, this.ClassName), true);
+    }
+                   
+    public void CreateBusinessInfoListData()
+    {
+        var t = this.Create<BusinessInfoListData>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}InfoList\\{1}InfoList.Data.cs", this.RootPath, this.ClassName), true);
+    }
+                   
+    public void CreateBusinessInfoListMethods()
+    {
+        var t = this.Create<BusinessInfoListMethods>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}InfoList\\{1}InfoList.Methods.cs", this.RootPath, this.ClassName), true);
+    }
+                   
+    public void CreateBusinessInfoListRules()
+    {
+        var t = this.Create<BusinessInfoListRules>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}InfoList\\{1}InfoList.Rules.cs", this.RootPath, this.ClassName), true);
+    }
+                   
+    public void CreateBusinessLookupInfo()
+    {
+        var t = this.Create<BusinessLookupInfo>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}LookupInfo\\{1}LookupInfo.cs", this.RootPath, this.ClassName), true);
+    }
+                   
+    public void CreateBusinessLookupInfoData()
+    {
+        var t = this.Create<BusinessLookupInfoData>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}LookupInfo\\{1}LookupInfo.Data.cs", this.RootPath, this.ClassName), true);
+    }
+                   
+    public void CreateBusinessLookupInfoProperties()
+    {
+        var t = this.Create<BusinessLookupInfoProperties>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}LookupInfo\\{1}LookupInfo.Properties.cs", this.RootPath, this.ClassName), true);
+    }
+                     
+    public void CreateBusinessLookupInfoList()
+    {
+        var t = this.Create<BusinessLookupInfoList>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}LookupInfoList\\{1}LookupInfoList.cs", this.RootPath, this.ClassName), true);
+    }
+                   
+    public void CreateBusinessLookupInfoListData()
+    {
+        var t = this.Create<BusinessLookupInfoListData>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}LookupInfoList\\{1}LookupInfoList.Data.cs", this.RootPath, this.ClassName), true);
+    }
+                   
+    public void CreateBusinessLookupInfoListMethods()
+    {
+        var t = this.Create<BusinessLookupInfoListMethods>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}LookupInfoList\\{1}LookupInfoList.Methods.cs", this.RootPath, this.ClassName), true);
+    }
+                   
+    public void CreateBusinessLookupInfoListRules()
+    {
+        var t = this.Create<BusinessLookupInfoListRules>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\{1}\\{1}LookupInfoList\\{1}LookupInfoList.Rules.cs", this.RootPath, this.ClassName), true);
+    }
+                   
+    public void CreateBusinessService()
+    {
+        var t = this.Create<BusinessService>();  
+        this.CopyPropertiesTo(t);
+        t.Render(this.Response);
+        t.RenderToFile(string.Format("{0}\\business\\Service\\{1}Service.cs", this.RootPath, this.ClassName), true);
+    }
+</script>

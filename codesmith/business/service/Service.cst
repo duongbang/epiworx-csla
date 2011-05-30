@@ -1,0 +1,109 @@
+<%@ CodeTemplate 
+    Language="C#" 
+    TargetLanguage="C#" 
+    Src="../../TemplateBase.cs" 
+	Inherits="CodeSmith.Csla.TemplateBase" 
+    Debug="False" 
+    CompilerVersion="v3.5" 
+	Description="Template description here." %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using <%= NamespaceName %>.Core;
+using <%= NamespaceName %>.Data;
+
+namespace <%= NamespaceName %>.Business.Service
+{
+    [Serializable]
+    public class <%= ClassName %>Service
+    {
+        public static <%= ClassName %> <%= ClassName %>Fetch(int <%= StringUtil.ToCamelCase(ClassName) %>Id)
+        {
+            return <%= ClassName %>.Fetch<%= ClassName %>(
+                new <%= ClassName %>DataCriteria
+                {
+                    <%= ClassName %>Id = <%= StringUtil.ToCamelCase(ClassName) %>Id
+                });
+        }
+
+        public static <%= ClassName %>InfoList <%= ClassName %>FetchInfoList(<%= ClassName %>DataCriteria criteria)
+        {
+            return <%= ClassName %>InfoList.Fetch<%= ClassName %>InfoList(criteria);
+        }
+
+        public static IEnumerable<<%= ClassName %>LookupInfo> <%= ClassName %>FetchLookupInfoList()
+        {
+            return <%= ClassName %>Service.<%= ClassName %>FetchLookupInfoList(new <%= ClassName %>DataCriteria());
+        }
+
+        public static IEnumerable<<%= ClassName %>LookupInfo> <%= ClassName %>FetchLookupInfoList(<%= ClassName %>DataCriteria criteria)
+        {
+            return <%= ClassName %>LookupInfoList.Fetch<%= ClassName %>LookupInfoList(criteria);
+        }
+
+        public static <%= ClassName %> <%= ClassName %>Save(<%= ClassName %> <%= StringUtil.ToCamelCase(ClassName) %>)
+        {
+            if (!<%= StringUtil.ToCamelCase(ClassName) %>.IsValid)
+            {
+                return <%= StringUtil.ToCamelCase(ClassName) %>;
+            }
+
+            <%= ClassName %> result;
+
+            if (<%= StringUtil.ToCamelCase(ClassName) %>.IsNew)
+            {
+                result = <%= ClassName %>Service.<%= ClassName %>Insert(<%= StringUtil.ToCamelCase(ClassName) %>);
+            }
+            else
+            {
+                result = <%= ClassName %>Service.<%= ClassName %>Update(<%= StringUtil.ToCamelCase(ClassName) %>);
+            }
+
+            return result;
+        }
+
+        public static <%= ClassName %> <%= ClassName %>Insert(<%= ClassName %> <%= StringUtil.ToCamelCase(ClassName) %>)
+        {
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= StringUtil.ToCamelCase(ClassName) %>.Save();
+
+            return <%= StringUtil.ToCamelCase(ClassName) %>;
+        }
+
+        public static <%= ClassName %> <%= ClassName %>Update(<%= ClassName %> <%= StringUtil.ToCamelCase(ClassName) %>)
+        {
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= StringUtil.ToCamelCase(ClassName) %>.Save();
+
+            return <%= StringUtil.ToCamelCase(ClassName) %>;
+        }
+
+        public static <%= ClassName %> <%= ClassName %>New()
+        {
+            var <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>.New<%= ClassName %>();
+
+            return <%= StringUtil.ToCamelCase(ClassName) %>;
+        }
+
+        public static bool <%= ClassName %>Delete(<%= ClassName %> <%= StringUtil.ToCamelCase(ClassName) %>)
+        {
+            <%= ClassName %>.Delete<%= ClassName %>(
+                new <%= ClassName %>DataCriteria
+                {
+                    <%= ClassName %>Id = <%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id
+                });
+
+            return true;
+        }
+
+        public static bool <%= ClassName %>Delete(int <%= StringUtil.ToCamelCase(ClassName) %>Id)
+        {
+            return <%= ClassName %>Service.<%= ClassName %>Delete(
+                <%= ClassName %>Service.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>Id));
+        }
+    }
+}

@@ -1,0 +1,30 @@
+<%@ CodeTemplate 
+    Language="C#" 
+    TargetLanguage="C#" 
+    Src="../../TemplateBase.cs" 
+	Inherits="CodeSmith.Csla.TemplateBase" 
+    Debug="False" 
+    CompilerVersion="v3.5" 
+	Description="Template description here." %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+<%@ Import Namespace="System.Linq" %>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using <%= NamespaceName %>.Data;
+
+namespace <%= NamespaceName %>.Business
+{
+    public partial class <%= ClassName %>LookupInfoList
+    {
+        internal static <%= ClassName %>LookupInfoList Fetch<%= ClassName %>LookupInfoList(<%= ClassName %>DataCriteria criteria)
+        {
+            return Csla.DataPortal.Fetch<<%= ClassName %>LookupInfoList>(criteria);
+        }
+    }
+}

@@ -1,0 +1,108 @@
+<%@ CodeTemplate 
+    Language="C#" 
+    TargetLanguage="C#" 
+    Src="../TemplateBase.cs" 
+	Inherits="CodeSmith.Csla.TemplateBase" 
+    Debug="False" 
+    CompilerVersion="v3.5" 
+	Description="Template description here." %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace <%= NamespaceName %>.Data.Mock
+{
+    public class <%= ClassName%>DataFactory : I<%= ClassName%>DataFactory
+    {
+        public <%= ClassName%>Data Fetch(<%= ClassName%>DataCriteria criteria)
+        {
+            var data = MockDb.<%= ClassPluralName%>
+                .Where(row => row.<%= ClassName%>Id == criteria.<%= ClassName%>Id)
+                .Single();
+
+            data = this.Fetch(data);
+
+            return data;
+        }
+
+        public <%= ClassName%>Data Fetch(<%= ClassName%>Data data)
+        {
+            data.CreatedByUser = MockDb.Users
+                .Where(row => row.UserId == data.CreatedBy)
+                .Single();
+
+            data.ModifiedByUser = MockDb.Users
+                .Where(row => row.UserId == data.ModifiedBy)
+                .Single();
+
+            return data;
+        }
+
+        public <%= ClassName%>Data[] FetchInfoList(<%= ClassName%>DataCriteria criteria)
+        {
+            var query = MockDb.<%= ClassPluralName%>
+                .AsQueryable();
+
+            var <%= StringUtil.ToCamelCase(ClassPluralName)%> = query.AsQueryable();
+
+            var data = new List<<%= ClassName%>Data>();
+
+            foreach (var <%= StringUtil.ToCamelCase(ClassName)%> in <%= StringUtil.ToCamelCase(ClassPluralName)%>)
+            {
+                data.Add(this.Fetch(<%= StringUtil.ToCamelCase(ClassName)%>));
+            }
+
+            return data.ToArray();
+        }
+
+        public <%= ClassName%>Data[] FetchLookupInfoList(<%= ClassName%>DataCriteria criteria)
+        {
+            var query = MockDb.<%= ClassPluralName%>
+                .AsQueryable();
+
+            var data = query.AsQueryable();
+
+            return data.ToArray();
+        }
+
+        public <%= ClassName%>Data Create()
+        {
+            return new <%= ClassName%>Data();
+        }
+
+        public <%= ClassName%>Data Update(<%= ClassName%>Data data)
+        {
+            var <%= StringUtil.ToCamelCase(ClassName)%> = MockDb.<%= ClassPluralName%>
+                .Where(row => row.<%= ClassName%>Id == data.<%= ClassName%>Id)
+                .Single();
+
+            Csla.Data.DataMapper.Map(data, <%= StringUtil.ToCamelCase(ClassName)%>);
+
+            return data;
+        }
+
+        public <%= ClassName%>Data Insert(<%= ClassName%>Data data)
+        {
+            data.<%= ClassName%>Id = MockDb.<%= ClassPluralName%>.Select(row => row.<%= ClassName%>Id).Max() + 1;
+
+            MockDb.<%= ClassPluralName%>.Add(data);
+
+            return data;
+        }
+
+        public void Delete(<%= ClassName%>DataCriteria criteria)
+        {
+            var data = MockDb.<%= ClassPluralName%>
+                .Where(row => row.<%= ClassName%>Id == criteria.<%= ClassName%>Id)
+                .Single();
+
+            MockDb.<%= ClassPluralName%>.Remove(data);
+        }
+    }
+}

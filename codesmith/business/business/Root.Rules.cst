@@ -1,0 +1,53 @@
+<%@ CodeTemplate 
+    Language="C#" 
+    TargetLanguage="C#" 
+    Src="../../TemplateBase.cs" 
+	Inherits="CodeSmith.Csla.TemplateBase" 
+    Debug="False" 
+    CompilerVersion="v3.5" 
+	Description="Template description here." %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Csla.Rules;
+using Csla.Rules.CommonRules;
+using <%= NamespaceName %>.Business.Security;
+using <%= NamespaceName %>.Core.Validation;
+
+namespace <%= NamespaceName %>.Business
+{
+    public partial class <%= ClassName %>
+    {
+        protected override void AddBusinessRules()
+        {
+            base.AddBusinessRules();
+            
+		    <% foreach (var column in SourceTable.Columns) { %>
+                <% if (IsColumnFormatStringMember(column)) { %>
+            this.BusinessRules.AddRule(new StringRequired(<%= column.Name %>Property)); 
+                 <% } %>
+                <% if (column.DataType == DbType.String) { %> 
+            this.BusinessRules.AddRule(new MaxLength(<%= column.Name %>Property, <%= column.Size %>));
+                <% } %>
+            <% } %>
+        }
+
+        protected static void AddObjectAuthorizationRules()
+        {
+            BusinessRules.AddRule(typeof(<%= ClassName %>),
+                 new IsInRole(AuthorizationActions.CreateObject, Roles.Administrators, Permissions.<%= ClassName %>Create));
+            BusinessRules.AddRule(typeof(<%= ClassName %>),
+                 new IsInRole(AuthorizationActions.DeleteObject, Roles.Administrators, Permissions.<%= ClassName %>Delete));
+            BusinessRules.AddRule(typeof(<%= ClassName %>),
+                 new IsInRole(AuthorizationActions.EditObject, Roles.Administrators, Permissions.<%= ClassName %>Edit));
+            BusinessRules.AddRule(typeof(<%= ClassName %>),
+                 new IsInRole(AuthorizationActions.GetObject, Roles.Administrators, Permissions.<%= ClassName %>Get));
+        }
+    }
+}

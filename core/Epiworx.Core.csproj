@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1641C95F-FED3-4623-BC61-4B220B5BFF58}</ProjectGuid>
+    <ProjectGuid>{852839EC-23EA-43C8-AFF4-2FF2EACD4B55}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Epiworx.Data</RootNamespace>
-    <AssemblyName>Epiworx.Data</AssemblyName>
+    <RootNamespace>Epiworx.Core</RootNamespace>
+    <AssemblyName>Epiworx.Core</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -35,7 +35,6 @@
       <HintPath>..\packages\CSLA-Core.4.1.0.1\Lib\NET4.0\Csla.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,33 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessIdentityProject\BusinessIdentityProjectDataCriteria.cs" />
-    <Compile Include="BusinessIdentityProject\BusinessIdentityProjectData.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="BusinessIdentity\BusinessIdentityData.cs" />
-    <Compile Include="BusinessIdentity\BusinessIdentityDataCriteria.cs" />
-    <Compile Include="BusinessIdentity\IBusinessIdentityDataFactory.cs" />
-    <Compile Include="DataFactoryManager.cs" />
-    <Compile Include="DateRangeCriteria.cs" />
-    <Compile Include="IDataCriteria.cs" />
-    <Compile Include="IDataFactoryManager.cs" />
-    <Compile Include="ProjectUserMember\IProjectUserMemberDataFactory.cs" />
-    <Compile Include="ProjectUserMember\ProjectUserMemberData.cs" />
-    <Compile Include="ProjectUserMember\ProjectUserMemberDataCriteria.cs" />
-    <Compile Include="Project\IProjectDataFactory.cs" />
-    <Compile Include="Project\ProjectData.cs" />
-    <Compile Include="Project\ProjectDataCriteria.cs" />
+    <Compile Include="Helpers\DateTimeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User\IUserDataFactory.cs" />
-    <Compile Include="User\UserData.cs" />
-    <Compile Include="User\UserDataCriteria.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\core\Epiworx.Core.csproj">
-      <Project>{852839EC-23EA-43C8-AFF4-2FF2EACD4B55}</Project>
-      <Name>Epiworx.Core</Name>
-    </ProjectReference>
+    <Compile Include="Helpers\StringExtensions.cs" />
+    <Compile Include="Validation\DateRequired.cs" />
+    <Compile Include="Validation\DateTimeRequired.cs" />
+    <Compile Include="Validation\DecimalRequired.cs" />
+    <Compile Include="Validation\GuidRequired.cs" />
+    <Compile Include="Validation\IntegerRequired.cs" />
+    <Compile Include="Validation\PropertiesMustMatch.cs" />
+    <Compile Include="Validation\StringRequired.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Packages.config" />

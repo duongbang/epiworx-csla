@@ -1,0 +1,44 @@
+<%@ CodeTemplate 
+    Language="C#" 
+    TargetLanguage="C#" 
+    Src="../../TemplateBase.cs" 
+	Inherits="CodeSmith.Csla.TemplateBase" 
+    Debug="False" 
+    CompilerVersion="v3.5" 
+	Description="Template description here." %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+<%@ Import Namespace="System.Linq" %>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using <%= NamespaceName %>.Data;
+
+namespace <%= NamespaceName %>.Business
+{
+    public partial class <%= ClassName %>LookupInfoList
+    {
+        private void DataPortal_Fetch(<%= ClassName %>DataCriteria criteria)
+        {
+            using (var dalManager = DataFactoryManager.GetManager())
+            {
+                var dalFactory = dalManager.GetProvider<I<%= ClassName %>DataFactory>();
+
+                var data = dalFactory.FetchLookupInfoList(criteria);
+
+                this.RaiseListChangedEvents = false;
+                this.IsReadOnly = false;
+
+                this.AddRange(data.Select(row => Csla.DataPortal.FetchChild<<%= ClassName %>LookupInfo>(row)));
+
+                this.IsReadOnly = true;
+                this.RaiseListChangedEvents = true;
+            }
+        }
+    }
+}

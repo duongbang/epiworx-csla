@@ -1,0 +1,151 @@
+<%@ CodeTemplate 
+    Language="C#" 
+    TargetLanguage="C#" 
+    Src="../TemplateBase.cs" 
+	Inherits="CodeSmith.Csla.TemplateBase" 
+    Debug="False" 
+    CompilerVersion="v3.5" 
+	Description="Template description here." %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+using System;
+using System.Data;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+using Epitec.Epilink.Business.Security;
+using Epitec.Epilink.Business.Service;
+using Epitec.Epilink.Data;
+using Epitec.Epilink.Test.Helpers;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Epitec.Epilink.Business;
+
+namespace Epitec.Epilink.Test
+{
+    [TestClass]
+    public class <%= ClassName %>Test
+    {
+        [TestInitialize]
+        public void MyTestInitialize()
+        {
+            BusinessPrincipal.Login("Administrator", "master");
+        }
+
+        [TestCleanup]
+        public void MyTestCleanup()
+        {
+            BusinessPrincipal.Logout();
+        }
+
+        [TestMethod]
+        public void <%= ClassName %>_Create()
+        {
+            var <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>New();
+
+            Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>.IsNew, "IsNew should be true");
+            Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>.IsDirty, "IsDirty should be true");
+            Assert.IsFalse(<%= StringUtil.ToCamelCase(ClassName) %>.IsValid, "IsValid should be false");
+            Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>.IsSelfDirty, "IsSelfDirty should be true");
+            Assert.IsFalse(<%= StringUtil.ToCamelCase(ClassName) %>.IsSelfValid, "IsSelfValid should be false");
+
+            // Assert.IsTrue(ValidationHelper.ContainsRule(<%= StringUtil.ToCamelCase(ClassName) %>, DbType.String, "Name"),
+            //    "Name should be required");
+        }
+
+        [TestMethod]
+        public void <%= ClassName %>_Fetch()
+        {
+            var <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>TestHelper.<%= ClassName %>New();
+
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Save(<%= StringUtil.ToCamelCase(ClassName) %>);
+
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
+
+            Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %> != null, "Row returned should not equal null");
+        }
+
+        [TestMethod]
+        public void <%= ClassName %>_Fetch_Info_List()
+        {
+            <%= ClassName %>TestHelper.<%= ClassName %>Add();
+            <%= ClassName %>TestHelper.<%= ClassName %>Add();
+
+            var <%= StringUtil.ToCamelCase(ClassName) %>s = <%= ClassName %>Service.<%= ClassName %>FetchInfoList(new <%= ClassName %>DataCriteria());
+
+            Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>s.Count() > 1, "Row returned should be greater than one");
+        }
+
+        [TestMethod]
+        public void <%= ClassName %>_Fetch_Lookup_Info_List()
+        {
+            <%= ClassName %>TestHelper.<%= ClassName %>Add();
+            <%= ClassName %>TestHelper.<%= ClassName %>Add();
+
+            var <%= StringUtil.ToCamelCase(ClassName) %>s = <%= ClassName %>Service.<%= ClassName %>FetchInfoList(new <%= ClassName %>DataCriteria());
+
+            Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>s.Count() > 1, "Row returned should be greater than one");
+        }
+
+        [TestMethod]
+        public void <%= ClassName %>_Add()
+        {
+            var <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>TestHelper.<%= ClassName %>New();
+
+            Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>.IsValid, "IsValid should be true");
+
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Save(<%= StringUtil.ToCamelCase(ClassName) %>);
+
+            Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id != 0, "<%= ClassName %>Id should be a non-zero value");
+
+            <%= ClassName %>Service.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
+        }
+
+        [TestMethod]
+        public void <%= ClassName %>_Edit()
+        {
+            var <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>TestHelper.<%= ClassName %>New();
+
+            var name = <%= StringUtil.ToCamelCase(ClassName) %>.Name;
+
+            Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>.IsValid, "IsValid should be true");
+
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Save(<%= StringUtil.ToCamelCase(ClassName) %>);
+
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
+
+            <%= StringUtil.ToCamelCase(ClassName) %>.Name = DataHelper.RandomString(20);
+
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Save(<%= StringUtil.ToCamelCase(ClassName) %>);
+
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
+
+            Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>.Name != name, "Name should have different value");
+        }
+
+        [TestMethod]
+        public void <%= ClassName %>_Delete()
+        {
+            var <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>TestHelper.<%= ClassName %>New();
+
+            Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>.IsValid, "IsValid should be true");
+
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Save(<%= StringUtil.ToCamelCase(ClassName) %>);
+
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
+
+            <%= ClassName %>Service.<%= ClassName %>Delete(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
+
+            try
+            {
+                <%= ClassName %>Service.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex.GetBaseException() is InvalidOperationException);
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+<%@ CodeTemplate 
+    Language="C#" 
+    TargetLanguage="C#" 
+    Src="../TemplateBase.cs" 
+	Inherits="CodeSmith.Csla.TemplateBase" 
+    Debug="False" 
+    CompilerVersion="v3.5" 
+	Description="Template description here." %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+using System;
+using System.ComponentModel;
+
+namespace <%= NamespaceName %>.Data
+{
+    [Serializable]
+    public class <%= ClassName %>DataCriteria : Csla.CriteriaBase<<%= ClassName %>DataCriteria>, IDataCriteria
+    {
+		<% foreach (var column in this.SourceTable.Columns) { %>
+		public <%= ToCriteriaDataType(column, true) %> <%= column.Name %> { get; set; }
+		<% } %>
+        public string Text { get; set; }
+        public int? SkipRecords { get; set; }
+        public int? MaximumRecords { get; set; }
+        public string SortBy { get; set; }
+        public ListSortDirection SortOrder { get; set; }
+
+        public <%= ClassName %>DataCriteria()
+        {
+            <% if (ToStringFormatMembers != null && ToStringFormatMembers.Count > 0) {%>
+            this.SortBy = "<%= ToStringFormatMembers[0] %>";
+            <% } else { %>
+            this.SortBy = null;
+            <% } %>
+            this.SortOrder = ListSortDirection.Ascending;
+        }
+    }
+}

@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1641C95F-FED3-4623-BC61-4B220B5BFF58}</ProjectGuid>
+    <ProjectGuid>{808576B0-08F7-41D1-9DD5-4BAD848F2420}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Epiworx.Data</RootNamespace>
-    <AssemblyName>Epiworx.Data</AssemblyName>
+    <RootNamespace>Epiworx.Business</RootNamespace>
+    <AssemblyName>Epiworx.Business</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,10 +32,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Csla">
-      <HintPath>..\packages\CSLA-Core.4.1.0.1\Lib\NET4.0\Csla.dll</HintPath>
+      <HintPath>..\epiworx-csla\packages\CSLA-Core.4.1.0.1\Lib\NET4.0\Csla.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,36 +43,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessIdentityProject\BusinessIdentityProjectDataCriteria.cs" />
-    <Compile Include="BusinessIdentityProject\BusinessIdentityProjectData.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="BusinessIdentity\BusinessIdentityData.cs" />
-    <Compile Include="BusinessIdentity\BusinessIdentityDataCriteria.cs" />
-    <Compile Include="BusinessIdentity\IBusinessIdentityDataFactory.cs" />
-    <Compile Include="DataFactoryManager.cs" />
-    <Compile Include="DateRangeCriteria.cs" />
-    <Compile Include="IDataCriteria.cs" />
-    <Compile Include="IDataFactoryManager.cs" />
-    <Compile Include="ProjectUserMember\IProjectUserMemberDataFactory.cs" />
-    <Compile Include="ProjectUserMember\ProjectUserMemberData.cs" />
-    <Compile Include="ProjectUserMember\ProjectUserMemberDataCriteria.cs" />
-    <Compile Include="Project\IProjectDataFactory.cs" />
-    <Compile Include="Project\ProjectData.cs" />
-    <Compile Include="Project\ProjectDataCriteria.cs" />
+    <Compile Include="IsInProjectAndRole.cs" />
+    <Compile Include="IsInUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User\IUserDataFactory.cs" />
-    <Compile Include="User\UserData.cs" />
-    <Compile Include="User\UserDataCriteria.cs" />
+    <Compile Include="User\IUser.cs" />
+    <Compile Include="User\Permissions.cs" />
+    <Compile Include="User\UserInfoList\UserInfoList.cs" />
+    <Compile Include="User\UserInfoList\UserInfoList.Data.cs" />
+    <Compile Include="User\UserInfoList\UserInfoList.Methods.cs" />
+    <Compile Include="User\UserInfoList\UserInfoList.Rules.cs" />
+    <Compile Include="User\UserInfo\UserInfo.cs" />
+    <Compile Include="User\UserInfo\UserInfo.Data.cs" />
+    <Compile Include="User\UserInfo\UserInfo.Properties.cs" />
+    <Compile Include="User\User\User.cs" />
+    <Compile Include="User\User\User.Data.cs" />
+    <Compile Include="User\User\User.Methods.cs" />
+    <Compile Include="User\User\User.Properties.cs" />
+    <Compile Include="User\User\User.Rules.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\business.security\Epiworx.Business.Security.csproj">
+      <Project>{266B5D33-88BB-4502-91B7-952D4DBA06BB}</Project>
+      <Name>Epiworx.Business.Security</Name>
+    </ProjectReference>
     <ProjectReference Include="..\core\Epiworx.Core.csproj">
       <Project>{852839EC-23EA-43C8-AFF4-2FF2EACD4B55}</Project>
       <Name>Epiworx.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\data\Epiworx.Data.csproj">
+      <Project>{1641C95F-FED3-4623-BC61-4B220B5BFF58}</Project>
+      <Name>Epiworx.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Packages.config" />
+    <Folder Include="Role\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

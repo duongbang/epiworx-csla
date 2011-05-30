@@ -1,0 +1,175 @@
+<%@ CodeTemplate 
+    Language="C#" 
+    TargetLanguage="C#" 
+    Src="../../TemplateBase.cs" 
+	Inherits="CodeSmith.Csla.TemplateBase" 
+    Debug="False" 
+    CompilerVersion="v3.5" 
+	Description="Template description here." %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using <%= NamespaceName %>.Business.Security;
+using <%= NamespaceName %>.Data;
+
+namespace <%= NamespaceName %>.Business
+{
+    public partial class <%= ClassName %>
+    {
+        [Csla.RunLocal]
+        protected override void DataPortal_Create()
+        {
+            using (this.BypassPropertyChecks)
+            {              
+                <% if (HasColumn("IsActive")) { %>
+                this.IsActive = true;
+                <% } %>
+                <% if (HasColumn("ModifiedBy")) { %>
+                this.ModifiedDate = DateTime.Now;
+                <% } %>
+                <% if (HasColumn("ModifiedBy")) { %>
+                this.CreatedDate =  DateTime.Now;
+                <% } %>
+            }
+
+            // this.ChildPropertyName = Csla.DataPortal.CreateChild<ChildPropertType>();
+
+            base.DataPortal_Create();
+        }
+
+        private void DataPortal_Fetch(<%= ClassName %>DataCriteria criteria)
+        {
+            using (var dalManager = DataFactoryManager.GetManager())
+            {
+                var dalFactory = dalManager.GetProvider<I<%= ClassName %>DataFactory>();
+
+                var data = dalFactory.Fetch(criteria);
+
+                using (this.BypassPropertyChecks)
+                {
+                    this.Fetch(data);
+                }
+
+                // this.ChildPropertyName = Csla.DataPortal.FetchChild<ChildPropertType>(data);
+            }
+        }
+
+        protected void Fetch(<%= ClassName %>Data data)
+        {
+		<% foreach (var column in SourceTable.Columns) { %>
+		    this.<%= column.Name %> = data.<%= column.Name %>;
+            <% if (column.Name == "CreatedBy" || column.Name == "ModifiedBy") { %>
+            this.<%= column.Name %>Name = data.<%= column.Name %>User.Name;
+            <% } %>
+ 		<% } %>
+        }
+
+        [Csla.Transactional(Csla.TransactionalTypes.TransactionScope)]
+        protected override void DataPortal_Insert()
+        {
+            using (var dalManager = DataFactoryManager.GetManager())
+            {
+                var dalFactory = dalManager.GetProvider<I<%= ClassName %>DataFactory>();
+
+                var data = new <%= ClassName %>Data();
+
+                using (this.BypassPropertyChecks)
+                {
+                    <% if (HasColumn("ModifiedBy")) { %>
+                    this.ModifiedBy = ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
+                    this.ModifiedDate = DateTime.Now;
+                    <% } %>
+                    this.CreatedBy = this.ModifiedBy;
+                    this.CreatedDate = this.ModifiedDate;
+
+                    this.Insert(data);
+
+                    data = dalFactory.Insert(data);
+
+                    <% foreach (var column in SourceTable.Columns) { %>
+                        <% if (column.IsPrimaryKeyMember) { %>
+                    this.<%= column.Name %> = data.<%= column.Name %>;
+                        <% } %>
+                    <% } %>
+                }
+
+                // this.FieldManager.UpdateChildren(data);
+            }
+        }
+
+        protected void Insert(<%= ClassName %>Data data)
+        {
+            this.Update(data);
+        }
+
+        [Csla.Transactional(Csla.TransactionalTypes.TransactionScope)]
+        protected override void DataPortal_Update()
+        {
+            using (var dalManager = DataFactoryManager.GetManager())
+            {
+                var dalFactory = dalManager.GetProvider<I<%= ClassName %>DataFactory>();
+
+                var data = new <%= ClassName %>Data();
+
+                using (this.BypassPropertyChecks)
+                {
+                    <% if (HasColumn("ModifiedBy")) { %>
+                    this.ModifiedBy = ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
+                    this.ModifiedDate = DateTime.Now;
+                    
+                    <% } %>
+                    this.Update(data);
+
+                    data = dalFactory.Update(data);
+                }
+
+                // this.FieldManager.UpdateChildren(data);
+            }
+        }
+
+        protected void Update(<%= ClassName %>Data data)
+        {
+		<% foreach (var column in SourceTable.Columns) { %>
+		    data.<%= column.Name %> = this.<%= column.Name %>;
+ 		<% } %>
+        }
+
+        [Csla.Transactional(Csla.TransactionalTypes.TransactionScope)]
+        private void DataPortal_Delete(<%= ClassName %>DataCriteria criteria)
+        {
+            using (var dalManager = DataFactoryManager.GetManager())
+            {
+                var dalFactory = dalManager.GetProvider<I<%= ClassName %>DataFactory>();
+
+                dalFactory.Delete(criteria);
+            }
+        }
+
+        [Csla.Transactional(Csla.TransactionalTypes.TransactionScope)]
+        protected override void DataPortal_DeleteSelf()
+        {
+            using (var dalManager = DataFactoryManager.GetManager())
+            {
+                var dalFactory = dalManager.GetProvider<I<%= ClassName %>DataFactory>();
+
+                dalFactory.Delete(
+                    new <%= ClassName %>DataCriteria
+                    {
+                    <% foreach (var column in SourceTable.Columns) { %>
+                        <% if (column.IsPrimaryKeyMember) { %>
+                        <%= column.Name %> = this.<%= column.Name %>
+                        <% } %>
+                    <% } %>
+                    });
+
+                // this.ChildPropertyName = Csla.DataPortal.CreateChild<ChildPropertyType>();
+            }
+        }
+    }
+}

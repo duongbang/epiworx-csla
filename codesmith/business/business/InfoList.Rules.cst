@@ -1,0 +1,33 @@
+<%@ CodeTemplate 
+    Language="C#" 
+    TargetLanguage="C#" 
+    Src="../../TemplateBase.cs" 
+	Inherits="CodeSmith.Csla.TemplateBase" 
+    Debug="False" 
+    CompilerVersion="v3.5" 
+	Description="Template description here." %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+<%@ Import Namespace="System.Linq" %>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Csla.Rules;
+using Csla.Rules.CommonRules;
+using <%= NamespaceName %>.Business.Security;
+
+namespace <%= NamespaceName %>.Business
+{
+    public partial class <%= ClassName %>InfoList
+    {
+        protected static void AddObjectAuthorizationRules()
+        {
+            BusinessRules.AddRule(typeof(<%= ClassName %>InfoList),
+                 new IsInRole(AuthorizationActions.GetObject, Roles.Administrators, Permissions.<%= ClassName %>Get));
+        }
+    }
+}
