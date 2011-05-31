@@ -18,11 +18,7 @@ namespace Epiworx.Business
 		    this.Name = data.Name;
 		    this.Salt = data.Salt;
 		    this.Password = data.Password;
-		    this.CreatedBy = data.CreatedBy;
-            this.CreatedByName = data.CreatedByUser.Name;
 		    this.CreatedDate = data.CreatedDate;
-		    this.ModifiedBy = data.ModifiedBy;
-            this.ModifiedByName = data.ModifiedByUser.Name;
 		    this.ModifiedDate = data.ModifiedDate;
         }
     }

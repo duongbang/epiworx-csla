@@ -64,7 +64,7 @@ namespace Epiworx.Business
         public string Salt
         {
             get { return this.GetProperty(SaltProperty); }
-            set { this.SetProperty(SaltProperty, value); }
+            private set { this.SetProperty(SaltProperty, value); }
         }
 
         private static Csla.PropertyInfo<string> PasswordProperty =
@@ -72,23 +72,7 @@ namespace Epiworx.Business
         public string Password
         {
             get { return this.GetProperty(PasswordProperty); }
-            set { this.SetProperty(PasswordProperty, value); }
-        }
-
-        private static Csla.PropertyInfo<int> CreatedByProperty =
-            RegisterProperty<int>(row => row.CreatedBy, "CreatedBy");
-        public int CreatedBy
-        {
-            get { return this.GetProperty(CreatedByProperty); }
-            private set { this.SetProperty(CreatedByProperty, value); }
-        }
-
-        private static Csla.PropertyInfo<string> CreatedByNameProperty =
-            RegisterProperty<string>(row => row.CreatedByName, "CreatedByName");
-        public string CreatedByName
-        {
-            get { return this.GetProperty(CreatedByNameProperty); }
-            private set { this.SetProperty(CreatedByNameProperty, value); }
+            private set { this.SetProperty(PasswordProperty, value); }
         }
 
         private static Csla.PropertyInfo<DateTime> CreatedDateProperty =
@@ -97,22 +81,6 @@ namespace Epiworx.Business
         {
             get { return this.GetProperty(CreatedDateProperty); }
             private set { this.SetProperty(CreatedDateProperty, value); }
-        }
-
-        private static Csla.PropertyInfo<int> ModifiedByProperty =
-            RegisterProperty<int>(row => row.ModifiedBy, "ModifiedBy");
-        public int ModifiedBy
-        {
-            get { return this.GetProperty(ModifiedByProperty); }
-            private set { this.SetProperty(ModifiedByProperty, value); }
-        }
-
-        private static Csla.PropertyInfo<string> ModifiedByNameProperty =
-            RegisterProperty<string>(row => row.ModifiedByName, "ModifiedByName");
-        public string ModifiedByName
-        {
-            get { return this.GetProperty(ModifiedByNameProperty); }
-            private set { this.SetProperty(ModifiedByNameProperty, value); }
         }
 
         private static Csla.PropertyInfo<DateTime> ModifiedDateProperty =

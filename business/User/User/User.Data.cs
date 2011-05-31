@@ -9,6 +9,17 @@ namespace Epiworx.Business
 {
     public partial class User
     {
+        [Csla.RunLocal]
+        protected override void DataPortal_Create()
+        {
+            using (this.BypassPropertyChecks)
+            {
+                this.IsActive = true;
+            }
+
+            base.DataPortal_Create();
+        }
+
         private void DataPortal_Fetch(UserDataCriteria criteria)
         {
             using (var dalManager = DataFactoryManager.GetManager())
@@ -36,12 +47,38 @@ namespace Epiworx.Business
             this.Name = data.Name;
             this.Salt = data.Salt;
             this.Password = data.Password;
-            this.CreatedBy = data.CreatedBy;
-            this.CreatedByName = data.CreatedByUser.Name;
             this.CreatedDate = data.CreatedDate;
-            this.ModifiedBy = data.ModifiedBy;
-            this.ModifiedByName = data.ModifiedByUser.Name;
             this.ModifiedDate = data.ModifiedDate;
+        }
+
+        [Csla.Transactional(Csla.TransactionalTypes.TransactionScope)]
+        protected override void DataPortal_Insert()
+        {
+            using (var dalManager = DataFactoryManager.GetManager())
+            {
+                var dalFactory = dalManager.GetProvider<IUserDataFactory>();
+
+                var data = new UserData();
+
+                using (this.BypassPropertyChecks)
+                {
+                    this.ModifiedDate = DateTime.Now;
+                    this.CreatedDate = this.ModifiedDate;
+
+                    this.Insert(data);
+
+                    data = dalFactory.Insert(data);
+
+                    this.UserId = data.UserId;
+                }
+
+                this.FieldManager.UpdateChildren(data);
+            }
+        }
+
+        protected void Insert(UserData data)
+        {
+            this.Update(data);
         }
 
         [Csla.Transactional(Csla.TransactionalTypes.TransactionScope)]
@@ -55,7 +92,6 @@ namespace Epiworx.Business
 
                 using (this.BypassPropertyChecks)
                 {
-                    this.ModifiedBy = ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
                     this.ModifiedDate = DateTime.Now;
 
                     this.Update(data);
@@ -77,10 +113,34 @@ namespace Epiworx.Business
             data.Name = this.Name;
             data.Salt = this.Salt;
             data.Password = this.Password;
-            data.CreatedBy = this.CreatedBy;
             data.CreatedDate = this.CreatedDate;
-            data.ModifiedBy = this.ModifiedBy;
             data.ModifiedDate = this.ModifiedDate;
+        }
+
+        [Csla.Transactional(Csla.TransactionalTypes.TransactionScope)]
+        private void DataPortal_Delete(UserDataCriteria criteria)
+        {
+            using (var dalManager = DataFactoryManager.GetManager())
+            {
+                var dalFactory = dalManager.GetProvider<IUserDataFactory>();
+
+                dalFactory.Delete(criteria);
+            }
+        }
+
+        [Csla.Transactional(Csla.TransactionalTypes.TransactionScope)]
+        protected override void DataPortal_DeleteSelf()
+        {
+            using (var dalManager = DataFactoryManager.GetManager())
+            {
+                var dalFactory = dalManager.GetProvider<IUserDataFactory>();
+
+                dalFactory.Delete(
+                    new UserDataCriteria
+                    {
+                        UserId = this.UserId
+                    });
+            }
         }
     }
 }

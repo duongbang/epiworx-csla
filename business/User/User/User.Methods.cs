@@ -34,6 +34,24 @@ namespace Epiworx.Business
             }
         }
 
+        public void SetPassword(string password)
+        {
+            var passwordValidator = new PasswordValidator();
+
+            if (!passwordValidator.Validate(password))
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            this.Salt = PasswordHelper.GetSalt(10);
+            this.Password = PasswordHelper.Salt(this.Salt, password);
+        }
+
+        internal static User NewUser()
+        {
+            return Csla.DataPortal.Create<User>();
+        }
+
         internal static User FetchUser(UserDataCriteria criteria)
         {
             return Csla.DataPortal.Fetch<User>(criteria);
@@ -47,6 +65,11 @@ namespace Epiworx.Business
             result.MarkOld();
 
             return result;
+        }
+
+        internal static void DeleteUser(UserDataCriteria criteria)
+        {
+            Csla.DataPortal.Delete<User>(criteria);
         }
     }
 }

@@ -15,9 +15,7 @@ namespace Epiworx.Business
         string Name { get; }
         string Salt { get; }
         string Password { get; }
-        int CreatedBy { get; }
         DateTime CreatedDate { get; }
-        int ModifiedBy { get; }
         DateTime ModifiedDate { get; }
     }
 }

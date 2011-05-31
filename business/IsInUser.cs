@@ -27,6 +27,8 @@ namespace Epiworx.Business
                 if (businessIdentity.UserId == ((User)context.Target).UserId)
                 {
                     context.HasPermission = true;
+
+                    return;
                 }
             }
 
