@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessIdentityDataFactory.cs" />
+    <Compile Include="UserPasswordDataFactory.cs" />
     <Compile Include="DataFactoryManager.cs" />
     <Compile Include="MockDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

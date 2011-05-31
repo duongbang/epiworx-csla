@@ -196,28 +196,5 @@ namespace Epiworx.Test
 
             Assert.IsTrue(user.FullName != fullName, "FullName should have different value");
         }
-
-        [TestMethod]
-        public void User_Delete()
-        {
-            var user = UserTestHelper.UserNew();
-
-            Assert.IsTrue(user.IsValid, "IsValid should be true");
-
-            user = UserRepository.UserSave(user);
-
-            user = UserRepository.UserFetch(user.UserId);
-
-            UserRepository.UserDelete(user.UserId);
-
-            try
-            {
-                UserRepository.UserFetch(user.UserId);
-            }
-            catch (Exception ex)
-            {
-                Assert.IsTrue(ex.GetBaseException() is InvalidOperationException);
-            }
-        }
     }
 }

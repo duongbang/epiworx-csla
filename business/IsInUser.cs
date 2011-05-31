@@ -32,6 +32,18 @@ namespace Epiworx.Business
                 }
             }
 
+            if (context.Target is UserPassword)
+            {
+                var businessIdentity = (IBusinessIdentity)Csla.ApplicationContext.User.Identity;
+
+                if (businessIdentity.UserId == ((UserPassword)context.Target).UserId)
+                {
+                    context.HasPermission = true;
+
+                    return;
+                }
+            }
+
             context.HasPermission = false;
         }
     }

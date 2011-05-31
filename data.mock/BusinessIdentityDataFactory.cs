@@ -9,18 +9,18 @@ namespace Epiworx.Data.Mock
     {
         public BusinessIdentityData Fetch(BusinessIdentityDataCriteria criteria)
         {
-            var user = MockDb.Users
+            var data = MockDb.Users
                 .Where(row => row.Name == criteria.Name)
                 .Single();
 
             var result = new BusinessIdentityData();
 
-            result.UserId = user.UserId;
-            result.Email = user.Email;
-            result.Name = user.Name;
-            result.FullName = user.FullName;
-            result.Password = user.Password;
-            result.Salt = user.Salt;
+            result.UserId = data.UserId;
+            result.Email = data.Email;
+            result.Name = data.Name;
+            result.FullName = data.FullName;
+            result.Password = data.Password;
+            result.Salt = data.Salt;
 
             return result;
         }

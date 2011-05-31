@@ -46,7 +46,13 @@
     <Compile Include="IsInProjectAndRole.cs" />
     <Compile Include="IsInUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\UserPasswordRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="UserPassword\UserPassword\UserPassword.cs" />
+    <Compile Include="UserPassword\UserPassword\UserPassword.Data.cs" />
+    <Compile Include="UserPassword\UserPassword\UserPassword.Methods.cs" />
+    <Compile Include="UserPassword\UserPassword\UserPassword.Properties.cs" />
+    <Compile Include="UserPassword\UserPassword\UserPassword.Rules.cs" />
     <Compile Include="User\IUser.cs" />
     <Compile Include="User\Permissions.cs" />
     <Compile Include="User\UserDuplicateNameCheck.cs" />
@@ -82,6 +88,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Helpers\" />
     <Folder Include="Role\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

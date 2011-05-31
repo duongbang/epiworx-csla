@@ -116,31 +116,5 @@ namespace Epiworx.Business
             data.CreatedDate = this.CreatedDate;
             data.ModifiedDate = this.ModifiedDate;
         }
-
-        [Csla.Transactional(Csla.TransactionalTypes.TransactionScope)]
-        private void DataPortal_Delete(UserDataCriteria criteria)
-        {
-            using (var dalManager = DataFactoryManager.GetManager())
-            {
-                var dalFactory = dalManager.GetProvider<IUserDataFactory>();
-
-                dalFactory.Delete(criteria);
-            }
-        }
-
-        [Csla.Transactional(Csla.TransactionalTypes.TransactionScope)]
-        protected override void DataPortal_DeleteSelf()
-        {
-            using (var dalManager = DataFactoryManager.GetManager())
-            {
-                var dalFactory = dalManager.GetProvider<IUserDataFactory>();
-
-                dalFactory.Delete(
-                    new UserDataCriteria
-                    {
-                        UserId = this.UserId
-                    });
-            }
-        }
     }
 }

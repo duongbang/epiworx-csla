@@ -64,14 +64,14 @@ namespace Epiworx.Business
             return result;
         }
 
-        public static User UserInsert(User user)
+        private static User UserInsert(User user)
         {
             user = user.Save();
 
             return user;
         }
 
-        public static User UserUpdate(User user)
+        private static User UserUpdate(User user)
         {
             user = user.Save();
 
@@ -83,23 +83,6 @@ namespace Epiworx.Business
             var user = User.NewUser();
 
             return user;
-        }
-
-        public static bool UserDelete(User user)
-        {
-            User.DeleteUser(
-                new UserDataCriteria
-                {
-                    UserId = user.UserId
-                });
-
-            return true;
-        }
-
-        public static bool UserDelete(int userId)
-        {
-            return UserRepository.UserDelete(
-                UserRepository.UserFetch(userId));
         }
     }
 }

@@ -43,7 +43,7 @@ namespace Epiworx.Business
                 throw new ArgumentOutOfRangeException();
             }
 
-            this.Salt = PasswordHelper.GetSalt(10);
+            this.Salt = PasswordHelper.GetSalt(User.SaltSize);
             this.Password = PasswordHelper.Salt(this.Salt, password);
         }
 
@@ -65,11 +65,6 @@ namespace Epiworx.Business
             result.MarkOld();
 
             return result;
-        }
-
-        internal static void DeleteUser(UserDataCriteria criteria)
-        {
-            Csla.DataPortal.Delete<User>(criteria);
         }
     }
 }
