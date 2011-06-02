@@ -15,12 +15,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Epitec.Epilink.Business;
-using Epitec.Epilink.Business.Security;
-using Epitec.Epilink.Business.Service;
-using Epitec.Epilink.Test.Helpers;
+using <%= ProjectName %>.Business;
 
-namespace Epitec.Epilink.Test.Helpers
+namespace <%= ProjectName %>.Test.Helpers
 {
     public class <%= ClassName %>TestHelper
     {

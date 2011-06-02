@@ -34,9 +34,9 @@ namespace Epiworx.Business
 
             if (context.Target is UserPassword)
             {
-                var businessIdentity = (IBusinessIdentity)Csla.ApplicationContext.User.Identity;
+                var identity = (IBusinessIdentity)Csla.ApplicationContext.User.Identity;
 
-                if (businessIdentity.UserId == ((UserPassword)context.Target).UserId)
+                if (identity.UserId == ((UserPassword)context.Target).UserId)
                 {
                     context.HasPermission = true;
 

@@ -89,7 +89,14 @@ namespace <%= NamespaceName %>.Data.Mock
 
         public <%= ClassName%>Data Insert(<%= ClassName%>Data data)
         {
-            data.<%= ClassName%>Id = MockDb.<%= ClassPluralName%>.Select(row => row.<%= ClassName%>Id).Max() + 1;
+            if (MockDb.<%= ClassPluralName%>.Count() == 0)
+            {
+                data.<%= ClassName%>Id = 1;
+            }
+            else
+            {
+                data.<%= ClassName%>Id = MockDb.<%= ClassPluralName%>.Select(row => row.<%= ClassName%>Id).Max() + 1;
+            }
 
             MockDb.<%= ClassPluralName%>.Add(data);
 

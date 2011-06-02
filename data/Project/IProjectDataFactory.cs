@@ -4,7 +4,6 @@ namespace Epiworx.Data
     {
         ProjectData Fetch(ProjectDataCriteria criteria);
         ProjectData[] FetchInfoList(ProjectDataCriteria criteria);
-        ProjectData[] FetchLookupInfoList(ProjectDataCriteria criteria);
         ProjectData Update(ProjectData data);
         ProjectData Insert(ProjectData data);
         void Delete(ProjectDataCriteria criteria);

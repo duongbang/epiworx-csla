@@ -16,14 +16,13 @@ using System.Data;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
-using Epitec.Epilink.Business.Security;
-using Epitec.Epilink.Business.Service;
-using Epitec.Epilink.Data;
-using Epitec.Epilink.Test.Helpers;
+using Epiworx.Business.Security;
+using Epiworx.Data;
+using Epiworx.Test.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Epitec.Epilink.Business;
+using <%= ProjectName %>.Business;
 
-namespace Epitec.Epilink.Test
+namespace <%= ProjectName %>.Test
 {
     [TestClass]
     public class <%= ClassName %>Test
@@ -43,7 +42,7 @@ namespace Epitec.Epilink.Test
         [TestMethod]
         public void <%= ClassName %>_Create()
         {
-            var <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>New();
+            var <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Repository.<%= ClassName %>New();
 
             Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>.IsNew, "IsNew should be true");
             Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>.IsDirty, "IsDirty should be true");
@@ -60,9 +59,9 @@ namespace Epitec.Epilink.Test
         {
             var <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>TestHelper.<%= ClassName %>New();
 
-            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Save(<%= StringUtil.ToCamelCase(ClassName) %>);
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Repository.<%= ClassName %>Save(<%= StringUtil.ToCamelCase(ClassName) %>);
 
-            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Repository.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
 
             Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %> != null, "Row returned should not equal null");
         }
@@ -73,18 +72,7 @@ namespace Epitec.Epilink.Test
             <%= ClassName %>TestHelper.<%= ClassName %>Add();
             <%= ClassName %>TestHelper.<%= ClassName %>Add();
 
-            var <%= StringUtil.ToCamelCase(ClassName) %>s = <%= ClassName %>Service.<%= ClassName %>FetchInfoList(new <%= ClassName %>DataCriteria());
-
-            Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>s.Count() > 1, "Row returned should be greater than one");
-        }
-
-        [TestMethod]
-        public void <%= ClassName %>_Fetch_Lookup_Info_List()
-        {
-            <%= ClassName %>TestHelper.<%= ClassName %>Add();
-            <%= ClassName %>TestHelper.<%= ClassName %>Add();
-
-            var <%= StringUtil.ToCamelCase(ClassName) %>s = <%= ClassName %>Service.<%= ClassName %>FetchInfoList(new <%= ClassName %>DataCriteria());
+            var <%= StringUtil.ToCamelCase(ClassName) %>s = <%= ClassName %>Repository.<%= ClassName %>FetchInfoList(new <%= ClassName %>DataCriteria());
 
             Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>s.Count() > 1, "Row returned should be greater than one");
         }
@@ -96,11 +84,11 @@ namespace Epitec.Epilink.Test
 
             Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>.IsValid, "IsValid should be true");
 
-            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Save(<%= StringUtil.ToCamelCase(ClassName) %>);
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Repository.<%= ClassName %>Save(<%= StringUtil.ToCamelCase(ClassName) %>);
 
             Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id != 0, "<%= ClassName %>Id should be a non-zero value");
 
-            <%= ClassName %>Service.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
+            <%= ClassName %>Repository.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
         }
 
         [TestMethod]
@@ -112,15 +100,15 @@ namespace Epitec.Epilink.Test
 
             Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>.IsValid, "IsValid should be true");
 
-            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Save(<%= StringUtil.ToCamelCase(ClassName) %>);
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Repository.<%= ClassName %>Save(<%= StringUtil.ToCamelCase(ClassName) %>);
 
-            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Repository.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
 
             <%= StringUtil.ToCamelCase(ClassName) %>.Name = DataHelper.RandomString(20);
 
-            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Save(<%= StringUtil.ToCamelCase(ClassName) %>);
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Repository.<%= ClassName %>Save(<%= StringUtil.ToCamelCase(ClassName) %>);
 
-            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Repository.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
 
             Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>.Name != name, "Name should have different value");
         }
@@ -132,15 +120,15 @@ namespace Epitec.Epilink.Test
 
             Assert.IsTrue(<%= StringUtil.ToCamelCase(ClassName) %>.IsValid, "IsValid should be true");
 
-            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Save(<%= StringUtil.ToCamelCase(ClassName) %>);
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Repository.<%= ClassName %>Save(<%= StringUtil.ToCamelCase(ClassName) %>);
 
-            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Service.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
+            <%= StringUtil.ToCamelCase(ClassName) %> = <%= ClassName %>Repository.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
 
-            <%= ClassName %>Service.<%= ClassName %>Delete(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
+            <%= ClassName %>Repository.<%= ClassName %>Delete(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
 
             try
             {
-                <%= ClassName %>Service.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
+                <%= ClassName %>Repository.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>.<%= ClassName %>Id);
             }
             catch (Exception ex)
             {

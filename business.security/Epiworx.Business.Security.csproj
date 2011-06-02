@@ -54,7 +54,6 @@
     <Compile Include="BusinessPrincipal\BusinessPrincipal.cs" />
     <Compile Include="BusinessPrincipal\BusinessPrincipal.Methods.cs" />
     <Compile Include="BusinessPrincipal\BusinessPrincipal.Properties.cs" />
-    <Compile Include="IsInUser.cs" />
     <Compile Include="Helpers\IPasswordValidator.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Helpers\PasswordValidator.cs" />
@@ -62,7 +61,6 @@
     <Compile Include="BusinessPrincipal\IBusinessPrincipal.cs" />
     <Compile Include="InvalidPasswordException.cs" />
     <Compile Include="InvalidUserException.cs" />
-    <Compile Include="IsInProjectAndRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="UserLockedException.cs" />

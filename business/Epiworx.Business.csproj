@@ -43,6 +43,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProjectUserMember\IProjectUserMember.cs" />
+    <Compile Include="ProjectUserMember\Permissions.cs" />
+    <Compile Include="ProjectUserMember\ProjectUserMemberInfoList\ProjectUserMemberInfoList.cs" />
+    <Compile Include="ProjectUserMember\ProjectUserMemberInfoList\ProjectUserMemberInfoList.Data.cs" />
+    <Compile Include="ProjectUserMember\ProjectUserMemberInfoList\ProjectUserMemberInfoList.Methods.cs" />
+    <Compile Include="ProjectUserMember\ProjectUserMemberInfoList\ProjectUserMemberInfoList.Rules.cs" />
+    <Compile Include="ProjectUserMember\ProjectUserMemberInfo\ProjectUserMemberInfo.cs" />
+    <Compile Include="ProjectUserMember\ProjectUserMemberInfo\ProjectUserMemberInfo.Data.cs" />
+    <Compile Include="ProjectUserMember\ProjectUserMemberInfo\ProjectUserMemberInfo.Properties.cs" />
+    <Compile Include="ProjectUserMember\ProjectUserMember\ProjectUserMember.cs" />
+    <Compile Include="ProjectUserMember\ProjectUserMember\ProjectUserMember.Data.cs" />
+    <Compile Include="ProjectUserMember\ProjectUserMember\ProjectUserMember.Methods.cs" />
+    <Compile Include="ProjectUserMember\ProjectUserMember\ProjectUserMember.Properties.cs" />
+    <Compile Include="ProjectUserMember\ProjectUserMember\ProjectUserMember.Rules.cs" />
+    <Compile Include="ProjectUserMember\ProjectUserMemberDuplicateNameCheck.cs" />
+    <Compile Include="Project\IProject.cs" />
+    <Compile Include="Project\Permissions.cs" />
+    <Compile Include="Project\ProjectInfoList\ProjectInfoList.cs" />
+    <Compile Include="Project\ProjectInfoList\ProjectInfoList.Data.cs" />
+    <Compile Include="Project\ProjectInfoList\ProjectInfoList.Methods.cs" />
+    <Compile Include="Project\ProjectInfoList\ProjectInfoList.Rules.cs" />
+    <Compile Include="Project\ProjectInfo\ProjectInfo.cs" />
+    <Compile Include="Project\ProjectInfo\ProjectInfo.Data.cs" />
+    <Compile Include="Project\ProjectInfo\ProjectInfo.Properties.cs" />
+    <Compile Include="Project\Project\Project.cs" />
+    <Compile Include="Project\Project\Project.Data.cs" />
+    <Compile Include="Project\Project\Project.Methods.cs" />
+    <Compile Include="Project\Project\Project.Properties.cs" />
+    <Compile Include="Project\Project\Project.Rules.cs" />
+    <Compile Include="Repositories\ProjectUserMemberRepository.cs" />
+    <Compile Include="Repositories\ProjectRepository.cs" />
     <Compile Include="Repositories\UserPasswordResetRepository.cs" />
     <Compile Include="UserPasswordReset\UserPasswordReset\UserPasswordReset.cs" />
     <Compile Include="UserPasswordReset\UserPasswordReset\UserPasswordReset.Data.cs" />

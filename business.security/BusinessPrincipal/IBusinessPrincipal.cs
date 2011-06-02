@@ -8,5 +8,8 @@ namespace Epiworx.Business.Security
 {
     public interface IBusinessPrincipal : IPrincipal
     {
+        bool IsInProject(int projectId);
+        bool IsInProjectAndRole(int projectId, Role role);
+        bool IsInProjectAndRole(int projectId, params Role[] role);
     }
 }

@@ -18,10 +18,10 @@ using System.Text;
 using <%= NamespaceName %>.Core;
 using <%= NamespaceName %>.Data;
 
-namespace <%= NamespaceName %>.Business.Service
+namespace <%= NamespaceName %>.Business
 {
     [Serializable]
-    public class <%= ClassName %>Service
+    public class <%= ClassName %>Repository
     {
         public static <%= ClassName %> <%= ClassName %>Fetch(int <%= StringUtil.ToCamelCase(ClassName) %>Id)
         {
@@ -37,16 +37,6 @@ namespace <%= NamespaceName %>.Business.Service
             return <%= ClassName %>InfoList.Fetch<%= ClassName %>InfoList(criteria);
         }
 
-        public static IEnumerable<<%= ClassName %>LookupInfo> <%= ClassName %>FetchLookupInfoList()
-        {
-            return <%= ClassName %>Service.<%= ClassName %>FetchLookupInfoList(new <%= ClassName %>DataCriteria());
-        }
-
-        public static IEnumerable<<%= ClassName %>LookupInfo> <%= ClassName %>FetchLookupInfoList(<%= ClassName %>DataCriteria criteria)
-        {
-            return <%= ClassName %>LookupInfoList.Fetch<%= ClassName %>LookupInfoList(criteria);
-        }
-
         public static <%= ClassName %> <%= ClassName %>Save(<%= ClassName %> <%= StringUtil.ToCamelCase(ClassName) %>)
         {
             if (!<%= StringUtil.ToCamelCase(ClassName) %>.IsValid)
@@ -58,11 +48,11 @@ namespace <%= NamespaceName %>.Business.Service
 
             if (<%= StringUtil.ToCamelCase(ClassName) %>.IsNew)
             {
-                result = <%= ClassName %>Service.<%= ClassName %>Insert(<%= StringUtil.ToCamelCase(ClassName) %>);
+                result = <%= ClassName %>Repository.<%= ClassName %>Insert(<%= StringUtil.ToCamelCase(ClassName) %>);
             }
             else
             {
-                result = <%= ClassName %>Service.<%= ClassName %>Update(<%= StringUtil.ToCamelCase(ClassName) %>);
+                result = <%= ClassName %>Repository.<%= ClassName %>Update(<%= StringUtil.ToCamelCase(ClassName) %>);
             }
 
             return result;
@@ -102,8 +92,8 @@ namespace <%= NamespaceName %>.Business.Service
 
         public static bool <%= ClassName %>Delete(int <%= StringUtil.ToCamelCase(ClassName) %>Id)
         {
-            return <%= ClassName %>Service.<%= ClassName %>Delete(
-                <%= ClassName %>Service.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>Id));
+            return <%= ClassName %>Repository.<%= ClassName %>Delete(
+                <%= ClassName %>Repository.<%= ClassName %>Fetch(<%= StringUtil.ToCamelCase(ClassName) %>Id));
         }
     }
 }
