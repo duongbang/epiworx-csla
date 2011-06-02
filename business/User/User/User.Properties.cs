@@ -59,20 +59,20 @@ namespace Epiworx.Business
             set { this.SetProperty(NameProperty, value); }
         }
 
-        private static Csla.PropertyInfo<string> SaltProperty =
-            RegisterProperty<string>(row => row.Salt, "Salt");
-        public string Salt
-        {
-            get { return this.GetProperty(SaltProperty); }
-            private set { this.SetProperty(SaltProperty, value); }
-        }
-
         private static Csla.PropertyInfo<string> PasswordProperty =
             RegisterProperty<string>(row => row.Password, "Password");
         public string Password
         {
             get { return this.GetProperty(PasswordProperty); }
             private set { this.SetProperty(PasswordProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<string> SaltProperty =
+            RegisterProperty<string>(row => row.Salt, "Salt");
+        public string Salt
+        {
+            get { return this.GetProperty(SaltProperty); }
+            private set { this.SetProperty(SaltProperty, value); }
         }
 
         private static Csla.PropertyInfo<DateTime> CreatedDateProperty =

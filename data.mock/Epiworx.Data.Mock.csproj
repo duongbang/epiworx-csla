@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessIdentityDataFactory.cs" />
+    <Compile Include="UserPasswordResetDataFactory.cs" />
+    <Compile Include="UserPasswordResetRequestDataFactory.cs" />
     <Compile Include="UserPasswordDataFactory.cs" />
     <Compile Include="DataFactoryManager.cs" />
     <Compile Include="MockDb.cs" />

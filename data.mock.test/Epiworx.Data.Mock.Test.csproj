@@ -49,6 +49,8 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserPasswordReset\UserPasswordResetTest.cs" />
+    <Compile Include="UserPasswordResetRequest\UserPasswordResetRequestTest.cs" />
     <Compile Include="UserPassword\UserPasswordTest.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />

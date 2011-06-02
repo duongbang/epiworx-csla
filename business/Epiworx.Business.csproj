@@ -43,6 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositories\UserPasswordResetRepository.cs" />
+    <Compile Include="UserPasswordReset\UserPasswordReset\UserPasswordReset.cs" />
+    <Compile Include="UserPasswordReset\UserPasswordReset\UserPasswordReset.Data.cs" />
+    <Compile Include="UserPasswordReset\UserPasswordReset\UserPasswordReset.Methods.cs" />
+    <Compile Include="UserPasswordReset\UserPasswordReset\UserPasswordReset.Properties.cs" />
+    <Compile Include="UserPasswordReset\UserPasswordReset\UserPasswordReset.Rules.cs" />
+    <Compile Include="Repositories\UserPasswordResetRequestRepository.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="UserPasswordResetRequest\UserPasswordResetRequest\UserPasswordResetRequest.cs" />
+    <Compile Include="UserPasswordResetRequest\UserPasswordResetRequest\UserPasswordResetRequest.Data.cs" />
+    <Compile Include="UserPasswordResetRequest\UserPasswordResetRequest\UserPasswordResetRequest.Methods.cs" />
+    <Compile Include="UserPasswordResetRequest\UserPasswordResetRequest\UserPasswordResetRequest.Properties.cs" />
+    <Compile Include="UserPasswordResetRequest\UserPasswordResetRequest\UserPasswordResetRequest.Rules.cs" />
     <Compile Include="IsInProjectAndRole.cs" />
     <Compile Include="IsInUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

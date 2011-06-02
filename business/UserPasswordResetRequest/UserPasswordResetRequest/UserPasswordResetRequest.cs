@@ -6,9 +6,9 @@ using System.Text;
 namespace Epiworx.Business
 {
     [Serializable]
-    public partial class User : Csla.BusinessBase<User>, IUser
+    public partial class UserPasswordResetRequest : Csla.BusinessBase<UserPasswordResetRequest>
     {
-        private User()
+        private UserPasswordResetRequest()
         {
         }
     }

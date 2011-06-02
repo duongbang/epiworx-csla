@@ -28,14 +28,19 @@ namespace Epiworx.Data.Mock
             var query = MockDb.Users
                 .AsQueryable();
 
+            if (criteria.Email != null)
+            {
+                query = query.Where(row => row.Email == criteria.Email);
+            }
+
             if (criteria.Name != null)
             {
                 query = query.Where(row => row.Name == criteria.Name);
             }
 
-            if (criteria.Email != null)
+            if (criteria.Token != null)
             {
-                query = query.Where(row => row.Email == criteria.Email);
+                query = query.Where(row => row.Token == criteria.Token);
             }
 
             var users = query.AsQueryable();

@@ -43,7 +43,7 @@ namespace Epiworx.Business
                 throw new ArgumentOutOfRangeException();
             }
 
-            this.Salt = PasswordHelper.GetSalt(User.SaltSize);
+            this.Salt = PasswordHelper.GetSalt(Settings.SaltSize);
             this.Password = PasswordHelper.Salt(this.Salt, password);
         }
 

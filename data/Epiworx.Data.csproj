@@ -51,6 +51,12 @@
     <Compile Include="BusinessIdentity\BusinessIdentityData.cs" />
     <Compile Include="BusinessIdentity\BusinessIdentityDataCriteria.cs" />
     <Compile Include="BusinessIdentity\IBusinessIdentityDataFactory.cs" />
+    <Compile Include="UserPasswordReset\IUserPasswordResetDataFactory.cs" />
+    <Compile Include="UserPasswordReset\UserPasswordResetData.cs" />
+    <Compile Include="UserPasswordReset\UserPasswordResetDataCriteria.cs" />
+    <Compile Include="UserPasswordResetRequest\IUserPasswordResetRequestDataFactory.cs" />
+    <Compile Include="UserPasswordResetRequest\UserPasswordResetRequestData.cs" />
+    <Compile Include="UserPasswordResetRequest\UserPasswordResetRequestDataCriteria.cs" />
     <Compile Include="DataFactoryManager.cs" />
     <Compile Include="DateRangeCriteria.cs" />
     <Compile Include="IDataCriteria.cs" />

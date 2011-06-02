@@ -13,8 +13,8 @@ namespace Epiworx.Business
         bool IsActive { get; }
         bool IsArchived { get; }
         string Name { get; }
-        string Salt { get; }
         string Password { get; }
+        string Salt { get; }
         DateTime CreatedDate { get; }
         DateTime ModifiedDate { get; }
     }

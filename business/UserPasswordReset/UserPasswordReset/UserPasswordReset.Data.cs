@@ -8,13 +8,13 @@ using Epiworx.Data;
 
 namespace Epiworx.Business
 {
-    public partial class UserPassword
+    public partial class UserPasswordReset
     {
-        private void DataPortal_Fetch(UserPasswordDataCriteria criteria)
+        private void DataPortal_Fetch(UserPasswordResetDataCriteria criteria)
         {
             using (var dalManager = DataFactoryManager.GetManager())
             {
-                var dalFactory = dalManager.GetProvider<IUserPasswordDataFactory>();
+                var dalFactory = dalManager.GetProvider<IUserPasswordResetDataFactory>();
 
                 var data = dalFactory.Fetch(criteria);
 
@@ -27,12 +27,14 @@ namespace Epiworx.Business
             }
         }
 
-        protected void Fetch(UserPasswordData data)
+        protected void Fetch(UserPasswordResetData data)
         {
             this.UserId = data.UserId;
+            this.Email = data.Email;
             this.Password = string.Empty;
             this.PasswordConfirmation = string.Empty;
-            this.ModifiedDate = data.ModifiedDate;
+            this.Token = data.Token;
+            this.TokenExpirationDate = data.TokenExpirationDate;
         }
 
         [Csla.Transactional(Csla.TransactionalTypes.TransactionScope)]
@@ -40,14 +42,12 @@ namespace Epiworx.Business
         {
             using (var dalManager = DataFactoryManager.GetManager())
             {
-                var dalFactory = dalManager.GetProvider<IUserPasswordDataFactory>();
+                var dalFactory = dalManager.GetProvider<IUserPasswordResetDataFactory>();
 
-                var data = new UserPasswordData();
+                var data = new UserPasswordResetData();
 
                 using (this.BypassPropertyChecks)
                 {
-                    this.ModifiedDate = DateTime.Now;
-
                     this.Update(data);
 
                     data = dalFactory.Update(data);
@@ -55,12 +55,14 @@ namespace Epiworx.Business
             }
         }
 
-        protected void Update(UserPasswordData data)
+        protected void Update(UserPasswordResetData data)
         {
             data.UserId = this.UserId;
+            data.Email = this.Email;
             data.Salt = PasswordHelper.GetSalt(Settings.SaltSize);
             data.Password = PasswordHelper.Salt(data.Salt, this.Password);
-            data.ModifiedDate = this.ModifiedDate;
+            data.Token = string.Empty;
+            data.TokenExpirationDate = DateTime.MaxValue;
         }
     }
 }

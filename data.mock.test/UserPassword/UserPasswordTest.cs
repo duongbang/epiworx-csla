@@ -26,6 +26,28 @@ namespace Epiworx.Test
         }
 
         [TestMethod]
+        public void User_Password_Fetch()
+        {
+            BusinessPrincipal.Login("User", "master");
+
+            var user = UserPasswordRepository.UserPasswordFetch();
+
+            Assert.IsFalse(user.IsNew, "IsNew should be false");
+            Assert.IsFalse(user.IsDirty, "IsDirty should be false");
+            Assert.IsFalse(user.IsValid, "IsValid should be false");
+            Assert.IsFalse(user.IsSelfDirty, "IsSelfDirty should be false");
+            Assert.IsFalse(user.IsSelfValid, "IsSelfValid should be false");
+
+            Assert.IsTrue(ValidationHelper.ContainsRule(user, DbType.String, "Password"),
+                "Password should be required");
+
+            Assert.IsTrue(ValidationHelper.ContainsRule(user, DbType.String, "PasswordConfirmation"),
+                "PasswordConfirmation should be required");
+
+            BusinessPrincipal.Logout();
+        }
+
+        [TestMethod]
         public void User_Password_Update()
         {
             BusinessPrincipal.Login("User", "master");
