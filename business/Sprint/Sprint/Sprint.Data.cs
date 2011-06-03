@@ -7,15 +7,17 @@ using Epiworx.Data;
 
 namespace Epiworx.Business
 {
-    public partial class ProjectUserMember
+    public partial class Sprint
     {
         [Csla.RunLocal]
-        protected void DataPortal_Create(ProjectUserMemberDataCriteria criteria)
+        protected void DataPortal_Create(SprintDataCriteria criteria)
         {
             using (this.BypassPropertyChecks)
             {
+                this.CompletedDate = DateTime.MaxValue.Date;
+                this.IsActive = true;
+                this.EstimatedCompletedDate = DateTime.MaxValue.Date;
                 this.ProjectId = criteria.ProjectId ?? 0;
-                this.UserId = criteria.UserId ?? 0;
                 this.ModifiedDate = DateTime.Now;
                 this.CreatedDate = DateTime.Now;
             }
@@ -25,11 +27,11 @@ namespace Epiworx.Business
             base.DataPortal_Create();
         }
 
-        private void DataPortal_Fetch(ProjectUserMemberDataCriteria criteria)
+        private void DataPortal_Fetch(SprintDataCriteria criteria)
         {
             using (var dalManager = DataFactoryManager.GetManager())
             {
-                var dalFactory = dalManager.GetProvider<IProjectUserMemberDataFactory>();
+                var dalFactory = dalManager.GetProvider<ISprintDataFactory>();
 
                 var data = dalFactory.Fetch(criteria);
 
@@ -42,14 +44,19 @@ namespace Epiworx.Business
             }
         }
 
-        protected void Fetch(ProjectUserMemberData data)
+        protected void Fetch(SprintData data)
         {
-            this.ProjectUserMemberId = data.ProjectUserMemberId;
+            this.SprintId = data.SprintId;
+            this.CompletedDate = data.CompletedDate;
+            this.IsActive = data.IsActive;
+            this.IsArchived = data.IsArchived;
+            this.IsCompleted = data.IsCompleted;
+            this.Duration = data.Duration;
+            this.EstimatedCompletedDate = data.EstimatedCompletedDate;
+            this.EstimatedDuration = data.EstimatedDuration;
+            this.Name = data.Name;
             this.ProjectId = data.ProjectId;
             this.ProjectName = data.Project.Name;
-            this.RoleId = data.RoleId;
-            this.UserId = data.UserId;
-            this.UserName = data.User.Name;
             this.CreatedBy = data.CreatedBy;
             this.CreatedByName = data.CreatedByUser.Name;
             this.CreatedDate = data.CreatedDate;
@@ -63,9 +70,9 @@ namespace Epiworx.Business
         {
             using (var dalManager = DataFactoryManager.GetManager())
             {
-                var dalFactory = dalManager.GetProvider<IProjectUserMemberDataFactory>();
+                var dalFactory = dalManager.GetProvider<ISprintDataFactory>();
 
-                var data = new ProjectUserMemberData();
+                var data = new SprintData();
 
                 using (this.BypassPropertyChecks)
                 {
@@ -78,14 +85,14 @@ namespace Epiworx.Business
 
                     data = dalFactory.Insert(data);
 
-                    this.ProjectUserMemberId = data.ProjectUserMemberId;
+                    this.SprintId = data.SprintId;
                 }
 
                 // this.FieldManager.UpdateChildren(data);
             }
         }
 
-        protected void Insert(ProjectUserMemberData data)
+        protected void Insert(SprintData data)
         {
             this.Update(data);
         }
@@ -95,9 +102,9 @@ namespace Epiworx.Business
         {
             using (var dalManager = DataFactoryManager.GetManager())
             {
-                var dalFactory = dalManager.GetProvider<IProjectUserMemberDataFactory>();
+                var dalFactory = dalManager.GetProvider<ISprintDataFactory>();
 
-                var data = new ProjectUserMemberData();
+                var data = new SprintData();
 
                 using (this.BypassPropertyChecks)
                 {
@@ -113,12 +120,18 @@ namespace Epiworx.Business
             }
         }
 
-        protected void Update(ProjectUserMemberData data)
+        protected void Update(SprintData data)
         {
-            data.ProjectUserMemberId = this.ProjectUserMemberId;
+            data.SprintId = this.SprintId;
+            data.CompletedDate = this.CompletedDate;
+            data.IsActive = this.IsActive;
+            data.IsArchived = this.IsArchived;
+            data.IsCompleted = this.IsCompleted;
+            data.Duration = this.Duration;
+            data.EstimatedCompletedDate = this.EstimatedCompletedDate;
+            data.EstimatedDuration = this.EstimatedDuration;
+            data.Name = this.Name;
             data.ProjectId = this.ProjectId;
-            data.RoleId = this.RoleId;
-            data.UserId = this.UserId;
             data.CreatedBy = this.CreatedBy;
             data.CreatedDate = this.CreatedDate;
             data.ModifiedBy = this.ModifiedBy;
@@ -126,11 +139,11 @@ namespace Epiworx.Business
         }
 
         [Csla.Transactional(Csla.TransactionalTypes.TransactionScope)]
-        private void DataPortal_Delete(ProjectUserMemberDataCriteria criteria)
+        private void DataPortal_Delete(SprintDataCriteria criteria)
         {
             using (var dalManager = DataFactoryManager.GetManager())
             {
-                var dalFactory = dalManager.GetProvider<IProjectUserMemberDataFactory>();
+                var dalFactory = dalManager.GetProvider<ISprintDataFactory>();
 
                 dalFactory.Delete(criteria);
             }
@@ -141,12 +154,12 @@ namespace Epiworx.Business
         {
             using (var dalManager = DataFactoryManager.GetManager())
             {
-                var dalFactory = dalManager.GetProvider<IProjectUserMemberDataFactory>();
+                var dalFactory = dalManager.GetProvider<ISprintDataFactory>();
 
                 dalFactory.Delete(
-                    new ProjectUserMemberDataCriteria
+                    new SprintDataCriteria
                     {
-                        ProjectUserMemberId = this.ProjectUserMemberId
+                        SprintId = this.SprintId
                     });
 
                 // this.ChildPropertyName = Csla.DataPortal.CreateChild<ChildPropertyType>();

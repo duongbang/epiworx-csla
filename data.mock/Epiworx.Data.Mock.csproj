@@ -46,6 +46,7 @@
     <Compile Include="BusinessIdentityDataFactory.cs" />
     <Compile Include="ProjectDataFactory.cs" />
     <Compile Include="ProjectUserMemberDataFactory.cs" />
+    <Compile Include="SprintDataFactory.cs" />
     <Compile Include="UserPasswordResetDataFactory.cs" />
     <Compile Include="UserPasswordResetRequestDataFactory.cs" />
     <Compile Include="UserPasswordDataFactory.cs" />

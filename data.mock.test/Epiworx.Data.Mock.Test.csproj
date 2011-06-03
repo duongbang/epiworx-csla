@@ -53,6 +53,8 @@
     <Compile Include="ProjectUserMember\ProjectUserMemberTestHelper.cs" />
     <Compile Include="Project\ProjectTest.cs" />
     <Compile Include="Project\ProjectTestHelper.cs" />
+    <Compile Include="Sprint\SprintTest.cs" />
+    <Compile Include="Sprint\SprintTestHelper.cs" />
     <Compile Include="UserPasswordReset\UserPasswordResetTest.cs" />
     <Compile Include="UserPasswordResetRequest\UserPasswordResetRequestTest.cs" />
     <Compile Include="UserPassword\UserPasswordTest.cs" />

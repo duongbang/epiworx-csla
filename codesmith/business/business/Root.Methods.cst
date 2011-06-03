@@ -40,15 +40,6 @@ namespace <%= NamespaceName %>.Business
             return result;
         }
 
-        public <%= ClassName %>LookupInfo To<%= ClassName %>LookupInfo()
-        {
-            var result = new <%= ClassName %>LookupInfo();
-
-            Csla.Data.DataMapper.Map(this, result);
-
-            return result;
-        }
-
         protected override void PropertyHasChanged(Csla.Core.IPropertyInfo property)
         {
             base.PropertyHasChanged(property);

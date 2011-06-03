@@ -17,7 +17,6 @@ namespace <%= NamespaceName %>.Data
     {
         <%= ClassName %>Data Fetch(<%= this.ClassName %>DataCriteria criteria);
         <%= ClassName %>Data[] FetchInfoList(<%= ClassName %>DataCriteria criteria);
-        <%= ClassName %>Data[] FetchLookupInfoList(<%= ClassName %>DataCriteria criteria);
         <%= ClassName %>Data Update(<%= ClassName %>Data data);
         <%= ClassName %>Data Insert(<%= ClassName %>Data data);
         void Delete(<%= ClassName %>DataCriteria criteria);

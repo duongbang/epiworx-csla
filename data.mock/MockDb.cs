@@ -9,6 +9,7 @@ namespace Epiworx.Data.Mock
     {
         public static List<ProjectData> Projects { get; private set; }
         public static List<ProjectUserMemberData> ProjectUserMembers { get; private set; }
+        public static List<SprintData> Sprints { get; private set; }
         public static List<UserData> Users { get; private set; }
 
         static MockDb()
@@ -22,6 +23,12 @@ namespace Epiworx.Data.Mock
             #region ProjectUserMembers
 
             ProjectUserMembers = new List<ProjectUserMemberData>();
+
+            #endregion
+
+            #region Sprints
+
+            Sprints = new List<SprintData>();
 
             #endregion
 

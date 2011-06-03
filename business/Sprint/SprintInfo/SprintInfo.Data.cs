@@ -6,16 +6,21 @@ using Epiworx.Data;
 
 namespace Epiworx.Business
 {
-    public partial class ProjectUserMemberInfo
+    public partial class SprintInfo
     {
-        private void Child_Fetch(ProjectUserMemberData data)
+        private void Child_Fetch(SprintData data)
         {
-            this.ProjectUserMemberId = data.ProjectUserMemberId;
+            this.SprintId = data.SprintId;
+            this.CompletedDate = data.CompletedDate;
+            this.IsActive = data.IsActive;
+            this.IsArchived = data.IsArchived;
+            this.IsCompleted = data.IsCompleted;
+            this.Duration = data.Duration;
+            this.EstimatedCompletedDate = data.EstimatedCompletedDate;
+            this.EstimatedDuration = data.EstimatedDuration;
+            this.Name = data.Name;
             this.ProjectId = data.ProjectId;
             this.ProjectName = data.Project.Name;
-            this.RoleId = data.RoleId;
-            this.UserId = data.UserId;
-            this.UserName = data.User.Name;
             this.CreatedBy = data.CreatedBy;
             this.CreatedByName = data.CreatedByUser.Name;
             this.CreatedDate = data.CreatedDate;

@@ -54,9 +54,7 @@
     this.ValidatePath(string.Format("{0}\\business\\Business\\{1}\\{1}", this.RootPath, this.ClassName));
     this.ValidatePath(string.Format("{0}\\business\\Business\\{1}\\{1}Info", this.RootPath, this.ClassName));
     this.ValidatePath(string.Format("{0}\\business\\Business\\{1}\\{1}InfoList", this.RootPath, this.ClassName));
-    this.ValidatePath(string.Format("{0}\\business\\Business\\{1}\\{1}LookupInfo", this.RootPath, this.ClassName));
-    this.ValidatePath(string.Format("{0}\\business\\Business\\{1}\\{1}LookupInfoList", this.RootPath, this.ClassName));
-    this.ValidatePath(string.Format("{0}\\business\\Service", this.RootPath));
+    this.ValidatePath(string.Format("{0}\\business\\Business\\Repositories", this.RootPath));
 
     this.CreateDataData();
     this.CreateDataDataCriteria();
@@ -78,13 +76,6 @@
     this.CreateBusinessInfoListData();
     this.CreateBusinessInfoListMethods();
     this.CreateBusinessInfoListRules();
-    this.CreateBusinessLookupInfo();
-    this.CreateBusinessLookupInfoData();
-    this.CreateBusinessLookupInfoProperties();
-    this.CreateBusinessLookupInfoList();
-    this.CreateBusinessLookupInfoListData();
-    this.CreateBusinessLookupInfoListMethods();
-    this.CreateBusinessLookupInfoListRules();
     this.CreateBusinessService();
 %>
 
@@ -345,6 +336,6 @@
         var t = this.Create<BusinessService>();  
         this.CopyPropertiesTo(t);
         t.Render(this.Response);
-        t.RenderToFile(string.Format("{0}\\business\\Service\\{1}Service.cs", this.RootPath, this.ClassName), true);
+        t.RenderToFile(string.Format("{0}\\business\\Business\\Repositories\\{1}Repository.cs", this.RootPath, this.ClassName), true);
     }
 </script>
