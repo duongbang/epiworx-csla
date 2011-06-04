@@ -56,10 +56,9 @@
     <Compile Include="Category\Category\Category.Properties.cs" />
     <Compile Include="Category\Category\Category.Rules.cs" />
     <Compile Include="Category\ICategory.cs" />
-    <Compile Include="Category\Permissions.cs" />
     <Compile Include="Category\CategoryDuplicateNameCheck.cs" />
+    <Compile Include="Helpers\ForeignKeyHelper.cs" />
     <Compile Include="ProjectUserMember\IProjectUserMember.cs" />
-    <Compile Include="ProjectUserMember\Permissions.cs" />
     <Compile Include="ProjectUserMember\ProjectUserMemberInfoList\ProjectUserMemberInfoList.cs" />
     <Compile Include="ProjectUserMember\ProjectUserMemberInfoList\ProjectUserMemberInfoList.Data.cs" />
     <Compile Include="ProjectUserMember\ProjectUserMemberInfoList\ProjectUserMemberInfoList.Methods.cs" />
@@ -74,7 +73,6 @@
     <Compile Include="ProjectUserMember\ProjectUserMember\ProjectUserMember.Rules.cs" />
     <Compile Include="ProjectUserMember\ProjectUserMemberDuplicateNameCheck.cs" />
     <Compile Include="Project\IProject.cs" />
-    <Compile Include="Project\Permissions.cs" />
     <Compile Include="Project\ProjectInfoList\ProjectInfoList.cs" />
     <Compile Include="Project\ProjectInfoList\ProjectInfoList.Data.cs" />
     <Compile Include="Project\ProjectInfoList\ProjectInfoList.Methods.cs" />
@@ -90,11 +88,25 @@
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\ProjectUserMemberRepository.cs" />
     <Compile Include="Repositories\ProjectRepository.cs" />
+    <Compile Include="Repositories\SourceRepository.cs" />
     <Compile Include="Repositories\SprintRepository.cs" />
     <Compile Include="Repositories\StatusRepository.cs" />
     <Compile Include="Repositories\UserPasswordResetRepository.cs" />
+    <Compile Include="SourceType\SourceType.cs" />
+    <Compile Include="Source\ISource.cs" />
+    <Compile Include="Source\SourceInfoList\SourceInfoList.cs" />
+    <Compile Include="Source\SourceInfoList\SourceInfoList.Data.cs" />
+    <Compile Include="Source\SourceInfoList\SourceInfoList.Methods.cs" />
+    <Compile Include="Source\SourceInfoList\SourceInfoList.Rules.cs" />
+    <Compile Include="Source\SourceInfo\SourceInfo.cs" />
+    <Compile Include="Source\SourceInfo\SourceInfo.Data.cs" />
+    <Compile Include="Source\SourceInfo\SourceInfo.Properties.cs" />
+    <Compile Include="Source\Source\Source.cs" />
+    <Compile Include="Source\Source\Source.Data.cs" />
+    <Compile Include="Source\Source\Source.Methods.cs" />
+    <Compile Include="Source\Source\Source.Properties.cs" />
+    <Compile Include="Source\Source\Source.Rules.cs" />
     <Compile Include="Sprint\ISprint.cs" />
-    <Compile Include="Sprint\Permissions.cs" />
     <Compile Include="Sprint\SprintInfoList\SprintInfoList.cs" />
     <Compile Include="Sprint\SprintInfoList\SprintInfoList.Data.cs" />
     <Compile Include="Sprint\SprintInfoList\SprintInfoList.Methods.cs" />
@@ -108,7 +120,6 @@
     <Compile Include="Sprint\Sprint\Sprint.Properties.cs" />
     <Compile Include="Sprint\Sprint\Sprint.Rules.cs" />
     <Compile Include="Status\IStatus.cs" />
-    <Compile Include="Status\Permissions.cs" />
     <Compile Include="Status\StatusInfoList\StatusInfoList.cs" />
     <Compile Include="Status\StatusInfoList\StatusInfoList.Data.cs" />
     <Compile Include="Status\StatusInfoList\StatusInfoList.Methods.cs" />
@@ -145,7 +156,6 @@
     <Compile Include="UserPassword\UserPassword\UserPassword.Properties.cs" />
     <Compile Include="UserPassword\UserPassword\UserPassword.Rules.cs" />
     <Compile Include="User\IUser.cs" />
-    <Compile Include="User\Permissions.cs" />
     <Compile Include="User\UserDuplicateNameCheck.cs" />
     <Compile Include="User\UserEmailNameCheck.cs" />
     <Compile Include="User\UserInfoList\UserInfoList.cs" />
@@ -179,7 +189,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Helpers\" />
     <Folder Include="Role\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -54,6 +54,12 @@
     <Compile Include="Category\CategoryData.cs" />
     <Compile Include="Category\CategoryDataCriteria.cs" />
     <Compile Include="Category\ICategoryDataFactory.cs" />
+    <Compile Include="SourceType\ISourceTypeDataFactory.cs" />
+    <Compile Include="SourceType\SourceTypeData.cs" />
+    <Compile Include="SourceType\SourceTypeDataCriteria.cs" />
+    <Compile Include="Source\ISourceDataFactory.cs" />
+    <Compile Include="Source\SourceData.cs" />
+    <Compile Include="Source\SourceDataCriteria.cs" />
     <Compile Include="Sprint\ISprintDataFactory.cs" />
     <Compile Include="Sprint\SprintData.cs" />
     <Compile Include="Sprint\SprintDataCriteria.cs" />
