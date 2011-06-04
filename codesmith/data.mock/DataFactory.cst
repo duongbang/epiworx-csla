@@ -61,16 +61,6 @@ namespace <%= NamespaceName %>.Data.Mock
             return data.ToArray();
         }
 
-        public <%= ClassName%>Data[] FetchLookupInfoList(<%= ClassName%>DataCriteria criteria)
-        {
-            var query = MockDb.<%= ClassPluralName%>
-                .AsQueryable();
-
-            var data = query.AsQueryable();
-
-            return data.ToArray();
-        }
-
         public <%= ClassName%>Data Create()
         {
             return new <%= ClassName%>Data();

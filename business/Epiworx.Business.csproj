@@ -43,6 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category\CategoryInfoList\CategoryInfoList.cs" />
+    <Compile Include="Category\CategoryInfoList\CategoryInfoList.Data.cs" />
+    <Compile Include="Category\CategoryInfoList\CategoryInfoList.Methods.cs" />
+    <Compile Include="Category\CategoryInfoList\CategoryInfoList.Rules.cs" />
+    <Compile Include="Category\CategoryInfo\CategoryInfo.cs" />
+    <Compile Include="Category\CategoryInfo\CategoryInfo.Data.cs" />
+    <Compile Include="Category\CategoryInfo\CategoryInfo.Properties.cs" />
+    <Compile Include="Category\Category\Category.cs" />
+    <Compile Include="Category\Category\Category.Data.cs" />
+    <Compile Include="Category\Category\Category.Methods.cs" />
+    <Compile Include="Category\Category\Category.Properties.cs" />
+    <Compile Include="Category\Category\Category.Rules.cs" />
+    <Compile Include="Category\ICategory.cs" />
+    <Compile Include="Category\Permissions.cs" />
+    <Compile Include="Category\CategoryDuplicateNameCheck.cs" />
     <Compile Include="ProjectUserMember\IProjectUserMember.cs" />
     <Compile Include="ProjectUserMember\Permissions.cs" />
     <Compile Include="ProjectUserMember\ProjectUserMemberInfoList\ProjectUserMemberInfoList.cs" />
@@ -72,9 +87,11 @@
     <Compile Include="Project\Project\Project.Methods.cs" />
     <Compile Include="Project\Project\Project.Properties.cs" />
     <Compile Include="Project\Project\Project.Rules.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\ProjectUserMemberRepository.cs" />
     <Compile Include="Repositories\ProjectRepository.cs" />
     <Compile Include="Repositories\SprintRepository.cs" />
+    <Compile Include="Repositories\StatusRepository.cs" />
     <Compile Include="Repositories\UserPasswordResetRepository.cs" />
     <Compile Include="Sprint\ISprint.cs" />
     <Compile Include="Sprint\Permissions.cs" />
@@ -90,6 +107,21 @@
     <Compile Include="Sprint\Sprint\Sprint.Methods.cs" />
     <Compile Include="Sprint\Sprint\Sprint.Properties.cs" />
     <Compile Include="Sprint\Sprint\Sprint.Rules.cs" />
+    <Compile Include="Status\IStatus.cs" />
+    <Compile Include="Status\Permissions.cs" />
+    <Compile Include="Status\StatusInfoList\StatusInfoList.cs" />
+    <Compile Include="Status\StatusInfoList\StatusInfoList.Data.cs" />
+    <Compile Include="Status\StatusInfoList\StatusInfoList.Methods.cs" />
+    <Compile Include="Status\StatusInfoList\StatusInfoList.Rules.cs" />
+    <Compile Include="Status\StatusInfo\StatusInfo.cs" />
+    <Compile Include="Status\StatusInfo\StatusInfo.Data.cs" />
+    <Compile Include="Status\StatusInfo\StatusInfo.Properties.cs" />
+    <Compile Include="Status\Status\Status.cs" />
+    <Compile Include="Status\Status\Status.Data.cs" />
+    <Compile Include="Status\Status\Status.Methods.cs" />
+    <Compile Include="Status\Status\Status.Properties.cs" />
+    <Compile Include="Status\Status\Status.Rules.cs" />
+    <Compile Include="Status\StatusDuplicateNameCheck.cs" />
     <Compile Include="UserPasswordReset\UserPasswordReset\UserPasswordReset.cs" />
     <Compile Include="UserPasswordReset\UserPasswordReset\UserPasswordReset.Data.cs" />
     <Compile Include="UserPasswordReset\UserPasswordReset\UserPasswordReset.Methods.cs" />

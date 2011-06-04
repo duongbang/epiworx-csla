@@ -26,8 +26,6 @@ namespace <%= NamespaceName %>.Business
     {
         protected static void AddObjectAuthorizationRules()
         {
-            BusinessRules.AddRule(typeof(<%= ClassName %>InfoList),
-                 new IsInRole(AuthorizationActions.GetObject, Roles.Administrators, Permissions.<%= ClassName %>Get));
         }
     }
 }

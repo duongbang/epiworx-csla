@@ -51,9 +51,15 @@
     <Compile Include="BusinessIdentity\BusinessIdentityData.cs" />
     <Compile Include="BusinessIdentity\BusinessIdentityDataCriteria.cs" />
     <Compile Include="BusinessIdentity\IBusinessIdentityDataFactory.cs" />
+    <Compile Include="Category\CategoryData.cs" />
+    <Compile Include="Category\CategoryDataCriteria.cs" />
+    <Compile Include="Category\ICategoryDataFactory.cs" />
     <Compile Include="Sprint\ISprintDataFactory.cs" />
     <Compile Include="Sprint\SprintData.cs" />
     <Compile Include="Sprint\SprintDataCriteria.cs" />
+    <Compile Include="Status\IStatusDataFactory.cs" />
+    <Compile Include="Status\StatusData.cs" />
+    <Compile Include="Status\StatusDataCriteria.cs" />
     <Compile Include="UserPasswordReset\IUserPasswordResetDataFactory.cs" />
     <Compile Include="UserPasswordReset\UserPasswordResetData.cs" />
     <Compile Include="UserPasswordReset\UserPasswordResetDataCriteria.cs" />

@@ -40,14 +40,6 @@ namespace <%= NamespaceName %>.Business
 
         protected static void AddObjectAuthorizationRules()
         {
-            BusinessRules.AddRule(typeof(<%= ClassName %>),
-                 new IsInRole(AuthorizationActions.CreateObject, Roles.Administrators, Permissions.<%= ClassName %>Create));
-            BusinessRules.AddRule(typeof(<%= ClassName %>),
-                 new IsInRole(AuthorizationActions.DeleteObject, Roles.Administrators, Permissions.<%= ClassName %>Delete));
-            BusinessRules.AddRule(typeof(<%= ClassName %>),
-                 new IsInRole(AuthorizationActions.EditObject, Roles.Administrators, Permissions.<%= ClassName %>Edit));
-            BusinessRules.AddRule(typeof(<%= ClassName %>),
-                 new IsInRole(AuthorizationActions.GetObject, Roles.Administrators, Permissions.<%= ClassName %>Get));
         }
     }
 }
