@@ -2,36 +2,36 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Epiworx.Core;
+using Epiworx.Business;
 using Epiworx.Data;
 
 namespace Epiworx.Business
 {
     [Serializable]
-    public class SourceRepository
+    internal class SourceService
     {
-        public static Source SourceAdd(int sourceId, SourceType sourceTypeId, string name)
+        public static Source SourceAdd(ISource source)
         {
-            var result = SourceRepository.SourceNew(sourceId, sourceTypeId);
-
-            result.Name = name;
-
-            result = SourceRepository.SourceSave(result);
-
-            return result;
+            return SourceService.SourceAdd(source.SourceId, source.SourceType, source.SourceName);
         }
 
-        private static Source SourceFetch(int sourceId, SourceType sourceTypeId)
+        public static Source SourceAdd(int sourceId, SourceType sourceType, string name)
         {
-            return Source.FetchSource(sourceId, sourceTypeId);
+            var source = SourceService.SourceNew(sourceId, sourceType);
+
+            source.Name = name;
+
+            source = SourceService.SourceSave(source);
+
+            return source;
         }
 
-        public static SourceInfoList SourceFetchInfoList(SourceDataCriteria criteria)
+        public static Source SourceFetch(int sourceId, SourceType sourceType)
         {
-            return SourceInfoList.FetchSourceInfoList(criteria);
+            return Source.FetchSource(sourceId, sourceType);
         }
 
-        private static Source SourceSave(Source source)
+        public static Source SourceSave(Source source)
         {
             if (!source.IsValid)
             {
@@ -42,11 +42,11 @@ namespace Epiworx.Business
 
             if (source.IsNew)
             {
-                result = SourceRepository.SourceInsert(source);
+                result = SourceService.SourceInsert(source);
             }
             else
             {
-                result = SourceRepository.SourceUpdate(source);
+                result = SourceService.SourceUpdate(source);
             }
 
             return result;
@@ -66,35 +66,56 @@ namespace Epiworx.Business
             return source;
         }
 
-        public static Source SourceUpdate(int sourceId, SourceType sourceTypeId, string name)
+        public static Source SourceUpdate(ISource source)
         {
-            var result = SourceRepository.SourceFetch(sourceId, sourceTypeId);
-
-            result.Name = name;
-
-            result = SourceRepository.SourceSave(result);
-
-            return result;
+            return SourceService.SourceUpdate(source.SourceId, source.SourceType, source.SourceName);
         }
 
-        private static Source SourceNew(int sourceId, SourceType sourceTypeId)
+        public static Source SourceUpdate(int sourceId, SourceType sourceType, string name)
         {
-            var source = Source.NewSource(sourceId, sourceTypeId);
+            Source source;
+
+            try
+            {
+                source = SourceService.SourceFetch(sourceId, sourceType);
+
+                source.Name = name;
+
+                source = SourceService.SourceSave(source);
+            }
+            catch
+            {
+                source = SourceService.SourceAdd(sourceId, sourceType, name);
+            }
 
             return source;
         }
 
-        private static bool SourceDelete(Source source)
+        public static Source SourceNew(int sourceId, SourceType sourceType)
+        {
+            var source = Source.NewSource(sourceId, sourceType);
+
+            return source;
+        }
+
+        public static bool SourceDelete(ISource source)
+        {
+            Source.DeleteSource(source.SourceId, source.SourceType);
+
+            return true;
+        }
+
+        public static bool SourceDelete(Source source)
         {
             Source.DeleteSource(source.SourceId, (SourceType)source.SourceTypeId);
 
             return true;
         }
 
-        public static bool SourceDelete(int sourceId, SourceType sourceTypeId)
+        public static bool SourceDelete(int sourceId, SourceType sourceType)
         {
-            return SourceRepository.SourceDelete(
-                SourceRepository.SourceFetch(sourceId, sourceTypeId));
+            return SourceService.SourceDelete(
+                SourceService.SourceFetch(sourceId, sourceType));
         }
     }
 }

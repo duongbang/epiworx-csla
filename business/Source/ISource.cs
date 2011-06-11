@@ -8,12 +8,7 @@ namespace Epiworx.Business
     public interface ISource
     {
         int SourceId { get; }
-        int SourceTypeId { get; }
-        string SourceTypeName { get; }
-        string Name { get; }
-        int CreatedBy { get; }
-        DateTime CreatedDate { get; }
-        int ModifiedBy { get; }
-        DateTime ModifiedDate { get; }
+        SourceType SourceType { get; }
+        string SourceName { get; }
     }
 }

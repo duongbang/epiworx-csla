@@ -14,15 +14,6 @@ namespace Epiworx.Business
             return string.Format("{0}", this.Name);
         }
 
-        public SourceInfo ToSourceInfo()
-        {
-            var result = new SourceInfo();
-
-            Csla.Data.DataMapper.Map(this, result);
-
-            return result;
-        }
-
         protected override void PropertyHasChanged(Csla.Core.IPropertyInfo property)
         {
             base.PropertyHasChanged(property);
@@ -34,23 +25,23 @@ namespace Epiworx.Business
             }
         }
 
-        internal static Source NewSource(int sourceId, SourceType sourceTypeId)
+        internal static Source NewSource(int sourceId, SourceType sourceType)
         {
             return Csla.DataPortal.Create<Source>(
                 new SourceDataCriteria
                 {
                     SourceId = sourceId,
-                    SourceTypeId = (int)sourceTypeId
+                    SourceTypeId = (int)sourceType
                 });
         }
 
-        internal static Source FetchSource(int sourceId, SourceType sourceTypeId)
+        internal static Source FetchSource(int sourceId, SourceType sourceType)
         {
             return Csla.DataPortal.Fetch<Source>(
                 new SourceDataCriteria
                 {
                     SourceId = sourceId,
-                    SourceTypeId = (int)sourceTypeId
+                    SourceTypeId = (int)sourceType
                 });
         }
 
@@ -64,13 +55,13 @@ namespace Epiworx.Business
             return result;
         }
 
-        internal static void DeleteSource(int sourceId, SourceType sourceTypeId)
+        internal static void DeleteSource(int sourceId, SourceType sourceType)
         {
             Csla.DataPortal.Delete<Source>(
                 new SourceDataCriteria
                 {
                     SourceId = sourceId,
-                    SourceTypeId = (int)sourceTypeId
+                    SourceTypeId = (int)sourceType
                 });
         }
     }

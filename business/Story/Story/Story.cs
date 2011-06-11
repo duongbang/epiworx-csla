@@ -6,9 +6,9 @@ using System.Text;
 namespace Epiworx.Business
 {
     [Serializable]
-    public partial class Source : Csla.BusinessBase<Source>
+    public partial class Story : Csla.BusinessBase<Story>, IStory
     {
-        private Source()
+        private Story()
         {
         }
     }

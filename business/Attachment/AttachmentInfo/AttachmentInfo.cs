@@ -6,9 +6,9 @@ using System.Text;
 namespace Epiworx.Business
 {
     [Serializable]
-    public partial class Source : Csla.BusinessBase<Source>
+    public partial class AttachmentInfo : Csla.ReadOnlyBase<AttachmentInfo>, IAttachment
     {
-        private Source()
+        internal AttachmentInfo()
         {
         }
     }
