@@ -11,7 +11,7 @@ namespace Epiworx.Data.Mock
         {
             var data = MockDb.Statuses
                 .Where(row => row.StatusId == criteria.StatusId)
-                .Single();
+                .SingleOrDefault();
 
             data = this.Fetch(data);
 
@@ -22,11 +22,11 @@ namespace Epiworx.Data.Mock
         {
             data.CreatedByUser = MockDb.Users
                 .Where(row => row.UserId == data.CreatedBy)
-                .Single();
+                .SingleOrDefault();
 
             data.ModifiedByUser = MockDb.Users
                 .Where(row => row.UserId == data.ModifiedBy)
-                .Single();
+                .SingleOrDefault();
 
             return data;
         }
@@ -62,7 +62,7 @@ namespace Epiworx.Data.Mock
         {
             var status = MockDb.Statuses
                 .Where(row => row.StatusId == data.StatusId)
-                .Single();
+                .SingleOrDefault();
 
             Csla.Data.DataMapper.Map(data, status);
 
@@ -89,7 +89,7 @@ namespace Epiworx.Data.Mock
         {
             var data = MockDb.Statuses
                 .Where(row => row.StatusId == criteria.StatusId)
-                .Single();
+                .SingleOrDefault();
 
             MockDb.Statuses.Remove(data);
         }

@@ -11,7 +11,7 @@ namespace Epiworx.Data.Mock
         {
             var data = MockDb.Users
                 .Where(row => row.Name == criteria.Name)
-                .Single();
+                .SingleOrDefault();
 
             var result = new BusinessIdentityData();
 

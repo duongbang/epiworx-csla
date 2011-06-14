@@ -7,11 +7,19 @@ namespace Epiworx.Data.Mock
 {
     public static class MockDb
     {
+        public static List<AttachmentData> Attachments { get; private set; }
         public static List<CategoryData> Categories { get; private set; }
+        public static List<FeedData> Feeds { get; private set; }
+        public static List<FeedSourceMemberData> FeedSourceMembers { get; private set; }
+        public static List<FilterData> Filters { get; private set; }
+        public static List<NoteData> Notes { get; private set; }
         public static List<ProjectData> Projects { get; private set; }
         public static List<ProjectUserMemberData> ProjectUserMembers { get; private set; }
+        public static List<SourceData> Sources { get; private set; }
+        public static List<SourceTypeData> SourceTypes { get; private set; }
         public static List<SprintData> Sprints { get; private set; }
         public static List<StatusData> Statuses { get; private set; }
+        public static List<StoryData> Stories { get; private set; }
         public static List<UserData> Users { get; private set; }
 
         static MockDb()
@@ -19,6 +27,30 @@ namespace Epiworx.Data.Mock
             #region Categories
 
             Categories = new List<CategoryData>();
+
+            #endregion
+
+            #region Feeds
+
+            Feeds = new List<FeedData>();
+
+            #endregion
+
+            #region FeedSourceMembers
+
+            FeedSourceMembers = new List<FeedSourceMemberData>();
+
+            #endregion
+
+            #region Filters
+
+            Filters = new List<FilterData>();
+
+            #endregion
+
+            #region Notes
+
+            Notes = new List<NoteData>();
 
             #endregion
 
@@ -43,6 +75,12 @@ namespace Epiworx.Data.Mock
             #region Statuses
 
             Statuses = new List<StatusData>();
+
+            #endregion
+
+            #region Stories
+
+            Stories = new List<StoryData>();
 
             #endregion
 

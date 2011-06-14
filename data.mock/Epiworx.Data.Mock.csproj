@@ -43,12 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttachmentDataFactory.cs" />
     <Compile Include="BusinessIdentityDataFactory.cs" />
     <Compile Include="CategoryDataFactory.cs" />
+    <Compile Include="FeedDataFactory.cs" />
+    <Compile Include="FeedSourceMemberDataFactory.cs" />
+    <Compile Include="FilterDataFactory.cs" />
+    <Compile Include="NoteDataFactory.cs" />
     <Compile Include="ProjectDataFactory.cs" />
     <Compile Include="ProjectUserMemberDataFactory.cs" />
+    <Compile Include="SourceDataFactory.cs" />
+    <Compile Include="SourceTypeDataFactory.cs" />
     <Compile Include="SprintDataFactory.cs" />
     <Compile Include="StatusDataFactory.cs" />
+    <Compile Include="StoryDataFactory.cs" />
     <Compile Include="UserPasswordResetDataFactory.cs" />
     <Compile Include="UserPasswordResetRequestDataFactory.cs" />
     <Compile Include="UserPasswordDataFactory.cs" />

@@ -11,7 +11,7 @@ namespace Epiworx.Data.Mock
         {
             var data = MockDb.Users
                 .Where(row => row.Token == criteria.Token)
-                .Single();
+                .SingleOrDefault();
 
             var result = new UserPasswordResetData();
 
@@ -27,7 +27,7 @@ namespace Epiworx.Data.Mock
         {
             var user = MockDb.Users
                 .Where(row => row.UserId == data.UserId)
-                .Single();
+                .SingleOrDefault();
 
             user.Password = data.Password;
             user.Salt = data.Salt;
