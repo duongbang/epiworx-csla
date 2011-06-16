@@ -68,12 +68,16 @@ namespace Epiworx.Business
         {
             user = user.Save();
 
+            SourceRepository.SourceAdd(user.UserId, SourceType.User, user.Name);
+
             return user;
         }
 
         private static User UserUpdate(User user)
         {
             user = user.Save();
+
+            SourceRepository.SourceUpdate(user.UserId, SourceType.User, user.Name);
 
             return user;
         }

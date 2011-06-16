@@ -48,7 +48,6 @@ namespace Epiworx.Business
             this.SourceId = data.SourceId;
             this.SourceName = data.Source.Name;
             this.SourceTypeId = data.SourceTypeId;
-            this.SourceTypeName = data.SourceType.Name;
             this.CreatedBy = data.CreatedBy;
             this.CreatedByName = data.CreatedByUser.Name;
             this.CreatedDate = data.CreatedDate;

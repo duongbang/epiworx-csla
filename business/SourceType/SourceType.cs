@@ -17,6 +17,7 @@ namespace Epiworx.Business
         Story = 7,
         Hour = 8,
         Note = 9,
-        Attachment = 10
+        Attachment = 10,
+        Filter = 11
     }
 }

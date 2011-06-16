@@ -29,7 +29,9 @@ namespace Epiworx.Test
         [TestMethod]
         public void Source_Create()
         {
-            var source = SourceRepository.SourceNew();
+            var project = ProjectTestHelper.ProjectAdd();
+
+            var source = SourceRepository.SourceNew(project.ProjectId, SourceType.Project, project.Name);
 
             Assert.IsTrue(source.IsNew, "IsNew should be true");
             Assert.IsTrue(source.IsDirty, "IsDirty should be true");
@@ -44,30 +46,23 @@ namespace Epiworx.Test
         [TestMethod]
         public void Source_Fetch()
         {
-            var source = SourceTestHelper.SourceNew();
+            var project = ProjectTestHelper.ProjectAdd();
+
+            var source = SourceRepository.SourceNew(project.ProjectId, SourceType.Project, project.Name);
 
             source = SourceRepository.SourceSave(source);
 
-            source = SourceRepository.SourceFetch(source.SourceId);
+            source = SourceRepository.SourceFetch(source.SourceId, SourceType.Project);
 
             Assert.IsTrue(source != null, "Row returned should not equal null");
         }
 
         [TestMethod]
-        public void Source_Fetch_Info_List()
-        {
-            SourceTestHelper.SourceAdd();
-            SourceTestHelper.SourceAdd();
-
-            var sources = SourceRepository.SourceFetchInfoList(new SourceDataCriteria());
-
-            Assert.IsTrue(sources.Count() > 1, "Row returned should be greater than one");
-        }
-
-        [TestMethod]
         public void Source_Add()
         {
-            var source = SourceTestHelper.SourceNew();
+            var project = ProjectTestHelper.ProjectAdd();
+
+            var source = SourceRepository.SourceNew(project.ProjectId, SourceType.Project, project.Name);
 
             Assert.IsTrue(source.IsValid, "IsValid should be true");
 
@@ -75,47 +70,27 @@ namespace Epiworx.Test
 
             Assert.IsTrue(source.SourceId != 0, "SourceId should be a non-zero value");
 
-            SourceRepository.SourceFetch(source.SourceId);
-        }
-
-        [TestMethod]
-        public void Source_Edit()
-        {
-            var source = SourceTestHelper.SourceNew();
-
-            var name = source.Name;
-
-            Assert.IsTrue(source.IsValid, "IsValid should be true");
-
-            source = SourceRepository.SourceSave(source);
-
-            source = SourceRepository.SourceFetch(source.SourceId);
-
-            source.Name = DataHelper.RandomString(20);
-
-            source = SourceRepository.SourceSave(source);
-
-            source = SourceRepository.SourceFetch(source.SourceId);
-
-            Assert.IsTrue(source.Name != name, "Name should have different value");
+            SourceRepository.SourceFetch(source.SourceId, SourceType.Project);
         }
 
         [TestMethod]
         public void Source_Delete()
         {
-            var source = SourceTestHelper.SourceNew();
+            var project = ProjectTestHelper.ProjectAdd();
+
+            var source = SourceRepository.SourceNew(project.ProjectId, SourceType.Project, project.Name);
 
             Assert.IsTrue(source.IsValid, "IsValid should be true");
 
             source = SourceRepository.SourceSave(source);
 
-            source = SourceRepository.SourceFetch(source.SourceId);
+            source = SourceRepository.SourceFetch(source.SourceId, SourceType.Project);
 
-            SourceRepository.SourceDelete(source.SourceId);
+            SourceRepository.SourceDelete(source.SourceId, SourceType.Project);
 
             try
             {
-                SourceRepository.SourceFetch(source.SourceId);
+                SourceRepository.SourceFetch(source.SourceId, SourceType.Project);
             }
             catch (Exception ex)
             {

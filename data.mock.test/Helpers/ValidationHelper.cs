@@ -25,7 +25,7 @@ namespace Epiworx.Test.Helpers
                     return obj.BrokenRulesCollection.Any(
                          brokenRule => brokenRule.RuleName == string.Format("rule://epiworx.core.validation.integerrequired/{0}", propertyName))
                             || obj.BrokenRulesCollection.Any(
-                                brokenRule => brokenRule.RuleName == string.Format("rule://csla.rules.commonrules.dataannotation/{0}?a=Epitec.Epilink.Core.Validation.IntegerRequiredAttribute", propertyName));
+                                brokenRule => brokenRule.RuleName == string.Format("rule://csla.rules.commonrules.dataannotation/{0}?a=Epiworx.Core.Validation.IntegerRequiredAttribute", propertyName));
                 case DbType.Decimal:
                     return obj.BrokenRulesCollection.Any(
                         brokenRule => brokenRule.RuleName == string.Format("rule://epiworx.core.validation.decimalrequired/{0}", propertyName));

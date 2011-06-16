@@ -11,7 +11,7 @@ namespace Epiworx.Data.Mock
         {
             var data = MockDb.Sources
                 .Where(row => row.SourceId == criteria.SourceId)
-                .SingleOrDefault();
+                .Single();
 
             data = this.Fetch(data);
 
@@ -22,11 +22,11 @@ namespace Epiworx.Data.Mock
         {
             data.CreatedByUser = MockDb.Users
                 .Where(row => row.UserId == data.CreatedBy)
-                .SingleOrDefault();
+                .Single();
 
             data.ModifiedByUser = MockDb.Users
                 .Where(row => row.UserId == data.ModifiedBy)
-                .SingleOrDefault();
+                .Single();
 
             return data;
         }
@@ -57,7 +57,7 @@ namespace Epiworx.Data.Mock
         {
             var source = MockDb.Sources
                 .Where(row => row.SourceId == data.SourceId)
-                .SingleOrDefault();
+                .Single();
 
             Csla.Data.DataMapper.Map(data, source);
 
@@ -84,7 +84,7 @@ namespace Epiworx.Data.Mock
         {
             var data = MockDb.Sources
                 .Where(row => row.SourceId == criteria.SourceId)
-                .SingleOrDefault();
+                .Single();
 
             MockDb.Sources.Remove(data);
         }

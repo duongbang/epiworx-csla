@@ -49,12 +49,16 @@ namespace Epiworx.Business
         {
             note = note.Save();
 
+            SourceRepository.SourceAdd(note.NoteId, SourceType.Note, note.Body);
+
             return note;
         }
 
         public static Note NoteUpdate(Note note)
         {
             note = note.Save();
+
+            SourceRepository.SourceUpdate(note.NoteId, SourceType.Note, note.Body);
 
             return note;
         }
@@ -73,6 +77,8 @@ namespace Epiworx.Business
                 {
                     NoteId = note.NoteId
                 });
+
+            SourceRepository.SourceDelete(note.NoteId, SourceType.Note);
 
             return true;
         }

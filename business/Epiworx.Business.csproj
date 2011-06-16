@@ -109,7 +109,7 @@
     <Compile Include="Filter\Filter\Filter.Properties.cs" />
     <Compile Include="Filter\Filter\Filter.Rules.cs" />
     <Compile Include="Filter\IFilter.cs" />
-    <Compile Include="Helpers\ForeignKeyHelper.cs" />
+    <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Note\INote.cs" />
     <Compile Include="Note\NoteInfoList\NoteInfoList.cs" />
     <Compile Include="Note\NoteInfoList\NoteInfoList.Data.cs" />

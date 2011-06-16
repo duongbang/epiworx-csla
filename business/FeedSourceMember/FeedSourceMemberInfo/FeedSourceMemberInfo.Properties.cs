@@ -50,7 +50,7 @@ namespace Epiworx.Business
 
         public string SourceTypeName
         {
-            get { return ForeignKeyHelper.FetchSourceTypeName(this.SourceTypeId); }
+            get { return DataHelper.FetchSourceTypeName(this.SourceTypeId); }
         }
 
         private static Csla.PropertyInfo<int> CreatedByProperty =

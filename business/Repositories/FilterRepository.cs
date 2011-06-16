@@ -49,12 +49,16 @@ namespace Epiworx.Business
         {
             filter = filter.Save();
 
+            SourceRepository.SourceAdd(filter.FilterId, SourceType.Filter, filter.Name);
+
             return filter;
         }
 
         public static Filter FilterUpdate(Filter filter)
         {
             filter = filter.Save();
+
+            SourceRepository.SourceUpdate(filter.FilterId, SourceType.Filter, filter.Name);
 
             return filter;
         }
@@ -73,6 +77,8 @@ namespace Epiworx.Business
                 {
                     FilterId = filter.FilterId
                 });
+
+            SourceRepository.SourceDelete(filter.FilterId, SourceType.Filter);
 
             return true;
         }

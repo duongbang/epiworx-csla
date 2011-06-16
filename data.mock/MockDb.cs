@@ -24,6 +24,12 @@ namespace Epiworx.Data.Mock
 
         static MockDb()
         {
+            #region Attachments
+
+            Attachments = new List<AttachmentData>();
+
+            #endregion
+
             #region Categories
 
             Categories = new List<CategoryData>();
@@ -63,6 +69,18 @@ namespace Epiworx.Data.Mock
             #region ProjectUserMembers
 
             ProjectUserMembers = new List<ProjectUserMemberData>();
+
+            #endregion
+
+            #region Sources
+
+            Sources = new List<SourceData>();
+
+            #endregion
+
+            #region SourceTypes
+
+            SourceTypes = new List<SourceTypeData>();
 
             #endregion
 

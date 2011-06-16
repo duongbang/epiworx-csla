@@ -11,7 +11,7 @@ namespace Epiworx.Data.Mock
         {
             var data = MockDb.Stories
                 .Where(row => row.StoryId == criteria.StoryId)
-                .SingleOrDefault();
+                .Single();
 
             data = this.Fetch(data);
 
@@ -22,31 +22,31 @@ namespace Epiworx.Data.Mock
         {
             data.AssignedToUser = MockDb.Users
                 .Where(row => row.UserId == data.AssignedTo)
-                .SingleOrDefault();
+                .Single();
 
             data.Category = MockDb.Categories
                 .Where(row => row.CategoryId == data.CategoryId)
-                .SingleOrDefault();
+                .Single();
 
             data.Project = MockDb.Projects
                 .Where(row => row.ProjectId == data.ProjectId)
-                .SingleOrDefault();
+                .Single();
 
             data.Sprint = MockDb.Sprints
                 .Where(row => row.SprintId == data.SprintId)
-                .SingleOrDefault();
+                .Single();
 
             data.Status = MockDb.Statuses
                 .Where(row => row.StatusId == data.StatusId)
-                .SingleOrDefault();
+                .Single();
 
             data.CreatedByUser = MockDb.Users
                 .Where(row => row.UserId == data.CreatedBy)
-                .SingleOrDefault();
+                .Single();
 
             data.ModifiedByUser = MockDb.Users
                 .Where(row => row.UserId == data.ModifiedBy)
-                .SingleOrDefault();
+                .Single();
 
             return data;
         }
@@ -77,7 +77,7 @@ namespace Epiworx.Data.Mock
         {
             var story = MockDb.Stories
                 .Where(row => row.StoryId == data.StoryId)
-                .SingleOrDefault();
+                .Single();
 
             Csla.Data.DataMapper.Map(data, story);
 
@@ -104,7 +104,7 @@ namespace Epiworx.Data.Mock
         {
             var data = MockDb.Stories
                 .Where(row => row.StoryId == criteria.StoryId)
-                .SingleOrDefault();
+                .Single();
 
             MockDb.Stories.Remove(data);
         }

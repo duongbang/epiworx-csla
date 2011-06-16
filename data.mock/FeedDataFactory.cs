@@ -11,7 +11,7 @@ namespace Epiworx.Data.Mock
         {
             var data = MockDb.Feeds
                 .Where(row => row.FeedId == criteria.FeedId)
-                .SingleOrDefault();
+                .Single();
 
             data = this.Fetch(data);
 
@@ -22,7 +22,7 @@ namespace Epiworx.Data.Mock
         {
             data.CreatedByUser = MockDb.Users
                 .Where(row => row.UserId == data.CreatedBy)
-                .SingleOrDefault();
+                .Single();
 
             return data;
         }
@@ -53,7 +53,7 @@ namespace Epiworx.Data.Mock
         {
             var feed = MockDb.Feeds
                 .Where(row => row.FeedId == data.FeedId)
-                .SingleOrDefault();
+                .Single();
 
             Csla.Data.DataMapper.Map(data, feed);
 
@@ -80,7 +80,7 @@ namespace Epiworx.Data.Mock
         {
             var data = MockDb.Feeds
                 .Where(row => row.FeedId == criteria.FeedId)
-                .SingleOrDefault();
+                .Single();
 
             MockDb.Feeds.Remove(data);
         }

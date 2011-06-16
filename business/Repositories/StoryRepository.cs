@@ -49,12 +49,16 @@ namespace Epiworx.Business
         {
             story = story.Save();
 
+            SourceRepository.SourceAdd(story.StoryId, SourceType.Story, story.Description);
+
             return story;
         }
 
         public static Story StoryUpdate(Story story)
         {
             story = story.Save();
+
+            SourceRepository.SourceUpdate(story.StoryId, SourceType.Story, story.Description);
 
             return story;
         }
@@ -73,6 +77,8 @@ namespace Epiworx.Business
                 {
                     StoryId = story.StoryId
                 });
+
+            SourceRepository.SourceDelete(story.StoryId, SourceType.Story);
 
             return true;
         }

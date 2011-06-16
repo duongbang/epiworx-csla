@@ -8,7 +8,7 @@ using Epiworx.Data;
 namespace Epiworx.Business
 {
     [Serializable]
-    public class FeedService
+    public class FeedRepository
     {
         public static Feed FeedFetch(int feedId)
         {
@@ -21,7 +21,7 @@ namespace Epiworx.Business
 
         public static FeedInfoList FeedFetchInfoList(int maximumRecords)
         {
-            return FeedService.FeedFetchInfoList(
+            return FeedRepository.FeedFetchInfoList(
                 new FeedDataCriteria
                     {
                         SortBy = "CreatedDate",
@@ -32,7 +32,7 @@ namespace Epiworx.Business
 
         public static FeedInfoList FeedFetchInfoList(DateTime createdDateFrom, DateTime createdDateTo, int maximumRecords)
         {
-            return FeedService.FeedFetchInfoList(
+            return FeedRepository.FeedFetchInfoList(
                 new FeedDataCriteria
                 {
                     CreatedDate = new DateRangeCriteria(createdDateFrom, createdDateTo),
@@ -49,7 +49,7 @@ namespace Epiworx.Business
 
         //internal static void FeedAdd(string action, Customer customer)
         //{
-        //    var feed = FeedService.FeedNew(action, customer);
+        //    var feed = FeedRepository.FeedNew(action, customer);
 
         //    feed.Save();
         //}
@@ -65,11 +65,11 @@ namespace Epiworx.Business
 
             if (feed.IsNew)
             {
-                result = FeedService.FeedInsert(feed);
+                result = FeedRepository.FeedInsert(feed);
             }
             else
             {
-                result = FeedService.FeedUpdate(feed);
+                result = FeedRepository.FeedUpdate(feed);
             }
 
             return result;

@@ -49,7 +49,6 @@ namespace Epiworx.Business
             this.FilterQuery = data.FilterQuery;
             this.Name = data.Name;
             this.SourceTypeId = data.SourceTypeId;
-            this.SourceTypeName = data.SourceType.Name;
             this.CreatedBy = data.CreatedBy;
             this.CreatedByName = data.CreatedByUser.Name;
             this.CreatedDate = data.CreatedDate;

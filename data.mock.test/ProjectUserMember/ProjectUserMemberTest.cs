@@ -9,7 +9,7 @@ using Epiworx.Test.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Epiworx.Business;
 
-namespace Epitec.Epilink.Test
+namespace Epiworx.Test
 {
     [TestClass]
     public class ProjectUserMemberTest

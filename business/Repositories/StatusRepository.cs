@@ -49,12 +49,16 @@ namespace Epiworx.Business
         {
             status = status.Save();
 
+            SourceRepository.SourceAdd(status.StatusId, SourceType.Status, status.Name);
+
             return status;
         }
 
         public static Status StatusUpdate(Status status)
         {
             status = status.Save();
+
+            SourceRepository.SourceUpdate(status.StatusId, SourceType.Status, status.Name);
 
             return status;
         }
@@ -73,6 +77,8 @@ namespace Epiworx.Business
                 {
                     StatusId = status.StatusId
                 });
+
+            SourceRepository.SourceDelete(status.StatusId, SourceType.Status);
 
             return true;
         }

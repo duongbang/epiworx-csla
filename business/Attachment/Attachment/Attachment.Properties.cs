@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
+using Epiworx.Business.Helpers;
 
 namespace Epiworx.Business
 {
@@ -75,12 +76,9 @@ namespace Epiworx.Business
             set { this.SetProperty(SourceTypeIdProperty, value); }
         }
 
-        private static Csla.PropertyInfo<string> SourceTypeNameProperty =
-            RegisterProperty<string>(row => row.SourceTypeName, "SourceTypeName");
         public string SourceTypeName
         {
-            get { return this.GetProperty(SourceTypeNameProperty); }
-            private set { this.SetProperty(SourceTypeNameProperty, value); }
+            get { return DataHelper.FetchSourceTypeName(this.SourceTypeId); }
         }
 
         private static Csla.PropertyInfo<int> CreatedByProperty =

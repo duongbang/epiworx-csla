@@ -49,12 +49,16 @@ namespace Epiworx.Business
         {
             sprint = sprint.Save();
 
+            SourceRepository.SourceAdd(sprint.SprintId, SourceType.Sprint, sprint.Name);
+
             return sprint;
         }
 
         public static Sprint SprintUpdate(Sprint sprint)
         {
             sprint = sprint.Save();
+
+            SourceRepository.SourceUpdate(sprint.SprintId, SourceType.Sprint, sprint.Name);
 
             return sprint;
         }
@@ -73,6 +77,8 @@ namespace Epiworx.Business
                 {
                     SprintId = sprint.SprintId
                 });
+
+            SourceRepository.SourceDelete(sprint.SprintId, SourceType.Sprint);
 
             return true;
         }

@@ -49,16 +49,30 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attachment\AttachmentTest.cs" />
+    <Compile Include="Attachment\AttachmentTestHelper.cs" />
     <Compile Include="Category\CategoryTest.cs" />
     <Compile Include="Category\CategoryTestHelper.cs" />
+    <Compile Include="FeedSourceMember\FeedSourceMemberTest.cs" />
+    <Compile Include="FeedSourceMember\FeedSourceMemberTestHelper.cs" />
+    <Compile Include="Feed\FeedTest.cs" />
+    <Compile Include="Feed\FeedTestHelper.cs" />
+    <Compile Include="Filter\FilterTest.cs" />
+    <Compile Include="Filter\FilterTestHelper.cs" />
+    <Compile Include="Note\NoteTest.cs" />
+    <Compile Include="Note\NoteTestHelper.cs" />
     <Compile Include="ProjectUserMember\ProjectUserMemberTest.cs" />
     <Compile Include="ProjectUserMember\ProjectUserMemberTestHelper.cs" />
     <Compile Include="Project\ProjectTest.cs" />
     <Compile Include="Project\ProjectTestHelper.cs" />
+    <Compile Include="Source\SourceTest.cs" />
+    <Compile Include="Source\SourceTestHelper.cs" />
     <Compile Include="Sprint\SprintTest.cs" />
     <Compile Include="Sprint\SprintTestHelper.cs" />
     <Compile Include="Status\StatusTest.cs" />
     <Compile Include="Status\StatusTestHelper.cs" />
+    <Compile Include="Story\StoryTest.cs" />
+    <Compile Include="Story\StoryTestHelper.cs" />
     <Compile Include="UserPasswordReset\UserPasswordResetTest.cs" />
     <Compile Include="UserPasswordResetRequest\UserPasswordResetRequestTest.cs" />
     <Compile Include="UserPassword\UserPasswordTest.cs" />

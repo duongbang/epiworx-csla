@@ -49,12 +49,16 @@ namespace Epiworx.Business
         {
             project = project.Save();
 
+            SourceRepository.SourceAdd(project.ProjectId, SourceType.Project, project.Name);
+
             return project;
         }
 
         public static Project ProjectUpdate(Project project)
         {
             project = project.Save();
+
+            SourceRepository.SourceUpdate(project.ProjectId, SourceType.Project, project.Name);
 
             return project;
         }
@@ -73,6 +77,8 @@ namespace Epiworx.Business
                 {
                     ProjectId = project.ProjectId
                 });
+
+            SourceRepository.SourceDelete(project.ProjectId, SourceType.Project);
 
             return true;
         }

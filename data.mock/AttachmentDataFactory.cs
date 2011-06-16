@@ -11,7 +11,7 @@ namespace Epiworx.Data.Mock
         {
             var data = MockDb.Attachments
                 .Where(row => row.AttachmentId == criteria.AttachmentId)
-                .SingleOrDefault();
+                .Single();
 
             data = this.Fetch(data);
 
@@ -22,19 +22,15 @@ namespace Epiworx.Data.Mock
         {
             data.Source = MockDb.Sources
                .Where(row => row.SourceId == data.SourceId)
-               .SingleOrDefault();
-
-            data.SourceType = MockDb.SourceTypes
-               .Where(row => row.SourceTypeId == data.SourceTypeId)
-               .SingleOrDefault();
+               .Single();
 
             data.CreatedByUser = MockDb.Users
                 .Where(row => row.UserId == data.CreatedBy)
-                .SingleOrDefault();
+                .Single();
 
             data.ModifiedByUser = MockDb.Users
                 .Where(row => row.UserId == data.ModifiedBy)
-                .SingleOrDefault();
+                .Single();
 
             return data;
         }
@@ -65,7 +61,7 @@ namespace Epiworx.Data.Mock
         {
             var attachment = MockDb.Attachments
                 .Where(row => row.AttachmentId == data.AttachmentId)
-                .SingleOrDefault();
+                .Single();
 
             Csla.Data.DataMapper.Map(data, attachment);
 
@@ -92,7 +88,7 @@ namespace Epiworx.Data.Mock
         {
             var data = MockDb.Attachments
                 .Where(row => row.AttachmentId == criteria.AttachmentId)
-                .SingleOrDefault();
+                .Single();
 
             MockDb.Attachments.Remove(data);
         }

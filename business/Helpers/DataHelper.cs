@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Epiworx.Business.Helpers
 {
-    public class ForeignKeyHelper
+    public class DataHelper
     {
         public static string FetchSourceTypeName(int sourceTypeId)
         {

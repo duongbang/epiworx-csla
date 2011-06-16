@@ -8,20 +8,18 @@ using Epiworx.Data;
 namespace Epiworx.Business
 {
     [Serializable]
-    internal class SourceService
+    public class SourceRepository
     {
         public static Source SourceAdd(ISource source)
         {
-            return SourceService.SourceAdd(source.SourceId, source.SourceType, source.SourceName);
+            return SourceRepository.SourceAdd(source.SourceId, source.SourceType, source.SourceName);
         }
 
         public static Source SourceAdd(int sourceId, SourceType sourceType, string name)
         {
-            var source = SourceService.SourceNew(sourceId, sourceType);
+            var source = SourceRepository.SourceNew(sourceId, sourceType, name);
 
-            source.Name = name;
-
-            source = SourceService.SourceSave(source);
+            source = SourceRepository.SourceSave(source);
 
             return source;
         }
@@ -42,11 +40,11 @@ namespace Epiworx.Business
 
             if (source.IsNew)
             {
-                result = SourceService.SourceInsert(source);
+                result = SourceRepository.SourceInsert(source);
             }
             else
             {
-                result = SourceService.SourceUpdate(source);
+                result = SourceRepository.SourceUpdate(source);
             }
 
             return result;
@@ -68,7 +66,7 @@ namespace Epiworx.Business
 
         public static Source SourceUpdate(ISource source)
         {
-            return SourceService.SourceUpdate(source.SourceId, source.SourceType, source.SourceName);
+            return SourceRepository.SourceUpdate(source.SourceId, source.SourceType, source.SourceName);
         }
 
         public static Source SourceUpdate(int sourceId, SourceType sourceType, string name)
@@ -77,23 +75,32 @@ namespace Epiworx.Business
 
             try
             {
-                source = SourceService.SourceFetch(sourceId, sourceType);
+                source = SourceRepository.SourceFetch(sourceId, sourceType);
 
                 source.Name = name;
 
-                source = SourceService.SourceSave(source);
+                source = SourceRepository.SourceSave(source);
             }
             catch
             {
-                source = SourceService.SourceAdd(sourceId, sourceType, name);
+                source = SourceRepository.SourceAdd(sourceId, sourceType, name);
             }
 
             return source;
         }
 
-        public static Source SourceNew(int sourceId, SourceType sourceType)
+        public static Source SourceNew(int sourceId, SourceType sourceType, string name)
         {
             var source = Source.NewSource(sourceId, sourceType);
+
+            if (name.Length > 100)
+            {
+                source.Name = name.Substring(0, 100);
+            }
+            else
+            {
+                source.Name = name;
+            }
 
             return source;
         }
@@ -114,8 +121,8 @@ namespace Epiworx.Business
 
         public static bool SourceDelete(int sourceId, SourceType sourceType)
         {
-            return SourceService.SourceDelete(
-                SourceService.SourceFetch(sourceId, sourceType));
+            return SourceRepository.SourceDelete(
+                SourceRepository.SourceFetch(sourceId, sourceType));
         }
     }
 }

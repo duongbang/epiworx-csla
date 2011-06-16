@@ -24,54 +24,54 @@ namespace Epiworx.Business
             return ProjectUserMemberInfoList.FetchProjectUserMemberInfoList(criteria);
         }
 
-        public static ProjectUserMember ProjectUserMemberSave(ProjectUserMember project)
+        public static ProjectUserMember ProjectUserMemberSave(ProjectUserMember projectUserMember)
         {
-            if (!project.IsValid)
+            if (!projectUserMember.IsValid)
             {
-                return project;
+                return projectUserMember;
             }
 
             ProjectUserMember result;
 
-            if (project.IsNew)
+            if (projectUserMember.IsNew)
             {
-                result = ProjectUserMemberRepository.ProjectUserMemberInsert(project);
+                result = ProjectUserMemberRepository.ProjectUserMemberInsert(projectUserMember);
             }
             else
             {
-                result = ProjectUserMemberRepository.ProjectUserMemberUpdate(project);
+                result = ProjectUserMemberRepository.ProjectUserMemberUpdate(projectUserMember);
             }
 
             return result;
         }
 
-        public static ProjectUserMember ProjectUserMemberInsert(ProjectUserMember project)
+        public static ProjectUserMember ProjectUserMemberInsert(ProjectUserMember projectUserMember)
         {
-            project = project.Save();
+            projectUserMember = projectUserMember.Save();
 
-            return project;
+            return projectUserMember;
         }
 
-        public static ProjectUserMember ProjectUserMemberUpdate(ProjectUserMember project)
+        public static ProjectUserMember ProjectUserMemberUpdate(ProjectUserMember projectUserMember)
         {
-            project = project.Save();
+            projectUserMember = projectUserMember.Save();
 
-            return project;
+            return projectUserMember;
         }
 
         public static ProjectUserMember ProjectUserMemberNew(int projectId, int userId)
         {
-            var project = ProjectUserMember.NewProjectUserMember(projectId, userId);
+            var projectUserMember = ProjectUserMember.NewProjectUserMember(projectId, userId);
 
-            return project;
+            return projectUserMember;
         }
 
-        public static bool ProjectUserMemberDelete(ProjectUserMember project)
+        public static bool ProjectUserMemberDelete(ProjectUserMember projectUserMember)
         {
             ProjectUserMember.DeleteProjectUserMember(
                 new ProjectUserMemberDataCriteria
                 {
-                    ProjectUserMemberId = project.ProjectUserMemberId
+                    ProjectUserMemberId = projectUserMember.ProjectUserMemberId
                 });
 
             return true;

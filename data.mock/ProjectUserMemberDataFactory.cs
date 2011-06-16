@@ -11,7 +11,7 @@ namespace Epiworx.Data.Mock
         {
             var data = MockDb.ProjectUserMembers
                 .Where(row => row.ProjectUserMemberId == criteria.ProjectUserMemberId)
-                .SingleOrDefault();
+                .Single();
 
             data = this.Fetch(data);
 
@@ -22,19 +22,19 @@ namespace Epiworx.Data.Mock
         {
             data.Project = MockDb.Projects
                .Where(row => row.ProjectId == data.ProjectId)
-               .SingleOrDefault();
+               .Single();
 
             data.User = MockDb.Users
                 .Where(row => row.UserId == data.UserId)
-                .SingleOrDefault();
+                .Single();
 
             data.CreatedByUser = MockDb.Users
                 .Where(row => row.UserId == data.CreatedBy)
-                .SingleOrDefault();
+                .Single();
 
             data.ModifiedByUser = MockDb.Users
                 .Where(row => row.UserId == data.ModifiedBy)
-                .SingleOrDefault();
+                .Single();
 
             return data;
         }
@@ -75,7 +75,7 @@ namespace Epiworx.Data.Mock
         {
             var projectUserMember = MockDb.ProjectUserMembers
                 .Where(row => row.ProjectUserMemberId == data.ProjectUserMemberId)
-                .SingleOrDefault();
+                .Single();
 
             Csla.Data.DataMapper.Map(data, projectUserMember);
 
@@ -102,7 +102,7 @@ namespace Epiworx.Data.Mock
         {
             var data = MockDb.ProjectUserMembers
                 .Where(row => row.ProjectUserMemberId == criteria.ProjectUserMemberId)
-                .SingleOrDefault();
+                .Single();
 
             MockDb.ProjectUserMembers.Remove(data);
         }

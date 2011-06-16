@@ -49,12 +49,16 @@ namespace Epiworx.Business
         {
             category = category.Save();
 
+            SourceRepository.SourceAdd(category.CategoryId, SourceType.Category, category.Name);
+
             return category;
         }
 
         public static Category CategoryUpdate(Category category)
         {
             category = category.Save();
+
+            SourceRepository.SourceUpdate(category.CategoryId, SourceType.Category, category.Name);
 
             return category;
         }
@@ -73,6 +77,8 @@ namespace Epiworx.Business
                 {
                     CategoryId = category.CategoryId
                 });
+
+            SourceRepository.SourceDelete(category.CategoryId, SourceType.Category);
 
             return true;
         }

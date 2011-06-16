@@ -11,7 +11,7 @@ namespace Epiworx.Data.Mock
         {
             var data = MockDb.SourceTypes
                 .Where(row => row.SourceTypeId == criteria.SourceTypeId)
-                .SingleOrDefault();
+                .Single();
 
             data = this.Fetch(data);
 
@@ -49,7 +49,7 @@ namespace Epiworx.Data.Mock
         {
             var sourceType = MockDb.SourceTypes
                 .Where(row => row.SourceTypeId == data.SourceTypeId)
-                .SingleOrDefault();
+                .Single();
 
             Csla.Data.DataMapper.Map(data, sourceType);
 
@@ -76,7 +76,7 @@ namespace Epiworx.Data.Mock
         {
             var data = MockDb.SourceTypes
                 .Where(row => row.SourceTypeId == criteria.SourceTypeId)
-                .SingleOrDefault();
+                .Single();
 
             MockDb.SourceTypes.Remove(data);
         }
