@@ -31,9 +31,12 @@ namespace Epiworx.Business
 
         protected static void AddObjectAuthorizationRules()
         {
-            BusinessRules.AddRule(typeof(User),
+            BusinessRules.AddRule(
+                typeof(User),
                 new IsInUser(AuthorizationActions.EditObject));
-            BusinessRules.AddRule(typeof(User),
+
+            BusinessRules.AddRule(
+                typeof(User),
                 new IsInUser(AuthorizationActions.DeleteObject));
         }
     }

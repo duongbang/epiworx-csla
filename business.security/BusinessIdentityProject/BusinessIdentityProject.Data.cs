@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Epiworx.Data;
 using Epiworx.Business.Security;
+using Epiworx.Data;
 
 namespace Epiworx.Business.Security
 {

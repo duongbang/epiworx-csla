@@ -98,8 +98,8 @@ namespace Epiworx.Data
 
         public DateRangeCriteria(int year)
         {
-            this.DateFrom = DateTime.Parse(String.Format("1/1/{0}", year));
-            this.DateTo = DateTime.Parse(String.Format("12/31/{0}", year));
+            this.DateFrom = DateTime.Parse(string.Format("1/1/{0}", year));
+            this.DateTo = DateTime.Parse(string.Format("12/31/{0}", year));
         }
     }
 }

@@ -16,7 +16,6 @@ namespace Epiworx.Data
         public UserData CreatedByUser { get; set; }
         public DateTime CreatedDate { get; set; }
 
-
         public FeedSourceMemberData()
         {
         }

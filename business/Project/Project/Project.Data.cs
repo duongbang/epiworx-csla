@@ -13,13 +13,11 @@ namespace Epiworx.Business
         protected override void DataPortal_Create()
         {
             using (this.BypassPropertyChecks)
-            {              
+            {
                 this.IsActive = true;
                 this.ModifiedDate = DateTime.Now;
-                this.CreatedDate =  DateTime.Now;
+                this.CreatedDate = DateTime.Now;
             }
-
-            // this.ChildPropertyName = Csla.DataPortal.CreateChild<ChildPropertType>();
 
             base.DataPortal_Create();
         }
@@ -43,17 +41,17 @@ namespace Epiworx.Business
 
         protected void Fetch(ProjectData data)
         {
-		    this.ProjectId = data.ProjectId;
-		    this.Description = data.Description;
-		    this.IsActive = data.IsActive;
-		    this.IsArchived = data.IsArchived;
-		    this.Name = data.Name;
-		    this.CreatedBy = data.CreatedBy;
+            this.ProjectId = data.ProjectId;
+            this.Description = data.Description;
+            this.IsActive = data.IsActive;
+            this.IsArchived = data.IsArchived;
+            this.Name = data.Name;
+            this.CreatedBy = data.CreatedBy;
             this.CreatedByName = data.CreatedByUser.Name;
-		    this.CreatedDate = data.CreatedDate;
-		    this.ModifiedBy = data.ModifiedBy;
+            this.CreatedDate = data.CreatedDate;
+            this.ModifiedBy = data.ModifiedBy;
             this.ModifiedByName = data.ModifiedByUser.Name;
-		    this.ModifiedDate = data.ModifiedDate;
+            this.ModifiedDate = data.ModifiedDate;
         }
 
         [Csla.Transactional(Csla.TransactionalTypes.TransactionScope)]
@@ -101,7 +99,7 @@ namespace Epiworx.Business
                 {
                     this.ModifiedBy = ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
                     this.ModifiedDate = DateTime.Now;
-                    
+
                     this.Update(data);
 
                     data = dalFactory.Update(data);
@@ -113,15 +111,15 @@ namespace Epiworx.Business
 
         protected void Update(ProjectData data)
         {
-		    data.ProjectId = this.ProjectId;
-		    data.Description = this.Description;
-		    data.IsActive = this.IsActive;
-		    data.IsArchived = this.IsArchived;
-		    data.Name = this.Name;
-		    data.CreatedBy = this.CreatedBy;
-		    data.CreatedDate = this.CreatedDate;
-		    data.ModifiedBy = this.ModifiedBy;
-		    data.ModifiedDate = this.ModifiedDate;
+            data.ProjectId = this.ProjectId;
+            data.Description = this.Description;
+            data.IsActive = this.IsActive;
+            data.IsArchived = this.IsArchived;
+            data.Name = this.Name;
+            data.CreatedBy = this.CreatedBy;
+            data.CreatedDate = this.CreatedDate;
+            data.ModifiedBy = this.ModifiedBy;
+            data.ModifiedDate = this.ModifiedDate;
         }
 
         [Csla.Transactional(Csla.TransactionalTypes.TransactionScope)]

@@ -26,6 +26,23 @@ namespace Epiworx.Data
 
         public SprintData()
         {
+            this.SprintId = 0;
+            this.CompletedDate = DateTime.MaxValue;
+            this.IsActive = false;
+            this.IsArchived = false;
+            this.IsCompleted = false;
+            this.Duration = 0;
+            this.EstimatedCompletedDate = DateTime.MaxValue;
+            this.EstimatedDuration = 0;
+            this.Name = string.Empty;
+            this.ProjectId = 0;
+            this.Project = new ProjectData();
+            this.CreatedBy = 0;
+            this.CreatedByUser = new UserData();
+            this.CreatedDate = DateTime.MaxValue;
+            this.ModifiedBy = 0;
+            this.ModifiedByUser = new UserData();
+            this.ModifiedDate = DateTime.MaxValue;
         }
     }
 }

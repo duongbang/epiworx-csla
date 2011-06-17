@@ -21,8 +21,8 @@ namespace Epiworx.Core.Validation
 
         protected override void Execute(RuleContext context)
         {
-            var value1 = (IComparable)context.InputPropertyValues[PrimaryProperty];
-            var value2 = (IComparable)context.InputPropertyValues[CompareToProperty];
+            var value1 = (IComparable)context.InputPropertyValues[this.PrimaryProperty];
+            var value2 = (IComparable)context.InputPropertyValues[this.CompareToProperty];
 
             if (value1.CompareTo(value2) != 0)
             {

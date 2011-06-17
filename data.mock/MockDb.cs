@@ -12,6 +12,7 @@ namespace Epiworx.Data.Mock
         public static List<FeedData> Feeds { get; private set; }
         public static List<FeedSourceMemberData> FeedSourceMembers { get; private set; }
         public static List<FilterData> Filters { get; private set; }
+        public static List<HourData> Hours { get; private set; }
         public static List<NoteData> Notes { get; private set; }
         public static List<ProjectData> Projects { get; private set; }
         public static List<ProjectUserMemberData> ProjectUserMembers { get; private set; }
@@ -24,85 +25,33 @@ namespace Epiworx.Data.Mock
 
         static MockDb()
         {
-            #region Attachments
-
             Attachments = new List<AttachmentData>();
-
-            #endregion
-
-            #region Categories
 
             Categories = new List<CategoryData>();
 
-            #endregion
-
-            #region Feeds
-
             Feeds = new List<FeedData>();
-
-            #endregion
-
-            #region FeedSourceMembers
 
             FeedSourceMembers = new List<FeedSourceMemberData>();
 
-            #endregion
-
-            #region Filters
-
             Filters = new List<FilterData>();
 
-            #endregion
-
-            #region Notes
+            Hours = new List<HourData>();
 
             Notes = new List<NoteData>();
 
-            #endregion
-
-            #region Projects
-
             Projects = new List<ProjectData>();
-
-            #endregion
-
-            #region ProjectUserMembers
 
             ProjectUserMembers = new List<ProjectUserMemberData>();
 
-            #endregion
-
-            #region Sources
-
             Sources = new List<SourceData>();
-
-            #endregion
-
-            #region SourceTypes
 
             SourceTypes = new List<SourceTypeData>();
 
-            #endregion
-
-            #region Sprints
-
             Sprints = new List<SprintData>();
-
-            #endregion
-
-            #region Statuses
 
             Statuses = new List<StatusData>();
 
-            #endregion
-
-            #region Stories
-
             Stories = new List<StoryData>();
-
-            #endregion
-
-            #region Users
 
             Users =
                     new List<UserData>
@@ -132,8 +81,6 @@ namespace Epiworx.Data.Mock
                                 ModifiedDate = DateTime.Parse("1/1/2011")
                             }
                     };
-
-            #endregion
         }
     }
 }

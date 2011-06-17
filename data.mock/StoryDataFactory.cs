@@ -20,21 +20,27 @@ namespace Epiworx.Data.Mock
 
         public StoryData Fetch(StoryData data)
         {
-            data.AssignedToUser = MockDb.Users
-                .Where(row => row.UserId == data.AssignedTo)
-                .Single();
+            if (data.AssignedTo != 0)
+            {
+                data.AssignedToUser = MockDb.Users
+                    .Where(row => row.UserId == data.AssignedTo)
+                    .Single();
+            }
 
             data.Category = MockDb.Categories
-                .Where(row => row.CategoryId == data.CategoryId)
-                .Single();
+                 .Where(row => row.CategoryId == data.CategoryId)
+                 .Single();
 
             data.Project = MockDb.Projects
                 .Where(row => row.ProjectId == data.ProjectId)
                 .Single();
 
-            data.Sprint = MockDb.Sprints
-                .Where(row => row.SprintId == data.SprintId)
-                .Single();
+            if (data.SprintId != 0)
+            {
+                data.Sprint = MockDb.Sprints
+                     .Where(row => row.SprintId == data.SprintId)
+                     .Single();
+            }
 
             data.Status = MockDb.Statuses
                 .Where(row => row.StatusId == data.StatusId)

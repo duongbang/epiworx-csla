@@ -47,12 +47,12 @@ namespace Epiworx.Business
             return FeedInfoList.FetchFeedInfoList(criteria);
         }
 
-        //internal static void FeedAdd(string action, Customer customer)
-        //{
-        //    var feed = FeedRepository.FeedNew(action, customer);
+        internal static void FeedAdd(string action, Project project)
+        {
+            var feed = FeedRepository.FeedNew(action, project);
 
-        //    feed.Save();
-        //}
+            feed.Save();
+        }
 
         public static Feed FeedSave(Feed feed)
         {

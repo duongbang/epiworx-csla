@@ -19,12 +19,14 @@ namespace Epiworx.Test.Helpers
 
         public static Note NoteNew()
         {
+            var project = ProjectTestHelper.ProjectAdd();
             var note = NoteRepository.NoteNew();
 
             note.Body = DataHelper.RandomString(1000);
+            note.SourceId = project.ProjectId;
+            note.SourceTypeId = (int)SourceType.Project;
 
             return note;
         }
     }
 }
-

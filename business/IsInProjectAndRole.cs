@@ -34,7 +34,6 @@ namespace Epiworx.Business
 
                 if (principal.IsInProject(((Project)context.Target).ProjectId))
                 {
-
                     context.HasPermission = true;
 
                     return;

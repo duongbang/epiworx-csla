@@ -20,10 +20,6 @@ namespace Epiworx.Data.Mock
 
         public FilterData Fetch(FilterData data)
         {
-            data.SourceType = MockDb.SourceTypes
-               .Where(row => row.SourceTypeId == data.SourceTypeId)
-               .Single();
-
             data.CreatedByUser = MockDb.Users
                 .Where(row => row.UserId == data.CreatedBy)
                 .Single();

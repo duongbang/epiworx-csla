@@ -1,0 +1,318 @@
+<stylecopresultscache>
+  <version>11</version>
+  <sourcecode name="FeedSourceMemberTestHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:48:57</timestamp>
+    <milliseconds>509</milliseconds>
+    <violations>
+      <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="FieldsMustBePrivate" ruleCheckId="SA1401">
+        <context>Fields must be declared with private access. Use properties to expose fields.</context>
+        <line>14</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <project key="985463740">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="AttachmentTestHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:48:57</timestamp>
+    <milliseconds>445</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedTestHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:48:57</timestamp>
+    <milliseconds>424</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CategoryTestHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:48:57</timestamp>
+    <milliseconds>435</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AttachmentTest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:47:21</timestamp>
+    <milliseconds>537</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedTest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 15:53:22</timestamp>
+    <milliseconds>864</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FilterTestHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:49:12</timestamp>
+    <milliseconds>252</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedSourceMemberTest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 15:53:22</timestamp>
+    <milliseconds>874</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ValidationHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:27:34</timestamp>
+    <milliseconds>219</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CategoryTest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:47:21</timestamp>
+    <milliseconds>528</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NoteTestHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:48:57</timestamp>
+    <milliseconds>453</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FilterTest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 15:53:22</timestamp>
+    <milliseconds>883</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectTestHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:49:12</timestamp>
+    <milliseconds>241</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="HourTestHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:48:57</timestamp>
+    <milliseconds>501</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="HourTest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:32:54</timestamp>
+    <milliseconds>421</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NoteTest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 15:53:22</timestamp>
+    <milliseconds>891</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectTest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:47:21</timestamp>
+    <milliseconds>519</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>05/29/2011 07:18:12</timestamp>
+    <milliseconds>853</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectUserMemberTestHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:48:57</timestamp>
+    <milliseconds>517</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="DataHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:48:16</timestamp>
+    <milliseconds>90</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SourceTest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 15:53:22</timestamp>
+    <milliseconds>914</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SourceTestHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:48:57</timestamp>
+    <milliseconds>469</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StatusTest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:46:08</timestamp>
+    <milliseconds>836</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StatusTestHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:48:57</timestamp>
+    <milliseconds>461</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectUserMemberTest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:47:21</timestamp>
+    <milliseconds>510</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SprintTestHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:48:57</timestamp>
+    <milliseconds>493</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SprintTest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:47:21</timestamp>
+    <milliseconds>501</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserTestHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 22:16:34</timestamp>
+    <milliseconds>49</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordTest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:47:21</timestamp>
+    <milliseconds>490</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StoryTestHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:48:57</timestamp>
+    <milliseconds>477</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserTest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:47:35</timestamp>
+    <milliseconds>659</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordResetRequestTest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 15:53:22</timestamp>
+    <milliseconds>957</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordResetTest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:47:21</timestamp>
+    <milliseconds>479</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StoryTest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 15:52:02</timestamp>
+    <milliseconds>257</milliseconds>
+    <violations />
+  </sourcecode>
+</stylecopresultscache>

@@ -28,6 +28,12 @@ namespace <%= NamespaceName %>.Data
 
         public <%= ClassName %>Data()
         {
+		<% foreach (var column in SourceTable.Columns) { %>
+		    this.<%= column.Name %> = <%= ToDefaultValue(column) %>;
+            <% if (column.Name == "CreatedBy" || column.Name == "ModifiedBy") { %>
+            this.<%= column.Name %>User = new UserData();
+            <% } %>
+ 		<% } %>
         }
     }
 }

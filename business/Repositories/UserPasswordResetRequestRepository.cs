@@ -15,7 +15,7 @@ namespace Epiworx.Business
         {
             var userPasswordResetRequest = UserPasswordResetRequestRepository.UserPasswordResetRequestFetch(email);
 
-            userPasswordResetRequest.Token = Guid.NewGuid().ToString().ToUpper().Replace("-", "");
+            userPasswordResetRequest.Token = Guid.NewGuid().ToString().ToUpper().Replace("-", string.Empty);
             userPasswordResetRequest.TokenExpirationDate = DateTime.Now.AddHours(Settings.TokenExpirationNumberOfHours);
 
             userPasswordResetRequest = UserPasswordResetRequestRepository.UserPasswordResetRequestSave(userPasswordResetRequest);

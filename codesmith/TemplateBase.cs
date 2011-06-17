@@ -201,7 +201,48 @@ namespace CodeSmith.Csla
 	
 			return result;
 		}
-		
+			
+		public string ToDefaultValue(ColumnSchema column)
+		{
+			var result = string.Empty;
+			
+			switch (column.DataType)
+			{
+				case DbType.Guid: 
+					result = Guid.Empty.ToString();
+					break;
+				case DbType.AnsiString: 
+				case DbType.AnsiStringFixedLength: 
+				case DbType.String: 
+				case DbType.StringFixedLength: 
+					result = "string.Empty";
+					break;
+				case DbType.Boolean: 
+					result = "false";
+					break;
+				case DbType.Date:
+				case DbType.DateTime:
+                    result = "DateTime.MaxValue";
+					break;
+				case DbType.Currency: 
+				case DbType.Decimal: 
+				case DbType.Double:
+                    result = "0";
+					break;
+				case DbType.Int16: 
+				case DbType.Int32: 
+				case DbType.Int64: 
+				case DbType.Single: 
+                    result = "0";
+					break;
+				default: 
+					result = "string.Empty";
+					break;
+			}
+	
+			return result;
+		}
+	
 		public bool HasColumn(string columnName)
 		{
             return this.SourceTable.Columns.Any(row => row.Name == columnName);

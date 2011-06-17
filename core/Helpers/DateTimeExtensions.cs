@@ -9,22 +9,22 @@ namespace Epiworx.Core
     {
         public static bool IsLate(this DateTime dateTime)
         {
-            return (dateTime.Date < DateTime.Today.Date);
+            return dateTime.Date < DateTime.Today.Date;
         }
 
         public static bool IsToday(this DateTime dateTime)
         {
-            return (dateTime.Date == DateTime.Today.Date);
+            return dateTime.Date == DateTime.Today.Date;
         }
 
         public static bool IsYesterday(this DateTime dateTime)
         {
-            return (dateTime.Date == DateTime.Today.AddDays(-1).Date);
+            return dateTime.Date == DateTime.Today.AddDays(-1).Date;
         }
 
         public static bool IsTomorrow(this DateTime dateTime)
         {
-            return (dateTime.Date == DateTime.Today.AddDays(1).Date);
+            return dateTime.Date == DateTime.Today.AddDays(1).Date;
         }
 
         public static bool IsThisWeek(this DateTime dateTime)
@@ -38,7 +38,7 @@ namespace Epiworx.Core
 
             var endDate = startDate.AddDays(6);
 
-            return (dateTime.Date >= startDate.Date & dateTime.Date <= endDate.Date);
+            return dateTime.Date >= startDate.Date & dateTime.Date <= endDate.Date;
         }
 
         public static bool IsThisMonth(this DateTime dateTime)
@@ -49,7 +49,7 @@ namespace Epiworx.Core
 
             var endDate = startDate.AddMonths(1).AddDays(-1);
 
-            return (dateTime.Date >= startDate.Date & dateTime.Date <= endDate.Date);
+            return dateTime.Date >= startDate.Date & dateTime.Date <= endDate.Date;
         }
 
         public static bool IsNextMonth(this DateTime dateTime)
@@ -60,7 +60,7 @@ namespace Epiworx.Core
 
             var endDate = startDate.AddMonths(1).AddDays(-1);
 
-            return (dateTime.Date >= startDate.Date & dateTime.Date <= endDate.Date);
+            return dateTime.Date >= startDate.Date & dateTime.Date <= endDate.Date;
         }
 
         public static DateTime ToStartOfWeek(this DateTime dateTime)
@@ -170,7 +170,6 @@ namespace Epiworx.Core
         {
             var timeSpan = DateTime.Now - dateTime;
 
-
             // span is less than or equal to 60 seconds, measure in seconds.
             if (timeSpan <= TimeSpan.FromSeconds(60))
             {
@@ -205,13 +204,13 @@ namespace Epiworx.Core
             if (timeSpan <= TimeSpan.FromDays(365))
             {
                 return timeSpan.Days > 30
-                    ? "about " + timeSpan.Days / 30 + " months ago"
+                    ? string.Format("about {0} months ago" + (timeSpan.Days / 30))
                     : "about a month ago";
             }
 
             // span is greater than 365 days (1 year), measure in years.
             return timeSpan.Days > 365
-                ? "about " + timeSpan.Days / 365 + " years ago"
+                ? string.Format("about {0} years ago" + (timeSpan.Days / 365))
                 : "about a year ago";
         }
     }

@@ -110,6 +110,19 @@
     <Compile Include="Filter\Filter\Filter.Rules.cs" />
     <Compile Include="Filter\IFilter.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
+    <Compile Include="Hour\HourInfoList\HourInfoList.cs" />
+    <Compile Include="Hour\HourInfoList\HourInfoList.Data.cs" />
+    <Compile Include="Hour\HourInfoList\HourInfoList.Methods.cs" />
+    <Compile Include="Hour\HourInfoList\HourInfoList.Rules.cs" />
+    <Compile Include="Hour\HourInfo\HourInfo.cs" />
+    <Compile Include="Hour\HourInfo\HourInfo.Data.cs" />
+    <Compile Include="Hour\HourInfo\HourInfo.Properties.cs" />
+    <Compile Include="Hour\Hour\Hour.cs" />
+    <Compile Include="Hour\Hour\Hour.Data.cs" />
+    <Compile Include="Hour\Hour\Hour.Methods.cs" />
+    <Compile Include="Hour\Hour\Hour.Properties.cs" />
+    <Compile Include="Hour\Hour\Hour.Rules.cs" />
+    <Compile Include="Hour\IHour.cs" />
     <Compile Include="Note\INote.cs" />
     <Compile Include="Note\NoteInfoList\NoteInfoList.cs" />
     <Compile Include="Note\NoteInfoList\NoteInfoList.Data.cs" />
@@ -147,6 +160,7 @@
     <Compile Include="Project\ProjectInfo\ProjectInfo.Properties.cs" />
     <Compile Include="Project\Project\Project.cs" />
     <Compile Include="Project\Project\Project.Data.cs" />
+    <Compile Include="Project\Project\Project.ISource.cs" />
     <Compile Include="Project\Project\Project.Methods.cs" />
     <Compile Include="Project\Project\Project.Properties.cs" />
     <Compile Include="Project\Project\Project.Rules.cs" />
@@ -154,6 +168,7 @@
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\FeedRepository.cs" />
     <Compile Include="Repositories\FilterRepository.cs" />
+    <Compile Include="Repositories\HourRepository.cs" />
     <Compile Include="Repositories\NoteRepository.cs" />
     <Compile Include="Repositories\ProjectUserMemberRepository.cs" />
     <Compile Include="Repositories\ProjectRepository.cs" />

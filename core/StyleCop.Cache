@@ -1,0 +1,96 @@
+<stylecopresultscache>
+  <version>11</version>
+  <project key="291515141">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="StringExtensions.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 08:28:10</timestamp>
+    <milliseconds>321</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 08:22:27</timestamp>
+    <milliseconds>255</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="DateRequired.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 08:37:35</timestamp>
+    <milliseconds>955</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="GuidRequired.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 08:37:35</timestamp>
+    <milliseconds>939</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="DateTimeRequired.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 08:37:35</timestamp>
+    <milliseconds>949</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="DateTimeExtensions.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:42:45</timestamp>
+    <milliseconds>150</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IntegerRequired.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 08:37:35</timestamp>
+    <milliseconds>930</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StringRequired.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 08:37:35</timestamp>
+    <milliseconds>908</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="DecimalRequired.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 08:37:35</timestamp>
+    <milliseconds>945</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="PropertiesMustMatch.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:41:48</timestamp>
+    <milliseconds>398</milliseconds>
+    <violations />
+  </sourcecode>
+</stylecopresultscache>

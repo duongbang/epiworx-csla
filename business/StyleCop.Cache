@@ -1,0 +1,1968 @@
+<stylecopresultscache>
+  <version>11</version>
+  <project key="368665712">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="IAttachment.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:08:36</timestamp>
+    <milliseconds>154</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CategoryDuplicateNameCheck.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:46:23</timestamp>
+    <milliseconds>174</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ICategory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:39:07</timestamp>
+    <milliseconds>250</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedAction.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 10:26:33</timestamp>
+    <milliseconds>881</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IFeed.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:54:06</timestamp>
+    <milliseconds>994</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IFeedSourceMember.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:42:25</timestamp>
+    <milliseconds>424</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IFilter.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:13:39</timestamp>
+    <milliseconds>448</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="DataHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:57:34</timestamp>
+    <milliseconds>862</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="INote.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:16:27</timestamp>
+    <milliseconds>839</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IHour.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:25:26</timestamp>
+    <milliseconds>52</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IsInProjectAndRole.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:35:43</timestamp>
+    <milliseconds>175</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IsInUser.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 16:07:56</timestamp>
+    <milliseconds>226</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IProject.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 15:48:49</timestamp>
+    <milliseconds>72</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IProjectUserMember.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 17:18:39</timestamp>
+    <milliseconds>603</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectUserMemberDuplicateNameCheck.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 17:17:45</timestamp>
+    <milliseconds>185</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>05/29/2011 07:07:56</timestamp>
+    <milliseconds>133</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="HourRepository.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:19:04</timestamp>
+    <milliseconds>771</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FilterRepository.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:12:32</timestamp>
+    <milliseconds>385</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AttachmentRepository.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:44:04</timestamp>
+    <milliseconds>186</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CategoryRepository.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:12:49</timestamp>
+    <milliseconds>382</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NoteRepository.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:13:42</timestamp>
+    <milliseconds>60</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedRepository.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:37:01</timestamp>
+    <milliseconds>743</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordRepository.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>05/31/2011 13:31:33</timestamp>
+    <milliseconds>142</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordResetRepository.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 04:38:54</timestamp>
+    <milliseconds>386</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectUserMemberRepository.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:15:13</timestamp>
+    <milliseconds>167</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SprintRepository.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:07:58</timestamp>
+    <milliseconds>342</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StatusRepository.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:07:46</timestamp>
+    <milliseconds>611</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Settings.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/01/2011 10:07:05</timestamp>
+    <milliseconds>210</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ISource.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 10:22:29</timestamp>
+    <milliseconds>384</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StoryRepository.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:14:33</timestamp>
+    <milliseconds>125</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordResetRequestRepository.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:35:28</timestamp>
+    <milliseconds>17</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SourceRepository.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:47:11</timestamp>
+    <milliseconds>781</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ISprint.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 20:02:38</timestamp>
+    <milliseconds>231</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SourceType.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:12:34</timestamp>
+    <milliseconds>461</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserRepository.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:07:04</timestamp>
+    <milliseconds>529</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectRepository.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:09:40</timestamp>
+    <milliseconds>585</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IStatus.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:38:49</timestamp>
+    <milliseconds>697</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StatusDuplicateNameCheck.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:45:59</timestamp>
+    <milliseconds>220</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IStory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 10:03:23</timestamp>
+    <milliseconds>489</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IUser.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/01/2011 08:44:55</timestamp>
+    <milliseconds>630</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserDuplicateNameCheck.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 22:20:31</timestamp>
+    <milliseconds>17</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserEmailNameCheck.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 22:20:31</timestamp>
+    <milliseconds>29</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Attachment.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:37:41</timestamp>
+    <milliseconds>112</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Attachment.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:37:41</timestamp>
+    <milliseconds>245</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Attachment.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:20:46</timestamp>
+    <milliseconds>598</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AttachmentInfoList.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:37:41</timestamp>
+    <milliseconds>268</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AttachmentInfoList.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:37:41</timestamp>
+    <milliseconds>271</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AttachmentInfoList.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:37:41</timestamp>
+    <milliseconds>278</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AttachmentInfo.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:00:33</timestamp>
+    <milliseconds>784</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Attachment.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:58:15</timestamp>
+    <milliseconds>691</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AttachmentInfo.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:11:00</timestamp>
+    <milliseconds>467</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Category.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:39:07</timestamp>
+    <milliseconds>276</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AttachmentInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:37:41</timestamp>
+    <milliseconds>257</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Category.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:39:07</timestamp>
+    <milliseconds>282</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Category.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:39:07</timestamp>
+    <milliseconds>259</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CategoryInfo.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:39:07</timestamp>
+    <milliseconds>296</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CategoryInfoList.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:39:07</timestamp>
+    <milliseconds>298</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CategoryInfoList.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:39:07</timestamp>
+    <milliseconds>301</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Category.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:47:06</timestamp>
+    <milliseconds>144</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CategoryInfo.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:39:07</timestamp>
+    <milliseconds>291</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CategoryInfoList.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:44:18</timestamp>
+    <milliseconds>993</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Feed.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:39:35</timestamp>
+    <milliseconds>625</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AttachmentInfoList.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:37:41</timestamp>
+    <milliseconds>274</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Feed.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:39:59</timestamp>
+    <milliseconds>193</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Attachment.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:36:16</timestamp>
+    <milliseconds>371</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:39:35</timestamp>
+    <milliseconds>537</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Feed.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:43:39</timestamp>
+    <milliseconds>8</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Category.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:37:37</timestamp>
+    <milliseconds>840</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedInfoList.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:39:35</timestamp>
+    <milliseconds>481</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Feed.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:35:39</timestamp>
+    <milliseconds>49</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CategoryInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:39:07</timestamp>
+    <milliseconds>288</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedInfo.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:42:25</timestamp>
+    <milliseconds>691</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Feed.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:42:25</timestamp>
+    <milliseconds>736</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedInfo.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:42:25</timestamp>
+    <milliseconds>668</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedSourceMember.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:42:49</timestamp>
+    <milliseconds>43</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedInfoList.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:39:35</timestamp>
+    <milliseconds>424</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CategoryInfoList.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:39:07</timestamp>
+    <milliseconds>304</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedSourceMemberInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:42:25</timestamp>
+    <milliseconds>565</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedSourceMember.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:42:25</timestamp>
+    <milliseconds>585</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedSourceMember.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:57:34</timestamp>
+    <milliseconds>833</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedSourceMembers.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:42:25</timestamp>
+    <milliseconds>488</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedInfoList.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:39:59</timestamp>
+    <milliseconds>180</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedSourceMemberInfo.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:39:35</timestamp>
+    <milliseconds>591</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedSourceMembers.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:42:49</timestamp>
+    <milliseconds>7</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedSourceMember.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:42:49</timestamp>
+    <milliseconds>68</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Filter.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:36:16</timestamp>
+    <milliseconds>361</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Filter.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:53:44</timestamp>
+    <milliseconds>624</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedSourceMembers.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 10:26:06</timestamp>
+    <milliseconds>945</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedSourceMemberInfo.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:57:34</timestamp>
+    <milliseconds>818</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedInfoList.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:39:59</timestamp>
+    <milliseconds>175</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Filter.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:20:57</timestamp>
+    <milliseconds>450</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FilterInfo.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:00:33</timestamp>
+    <milliseconds>805</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FilterInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:53:44</timestamp>
+    <milliseconds>629</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FilterInfoList.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:53:44</timestamp>
+    <milliseconds>633</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Filter.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:00:33</timestamp>
+    <milliseconds>811</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedSourceMember.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:42:25</timestamp>
+    <milliseconds>645</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Hour.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:19:04</timestamp>
+    <milliseconds>743</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FilterInfoList.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:53:44</timestamp>
+    <milliseconds>636</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FilterInfoList.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:53:44</timestamp>
+    <milliseconds>634</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FilterInfoList.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:53:44</timestamp>
+    <milliseconds>635</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Hour.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:26:37</timestamp>
+    <milliseconds>348</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Filter.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:53:44</timestamp>
+    <milliseconds>621</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="HourInfo.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:25:57</timestamp>
+    <milliseconds>278</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="HourInfo.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:25:46</timestamp>
+    <milliseconds>632</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Hour.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:26:21</timestamp>
+    <milliseconds>243</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="HourInfoList.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:19:04</timestamp>
+    <milliseconds>766</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="HourInfoList.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:19:04</timestamp>
+    <milliseconds>764</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Note.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:51:59</timestamp>
+    <milliseconds>55</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Hour.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:22:38</timestamp>
+    <milliseconds>619</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Hour.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:19:04</timestamp>
+    <milliseconds>750</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="HourInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:19:04</timestamp>
+    <milliseconds>757</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="HourInfoList.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:19:04</timestamp>
+    <milliseconds>770</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Note.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:51:59</timestamp>
+    <milliseconds>66</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="HourInfoList.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:19:04</timestamp>
+    <milliseconds>768</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Note.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 09:20:59</timestamp>
+    <milliseconds>675</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NoteInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:51:59</timestamp>
+    <milliseconds>79</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FilterInfo.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:59:55</timestamp>
+    <milliseconds>992</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NoteInfoList.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:51:59</timestamp>
+    <milliseconds>98</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NoteInfoList.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:51:59</timestamp>
+    <milliseconds>91</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Project.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 15:48:49</timestamp>
+    <milliseconds>80</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Note.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:00:33</timestamp>
+    <milliseconds>775</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NoteInfo.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:00:33</timestamp>
+    <milliseconds>791</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NoteInfo.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:00:33</timestamp>
+    <milliseconds>762</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NoteInfoList.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:51:59</timestamp>
+    <milliseconds>101</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Note.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:36:16</timestamp>
+    <milliseconds>351</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NoteInfoList.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:51:59</timestamp>
+    <milliseconds>95</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Project.ISource.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:39:21</timestamp>
+    <milliseconds>953</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 15:48:49</timestamp>
+    <milliseconds>263</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Project.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 16:33:59</timestamp>
+    <milliseconds>265</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Project.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:36:16</timestamp>
+    <milliseconds>338</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectInfoList.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 15:48:49</timestamp>
+    <milliseconds>279</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectInfoList.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 15:48:49</timestamp>
+    <milliseconds>283</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectInfoList.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 15:48:49</timestamp>
+    <milliseconds>287</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectInfo.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 16:33:29</timestamp>
+    <milliseconds>317</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Project.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 15:48:49</timestamp>
+    <milliseconds>254</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectInfoList.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 16:40:06</timestamp>
+    <milliseconds>563</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Project.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 16:40:22</timestamp>
+    <milliseconds>807</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectUserMember.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 15:50:47</timestamp>
+    <milliseconds>109</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectInfo.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 15:48:49</timestamp>
+    <milliseconds>268</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectUserMemberInfo.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 20:04:37</timestamp>
+    <milliseconds>935</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectUserMember.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 16:50:12</timestamp>
+    <milliseconds>74</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectUserMemberInfoList.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 15:50:47</timestamp>
+    <milliseconds>185</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectUserMember.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 17:11:12</timestamp>
+    <milliseconds>76</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectUserMemberInfoList.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 15:50:47</timestamp>
+    <milliseconds>179</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectUserMemberInfoList.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 16:49:17</timestamp>
+    <milliseconds>93</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectUserMember.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:36:16</timestamp>
+    <milliseconds>326</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectUserMemberInfoList.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 15:50:47</timestamp>
+    <milliseconds>191</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectUserMemberInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 15:50:47</timestamp>
+    <milliseconds>159</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Source.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 10:23:27</timestamp>
+    <milliseconds>440</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Source.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 08:29:14</timestamp>
+    <milliseconds>264</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectUserMember.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 19:42:09</timestamp>
+    <milliseconds>24</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Sprint.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 19:57:12</timestamp>
+    <milliseconds>385</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Sprint.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 20:18:05</timestamp>
+    <milliseconds>612</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Sprint.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 20:08:40</timestamp>
+    <milliseconds>903</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectUserMemberInfo.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 19:41:15</timestamp>
+    <milliseconds>845</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SprintInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 19:57:12</timestamp>
+    <milliseconds>489</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SprintInfo.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 20:04:49</timestamp>
+    <milliseconds>432</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SprintInfoList.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 19:57:12</timestamp>
+    <milliseconds>533</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Sprint.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:36:24</timestamp>
+    <milliseconds>190</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SprintInfoList.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 19:57:12</timestamp>
+    <milliseconds>545</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SprintInfoList.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 19:57:12</timestamp>
+    <milliseconds>556</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SprintInfoList.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 20:10:18</timestamp>
+    <milliseconds>891</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SprintInfo.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 20:06:10</timestamp>
+    <milliseconds>198</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Source.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 07:57:34</timestamp>
+    <milliseconds>849</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Source.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 10:20:49</timestamp>
+    <milliseconds>213</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Status.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:38:49</timestamp>
+    <milliseconds>699</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Status.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:38:49</timestamp>
+    <milliseconds>705</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StatusInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:38:49</timestamp>
+    <milliseconds>708</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StatusInfo.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:38:49</timestamp>
+    <milliseconds>712</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Source.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:36:24</timestamp>
+    <milliseconds>202</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Status.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:47:10</timestamp>
+    <milliseconds>357</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Status.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:36:36</timestamp>
+    <milliseconds>721</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Status.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:38:49</timestamp>
+    <milliseconds>703</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StatusInfoList.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:38:49</timestamp>
+    <milliseconds>713</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Story.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:55:24</timestamp>
+    <milliseconds>966</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StatusInfo.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:38:49</timestamp>
+    <milliseconds>710</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StatusInfoList.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:38:49</timestamp>
+    <milliseconds>714</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Story.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:55:24</timestamp>
+    <milliseconds>972</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Sprint.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 20:08:02</timestamp>
+    <milliseconds>823</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StatusInfoList.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:44:43</timestamp>
+    <milliseconds>106</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Story.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 10:10:52</timestamp>
+    <milliseconds>258</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StatusInfoList.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/04/2011 07:38:49</timestamp>
+    <milliseconds>713</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StoryInfoList.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:55:24</timestamp>
+    <milliseconds>990</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StoryInfo.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 10:16:45</timestamp>
+    <milliseconds>385</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StoryInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:55:24</timestamp>
+    <milliseconds>985</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StoryInfoList.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:55:24</timestamp>
+    <milliseconds>991</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="User.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/01/2011 10:00:51</timestamp>
+    <milliseconds>396</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StoryInfoList.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:55:24</timestamp>
+    <milliseconds>991</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Story.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:36:36</timestamp>
+    <milliseconds>710</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StoryInfoList.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 08:55:24</timestamp>
+    <milliseconds>992</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 08:26:49</timestamp>
+    <milliseconds>566</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Story.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 10:09:49</timestamp>
+    <milliseconds>271</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="User.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/01/2011 10:07:11</timestamp>
+    <milliseconds>966</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserInfoList.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 08:26:49</timestamp>
+    <milliseconds>583</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserInfoList.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 08:26:49</timestamp>
+    <milliseconds>590</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserInfoList.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 08:26:49</timestamp>
+    <milliseconds>587</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserInfoList.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 09:57:50</timestamp>
+    <milliseconds>2</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="User.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>05/31/2011 12:14:38</timestamp>
+    <milliseconds>689</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="User.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/01/2011 08:45:22</timestamp>
+    <milliseconds>747</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPassword.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>05/31/2011 12:51:49</timestamp>
+    <milliseconds>84</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPassword.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>05/31/2011 13:31:21</timestamp>
+    <milliseconds>15</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserInfo.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/01/2011 08:48:07</timestamp>
+    <milliseconds>467</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="User.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:34:11</timestamp>
+    <milliseconds>306</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordReset.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 03:56:03</timestamp>
+    <milliseconds>718</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPassword.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>05/31/2011 13:14:19</timestamp>
+    <milliseconds>24</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StoryInfo.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/11/2011 10:07:26</timestamp>
+    <milliseconds>593</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPassword.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:35:51</timestamp>
+    <milliseconds>222</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPassword.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/01/2011 10:03:46</timestamp>
+    <milliseconds>78</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserInfo.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/01/2011 08:45:17</timestamp>
+    <milliseconds>864</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordResetRequest.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/01/2011 08:50:52</timestamp>
+    <milliseconds>904</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordReset.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 05:30:09</timestamp>
+    <milliseconds>94</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordResetRequest.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/01/2011 08:50:52</timestamp>
+    <milliseconds>873</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordResetRequest.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/01/2011 08:54:23</timestamp>
+    <milliseconds>349</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordReset.Rules.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 04:06:43</timestamp>
+    <milliseconds>366</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordReset.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 03:56:03</timestamp>
+    <milliseconds>702</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordResetRequest.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 05:00:21</timestamp>
+    <milliseconds>545</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordResetRequest.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 05:00:40</timestamp>
+    <milliseconds>51</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordReset.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:33:39</timestamp>
+      <milliseconds>939</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 05:26:39</timestamp>
+    <milliseconds>964</milliseconds>
+    <violations />
+  </sourcecode>
+</stylecopresultscache>

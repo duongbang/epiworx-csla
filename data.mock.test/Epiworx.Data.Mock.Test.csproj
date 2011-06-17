@@ -54,11 +54,12 @@
     <Compile Include="Category\CategoryTest.cs" />
     <Compile Include="Category\CategoryTestHelper.cs" />
     <Compile Include="FeedSourceMember\FeedSourceMemberTest.cs" />
-    <Compile Include="FeedSourceMember\FeedSourceMemberTestHelper.cs" />
     <Compile Include="Feed\FeedTest.cs" />
     <Compile Include="Feed\FeedTestHelper.cs" />
     <Compile Include="Filter\FilterTest.cs" />
     <Compile Include="Filter\FilterTestHelper.cs" />
+    <Compile Include="Hour\HourTest.cs" />
+    <Compile Include="Hour\HourTestHelper.cs" />
     <Compile Include="Note\NoteTest.cs" />
     <Compile Include="Note\NoteTestHelper.cs" />
     <Compile Include="ProjectUserMember\ProjectUserMemberTest.cs" />

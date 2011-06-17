@@ -1,13 +1,13 @@
 using System;
-using System.Data;
-using System.Text;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Text;
+using Epiworx.Business;
 using Epiworx.Business.Security;
 using Epiworx.Data;
 using Epiworx.Test.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Epiworx.Business;
 
 namespace Epiworx.Test
 {
@@ -39,7 +39,8 @@ namespace Epiworx.Test
             Assert.IsTrue(project.IsActive, "IsActive should be true");
             Assert.IsFalse(project.IsArchived, "IsArchived should be false");
 
-            Assert.IsTrue(ValidationHelper.ContainsRule(project, DbType.String, "Name"),
+            Assert.IsTrue(
+                ValidationHelper.ContainsRule(project, DbType.String, "Name"),
                 "Name should be required");
         }
 

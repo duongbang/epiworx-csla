@@ -12,8 +12,10 @@ namespace Epiworx.Business.Security.Helpers
 
         public bool Validate(string password)
         {
-            var match = Regex.Match(password, PasswordValidator.ValidationExpression,
-                      RegexOptions.IgnoreCase);
+            var match = Regex.Match(
+                password,
+                PasswordValidator.ValidationExpression,
+                RegexOptions.IgnoreCase);
 
             if (match.Success)
             {

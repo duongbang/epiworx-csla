@@ -1,13 +1,13 @@
 using System;
-using System.Data;
-using System.Text;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Text;
+using Epiworx.Business;
 using Epiworx.Business.Security;
 using Epiworx.Data;
 using Epiworx.Test.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Epiworx.Business;
 
 namespace Epiworx.Test
 {
@@ -38,10 +38,12 @@ namespace Epiworx.Test
             Assert.IsFalse(user.IsSelfDirty, "IsSelfDirty should be false");
             Assert.IsFalse(user.IsSelfValid, "IsSelfValid should be false");
 
-            Assert.IsTrue(ValidationHelper.ContainsRule(user, DbType.String, "Password"),
+            Assert.IsTrue(
+                ValidationHelper.ContainsRule(user, DbType.String, "Password"),
                 "Password should be required");
 
-            Assert.IsTrue(ValidationHelper.ContainsRule(user, DbType.String, "PasswordConfirmation"),
+            Assert.IsTrue(
+                ValidationHelper.ContainsRule(user, DbType.String, "PasswordConfirmation"),
                 "PasswordConfirmation should be required");
 
             BusinessPrincipal.Logout();

@@ -1,0 +1,204 @@
+<stylecopresultscache>
+  <version>11</version>
+  <project key="1435429483">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="IBusinessIdentity.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 09:54:33</timestamp>
+    <milliseconds>239</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IBusinessIdentityProject.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 09:54:33</timestamp>
+    <milliseconds>218</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IPasswordValidator.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 09:54:33</timestamp>
+    <milliseconds>196</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="IBusinessPrincipal.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 16:14:21</timestamp>
+    <milliseconds>355</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="PasswordValidator.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:40:08</timestamp>
+    <milliseconds>857</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="InvalidPasswordException.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 09:54:33</timestamp>
+    <milliseconds>180</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="PasswordHelper.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 09:54:33</timestamp>
+    <milliseconds>191</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Role.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 08:42:17</timestamp>
+    <milliseconds>733</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserLockedException.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 09:54:33</timestamp>
+    <milliseconds>166</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 08:40:15</timestamp>
+    <milliseconds>294</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="InvalidUserException.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 09:54:33</timestamp>
+    <milliseconds>175</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserNotActiveException.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 09:54:33</timestamp>
+    <milliseconds>158</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BusinessIdentity.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:41:09</timestamp>
+    <milliseconds>589</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BusinessIdentity.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 09:54:33</timestamp>
+    <milliseconds>250</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BusinessIdentity.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 10:03:16</timestamp>
+    <milliseconds>420</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BusinessIdentityProject.Data.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:40:20</timestamp>
+    <milliseconds>502</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BusinessPrincipal.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 10:06:33</timestamp>
+    <milliseconds>129</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BusinessPrincipal.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 10:06:07</timestamp>
+    <milliseconds>456</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BusinessIdentityProject.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 09:54:33</timestamp>
+    <milliseconds>223</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BusinessIdentityProject.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>05/30/2011 09:54:33</timestamp>
+    <milliseconds>233</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BusinessIdentity.Properties.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:40:59</timestamp>
+    <milliseconds>612</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BusinessPrincipal.Methods.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 16:40:49</timestamp>
+      <milliseconds>343</milliseconds>
+    </settings>
+    <timestamp>06/02/2011 16:14:06</timestamp>
+    <milliseconds>537</milliseconds>
+    <violations />
+  </sourcecode>
+</stylecopresultscache>

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 namespace Epiworx.Data
 {
+    using System.ComponentModel;
+
     [Serializable]
     public class UserData
     {
@@ -21,6 +23,18 @@ namespace Epiworx.Data
 
         public UserData()
         {
+            this.UserId = 0;
+            this.Email = string.Empty;
+            this.FullName = string.Empty;
+            this.IsActive = false;
+            this.IsArchived = false;
+            this.Name = string.Empty;
+            this.Password = string.Empty;
+            this.Salt = string.Empty;
+            this.Token = string.Empty;
+            this.TokenExpirationDate = DateTime.MaxValue;
+            this.CreatedDate = DateTime.MaxValue;
+            this.ModifiedDate = DateTime.MaxValue;
         }
     }
 }

@@ -66,6 +66,9 @@
     <Compile Include="Filter\FilterData.cs" />
     <Compile Include="Filter\FilterDataCriteria.cs" />
     <Compile Include="Filter\IFilterDataFactory.cs" />
+    <Compile Include="Hour\HourData.cs" />
+    <Compile Include="Hour\HourDataCriteria.cs" />
+    <Compile Include="Hour\IHourDataFactory.cs" />
     <Compile Include="Note\INoteDataFactory.cs" />
     <Compile Include="Note\NoteData.cs" />
     <Compile Include="Note\NoteDataCriteria.cs" />

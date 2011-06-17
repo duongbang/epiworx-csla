@@ -1,13 +1,13 @@
 using System;
-using System.Data;
-using System.Text;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Text;
+using Epiworx.Business;
 using Epiworx.Business.Security;
 using Epiworx.Data;
 using Epiworx.Test.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Epiworx.Business;
 
 namespace Epiworx.Test
 {
@@ -38,19 +38,24 @@ namespace Epiworx.Test
             Assert.IsFalse(user.IsSelfValid, "IsSelfValid should be false");
             Assert.IsTrue(user.IsActive, "IsActive should be true");
 
-            Assert.IsTrue(ValidationHelper.ContainsRule(user, DbType.String, "Email"),
+            Assert.IsTrue(
+                ValidationHelper.ContainsRule(user, DbType.String, "Email"),
                 "Email should be required");
 
-            Assert.IsTrue(ValidationHelper.ContainsRule(user, DbType.String, "FullName"),
+            Assert.IsTrue(
+                ValidationHelper.ContainsRule(user, DbType.String, "FullName"),
                 "FullName should be required");
 
-            Assert.IsTrue(ValidationHelper.ContainsRule(user, DbType.String, "Name"),
+            Assert.IsTrue(
+                ValidationHelper.ContainsRule(user, DbType.String, "Name"),
                 "Name should be required");
 
-            Assert.IsTrue(ValidationHelper.ContainsRule(user, DbType.String, "Password"),
+            Assert.IsTrue(
+                ValidationHelper.ContainsRule(user, DbType.String, "Password"),
                 "Password should be required");
 
-            Assert.IsTrue(ValidationHelper.ContainsRule(user, DbType.String, "Salt"),
+            Assert.IsTrue(
+                ValidationHelper.ContainsRule(user, DbType.String, "Salt"),
                 "Salt should be required");
         }
 
@@ -150,35 +155,35 @@ namespace Epiworx.Test
         [TestMethod]
         public void User_Add_With_Duplicate_Name()
         {
-            //var user = UserTestHelper.UserNew();
+            // var user = UserTestHelper.UserNew();
 
-            //var name = user.Name;
+            // var name = user.Name;
 
-            //UserRepository.UserSave(user);
+            // UserRepository.UserSave(user);
 
-            //user = UserRepository.UserNew();
+            // user = UserRepository.UserNew();
 
-            //user.Name = name;
+            // user.Name = name;
 
-            //Assert.IsTrue(ValidationHelper.ContainsRule(user, "rule://epitec.epilink.business.userduplicatenamecheck/Name"),
-            //    "Name should not be duplicated");
+            // Assert.IsTrue(ValidationHelper.ContainsRule(user, "rule://epitec.epilink.business.userduplicatenamecheck/Name"),
+            //     "Name should not be duplicated");
         }
 
         [TestMethod]
         public void User_Add_With_Duplicate_Email()
         {
-            //var user = UserTestHelper.UserNew();
+            // var user = UserTestHelper.UserNew();
 
-            //var email = user.Email;
+            // var email = user.Email;
 
-            //UserRepository.UserSave(user);
+            // UserRepository.UserSave(user);
 
-            //user = UserRepository.UserNew();
+            // user = UserRepository.UserNew();
 
-            //user.Email = email;
+            // user.Email = email;
 
-            //Assert.IsTrue(ValidationHelper.ContainsRule(user, "rule://epitec.epilink.business.userduplicateemailcheck/Email"),
-            //    "Email should not be duplicated");
+            // Assert.IsTrue(ValidationHelper.ContainsRule(user, "rule://epitec.epilink.business.userduplicateemailcheck/Email"),
+            //     "Email should not be duplicated");
         }
 
         [TestMethod]

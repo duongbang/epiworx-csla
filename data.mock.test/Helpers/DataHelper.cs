@@ -7,7 +7,7 @@ namespace Epiworx.Test.Helpers
 {
     public class DataHelper
     {
-        private static Random Random = new Random((int)DateTime.Now.Ticks);
+        private static readonly Random Random = new Random((int)DateTime.Now.Ticks);
 
         public static DateTime RandomDateTime()
         {
@@ -77,7 +77,7 @@ namespace Epiworx.Test.Helpers
             for (var i = 0; i < length; i++)
             {
                 sb.Append(
-                    Convert.ToChar(Convert.ToInt32(Math.Floor(26 * DataHelper.Random.NextDouble() + 65))));
+                    Convert.ToChar(Convert.ToInt32(Math.Floor((26 * DataHelper.Random.NextDouble()) + 65))));
             }
 
             if (sb.Length > 10)
@@ -101,7 +101,7 @@ namespace Epiworx.Test.Helpers
             for (var i = 0; i < length; i++)
             {
                 sb.Append(
-                    Convert.ToChar(Convert.ToInt32(Math.Floor(26 * DataHelper.Random.NextDouble() + 65))));
+                    Convert.ToChar(Convert.ToInt32(Math.Floor((26 * DataHelper.Random.NextDouble()) + 65))));
             }
 
             if (sb.Length > 10)

@@ -1,13 +1,13 @@
 using System;
-using System.Data;
-using System.Text;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Text;
+using Epiworx.Business;
 using Epiworx.Business.Security;
 using Epiworx.Data;
 using Epiworx.Test.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Epiworx.Business;
 
 namespace Epiworx.Test
 {
@@ -37,8 +37,17 @@ namespace Epiworx.Test
             Assert.IsTrue(note.IsSelfDirty, "IsSelfDirty should be true");
             Assert.IsFalse(note.IsSelfValid, "IsSelfValid should be false");
 
-            // Assert.IsTrue(ValidationHelper.ContainsRule(note, DbType.String, "Body"),
-            //    "Body should be required");
+            Assert.IsTrue(
+                ValidationHelper.ContainsRule(note, DbType.String, "Body"),
+               "Body should be required");
+
+            Assert.IsTrue(
+                ValidationHelper.ContainsRule(note, DbType.Int32, "SourceId"),
+               "SourceId should be required");
+
+            Assert.IsTrue(
+                ValidationHelper.ContainsRule(note, DbType.Int32, "SourceTypeId"),
+               "SourceTypeId should be required");
         }
 
         [TestMethod]

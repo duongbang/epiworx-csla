@@ -23,17 +23,16 @@ namespace Epiworx.Test.Helpers
             return ProjectUserMemberTestHelper.ProjectUserMemberNew(Role.Administrator);
         }
 
-        public static ProjectUserMember ProjectUserMemberNew(Role RoleId)
+        public static ProjectUserMember ProjectUserMemberNew(Role roleId)
         {
             var project = ProjectTestHelper.ProjectAdd();
             var user = UserTestHelper.UserAdd();
 
             var projectUserMember = ProjectUserMemberRepository.ProjectUserMemberNew(project.ProjectId, user.UserId);
 
-            projectUserMember.RoleId = (int)RoleId;
+            projectUserMember.RoleId = (int)roleId;
 
             return projectUserMember;
         }
     }
 }
-

@@ -1,0 +1,204 @@
+<stylecopresultscache>
+  <version>11</version>
+  <project key="-1264178076">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="AttachmentDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:08:19</timestamp>
+    <milliseconds>733</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedSourceMemberDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/13/2011 22:46:13</timestamp>
+    <milliseconds>35</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="DataFactoryManager.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:44:05</timestamp>
+    <milliseconds>312</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="CategoryDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:07:31</timestamp>
+    <milliseconds>640</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="BusinessIdentityDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:07:31</timestamp>
+    <milliseconds>646</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FeedDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:07:31</timestamp>
+    <milliseconds>634</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="FilterDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 15:38:38</timestamp>
+    <milliseconds>676</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="HourDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:24:40</timestamp>
+    <milliseconds>37</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectUserMemberDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:07:31</timestamp>
+    <milliseconds>611</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>05/29/2011 07:15:00</timestamp>
+    <milliseconds>833</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SourceDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 15:29:58</timestamp>
+    <milliseconds>138</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SourceTypeDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:07:31</timestamp>
+    <milliseconds>598</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StatusDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:07:31</timestamp>
+    <milliseconds>585</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NoteDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 15:43:05</timestamp>
+    <milliseconds>604</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:07:31</timestamp>
+    <milliseconds>616</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:07:31</timestamp>
+    <milliseconds>567</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:07:31</timestamp>
+    <milliseconds>560</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordResetDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:07:31</timestamp>
+    <milliseconds>551</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StoryDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:10:51</timestamp>
+    <milliseconds>47</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UserPasswordResetRequestDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:07:31</timestamp>
+    <milliseconds>543</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="MockDb.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/17/2011 16:24:06</timestamp>
+    <milliseconds>335</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="SprintDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/16/2011 08:07:31</timestamp>
+    <milliseconds>592</milliseconds>
+    <violations />
+  </sourcecode>
+</stylecopresultscache>

@@ -14,17 +14,18 @@ namespace Epiworx.Test.Helpers
 
             filter = FilterRepository.FilterSave(filter);
 
-            return  filter;
+            return filter;
         }
 
         public static Filter FilterNew()
         {
-            var  filter = FilterRepository.FilterNew();
+            var filter = FilterRepository.FilterNew();
 
             filter.Name = DataHelper.RandomString(50);
+            filter.FilterQuery = DataHelper.RandomString(1000);
+            filter.SourceTypeId = (int)SourceType.User;
 
-            return  filter;
+            return filter;
         }
     }
 }
-

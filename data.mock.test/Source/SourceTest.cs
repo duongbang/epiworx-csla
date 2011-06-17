@@ -1,13 +1,13 @@
 using System;
-using System.Data;
-using System.Text;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Text;
+using Epiworx.Business;
 using Epiworx.Business.Security;
 using Epiworx.Data;
 using Epiworx.Test.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Epiworx.Business;
 
 namespace Epiworx.Test
 {
@@ -35,12 +35,7 @@ namespace Epiworx.Test
 
             Assert.IsTrue(source.IsNew, "IsNew should be true");
             Assert.IsTrue(source.IsDirty, "IsDirty should be true");
-            Assert.IsFalse(source.IsValid, "IsValid should be false");
             Assert.IsTrue(source.IsSelfDirty, "IsSelfDirty should be true");
-            Assert.IsFalse(source.IsSelfValid, "IsSelfValid should be false");
-
-            // Assert.IsTrue(ValidationHelper.ContainsRule(source, DbType.String, "Name"),
-            //    "Name should be required");
         }
 
         [TestMethod]
@@ -48,11 +43,7 @@ namespace Epiworx.Test
         {
             var project = ProjectTestHelper.ProjectAdd();
 
-            var source = SourceRepository.SourceNew(project.ProjectId, SourceType.Project, project.Name);
-
-            source = SourceRepository.SourceSave(source);
-
-            source = SourceRepository.SourceFetch(source.SourceId, SourceType.Project);
+            var source = SourceRepository.SourceFetch(project.ProjectId, SourceType.Project);
 
             Assert.IsTrue(source != null, "Row returned should not equal null");
         }
@@ -62,15 +53,9 @@ namespace Epiworx.Test
         {
             var project = ProjectTestHelper.ProjectAdd();
 
-            var source = SourceRepository.SourceNew(project.ProjectId, SourceType.Project, project.Name);
+            var source = SourceRepository.SourceFetch(project.ProjectId, SourceType.Project);
 
-            Assert.IsTrue(source.IsValid, "IsValid should be true");
-
-            source = SourceRepository.SourceSave(source);
-
-            Assert.IsTrue(source.SourceId != 0, "SourceId should be a non-zero value");
-
-            SourceRepository.SourceFetch(source.SourceId, SourceType.Project);
+            Assert.IsTrue(source != null, "Row returned should not equal null");
         }
 
         [TestMethod]
@@ -78,13 +63,9 @@ namespace Epiworx.Test
         {
             var project = ProjectTestHelper.ProjectAdd();
 
-            var source = SourceRepository.SourceNew(project.ProjectId, SourceType.Project, project.Name);
+            var source = SourceRepository.SourceFetch(project.ProjectId, SourceType.Project);
 
-            Assert.IsTrue(source.IsValid, "IsValid should be true");
-
-            source = SourceRepository.SourceSave(source);
-
-            source = SourceRepository.SourceFetch(source.SourceId, SourceType.Project);
+            Assert.IsTrue(source != null, "Row returned should not equal null");
 
             SourceRepository.SourceDelete(source.SourceId, SourceType.Project);
 

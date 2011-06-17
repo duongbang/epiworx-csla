@@ -20,8 +20,6 @@ namespace Epiworx.Business
                 this.CreatedDate = DateTime.Now;
             }
 
-            // this.ChildPropertyName = Csla.DataPortal.CreateChild<ChildPropertType>();
-
             base.DataPortal_Create();
         }
 

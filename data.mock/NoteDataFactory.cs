@@ -21,11 +21,8 @@ namespace Epiworx.Data.Mock
         public NoteData Fetch(NoteData data)
         {
             data.Source = MockDb.Sources
-               .Where(row => row.SourceId == data.SourceId)
-               .Single();
-
-            data.SourceType = MockDb.SourceTypes
-               .Where(row => row.SourceTypeId == data.SourceTypeId)
+               .Where(row => row.SourceId == data.SourceId
+                    && row.SourceTypeId == data.SourceTypeId)
                .Single();
 
             data.CreatedByUser = MockDb.Users
