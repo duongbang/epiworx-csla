@@ -19,6 +19,11 @@ namespace Epiworx.Business
                 });
         }
 
+        public static ProjectInfoList ProjectFetchInfoList()
+        {
+            return ProjectInfoList.FetchProjectInfoList(new ProjectDataCriteria());
+        }
+
         public static ProjectInfoList ProjectFetchInfoList(ProjectDataCriteria criteria)
         {
             return ProjectInfoList.FetchProjectInfoList(criteria);

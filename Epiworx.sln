@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx.Core", "core\Epiwor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx.Business.Security", "business.security\Epiworx.Business.Security.csproj", "{266B5D33-88BB-4502-91B7-952D4DBA06BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx.Console", "console\Epiworx.Console.csproj", "{906A1B4D-057A-46AD-A6C4-F84CFC6A445F}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Epiworx.vsmdi
@@ -129,6 +131,16 @@ Global
 		{266B5D33-88BB-4502-91B7-952D4DBA06BB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{266B5D33-88BB-4502-91B7-952D4DBA06BB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{266B5D33-88BB-4502-91B7-952D4DBA06BB}.Release|x86.ActiveCfg = Release|Any CPU
+		{906A1B4D-057A-46AD-A6C4-F84CFC6A445F}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{906A1B4D-057A-46AD-A6C4-F84CFC6A445F}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{906A1B4D-057A-46AD-A6C4-F84CFC6A445F}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{906A1B4D-057A-46AD-A6C4-F84CFC6A445F}.Debug|x86.ActiveCfg = Debug|x86
+		{906A1B4D-057A-46AD-A6C4-F84CFC6A445F}.Debug|x86.Build.0 = Debug|x86
+		{906A1B4D-057A-46AD-A6C4-F84CFC6A445F}.Release|Any CPU.ActiveCfg = Release|x86
+		{906A1B4D-057A-46AD-A6C4-F84CFC6A445F}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{906A1B4D-057A-46AD-A6C4-F84CFC6A445F}.Release|Mixed Platforms.Build.0 = Release|x86
+		{906A1B4D-057A-46AD-A6C4-F84CFC6A445F}.Release|x86.ActiveCfg = Release|x86
+		{906A1B4D-057A-46AD-A6C4-F84CFC6A445F}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

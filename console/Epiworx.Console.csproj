@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{906A1B4D-057A-46AD-A6C4-F84CFC6A445F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Epiworx.Console</RootNamespace>
+    <AssemblyName>Epiworx.Console</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Csla">
+      <HintPath>..\packages\CSLA-Core.4.1.0.1\Lib\NET4.0\Csla.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Parameter.cs" />
+    <Compile Include="ParameterCollection.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="Packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\business.security\Epiworx.Business.Security.csproj">
+      <Project>{266B5D33-88BB-4502-91B7-952D4DBA06BB}</Project>
+      <Name>Epiworx.Business.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\business\Epiworx.Business.csproj">
+      <Project>{808576B0-08F7-41D1-9DD5-4BAD848F2420}</Project>
+      <Name>Epiworx.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\core\Epiworx.Core.csproj">
+      <Project>{852839EC-23EA-43C8-AFF4-2FF2EACD4B55}</Project>
+      <Name>Epiworx.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\data.entityframework\Epiworx.Data.EntityFramework.csproj">
+      <Project>{823560AE-2959-4C07-9B91-CCE905A965DB}</Project>
+      <Name>Epiworx.Data.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\data.mock\Epiworx.Data.Mock.csproj">
+      <Project>{1F729C3F-3278-4949-B50B-DC08796CFDCC}</Project>
+      <Name>Epiworx.Data.Mock</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\data\Epiworx.Data.csproj">
+      <Project>{1641C95F-FED3-4623-BC61-4B220B5BFF58}</Project>
+      <Name>Epiworx.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
