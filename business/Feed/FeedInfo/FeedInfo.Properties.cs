@@ -56,9 +56,9 @@ namespace Epiworx.Business
             set { this.LoadProperty(CreatedDateProperty, value); }
         }
 
-        private static Csla.PropertyInfo<List<FeedSourceMemberInfo>> SourcesProperty =
-            RegisterProperty<List<FeedSourceMemberInfo>>(row => row.Sources, "Sources");
-        public List<FeedSourceMemberInfo> Sources
+        private static Csla.PropertyInfo<List<FeedSourceInfo>> SourcesProperty =
+            RegisterProperty<List<FeedSourceInfo>>(row => row.Sources, "Sources");
+        public List<FeedSourceInfo> Sources
         {
             get { return this.GetProperty(SourcesProperty); }
             set { this.LoadProperty(SourcesProperty, value); }

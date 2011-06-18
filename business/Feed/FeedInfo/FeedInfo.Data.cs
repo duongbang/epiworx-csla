@@ -17,11 +17,11 @@ namespace Epiworx.Business
             this.CreatedByName = data.CreatedByUser.Name;
             this.CreatedDate = data.CreatedDate;
 
-            this.Sources = new List<FeedSourceMemberInfo>();
+            this.Sources = new List<FeedSourceInfo>();
 
             foreach (var source in data.Sources)
             {
-                this.Sources.Add(Csla.DataPortal.FetchChild<FeedSourceMemberInfo>(source));
+                this.Sources.Add(Csla.DataPortal.FetchChild<FeedSourceInfo>(source));
             }
         }
     }

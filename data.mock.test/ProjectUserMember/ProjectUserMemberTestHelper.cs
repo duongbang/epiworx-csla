@@ -7,28 +7,28 @@ using Epiworx.Test.Helpers;
 
 namespace Epiworx.Test.Helpers
 {
-    public class ProjectUserMemberTestHelper
+    public class ProjectUserTestHelper
     {
-        public static ProjectUserMember ProjectUserMemberAdd()
+        public static ProjectUser ProjectUserAdd()
         {
-            var projectUserMember = ProjectUserMemberTestHelper.ProjectUserMemberNew();
+            var projectUserMember = ProjectUserTestHelper.ProjectUserNew();
 
-            projectUserMember = ProjectUserMemberRepository.ProjectUserMemberSave(projectUserMember);
+            projectUserMember = ProjectUserRepository.ProjectUserSave(projectUserMember);
 
             return projectUserMember;
         }
 
-        public static ProjectUserMember ProjectUserMemberNew()
+        public static ProjectUser ProjectUserNew()
         {
-            return ProjectUserMemberTestHelper.ProjectUserMemberNew(Role.Administrator);
+            return ProjectUserTestHelper.ProjectUserNew(Role.Administrator);
         }
 
-        public static ProjectUserMember ProjectUserMemberNew(Role roleId)
+        public static ProjectUser ProjectUserNew(Role roleId)
         {
             var project = ProjectTestHelper.ProjectAdd();
             var user = UserTestHelper.UserAdd();
 
-            var projectUserMember = ProjectUserMemberRepository.ProjectUserMemberNew(project.ProjectId, user.UserId);
+            var projectUserMember = ProjectUserRepository.ProjectUserNew(project.ProjectId, user.UserId);
 
             projectUserMember.RoleId = (int)roleId;
 

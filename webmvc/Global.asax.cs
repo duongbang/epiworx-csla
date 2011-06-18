@@ -7,6 +7,12 @@ using System.Web.Routing;
 
 namespace Epiworx.WebMvc
 {
+    using System.Security.Principal;
+    using System.Web.Security;
+    using System.Web.SessionState;
+
+    using Epiworx.Business.Security;
+
     public class MvcApplication : System.Web.HttpApplication
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -30,6 +36,36 @@ namespace Epiworx.WebMvc
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+        }
+
+        protected void Application_AcquireRequestState(object sender, EventArgs e)
+        {
+            if (!(HttpContext.Current.Handler is IRequiresSessionState))
+            {
+                return;
+            }
+
+            IPrincipal principal = null;
+
+            if (Csla.ApplicationContext.User.Identity.IsAuthenticated)
+            {
+                principal = Csla.ApplicationContext.User;
+            }
+
+            if (principal == null)
+            {
+                if (this.User.Identity.IsAuthenticated
+                    && this.User.Identity is FormsIdentity)
+                {
+                    BusinessPrincipal.LoadPrincipal(this.User.Identity.Name);
+
+                    this.Response.Redirect(this.Request.Url.PathAndQuery);
+                }
+
+                FormsAuthentication.SignOut();
+
+                BusinessPrincipal.Logout();
+            }
         }
     }
 }

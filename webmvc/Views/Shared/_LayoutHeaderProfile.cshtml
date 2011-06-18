@@ -1,0 +1,10 @@
+﻿@model Epiworx.WebMvc.ModelBase
+<div id="header-profile">
+    <div class="wrapper">
+        <ul>
+            <li>Welcome <strong>@Context.User.Identity.Name</strong>!</li>
+            <li>@Html.ActionLink("Settings", "Settings", "Account")</li>
+            <li>@Html.ActionLink("Sign Out", "LogOff", "Account")</li>
+        </ul>
+    </div>
+</div>

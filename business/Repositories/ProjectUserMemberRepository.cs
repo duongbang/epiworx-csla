@@ -8,67 +8,67 @@ using Epiworx.Data;
 namespace Epiworx.Business
 {
     [Serializable]
-    public class ProjectUserMemberRepository
+    public class ProjectUserRepository
     {
-        public static ProjectUserMember ProjectUserMemberFetch(int projectId)
+        public static ProjectUser ProjectUserFetch(int projectId)
         {
-            return ProjectUserMember.FetchProjectUserMember(
+            return ProjectUser.FetchProjectUser(
                 new ProjectUserMemberDataCriteria
                 {
                     ProjectUserMemberId = projectId
                 });
         }
 
-        public static ProjectUserMemberInfoList ProjectUserMemberFetchInfoList(ProjectUserMemberDataCriteria criteria)
+        public static ProjectUserInfoList ProjectUserFetchInfoList(ProjectUserMemberDataCriteria criteria)
         {
-            return ProjectUserMemberInfoList.FetchProjectUserMemberInfoList(criteria);
+            return ProjectUserInfoList.FetchProjectUserInfoList(criteria);
         }
 
-        public static ProjectUserMember ProjectUserMemberSave(ProjectUserMember projectUserMember)
+        public static ProjectUser ProjectUserSave(ProjectUser projectUserMember)
         {
             if (!projectUserMember.IsValid)
             {
                 return projectUserMember;
             }
 
-            ProjectUserMember result;
+            ProjectUser result;
 
             if (projectUserMember.IsNew)
             {
-                result = ProjectUserMemberRepository.ProjectUserMemberInsert(projectUserMember);
+                result = ProjectUserRepository.ProjectUserInsert(projectUserMember);
             }
             else
             {
-                result = ProjectUserMemberRepository.ProjectUserMemberUpdate(projectUserMember);
+                result = ProjectUserRepository.ProjectUserUpdate(projectUserMember);
             }
 
             return result;
         }
 
-        public static ProjectUserMember ProjectUserMemberInsert(ProjectUserMember projectUserMember)
+        public static ProjectUser ProjectUserInsert(ProjectUser projectUserMember)
         {
             projectUserMember = projectUserMember.Save();
 
             return projectUserMember;
         }
 
-        public static ProjectUserMember ProjectUserMemberUpdate(ProjectUserMember projectUserMember)
+        public static ProjectUser ProjectUserUpdate(ProjectUser projectUserMember)
         {
             projectUserMember = projectUserMember.Save();
 
             return projectUserMember;
         }
 
-        public static ProjectUserMember ProjectUserMemberNew(int projectId, int userId)
+        public static ProjectUser ProjectUserNew(int projectId, int userId)
         {
-            var projectUserMember = ProjectUserMember.NewProjectUserMember(projectId, userId);
+            var projectUserMember = ProjectUser.NewProjectUser(projectId, userId);
 
             return projectUserMember;
         }
 
-        public static bool ProjectUserMemberDelete(ProjectUserMember projectUserMember)
+        public static bool ProjectUserDelete(ProjectUser projectUserMember)
         {
-            ProjectUserMember.DeleteProjectUserMember(
+            ProjectUser.DeleteProjectUser(
                 new ProjectUserMemberDataCriteria
                 {
                     ProjectUserMemberId = projectUserMember.ProjectUserMemberId
@@ -77,10 +77,10 @@ namespace Epiworx.Business
             return true;
         }
 
-        public static bool ProjectUserMemberDelete(int projectId)
+        public static bool ProjectUserDelete(int projectId)
         {
-            return ProjectUserMemberRepository.ProjectUserMemberDelete(
-                ProjectUserMemberRepository.ProjectUserMemberFetch(projectId));
+            return ProjectUserRepository.ProjectUserDelete(
+                ProjectUserRepository.ProjectUserFetch(projectId));
         }
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Epiworx.Test
 {
     [TestClass]
-    public class ProjectUserMemberTest
+    public class ProjectUserTest
     {
         [TestInitialize]
         public void MyTestInitialize()
@@ -27,9 +27,9 @@ namespace Epiworx.Test
         }
 
         [TestMethod]
-        public void ProjectUserMember_Create()
+        public void ProjectUser_Create()
         {
-            var projectUserMember = ProjectUserMemberRepository.ProjectUserMemberNew(0, 0);
+            var projectUserMember = ProjectUserRepository.ProjectUserNew(0, 0);
 
             Assert.IsTrue(projectUserMember.IsNew, "IsNew should be true");
             Assert.IsTrue(projectUserMember.IsDirty, "IsDirty should be true");
@@ -51,80 +51,80 @@ namespace Epiworx.Test
         }
 
         [TestMethod]
-        public void ProjectUserMember_Fetch()
+        public void ProjectUser_Fetch()
         {
-            var projectUserMember = ProjectUserMemberTestHelper.ProjectUserMemberNew();
+            var projectUserMember = ProjectUserTestHelper.ProjectUserNew();
 
-            projectUserMember = ProjectUserMemberRepository.ProjectUserMemberSave(projectUserMember);
+            projectUserMember = ProjectUserRepository.ProjectUserSave(projectUserMember);
 
-            projectUserMember = ProjectUserMemberRepository.ProjectUserMemberFetch(projectUserMember.ProjectUserMemberId);
+            projectUserMember = ProjectUserRepository.ProjectUserFetch(projectUserMember.ProjectUserMemberId);
 
             Assert.IsTrue(projectUserMember != null, "Row returned should not equal null");
         }
 
         [TestMethod]
-        public void ProjectUserMember_Fetch_Info_List()
+        public void ProjectUser_Fetch_Info_List()
         {
-            ProjectUserMemberTestHelper.ProjectUserMemberAdd();
-            ProjectUserMemberTestHelper.ProjectUserMemberAdd();
+            ProjectUserTestHelper.ProjectUserAdd();
+            ProjectUserTestHelper.ProjectUserAdd();
 
-            var projectUserMembers = ProjectUserMemberRepository.ProjectUserMemberFetchInfoList(new ProjectUserMemberDataCriteria());
+            var projectUserMembers = ProjectUserRepository.ProjectUserFetchInfoList(new ProjectUserMemberDataCriteria());
 
             Assert.IsTrue(projectUserMembers.Count() > 1, "Row returned should be greater than one");
         }
 
         [TestMethod]
-        public void ProjectUserMember_Add()
+        public void ProjectUser_Add()
         {
-            var projectUserMember = ProjectUserMemberTestHelper.ProjectUserMemberNew();
+            var projectUserMember = ProjectUserTestHelper.ProjectUserNew();
 
             Assert.IsTrue(projectUserMember.IsValid, "IsValid should be true");
 
-            projectUserMember = ProjectUserMemberRepository.ProjectUserMemberSave(projectUserMember);
+            projectUserMember = ProjectUserRepository.ProjectUserSave(projectUserMember);
 
             Assert.IsTrue(projectUserMember.ProjectUserMemberId != 0, "ProjectUserMemberId should be a non-zero value");
 
-            ProjectUserMemberRepository.ProjectUserMemberFetch(projectUserMember.ProjectUserMemberId);
+            ProjectUserRepository.ProjectUserFetch(projectUserMember.ProjectUserMemberId);
         }
 
         [TestMethod]
-        public void ProjectUserMember_Edit()
+        public void ProjectUser_Edit()
         {
-            var projectUserMember = ProjectUserMemberTestHelper.ProjectUserMemberNew();
+            var projectUserMember = ProjectUserTestHelper.ProjectUserNew();
 
             var roleId = projectUserMember.RoleId;
 
             Assert.IsTrue(projectUserMember.IsValid, "IsValid should be true");
 
-            projectUserMember = ProjectUserMemberRepository.ProjectUserMemberSave(projectUserMember);
+            projectUserMember = ProjectUserRepository.ProjectUserSave(projectUserMember);
 
-            projectUserMember = ProjectUserMemberRepository.ProjectUserMemberFetch(projectUserMember.ProjectUserMemberId);
+            projectUserMember = ProjectUserRepository.ProjectUserFetch(projectUserMember.ProjectUserMemberId);
 
             projectUserMember.RoleId = (int)Role.Reviewer;
 
-            projectUserMember = ProjectUserMemberRepository.ProjectUserMemberSave(projectUserMember);
+            projectUserMember = ProjectUserRepository.ProjectUserSave(projectUserMember);
 
-            projectUserMember = ProjectUserMemberRepository.ProjectUserMemberFetch(projectUserMember.ProjectUserMemberId);
+            projectUserMember = ProjectUserRepository.ProjectUserFetch(projectUserMember.ProjectUserMemberId);
 
             Assert.IsTrue(projectUserMember.RoleId != roleId, "RoleId should have different value");
         }
 
         [TestMethod]
-        public void ProjectUserMember_Delete()
+        public void ProjectUser_Delete()
         {
-            var projectUserMember = ProjectUserMemberTestHelper.ProjectUserMemberNew();
+            var projectUserMember = ProjectUserTestHelper.ProjectUserNew();
 
             Assert.IsTrue(projectUserMember.IsValid, "IsValid should be true");
 
-            projectUserMember = ProjectUserMemberRepository.ProjectUserMemberSave(projectUserMember);
+            projectUserMember = ProjectUserRepository.ProjectUserSave(projectUserMember);
 
-            projectUserMember = ProjectUserMemberRepository.ProjectUserMemberFetch(projectUserMember.ProjectUserMemberId);
+            projectUserMember = ProjectUserRepository.ProjectUserFetch(projectUserMember.ProjectUserMemberId);
 
-            ProjectUserMemberRepository.ProjectUserMemberDelete(projectUserMember.ProjectUserMemberId);
+            ProjectUserRepository.ProjectUserDelete(projectUserMember.ProjectUserMemberId);
 
             try
             {
-                ProjectUserMemberRepository.ProjectUserMemberFetch(projectUserMember.ProjectUserMemberId);
+                ProjectUserRepository.ProjectUserFetch(projectUserMember.ProjectUserMemberId);
             }
             catch (Exception ex)
             {

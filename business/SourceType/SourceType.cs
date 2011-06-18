@@ -12,7 +12,7 @@ namespace Epiworx.Business
         Category = 2,
         Status = 3,
         Project = 4,
-        ProjectUserMember = 5,
+        ProjectUser = 5,
         Sprint = 6,
         Story = 7,
         Hour = 8,

@@ -1,0 +1,10 @@
+﻿<div id="header">
+    <div class="wrapper">
+        @if (Request.IsAuthenticated)
+        {
+            @Html.Partial("_LayoutHeaderProfile")
+        }
+        <h1>
+            Epiworx</h1>
+    </div>
+</div>

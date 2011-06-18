@@ -1,0 +1,28 @@
+﻿@model Epiworx.WebMvc.Models.AccountLogOnModel
+@using Epiworx.WebMvc.Helpers
+<div class="hgroup">
+    <h2>
+        Log On</h2>
+    <p>
+        Please enter your user name and password</p>
+</div>
+@Html.ValidationSummary(false, "Oh snap! The login was unsuccessful. Please correct the errors and try again.")
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Log On</legend>
+        @Html.LabelFor(m => Model.UserName)
+        @Html.TextBoxFor(m => Model.UserName, new { @class = "big" })
+        @Html.LabelFor(m => Model.Password)
+        @Html.PasswordFor(m => Model.Password, new { @class = "big" })
+        <label for="RememberMe" class="checkbox">
+            @Html.CheckBoxFor(m => Model.RememberMe)
+            Remember me</label>
+    </fieldset>
+    <ul class="commands">
+        <li>
+            <button>
+                Logon</button></li>
+        <li>@this.Html.ActionLink("I forgot my password", "ForgotPassword")</li>
+    </ul>
+}

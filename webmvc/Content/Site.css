@@ -1,75 +1,127 @@
-body
+.hgroup
 {
-    font-size: .85em;
-    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
-    color: #232323;
-    background-color: #fff;
+    margin-bottom: 20px;
 }
 
-header,
-footer,
-nav,
-section {
-    display: block;
+.hgroup p
+{
+    color: #808080;
 }
 
-/* Styles for basic forms
------------------------------------------------------------*/
-
-fieldset 
+.commands
 {
-    border:1px solid #ddd;
-    padding:0 1.4em 1.4em 1.4em;
-    margin:0 0 1.5em 0;
 }
 
-legend 
+.commands li
 {
-    font-size:1.2em;
-    font-weight: bold;
-}
-
-textarea 
-{
-    min-height: 75px;
-}
-
-.editor-label 
-{
-    margin: 1em 0 0 0;
-}
-
-.editor-field 
-{
-    margin:0.5em 0 0 0;
-}
-
-
-/* Styles for validation helpers
------------------------------------------------------------*/
-.field-validation-error
-{
-    color: #ff0000;
-}
-
-.field-validation-valid
-{
-    display: none;
-}
-
-.input-validation-error
-{
-    border: 1px solid #ff0000;
-    background-color: #ffeeee;
+    display: inline;
 }
 
 .validation-summary-errors
 {
-    font-weight: bold;
-    color: #ff0000;
+    color: #CC0000;
+    margin-bottom: 20px;
 }
 
-.validation-summary-valid
+.validation-summary-errors span
+{
+    font-weight: bold;
+}
+
+.validation-summary-errors ul
+{
+    padding-top: 10px;
+}
+
+.validation-summary-errors li
+{
+    margin-bottom: 10px;
+}
+
+#header
+{
+    padding: 20px 20px 40px 20px;
+}
+
+#header-profile
+{
+    float: right;
+}
+
+#header-profile li
+{
+    display: inline;
+}
+
+#main
+{
+    padding: 0px 20px 0px 20px;
+}
+
+#footer
+{
+    padding: 40px 20px 20px 20px;
+}
+
+body
+{
+    font-size: 16px;
+    font-family: 'Times New Roman' , Times, serif;
+}
+
+button
+{
+    padding: 5px 10px 5px 10px;
+    font-weight: bold;
+}
+
+h1
+{
+    font-size: 32px;
+}
+
+h2
+{
+    font-size: 24px;
+}
+
+h3
+{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input, button
+{
+    font-size: 16px;
+    font-family: 'Times New Roman' , Times, serif;
+}
+
+input[type="text"], input[type="password"]
+{
+    padding: 5px;
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+fieldset
+{
+    margin-bottom: 20px;
+}
+
+fieldset label
+{
+    display: block;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+label
+{
+    font-weight: bold;
+}
+
+legend
 {
     display: none;
 }

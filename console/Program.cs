@@ -22,7 +22,10 @@ namespace Epiworx.Console
 
                 currentLine = System.Console.In.ReadLine();
 
-                ParameterCollection parameters = null;
+                if (currentLine == null)
+                {
+                    continue;
+                }
 
                 if (currentLine.StartsWith("login"))
                 {

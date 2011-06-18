@@ -23,8 +23,8 @@ namespace Epiworx.Business.Helpers
                     return "Note";
                 case SourceType.Project:
                     return "Project";
-                case SourceType.ProjectUserMember:
-                    return "ProjectUserMember";
+                case SourceType.ProjectUser:
+                    return "ProjectUser";
                 case SourceType.User:
                     return "User";
                 case SourceType.Sprint:

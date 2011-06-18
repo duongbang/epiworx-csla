@@ -17,7 +17,7 @@ namespace Epiworx.Business
                 this.CreatedDate = DateTime.Now;
             }
 
-            this.Sources = Csla.DataPortal.CreateChild<FeedSourceMembers>();
+            this.Sources = Csla.DataPortal.CreateChild<FeedSources>();
 
             base.DataPortal_Create();
         }
@@ -35,7 +35,7 @@ namespace Epiworx.Business
                     this.Fetch(data);
                 }
 
-                this.Sources = Csla.DataPortal.FetchChild<FeedSourceMembers>(data);
+                this.Sources = Csla.DataPortal.FetchChild<FeedSources>(data);
             }
         }
 
@@ -111,7 +111,7 @@ namespace Epiworx.Business
                         FeedId = this.FeedId
                     });
 
-                this.Sources = Csla.DataPortal.CreateChild<FeedSourceMembers>();
+                this.Sources = Csla.DataPortal.CreateChild<FeedSources>();
             }
         }
     }
