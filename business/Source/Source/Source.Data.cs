@@ -45,11 +45,7 @@ namespace Epiworx.Business
             this.SourceId = data.SourceId;
             this.SourceTypeId = data.SourceTypeId;
             this.Name = data.Name;
-            this.CreatedBy = data.CreatedBy;
-            this.CreatedByName = data.CreatedByUser.Name;
             this.CreatedDate = data.CreatedDate;
-            this.ModifiedBy = data.ModifiedBy;
-            this.ModifiedByName = data.ModifiedByUser.Name;
             this.ModifiedDate = data.ModifiedDate;
         }
 
@@ -64,9 +60,7 @@ namespace Epiworx.Business
 
                 using (this.BypassPropertyChecks)
                 {
-                    this.ModifiedBy = ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
                     this.ModifiedDate = DateTime.Now;
-                    this.CreatedBy = this.ModifiedBy;
                     this.CreatedDate = this.ModifiedDate;
 
                     this.Insert(data);
@@ -97,7 +91,6 @@ namespace Epiworx.Business
 
                 using (this.BypassPropertyChecks)
                 {
-                    this.ModifiedBy = ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
                     this.ModifiedDate = DateTime.Now;
 
                     this.Update(data);
@@ -114,9 +107,7 @@ namespace Epiworx.Business
             data.SourceId = this.SourceId;
             data.SourceTypeId = this.SourceTypeId;
             data.Name = this.Name;
-            data.CreatedBy = this.CreatedBy;
             data.CreatedDate = this.CreatedDate;
-            data.ModifiedBy = this.ModifiedBy;
             data.ModifiedDate = this.ModifiedDate;
         }
 

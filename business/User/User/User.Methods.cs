@@ -40,7 +40,7 @@ namespace Epiworx.Business
 
             if (!passwordValidator.Validate(password))
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("Invalid password");
             }
 
             this.Salt = PasswordHelper.GetSalt(Settings.SaltSize);

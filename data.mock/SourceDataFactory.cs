@@ -21,14 +21,6 @@ namespace Epiworx.Data.Mock
 
         public SourceData Fetch(SourceData data)
         {
-            data.CreatedByUser = MockDb.Users
-                .Where(row => row.UserId == data.CreatedBy)
-                .Single();
-
-            data.ModifiedByUser = MockDb.Users
-                .Where(row => row.UserId == data.ModifiedBy)
-                .Single();
-
             return data;
         }
 

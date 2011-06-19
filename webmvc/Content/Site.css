@@ -3,6 +3,11 @@
     margin-bottom: 20px;
 }
 
+.hgroup h2
+{
+    margin-bottom: 5px;
+}
+
 .hgroup p
 {
     color: #808080;
@@ -102,6 +107,11 @@ input[type="text"], input[type="password"]
     padding: 5px;
     width: 300px;
     margin-bottom: 10px;
+}
+
+input[type="text"].big, input[type="password"].big
+{
+    font-size: 24px;
 }
 
 fieldset

@@ -1,0 +1,33 @@
+﻿@model Epiworx.WebMvc.Models.AccountRegisterModel
+@using Epiworx.WebMvc.Helpers
+<div class="hgroup">
+    <h2>
+        Register</h2>
+    <p>
+        Please fill out the information below to complete the registration process</p>
+</div>
+@Html.ValidationSummary(false, "Oh snap! Looks like we ran into some trouble. Please correct the errors and try again.")
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Register</legend>
+        <label for="Name">
+            Name</label>
+        @Html.TextBoxFor(m => Model.Name, new { @class = "big" })
+        <label for="FullName">Full name</label>
+        @Html.TextBoxFor(m => Model.FullName)
+        <label for="Email">Email</label>
+        @Html.TextBoxFor(m => Model.Email)
+        <label for="Password">Password</label>
+        @Html.PasswordFor(m => Model.Password)
+        <label for="PasswordConfirmation">Confirm your password</label>
+        @Html.PasswordFor(m => Model.PasswordConfirmation)
+    </fieldset>
+    <ul class="commands">
+        <li>
+            <button>
+                Register</button></li>
+        <li><span>or</span></li>
+        <li>@this.Html.ActionLink("Stop the registration process", "LogOn")</li>
+    </ul>
+}

@@ -10,12 +10,10 @@ namespace Epiworx.WebMvc.Models
     public class AccountLogOnModel : ModelBase
     {
         [Required(ErrorMessage = "Name is required")]
-        [DisplayName("Name")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]
-        [DisplayName("Password")]
         public string Password { get; set; }
 
         public bool RememberMe { get; set; }

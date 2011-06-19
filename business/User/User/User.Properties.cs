@@ -90,13 +90,5 @@ namespace Epiworx.Business
             get { return this.GetProperty(ModifiedDateProperty); }
             private set { this.SetProperty(ModifiedDateProperty, value); }
         }
-
-        // public static Csla.PropertyInfo<ChildPropertyType> ChildPropertyProperty =
-        //     RegisterProperty<ChildPropertyType>(row => row.ChildProperty);
-        // public ChildPropertyType ChildProperty
-        // {
-        //     get { return GetProperty(ChildPropertyProperty); }
-        //     private set { LoadProperty(ChildPropertyProperty, value); }
-        // }
     }
 }

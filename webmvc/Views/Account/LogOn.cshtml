@@ -11,9 +11,9 @@
 {
     <fieldset>
         <legend>Log On</legend>
-        @Html.LabelFor(m => Model.UserName)
+        <label for="UserName">Name</label>
         @Html.TextBoxFor(m => Model.UserName, new { @class = "big" })
-        @Html.LabelFor(m => Model.Password)
+        <label for="Password">Password</label>
         @Html.PasswordFor(m => Model.Password, new { @class = "big" })
         <label for="RememberMe" class="checkbox">
             @Html.CheckBoxFor(m => Model.RememberMe)
@@ -23,6 +23,8 @@
         <li>
             <button>
                 Logon</button></li>
+        <li><span>or</span></li>
         <li>@this.Html.ActionLink("I forgot my password", "ForgotPassword")</li>
+        <li>@this.Html.ActionLink("I am a new user", "Register")</li>
     </ul>
 }

@@ -4,7 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Epiworx.Business;
 using Epiworx.Business.Security;
+using Epiworx.WebMvc.Helpers;
 using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Controllers
@@ -33,12 +35,6 @@ namespace Epiworx.WebMvc.Controllers
         [HttpPost]
         public ActionResult LogOn(AccountLogOnModel model, string returnUrl)
         {
-            //var model = new AccountLogOnModel();
-
-            //model.UserName = collection["UserName"];
-            //model.Password = collection["Password"];
-            //model.RememberMe = collection["RememberMe"] != null ? true : false;
-
             if (this.ModelState.IsValid)
             {
                 if (this.ValidateUser(model.UserName, model.Password))
@@ -66,6 +62,44 @@ namespace Epiworx.WebMvc.Controllers
             BusinessPrincipal.Logout();
 
             return this.RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Register()
+        {
+            var model = new AccountRegisterModel();
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Register(AccountRegisterModel model)
+        {
+            if (this.ModelState.IsValid)
+            {
+                var user = UserRepository.UserNew();
+
+                Csla.Data.DataMapper.Map(model, user, true);
+
+                user.SetPassword(model.Password);
+
+                user = UserRepository.UserSave(user);
+
+                if (user.IsValid)
+                {
+                    return this.RedirectToAction("RegisterSuccess");
+                }
+
+                ModelHelper.MapBrokenRules(this.ModelState, user);
+            }
+
+            return this.View(model);
+        }
+
+        public ActionResult RegisterSuccess()
+        {
+            var model = new AccountRegisterSuccessModel();
+
+            return this.View(model);
         }
 
         public bool ValidateUser(string userName, string password)
