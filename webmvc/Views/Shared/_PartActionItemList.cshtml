@@ -1,0 +1,17 @@
+﻿@model Epiworx.WebMvc.ModelBase
+@if (Model.Actions.Count != 0)
+{
+    <div class="part">
+        <div class="wrapper">
+            <h3>Things to Do</h3>
+            <ul class="actions">
+                @foreach (var action in Model.Actions)
+                {
+                    <li class="@action.CssClass">
+                        @if (!string.IsNullOrEmpty(action.ImageUrl))
+                        {<text><img src="@action.ImageUrl" alt="@action.Caption"/></text>}<a href="@action.NavigateUrl">@action.Caption</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+}

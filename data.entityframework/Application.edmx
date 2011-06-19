@@ -1,0 +1,785 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ApplicationModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ApplicationModelStoreContainer">
+          <EntitySet Name="Feed" EntityType="ApplicationModel.Store.Feed" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FeedSourceMember" EntityType="ApplicationModel.Store.FeedSourceMember" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Project" EntityType="ApplicationModel.Store.Project" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProjectUserMember" EntityType="ApplicationModel.Store.ProjectUserMember" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Role" EntityType="ApplicationModel.Store.Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Source" EntityType="ApplicationModel.Store.Source" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SourceType" EntityType="ApplicationModel.Store.SourceType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="ApplicationModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Feed_UserCreatedBy" Association="ApplicationModel.Store.FK_Feed_UserCreatedBy">
+            <End Role="User" EntitySet="User" />
+            <End Role="Feed" EntitySet="Feed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedSourceMember_Feed" Association="ApplicationModel.Store.FK_FeedSourceMember_Feed">
+            <End Role="Feed" EntitySet="Feed" />
+            <End Role="FeedSourceMember" EntitySet="FeedSourceMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedSourceMember_Source" Association="ApplicationModel.Store.FK_FeedSourceMember_Source">
+            <End Role="Source" EntitySet="Source" />
+            <End Role="FeedSourceMember" EntitySet="FeedSourceMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedSourceMember_UserCreatedBy" Association="ApplicationModel.Store.FK_FeedSourceMember_UserCreatedBy">
+            <End Role="User" EntitySet="User" />
+            <End Role="FeedSourceMember" EntitySet="FeedSourceMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_UserCreatedBy" Association="ApplicationModel.Store.FK_Project_UserCreatedBy">
+            <End Role="User" EntitySet="User" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_UserModifiedBy" Association="ApplicationModel.Store.FK_Project_UserModifiedBy">
+            <End Role="User" EntitySet="User" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectUserMember_Project" Association="ApplicationModel.Store.FK_ProjectUserMember_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectUserMember" EntitySet="ProjectUserMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectUserMember_Role" Association="ApplicationModel.Store.FK_ProjectUserMember_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="ProjectUserMember" EntitySet="ProjectUserMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectUserMember_User" Association="ApplicationModel.Store.FK_ProjectUserMember_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ProjectUserMember" EntitySet="ProjectUserMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectUserMember_UserCreatedBy" Association="ApplicationModel.Store.FK_ProjectUserMember_UserCreatedBy">
+            <End Role="User" EntitySet="User" />
+            <End Role="ProjectUserMember" EntitySet="ProjectUserMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectUserMember_UserModifiedBy" Association="ApplicationModel.Store.FK_ProjectUserMember_UserModifiedBy">
+            <End Role="User" EntitySet="User" />
+            <End Role="ProjectUserMember" EntitySet="ProjectUserMember" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Feed">
+          <Key>
+            <PropertyRef Name="FeedId" />
+          </Key>
+          <Property Name="FeedId" Type="int" Nullable="false" />
+          <Property Name="Action" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FeedSourceMember">
+          <Key>
+            <PropertyRef Name="FeedSourceMemberId" />
+          </Key>
+          <Property Name="FeedSourceMemberId" Type="int" Nullable="false" />
+          <Property Name="FeedId" Type="int" Nullable="false" />
+          <Property Name="SourceId" Type="int" Nullable="false" />
+          <Property Name="SourceTypeId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="300" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsArchived" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectUserMember">
+          <Key>
+            <PropertyRef Name="ProjectUserMemberId" />
+          </Key>
+          <Property Name="ProjectUserMemberId" Type="int" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Source">
+          <Key>
+            <PropertyRef Name="SourceId" />
+            <PropertyRef Name="SourceTypeId" />
+          </Key>
+          <Property Name="SourceId" Type="int" Nullable="false" />
+          <Property Name="SourceTypeId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SourceType">
+          <Key>
+            <PropertyRef Name="SourceTypeId" />
+          </Key>
+          <Property Name="SourceTypeId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="FullName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsArchived" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Salt" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Token" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="TokenExpirationDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Feed_UserCreatedBy">
+          <End Role="User" Type="ApplicationModel.Store.User" Multiplicity="1" />
+          <End Role="Feed" Type="ApplicationModel.Store.Feed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Feed">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedSourceMember_Feed">
+          <End Role="Feed" Type="ApplicationModel.Store.Feed" Multiplicity="1" />
+          <End Role="FeedSourceMember" Type="ApplicationModel.Store.FeedSourceMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Feed">
+              <PropertyRef Name="FeedId" />
+            </Principal>
+            <Dependent Role="FeedSourceMember">
+              <PropertyRef Name="FeedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedSourceMember_Source">
+          <End Role="Source" Type="ApplicationModel.Store.Source" Multiplicity="1" />
+          <End Role="FeedSourceMember" Type="ApplicationModel.Store.FeedSourceMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Source">
+              <PropertyRef Name="SourceId" />
+              <PropertyRef Name="SourceTypeId" />
+            </Principal>
+            <Dependent Role="FeedSourceMember">
+              <PropertyRef Name="SourceId" />
+              <PropertyRef Name="SourceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedSourceMember_UserCreatedBy">
+          <End Role="User" Type="ApplicationModel.Store.User" Multiplicity="1" />
+          <End Role="FeedSourceMember" Type="ApplicationModel.Store.FeedSourceMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="FeedSourceMember">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_UserCreatedBy">
+          <End Role="User" Type="ApplicationModel.Store.User" Multiplicity="1" />
+          <End Role="Project" Type="ApplicationModel.Store.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_UserModifiedBy">
+          <End Role="User" Type="ApplicationModel.Store.User" Multiplicity="1" />
+          <End Role="Project" Type="ApplicationModel.Store.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectUserMember_Project">
+          <End Role="Project" Type="ApplicationModel.Store.Project" Multiplicity="1" />
+          <End Role="ProjectUserMember" Type="ApplicationModel.Store.ProjectUserMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="ProjectUserMember">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectUserMember_Role">
+          <End Role="Role" Type="ApplicationModel.Store.Role" Multiplicity="1" />
+          <End Role="ProjectUserMember" Type="ApplicationModel.Store.ProjectUserMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="ProjectUserMember">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectUserMember_User">
+          <End Role="User" Type="ApplicationModel.Store.User" Multiplicity="1" />
+          <End Role="ProjectUserMember" Type="ApplicationModel.Store.ProjectUserMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ProjectUserMember">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectUserMember_UserCreatedBy">
+          <End Role="User" Type="ApplicationModel.Store.User" Multiplicity="1" />
+          <End Role="ProjectUserMember" Type="ApplicationModel.Store.ProjectUserMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ProjectUserMember">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectUserMember_UserModifiedBy">
+          <End Role="User" Type="ApplicationModel.Store.User" Multiplicity="1" />
+          <End Role="ProjectUserMember" Type="ApplicationModel.Store.ProjectUserMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ProjectUserMember">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ApplicationModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ApplicationEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Feeds" EntityType="ApplicationModel.Feed" />
+          <EntitySet Name="FeedSourceMembers" EntityType="ApplicationModel.FeedSourceMember" />
+          <EntitySet Name="Projects" EntityType="ApplicationModel.Project" />
+          <EntitySet Name="ProjectUserMembers" EntityType="ApplicationModel.ProjectUserMember" />
+          <EntitySet Name="Roles" EntityType="ApplicationModel.Role" />
+          <EntitySet Name="Sources" EntityType="ApplicationModel.Source" />
+          <EntitySet Name="SourceTypes" EntityType="ApplicationModel.SourceType" />
+          <EntitySet Name="Users" EntityType="ApplicationModel.User" />
+          <AssociationSet Name="FK_Feed_UserCreatedBy" Association="ApplicationModel.FK_Feed_UserCreatedBy">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Feed" EntitySet="Feeds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedSourceMember_Feed" Association="ApplicationModel.FK_FeedSourceMember_Feed">
+            <End Role="Feed" EntitySet="Feeds" />
+            <End Role="FeedSourceMember" EntitySet="FeedSourceMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedSourceMember_Source" Association="ApplicationModel.FK_FeedSourceMember_Source">
+            <End Role="Source" EntitySet="Sources" />
+            <End Role="FeedSourceMember" EntitySet="FeedSourceMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedSourceMember_UserCreatedBy" Association="ApplicationModel.FK_FeedSourceMember_UserCreatedBy">
+            <End Role="User" EntitySet="Users" />
+            <End Role="FeedSourceMember" EntitySet="FeedSourceMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_UserCreatedBy" Association="ApplicationModel.FK_Project_UserCreatedBy">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_UserModifiedBy" Association="ApplicationModel.FK_Project_UserModifiedBy">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectUserMember_Project" Association="ApplicationModel.FK_ProjectUserMember_Project">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="ProjectUserMember" EntitySet="ProjectUserMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectUserMember_Role" Association="ApplicationModel.FK_ProjectUserMember_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="ProjectUserMember" EntitySet="ProjectUserMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectUserMember_User" Association="ApplicationModel.FK_ProjectUserMember_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ProjectUserMember" EntitySet="ProjectUserMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectUserMember_UserCreatedBy" Association="ApplicationModel.FK_ProjectUserMember_UserCreatedBy">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ProjectUserMember" EntitySet="ProjectUserMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectUserMember_UserModifiedBy" Association="ApplicationModel.FK_ProjectUserMember_UserModifiedBy">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ProjectUserMember" EntitySet="ProjectUserMembers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Feed">
+          <Key>
+            <PropertyRef Name="FeedId" />
+          </Key>
+          <Property Type="Int32" Name="FeedId" Nullable="false" />
+          <Property Type="String" Name="Action" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <NavigationProperty Name="CreatedByUser" Relationship="ApplicationModel.FK_Feed_UserCreatedBy" FromRole="Feed" ToRole="User" />
+          <NavigationProperty Name="FeedSourceMembers" Relationship="ApplicationModel.FK_FeedSourceMember_Feed" FromRole="Feed" ToRole="FeedSourceMember" />
+        </EntityType>
+        <EntityType Name="FeedSourceMember">
+          <Key>
+            <PropertyRef Name="FeedSourceMemberId" />
+          </Key>
+          <Property Type="Int32" Name="FeedSourceMemberId" Nullable="false" />
+          <Property Type="Int32" Name="FeedId" Nullable="false" />
+          <Property Type="Int32" Name="SourceId" Nullable="false" />
+          <Property Type="Int32" Name="SourceTypeId" Nullable="false" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <NavigationProperty Name="Feed" Relationship="ApplicationModel.FK_FeedSourceMember_Feed" FromRole="FeedSourceMember" ToRole="Feed" />
+          <NavigationProperty Name="Source" Relationship="ApplicationModel.FK_FeedSourceMember_Source" FromRole="FeedSourceMember" ToRole="Source" />
+          <NavigationProperty Name="CreatedByUser" Relationship="ApplicationModel.FK_FeedSourceMember_UserCreatedBy" FromRole="FeedSourceMember" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Type="Int32" Name="ProjectId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Boolean" Name="IsArchived" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <Property Type="Int32" Name="ModifiedBy" Nullable="false" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" />
+          <NavigationProperty Name="CreatedByUser" Relationship="ApplicationModel.FK_Project_UserCreatedBy" FromRole="Project" ToRole="User" />
+          <NavigationProperty Name="ModifiedByUser" Relationship="ApplicationModel.FK_Project_UserModifiedBy" FromRole="Project" ToRole="User" />
+          <NavigationProperty Name="ProjectUserMembers" Relationship="ApplicationModel.FK_ProjectUserMember_Project" FromRole="Project" ToRole="ProjectUserMember" />
+        </EntityType>
+        <EntityType Name="ProjectUserMember">
+          <Key>
+            <PropertyRef Name="ProjectUserMemberId" />
+          </Key>
+          <Property Type="Int32" Name="ProjectUserMemberId" Nullable="false" />
+          <Property Type="Int32" Name="ProjectId" Nullable="false" />
+          <Property Type="Int32" Name="RoleId" Nullable="false" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <Property Type="Int32" Name="ModifiedBy" Nullable="false" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="ApplicationModel.FK_ProjectUserMember_Project" FromRole="ProjectUserMember" ToRole="Project" />
+          <NavigationProperty Name="Role" Relationship="ApplicationModel.FK_ProjectUserMember_Role" FromRole="ProjectUserMember" ToRole="Role" />
+          <NavigationProperty Name="User" Relationship="ApplicationModel.FK_ProjectUserMember_User" FromRole="ProjectUserMember" ToRole="User" />
+          <NavigationProperty Name="CreatedByUser" Relationship="ApplicationModel.FK_ProjectUserMember_UserCreatedBy" FromRole="ProjectUserMember" ToRole="User" />
+          <NavigationProperty Name="ModifiedByUser" Relationship="ApplicationModel.FK_ProjectUserMember_UserModifiedBy" FromRole="ProjectUserMember" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Type="Int32" Name="RoleId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <NavigationProperty Name="ProjectUserMembers" Relationship="ApplicationModel.FK_ProjectUserMember_Role" FromRole="Role" ToRole="ProjectUserMember" />
+        </EntityType>
+        <EntityType Name="Source">
+          <Key>
+            <PropertyRef Name="SourceId" />
+            <PropertyRef Name="SourceTypeId" />
+          </Key>
+          <Property Type="Int32" Name="SourceId" Nullable="false" />
+          <Property Type="Int32" Name="SourceTypeId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" />
+          <NavigationProperty Name="FeedSourceMembers" Relationship="ApplicationModel.FK_FeedSourceMember_Source" FromRole="Source" ToRole="FeedSourceMember" />
+        </EntityType>
+        <EntityType Name="SourceType">
+          <Key>
+            <PropertyRef Name="SourceTypeId" />
+          </Key>
+          <Property Type="Int32" Name="SourceTypeId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Boolean" Name="IsArchived" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Salt" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Token" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="TokenExpirationDate" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" />
+          <NavigationProperty Name="ProjectUserMembers" Relationship="ApplicationModel.FK_ProjectUserMember_User" FromRole="User" ToRole="ProjectUserMember" />
+        </EntityType>
+        <Association Name="FK_Feed_UserCreatedBy">
+          <End Type="ApplicationModel.User" Role="User" Multiplicity="1" />
+          <End Type="ApplicationModel.Feed" Role="Feed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Feed">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedSourceMember_Feed">
+          <End Type="ApplicationModel.Feed" Role="Feed" Multiplicity="1" />
+          <End Type="ApplicationModel.FeedSourceMember" Role="FeedSourceMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Feed">
+              <PropertyRef Name="FeedId" />
+            </Principal>
+            <Dependent Role="FeedSourceMember">
+              <PropertyRef Name="FeedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedSourceMember_Source">
+          <End Type="ApplicationModel.Source" Role="Source" Multiplicity="1" />
+          <End Type="ApplicationModel.FeedSourceMember" Role="FeedSourceMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Source">
+              <PropertyRef Name="SourceId" />
+              <PropertyRef Name="SourceTypeId" />
+            </Principal>
+            <Dependent Role="FeedSourceMember">
+              <PropertyRef Name="SourceId" />
+              <PropertyRef Name="SourceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedSourceMember_UserCreatedBy">
+          <End Type="ApplicationModel.User" Role="User" Multiplicity="1" />
+          <End Type="ApplicationModel.FeedSourceMember" Role="FeedSourceMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="FeedSourceMember">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_UserCreatedBy">
+          <End Type="ApplicationModel.User" Role="User" Multiplicity="1" />
+          <End Type="ApplicationModel.Project" Role="Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_UserModifiedBy">
+          <End Type="ApplicationModel.User" Role="User" Multiplicity="1" />
+          <End Type="ApplicationModel.Project" Role="Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectUserMember_Project">
+          <End Type="ApplicationModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="ApplicationModel.ProjectUserMember" Role="ProjectUserMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="ProjectUserMember">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectUserMember_Role">
+          <End Type="ApplicationModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="ApplicationModel.ProjectUserMember" Role="ProjectUserMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="ProjectUserMember">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectUserMember_User">
+          <End Type="ApplicationModel.User" Role="User" Multiplicity="1" />
+          <End Type="ApplicationModel.ProjectUserMember" Role="ProjectUserMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ProjectUserMember">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectUserMember_UserCreatedBy">
+          <End Type="ApplicationModel.User" Role="User" Multiplicity="1" />
+          <End Type="ApplicationModel.ProjectUserMember" Role="ProjectUserMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ProjectUserMember">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectUserMember_UserModifiedBy">
+          <End Type="ApplicationModel.User" Role="User" Multiplicity="1" />
+          <End Type="ApplicationModel.ProjectUserMember" Role="ProjectUserMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ProjectUserMember">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ApplicationModelStoreContainer" CdmEntityContainer="ApplicationEntities">
+          <EntitySetMapping Name="Feeds">
+            <EntityTypeMapping TypeName="ApplicationModel.Feed">
+              <MappingFragment StoreEntitySet="Feed">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="FeedId" ColumnName="FeedId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeedSourceMembers">
+            <EntityTypeMapping TypeName="ApplicationModel.FeedSourceMember">
+              <MappingFragment StoreEntitySet="FeedSourceMember">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="SourceTypeId" ColumnName="SourceTypeId" />
+                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+                <ScalarProperty Name="FeedId" ColumnName="FeedId" />
+                <ScalarProperty Name="FeedSourceMemberId" ColumnName="FeedSourceMemberId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="ApplicationModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectUserMembers">
+            <EntityTypeMapping TypeName="ApplicationModel.ProjectUserMember">
+              <MappingFragment StoreEntitySet="ProjectUserMember">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ProjectUserMemberId" ColumnName="ProjectUserMemberId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="ApplicationModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sources">
+            <EntityTypeMapping TypeName="ApplicationModel.Source">
+              <MappingFragment StoreEntitySet="Source">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SourceTypeId" ColumnName="SourceTypeId" />
+                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SourceTypes">
+            <EntityTypeMapping TypeName="ApplicationModel.SourceType">
+              <MappingFragment StoreEntitySet="SourceType">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SourceTypeId" ColumnName="SourceTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ApplicationModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="TokenExpirationDate" ColumnName="TokenExpirationDate" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Application">
+        <EntityTypeShape EntityType="ApplicationModel.Feed" Width="1.5" PointX="3" PointY="1.5" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="ApplicationModel.FeedSourceMember" Width="1.5" PointX="5.25" PointY="2.875" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="ApplicationModel.Project" Width="1.5" PointX="3" PointY="4.5" Height="3.3263964843749996" />
+        <EntityTypeShape EntityType="ApplicationModel.ProjectUserMember" Width="1.5" PointX="8.25" PointY="3.375" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="ApplicationModel.Role" Width="1.5" PointX="6" PointY="7.125" Height="1.787985026041671" />
+        <EntityTypeShape EntityType="ApplicationModel.Source" Width="1.5" PointX="3" PointY="9.25" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="ApplicationModel.SourceType" Width="1.5" PointX="7.75" PointY="0.75" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="ApplicationModel.User" Width="2.125" PointX="0.5" PointY="2.375" Height="3.5186979166666656" />
+        <AssociationConnector Association="ApplicationModel.FK_Feed_UserCreatedBy" >
+          <ConnectorPoint PointX="2.625" PointY="3.0237939453125" />
+          <ConnectorPoint PointX="3" PointY="3.0237939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="ApplicationModel.FK_FeedSourceMember_Feed" >
+          <ConnectorPoint PointX="4.5" PointY="3.2737939453125" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="3.2737939453124989" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="3.2737939453125" />
+          <ConnectorPoint PointX="5.25" PointY="3.2737939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="ApplicationModel.FK_FeedSourceMember_Source" >
+          <ConnectorPoint PointX="4.5" PointY="10.336293945312502" />
+          <ConnectorPoint PointX="5.59375" PointY="10.336293945312502" />
+          <ConnectorPoint PointX="5.59375" PointY="5.6244921875" />
+        </AssociationConnector>
+        <AssociationConnector Association="ApplicationModel.FK_FeedSourceMember_UserCreatedBy" >
+          <ConnectorPoint PointX="2.625" PointY="4.2112939453125" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="4.2112939453124989" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="4.2112939453125" />
+          <ConnectorPoint PointX="5.25" PointY="4.2112939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="ApplicationModel.FK_Project_UserCreatedBy" >
+          <ConnectorPoint PointX="2.625" PointY="5.5164389291334146" />
+          <ConnectorPoint PointX="3" PointY="5.5164389291334146" />
+        </AssociationConnector>
+        <AssociationConnector Association="ApplicationModel.FK_Project_UserModifiedBy" >
+          <ConnectorPoint PointX="2.625" PointY="4.9457194645667073" />
+          <ConnectorPoint PointX="3" PointY="4.9457194645667073" />
+        </AssociationConnector>
+        <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_Project" >
+          <ConnectorPoint PointX="4.5" PointY="6.2903450520833335" />
+          <ConnectorPoint PointX="5.510416666666667" PointY="6.2903450520833326" />
+          <ConnectorPoint PointX="5.677083333333333" PointY="6.2903450520833335" />
+          <ConnectorPoint PointX="8.25" PointY="6.2903450520833335" />
+        </AssociationConnector>
+        <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_Role" >
+          <ConnectorPoint PointX="7.5" PointY="8.0189925130208355" />
+          <ConnectorPoint PointX="9" PointY="8.0189925130208355" />
+          <ConnectorPoint PointX="9" PointY="6.8936979166666674" />
+        </AssociationConnector>
+        <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_User" >
+          <ConnectorPoint PointX="2.625" PointY="4.0304728365732574" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="4.0304728365732565" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="4.0304728365732574" />
+          <ConnectorPoint PointX="5" PointY="4.0304728365732574" />
+          <ConnectorPoint PointX="5" PointY="2.625" />
+          <ConnectorPoint PointX="9" PointY="2.625" />
+          <ConnectorPoint PointX="9" PointY="3.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_UserCreatedBy" >
+          <ConnectorPoint PointX="2.625" PointY="3.8515278635991348" />
+          <ConnectorPoint PointX="4.9375" PointY="3.8515278635991348" />
+          <ConnectorPoint PointX="4.9375" PointY="2.75" />
+          <ConnectorPoint PointX="8.593748" PointY="2.75" />
+          <ConnectorPoint PointX="8.593748" PointY="3.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_UserModifiedBy" >
+          <ConnectorPoint PointX="2.625" PointY="4.3556494726562436" />
+          <ConnectorPoint PointX="4.875" PointY="4.3556494726562436" />
+          <ConnectorPoint PointX="4.875" PointY="2.5" />
+          <ConnectorPoint PointX="9.406252" PointY="2.5" />
+          <ConnectorPoint PointX="9.406252" PointY="3.375" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

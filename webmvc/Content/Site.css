@@ -13,6 +13,12 @@
     color: #808080;
 }
 
+.clear
+{
+    display: block;
+    clear: both;
+}
+
 .commands
 {
 }
@@ -43,9 +49,21 @@
     margin-bottom: 10px;
 }
 
+.wrapper
+{
+    display: block;
+    clear: both;
+}
+
 #header
 {
-    padding: 20px 20px 40px 20px;
+    padding: 20px 20px 20px 20px;
+}
+
+#header h1
+{
+    font-size: 16px;
+    text-transform: lowercase;
 }
 
 #header-profile
@@ -58,14 +76,53 @@
     display: inline;
 }
 
+#header-menu
+{
+    padding: 0px 20px 20px 20px;
+}
+
+#header-menu li
+{
+    display: inline;
+}
+
+#header-menu a
+{
+    float: left;
+    display: block;
+    font-size: 24px;
+    margin-right: 20px;
+}
+
 #main
 {
     padding: 0px 20px 0px 20px;
 }
 
+#content
+{
+    margin-right: 320px;
+}
+
+#aside
+{
+    width: 300px;
+    float: right;
+}
+
 #footer
 {
     padding: 40px 20px 20px 20px;
+}
+
+a
+{
+    color: #CC0000;
+}
+
+a:hover
+{
+    color: #000;
 }
 
 body

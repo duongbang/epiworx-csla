@@ -17,38 +17,17 @@ namespace Epiworx.WebMvc
             get { return this.Where(row => row.Name == name).Single(); }
         }
 
-        public ActionItem Add(string caption, string cssClass, string navigateUrl)
+        public ActionItem Add(string caption, string navigateUrl)
         {
-            return this.Add(caption.Replace(" ", string.Empty), caption, cssClass, navigateUrl, string.Empty);
+            return this.Add(caption.Replace(" ", string.Empty), caption, navigateUrl, string.Empty);
         }
 
-        public ActionItem AddPrimary(string caption, string navigateUrl)
-        {
-            return this.Add(caption.Replace(" ", string.Empty), caption, "primary", navigateUrl, string.Empty);
-        }
-
-        public ActionItem AddPrimary(string caption, string navigateUrl, string imageUrl)
-        {
-            return this.Add(caption.Replace(" ", string.Empty), caption, "primary", navigateUrl, imageUrl);
-        }
-
-        public ActionItem AddSecondary(string caption, string navigateUrl)
-        {
-            return this.Add(caption.Replace(" ", string.Empty), caption, "secondary", navigateUrl, string.Empty);
-        }
-
-        public ActionItem AddSecondary(string caption, string navigateUrl, string imageUrl)
-        {
-            return this.Add(caption.Replace(" ", string.Empty), caption, "secondary", navigateUrl, imageUrl);
-        }
-
-        public ActionItem Add(string name, string caption, string cssClass, string navigateUrl, string imageUrl)
+        public ActionItem Add(string name, string caption, string navigateUrl, string imageUrl)
         {
             var item = new ActionItem();
 
             item.Name = name;
             item.Caption = caption;
-            item.CssClass = cssClass;
             item.NavigateUrl = navigateUrl;
             item.ImageUrl = imageUrl;
 

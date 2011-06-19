@@ -8,3 +8,7 @@
             Epiworx</h1>
     </div>
 </div>
+@if (Request.IsAuthenticated)
+{
+    @Html.Partial("_LayoutHeaderMenu")
+}

@@ -3,6 +3,7 @@
     <div class="wrapper">
         <ul>
             <li>Welcome <strong>@Context.User.Identity.Name</strong>!</li>
+            <li>@Html.ActionLink("Inbox", "Index", "Message")</li>
             <li>@Html.ActionLink("Settings", "Settings", "Account")</li>
             <li>@Html.ActionLink("Sign Out", "LogOff", "Account")</li>
         </ul>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfUserData>
+  <UserData>
+    <UserId>1</UserId>
+    <Email>administrator@website.com</Email>
+    <FullName>Administrator</FullName>
+    <IsActive>true</IsActive>
+    <IsArchived>false</IsArchived>
+    <Name>Administrator</Name>
+    <Password>D/M0RmZPjxvVpgrZ6QnOmB4EYag=</Password>
+    <Salt>YQmsBzX/4A</Salt>
+    <Token />
+    <TokenExpirationDate>9999-12-31T23:59:59.9999999</TokenExpirationDate>
+    <CreatedDate>2011-01-01T00:00:00</CreatedDate>
+    <ModifiedDate>2011-01-01T00:00:00</ModifiedDate>
+  </UserData>
+  <UserData>
+    <UserId>2</UserId>
+    <Email>user@website.com</Email>
+    <FullName>User</FullName>
+    <IsActive>true</IsActive>
+    <IsArchived>false</IsArchived>
+    <Name>User</Name>
+    <Password>D/M0RmZPjxvVpgrZ6QnOmB4EYag=</Password>
+    <Salt>YQmsBzX/4A</Salt>
+    <Token />
+    <TokenExpirationDate>9999-12-31T23:59:59.9999999</TokenExpirationDate>
+    <CreatedDate>2011-01-01T00:00:00</CreatedDate>
+    <ModifiedDate>2011-01-01T00:00:00</ModifiedDate>
+  </UserData>
+  <UserData>
+    <UserId>3</UserId>
+    <Email>tanis.sungold@website.com</Email>
+    <FullName>Tanis Sungold</FullName>
+    <IsActive>true</IsActive>
+    <IsArchived>false</IsArchived>
+    <Name>Tanis</Name>
+    <Password>D/M0RmZPjxvVpgrZ6QnOmB4EYag=</Password>
+    <Salt>YQmsBzX/4A</Salt>
+    <Token />
+    <TokenExpirationDate>9999-12-31T23:59:59.9999999</TokenExpirationDate>
+    <CreatedDate>2011-01-01T00:00:00</CreatedDate>
+    <ModifiedDate>2011-01-01T00:00:00</ModifiedDate>
+  </UserData>
+</ArrayOfUserData>

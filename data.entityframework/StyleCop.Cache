@@ -1,8 +1,5 @@
 <stylecopresultscache>
   <version>11</version>
-  <project key="1895596250">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
   <sourcecode name="AssemblyInfo.cs" parser="StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>06/17/2011 08:25:23</timestamp>
@@ -10,6 +7,45 @@
     </settings>
     <timestamp>05/29/2011 07:15:32</timestamp>
     <milliseconds>558</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Database.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/19/2011 07:54:16</timestamp>
+    <milliseconds>706</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="DataFactoryManager.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/19/2011 07:54:40</timestamp>
+    <milliseconds>633</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Application.Designer.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/19/2011 07:51:49</timestamp>
+    <milliseconds>429</milliseconds>
+    <violations />
+  </sourcecode>
+  <project key="1895596250">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="BusinessIdentityDataFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>06/17/2011 08:25:23</timestamp>
+      <milliseconds>981</milliseconds>
+    </settings>
+    <timestamp>06/19/2011 07:58:56</timestamp>
+    <milliseconds>674</milliseconds>
     <violations />
   </sourcecode>
 </stylecopresultscache>
