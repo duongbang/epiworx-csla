@@ -21,6 +21,5 @@ namespace Epiworx.Business.Security
         public string FullName { get; internal set; }
         public bool IsAuthenticated { get; internal set; }
         public string Name { get; internal set; }
-        public List<BusinessIdentityProject> Projects { get; internal set; }
     }
 }

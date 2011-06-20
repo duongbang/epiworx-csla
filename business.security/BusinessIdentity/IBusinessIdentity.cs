@@ -9,6 +9,5 @@ namespace Epiworx.Business.Security
     public interface IBusinessIdentity : IIdentity
     {
         int UserId { get; }
-        List<BusinessIdentityProject> Projects { get; }
     }
 }

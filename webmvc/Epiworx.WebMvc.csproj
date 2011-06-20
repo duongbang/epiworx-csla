@@ -94,6 +94,8 @@
     <Compile Include="Models\Account\AccountRegisterSuccessModel.cs" />
     <Compile Include="Models\FindModel.cs" />
     <Compile Include="Models\Home\HomeIndexModel.cs" />
+    <Compile Include="Models\Project\ProjectListModel.cs" />
+    <Compile Include="Models\Project\ProjectFormModel.cs" />
     <Compile Include="Models\User\UserFormModel.cs" />
     <Compile Include="Models\User\UserListModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -245,6 +247,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_PartUserHourByWeekList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Project\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Project\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Project\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Project\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Project\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Project\_ProjectForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Project\_ProjectFormCommands.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

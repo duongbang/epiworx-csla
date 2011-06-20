@@ -1,3 +1,18 @@
+.clear
+{
+    display: block;
+    clear: both;
+}
+
+.commands
+{
+}
+
+.commands li
+{
+    display: inline;
+}
+
 .hgroup
 {
     margin-bottom: 20px;
@@ -13,19 +28,9 @@
     color: #808080;
 }
 
-.clear
+.part
 {
-    display: block;
-    clear: both;
-}
-
-.commands
-{
-}
-
-.commands li
-{
-    display: inline;
+    margin-bottom: 40px;
 }
 
 .validation-summary-errors

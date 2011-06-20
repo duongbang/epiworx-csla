@@ -12,7 +12,6 @@ namespace Epiworx.Business.Security
     {
         public BusinessIdentity()
         {
-            this.Projects = new List<BusinessIdentityProject>();
         }
     }
 }

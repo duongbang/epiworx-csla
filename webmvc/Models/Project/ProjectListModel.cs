@@ -6,8 +6,8 @@ using Epiworx.Business;
 
 namespace Epiworx.WebMvc.Models
 {
-    public class UserListModel : ModelBase
+    public class ProjectListModel : ModelBase
     {
-        private IEnumerable<UserInfo> Users { get; set; }
+        public IEnumerable<ProjectInfo> Projects { get; set; }
     }
 }

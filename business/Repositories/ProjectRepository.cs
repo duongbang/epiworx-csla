@@ -7,6 +7,8 @@ using Epiworx.Data;
 
 namespace Epiworx.Business
 {
+    using Epiworx.Business.Security;
+
     [Serializable]
     public class ProjectRepository
     {
@@ -21,11 +23,14 @@ namespace Epiworx.Business
 
         public static ProjectInfoList ProjectFetchInfoList()
         {
-            return ProjectInfoList.FetchProjectInfoList(new ProjectDataCriteria());
+            return ProjectRepository.ProjectFetchInfoList(new ProjectDataCriteria());
         }
 
         public static ProjectInfoList ProjectFetchInfoList(ProjectDataCriteria criteria)
         {
+            // this will ensure that users can only view projects that they are assigned to
+            criteria.UserId = ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
+
             return ProjectInfoList.FetchProjectInfoList(criteria);
         }
 
@@ -53,6 +58,9 @@ namespace Epiworx.Business
         public static Project ProjectInsert(Project project)
         {
             project = project.Save();
+
+            ProjectUserRepository.ProjectUserAdd(
+                project.ProjectId, ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId, Role.Owner);
 
             SourceRepository.SourceAdd(project.ProjectId, SourceType.Project, project.Name);
 

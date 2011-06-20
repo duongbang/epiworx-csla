@@ -63,7 +63,7 @@
           <Key>
             <PropertyRef Name="FeedId" />
           </Key>
-          <Property Name="FeedId" Type="int" Nullable="false" />
+          <Property Name="FeedId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Action" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
@@ -72,7 +72,7 @@
           <Key>
             <PropertyRef Name="FeedSourceMemberId" />
           </Key>
-          <Property Name="FeedSourceMemberId" Type="int" Nullable="false" />
+          <Property Name="FeedSourceMemberId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FeedId" Type="int" Nullable="false" />
           <Property Name="SourceId" Type="int" Nullable="false" />
           <Property Name="SourceTypeId" Type="int" Nullable="false" />
@@ -97,7 +97,7 @@
           <Key>
             <PropertyRef Name="ProjectUserMemberId" />
           </Key>
-          <Property Name="ProjectUserMemberId" Type="int" Nullable="false" />
+          <Property Name="ProjectUserMemberId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ProjectId" Type="int" Nullable="false" />
           <Property Name="RoleId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
@@ -346,7 +346,7 @@
           <Key>
             <PropertyRef Name="FeedId" />
           </Key>
-          <Property Type="Int32" Name="FeedId" Nullable="false" />
+          <Property Type="Int32" Name="FeedId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Action" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="CreatedBy" Nullable="false" />
           <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
@@ -357,7 +357,7 @@
           <Key>
             <PropertyRef Name="FeedSourceMemberId" />
           </Key>
-          <Property Type="Int32" Name="FeedSourceMemberId" Nullable="false" />
+          <Property Type="Int32" Name="FeedSourceMemberId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="FeedId" Nullable="false" />
           <Property Type="Int32" Name="SourceId" Nullable="false" />
           <Property Type="Int32" Name="SourceTypeId" Nullable="false" />
@@ -388,7 +388,7 @@
           <Key>
             <PropertyRef Name="ProjectUserMemberId" />
           </Key>
-          <Property Type="Int32" Name="ProjectUserMemberId" Nullable="false" />
+          <Property Type="Int32" Name="ProjectUserMemberId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="ProjectId" Nullable="false" />
           <Property Type="Int32" Name="RoleId" Nullable="false" />
           <Property Type="Int32" Name="UserId" Nullable="false" />
@@ -447,7 +447,6 @@
           <Property Type="DateTime" Name="TokenExpirationDate" Nullable="false" />
           <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
           <Property Type="DateTime" Name="ModifiedDate" Nullable="false" />
-          <NavigationProperty Name="ProjectUserMembers" Relationship="ApplicationModel.FK_ProjectUserMember_User" FromRole="User" ToRole="ProjectUserMember" />
         </EntityType>
         <Association Name="FK_Feed_UserCreatedBy">
           <End Type="ApplicationModel.User" Role="User" Multiplicity="1" />
@@ -715,7 +714,7 @@
         <EntityTypeShape EntityType="ApplicationModel.Role" Width="1.5" PointX="6" PointY="7.125" Height="1.787985026041671" />
         <EntityTypeShape EntityType="ApplicationModel.Source" Width="1.5" PointX="3" PointY="9.25" Height="2.1725878906250031" />
         <EntityTypeShape EntityType="ApplicationModel.SourceType" Width="1.5" PointX="7.75" PointY="0.75" Height="1.5956835937500031" />
-        <EntityTypeShape EntityType="ApplicationModel.User" Width="2.125" PointX="0.5" PointY="2.375" Height="3.5186979166666656" />
+        <EntityTypeShape EntityType="ApplicationModel.User" Width="2.125" PointX="0.5" PointY="2.375" Height="3.3263964843749996" />
         <AssociationConnector Association="ApplicationModel.FK_Feed_UserCreatedBy" >
           <ConnectorPoint PointX="2.625" PointY="3.0237939453125" />
           <ConnectorPoint PointX="3" PointY="3.0237939453125" />
@@ -732,18 +731,18 @@
           <ConnectorPoint PointX="5.59375" PointY="5.6244921875" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_FeedSourceMember_UserCreatedBy" >
-          <ConnectorPoint PointX="2.625" PointY="4.2112939453125" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="4.2112939453124989" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="4.2112939453125" />
-          <ConnectorPoint PointX="5.25" PointY="4.2112939453125" />
+          <ConnectorPoint PointX="2.625" PointY="4.1930611546147505" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="4.19306115461475" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="4.1930611546147505" />
+          <ConnectorPoint PointX="5.25" PointY="4.1930611546147505" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Project_UserCreatedBy" >
-          <ConnectorPoint PointX="2.625" PointY="5.5164389291334146" />
-          <ConnectorPoint PointX="3" PointY="5.5164389291334146" />
+          <ConnectorPoint PointX="2.625" PointY="5.3860579744708534" />
+          <ConnectorPoint PointX="3" PointY="5.3860579744708534" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Project_UserModifiedBy" >
-          <ConnectorPoint PointX="2.625" PointY="4.9457194645667073" />
-          <ConnectorPoint PointX="3" PointY="4.9457194645667073" />
+          <ConnectorPoint PointX="2.625" PointY="4.8805289872354267" />
+          <ConnectorPoint PointX="3" PointY="4.8805289872354267" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_Project" >
           <ConnectorPoint PointX="4.5" PointY="6.2903450520833335" />
@@ -757,24 +756,24 @@
           <ConnectorPoint PointX="9" PointY="6.8936979166666674" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_User" >
-          <ConnectorPoint PointX="2.625" PointY="4.0304728365732574" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="4.0304728365732565" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="4.0304728365732574" />
-          <ConnectorPoint PointX="5" PointY="4.0304728365732574" />
+          <ConnectorPoint PointX="2.625" PointY="4.0300227800309791" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="4.0300227800309782" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="4.0300227800309791" />
+          <ConnectorPoint PointX="5" PointY="4.0300227800309791" />
           <ConnectorPoint PointX="5" PointY="2.625" />
           <ConnectorPoint PointX="9" PointY="2.625" />
           <ConnectorPoint PointX="9" PointY="3.375" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_UserCreatedBy" >
-          <ConnectorPoint PointX="2.625" PointY="3.8515278635991348" />
-          <ConnectorPoint PointX="4.9375" PointY="3.8515278635991348" />
+          <ConnectorPoint PointX="2.625" PointY="3.8513028353279886" />
+          <ConnectorPoint PointX="4.9375" PointY="3.8513028353279886" />
           <ConnectorPoint PointX="4.9375" PointY="2.75" />
           <ConnectorPoint PointX="8.593748" PointY="2.75" />
           <ConnectorPoint PointX="8.593748" PointY="3.375" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_UserModifiedBy" >
-          <ConnectorPoint PointX="2.625" PointY="4.3556494726562436" />
-          <ConnectorPoint PointX="4.875" PointY="4.3556494726562436" />
+          <ConnectorPoint PointX="2.625" PointY="4.3465330773073756" />
+          <ConnectorPoint PointX="4.875" PointY="4.3465330773073756" />
           <ConnectorPoint PointX="4.875" PointY="2.5" />
           <ConnectorPoint PointX="9.406252" PointY="2.5" />
           <ConnectorPoint PointX="9.406252" PointY="3.375" />

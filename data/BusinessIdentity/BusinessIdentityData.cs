@@ -14,6 +14,5 @@ namespace Epiworx.Data
         public string FullName { get; set; }
         public string Password { get; set; }
         public string Salt { get; set; }
-        public List<BusinessIdentityProjectData> Projects { get; set; }
     }
 }

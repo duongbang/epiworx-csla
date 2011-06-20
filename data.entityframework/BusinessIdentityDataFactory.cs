@@ -12,9 +12,7 @@ namespace Epiworx.Data.EntityFramework
             using (var ctx = Csla.Data.ObjectContextManager<ApplicationEntities>
                               .GetManager(Database.SecurityConnection, false))
             {
-                IQueryable<User> query = ctx.ObjectContext.Users
-                    .Include("ProjectUserMembers")
-                    .Include("ProjectUserMembers.Project");
+                IQueryable<User> query = ctx.ObjectContext.Users;
 
                 query = query.Where(row => row.Name == criteria.Name);
 
@@ -41,18 +39,6 @@ namespace Epiworx.Data.EntityFramework
             data.Name = user.Name;
             data.Salt = user.Salt;
             data.Password = user.Password;
-
-            foreach (var project in user.ProjectUserMembers)
-            {
-                data.Projects.Add(
-                    new BusinessIdentityProjectData
-                    {
-                        ProjectId = project.ProjectId,
-                        ProjectName = project.Project.Name,
-                        RoleId = project.RoleId,
-                        RoleName = project.Role.Name
-                    });
-            }
         }
     }
 }

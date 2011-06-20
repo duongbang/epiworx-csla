@@ -47,9 +47,13 @@ namespace Epiworx.WebMvc
 
             IPrincipal principal = null;
 
-            if (Csla.ApplicationContext.User.Identity.IsAuthenticated)
+            try
             {
-                principal = Csla.ApplicationContext.User;
+                principal = (IPrincipal)HttpContext.Current.Session["EPIWORXUSER"];
+            }
+            catch
+            {
+                principal = null;
             }
 
             if (principal == null)
@@ -59,12 +63,18 @@ namespace Epiworx.WebMvc
                 {
                     BusinessPrincipal.LoadPrincipal(this.User.Identity.Name);
 
+                    HttpContext.Current.Session["EPIWORXUSER"] = Csla.ApplicationContext.User;
+
                     this.Response.Redirect(this.Request.Url.PathAndQuery);
                 }
 
                 FormsAuthentication.SignOut();
 
                 BusinessPrincipal.Logout();
+            }
+            else
+            {
+                Csla.ApplicationContext.User = principal;
             }
         }
     }

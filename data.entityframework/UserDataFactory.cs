@@ -76,7 +76,7 @@ namespace Epiworx.Data.EntityFramework
             return new UserData();
         }
 
-        public UserData Update(UserData data)
+        public UserData Update(UserData userData)
         {
             using (var ctx = Csla.Data.ObjectContextManager<ApplicationEntities>
                          .GetManager(Database.ApplicationConnection, false))
@@ -84,16 +84,16 @@ namespace Epiworx.Data.EntityFramework
                 var user =
                     new User
                     {
-                        UserId = data.UserId
+                        UserId = userData.UserId
                     };
 
                 ctx.ObjectContext.Users.Attach(user);
 
-                Csla.Data.DataMapper.Map(data, user);
+                DataMapper.Map(userData, user);
 
                 ctx.ObjectContext.SaveChanges();
 
-                return data;
+                return userData;
             }
         }
 
@@ -104,7 +104,7 @@ namespace Epiworx.Data.EntityFramework
             {
                 var user = new User();
 
-                Csla.Data.DataMapper.Map(data, user);
+                DataMapper.Map(data, user);
 
                 ctx.ObjectContext.AddToUsers(user);
 
@@ -132,7 +132,7 @@ namespace Epiworx.Data.EntityFramework
 
         private void Fetch(User user, UserData userData)
         {
-            Csla.Data.DataMapper.Map(user, userData);
+            DataMapper.Map(user, userData);
         }
 
         private IQueryable<User> Fetch(

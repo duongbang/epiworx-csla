@@ -47,10 +47,6 @@
     <Compile Include="Attachment\AttachmentData.cs" />
     <Compile Include="Attachment\AttachmentDataCriteria.cs" />
     <Compile Include="Attachment\IAttachmentDataFactory.cs" />
-    <Compile Include="BusinessIdentityProject\BusinessIdentityProjectDataCriteria.cs" />
-    <Compile Include="BusinessIdentityProject\BusinessIdentityProjectData.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="BusinessIdentity\BusinessIdentityData.cs" />
     <Compile Include="BusinessIdentity\BusinessIdentityDataCriteria.cs" />
     <Compile Include="BusinessIdentity\IBusinessIdentityDataFactory.cs" />

@@ -15,5 +15,16 @@ namespace Epiworx.WebMvc.Helpers
                 modelState.AddModelError(brokenRule.Property, brokenRule.Description);
             }
         }
+
+        public static bool ToBoolean(string value)
+        {
+            if (string.IsNullOrEmpty(value)
+               || value != "on")
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

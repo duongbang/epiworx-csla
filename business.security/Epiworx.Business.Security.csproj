@@ -43,10 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessIdentityProject\BusinessIdentityProject.cs" />
-    <Compile Include="BusinessIdentityProject\BusinessIdentityProject.Data.cs" />
-    <Compile Include="BusinessIdentityProject\BusinessIdentityProject.Properties.cs" />
-    <Compile Include="BusinessIdentityProject\IBusinessIdentityProject.cs" />
     <Compile Include="BusinessIdentity\BusinessIdentity.cs" />
     <Compile Include="BusinessIdentity\BusinessIdentity.Data.cs" />
     <Compile Include="BusinessIdentity\BusinessIdentity.Methods.cs" />
@@ -62,7 +58,6 @@
     <Compile Include="InvalidPasswordException.cs" />
     <Compile Include="InvalidUserException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Role.cs" />
     <Compile Include="UserLockedException.cs" />
     <Compile Include="UserNotActiveException.cs" />
   </ItemGroup>

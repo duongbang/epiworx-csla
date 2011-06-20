@@ -2340,31 +2340,6 @@ namespace Epiworx.Data.EntityFramework
 
         #endregion
     
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_ProjectUserMember_User", "ProjectUserMember")]
-        public EntityCollection<ProjectUserMember> ProjectUserMembers
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProjectUserMember>("ApplicationModel.FK_ProjectUserMember_User", "ProjectUserMember");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProjectUserMember>("ApplicationModel.FK_ProjectUserMember_User", "ProjectUserMember", value);
-                }
-            }
-        }
-
-        #endregion
     }
 
     #endregion

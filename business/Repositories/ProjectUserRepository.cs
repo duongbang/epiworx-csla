@@ -7,6 +7,8 @@ using Epiworx.Data;
 
 namespace Epiworx.Business
 {
+    using Epiworx.Business.Security;
+
     [Serializable]
     public class ProjectUserRepository
     {
@@ -55,6 +57,17 @@ namespace Epiworx.Business
         public static ProjectUser ProjectUserUpdate(ProjectUser projectUserMember)
         {
             projectUserMember = projectUserMember.Save();
+
+            return projectUserMember;
+        }
+
+        public static ProjectUser ProjectUserAdd(int projectId, int userId, Role role)
+        {
+            var projectUserMember = ProjectUser.NewProjectUser(projectId, userId);
+
+            projectUserMember.RoleId = (int)role;
+
+            projectUserMember = ProjectUserRepository.ProjectUserSave(projectUserMember);
 
             return projectUserMember;
         }

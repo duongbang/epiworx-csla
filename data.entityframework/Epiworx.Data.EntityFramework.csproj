@@ -58,6 +58,9 @@
     <Compile Include="BusinessIdentityDataFactory.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DataFactoryManager.cs" />
+    <Compile Include="DataMapper.cs" />
+    <Compile Include="ProjectDataFactory.cs" />
+    <Compile Include="ProjectUserMemberDataFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SourceDataFactory.cs" />
     <Compile Include="UserDataFactory.cs" />

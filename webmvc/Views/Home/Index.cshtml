@@ -1,11 +1,12 @@
 ﻿@model Epiworx.WebMvc.Models.HomeIndexModel
 @using Epiworx.WebMvc.Helpers
+@using Epiworx.WebMvc.Models
 <h2>
     Welcome to <strong>Epiworx</strong>!</h2>
 @Html.Partial("_PartFeedList")
 @section SideBar
 {
     @Html.Partial("_PartUserHourByDayList")
-    @Html.Partial("_PartProjectList")
+    @Html.Partial("_PartProjectList", new ProjectListModel { Projects = Model.Projects })
     @Html.Partial("_PartUserHourByWeekList")
 }

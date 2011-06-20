@@ -11,6 +11,7 @@ namespace Epiworx.Data
         public bool? IsActive { get; set; }
         public bool? IsArchived { get; set; }
         public string Name { get; set; }
+        public int? UserId { get; set; }
         public int? CreatedBy { get; set; }
         public DateRangeCriteria CreatedDate { get; set; }
         public int? ModifiedBy { get; set; }

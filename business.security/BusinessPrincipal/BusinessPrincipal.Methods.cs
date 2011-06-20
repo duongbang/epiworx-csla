@@ -49,31 +49,5 @@ namespace Epiworx.Business.Security
         {
             throw new NotImplementedException();
         }
-
-        public bool IsInProject(int projectId)
-        {
-            var businessIdentity = (IBusinessIdentity)Csla.ApplicationContext.User.Identity;
-
-            return businessIdentity.Projects
-                .Any(project => project.ProjectId == projectId);
-        }
-
-        public bool IsInProjectAndRole(int projectId, Role role)
-        {
-            var businessIdentity = (IBusinessIdentity)Csla.ApplicationContext.User.Identity;
-
-            return businessIdentity.Projects
-                .Any(project => project.ProjectId == projectId
-                    && project.RoleId == (int)role);
-        }
-
-        public bool IsInProjectAndRole(int projectId, params Role[] role)
-        {
-            var businessIdentity = (IBusinessIdentity)Csla.ApplicationContext.User.Identity;
-
-            return businessIdentity.Projects
-                .Any(project => project.ProjectId == projectId
-                    && role.Contains((Role)project.RoleId));
-        }
     }
 }

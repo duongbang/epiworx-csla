@@ -1,6 +1,14 @@
-﻿<div class="part">
+﻿@model Epiworx.WebMvc.Models.ProjectListModel
+<div class="part">
     <div class="wrapper">
         <h3>
             Your Projects</h3>
+        <ul>
+            @foreach (var project in Model.Projects)
+            {
+                <li>@Html.ActionLink(project.Name, "Details", "Project", new { id = project.ProjectId }, null)</li>
+            }
+        </ul>
+        @Html.ActionLink("Add a new project", "Create", "Project")
     </div>
 </div>
