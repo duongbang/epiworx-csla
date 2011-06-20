@@ -18,6 +18,7 @@ namespace Epiworx.Business
             this.BusinessRules.AddRule(new MaxLength(DescriptionProperty, 300));
             this.BusinessRules.AddRule(new StringRequired(NameProperty));
             this.BusinessRules.AddRule(new MaxLength(NameProperty, 20));
+            this.BusinessRules.AddRule(new IntegerRequired(ProjectIdProperty));
             this.BusinessRules.AddRule(new StatusDuplicateNameCheck { PrimaryProperty = NameProperty, Priority = 1 });
         }
 

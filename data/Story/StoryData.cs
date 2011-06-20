@@ -10,8 +10,6 @@ namespace Epiworx.Data
         public int AssignedTo { get; set; }
         public UserData AssignedToUser { get; set; }
         public DateTime AssignedDate { get; set; }
-        public int CategoryId { get; set; }
-        public CategoryData Category { get; set; }
         public DateTime CompletedDate { get; set; }
         public string Description { get; set; }
         public decimal Duration { get; set; }
@@ -38,8 +36,6 @@ namespace Epiworx.Data
             this.AssignedTo = 0;
             this.AssignedToUser = new UserData();
             this.AssignedDate = DateTime.MaxValue;
-            this.CategoryId = 0;
-            this.Category = new CategoryData();
             this.CompletedDate = DateTime.MaxValue;
             this.Description = string.Empty;
             this.Duration = 0;

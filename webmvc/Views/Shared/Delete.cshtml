@@ -1,0 +1,18 @@
+﻿@model Epiworx.WebMvc.Models.DeleteModel
+@using Epiworx.WebMvc.Helpers
+<div class="hgroup">
+    <h2>
+        Delete @Model.Name</h2>
+</div>
+@Html.ValidationSummary(false, "Oh snap! Looks like we ran into some trouble. Please correct the errors and try again.")
+@using (Html.BeginForm("Delete", Model.ControllerName, new { id = Model.Id }))
+{
+    <p class="confirmation">Are you sure you want to delete <strong>@Model.Description</strong>?</p>
+    <ul class="commands">
+        <li>
+            <button>
+                Yes, Delete Away!</button></li>
+        <li><span>or</span></li>
+        <li><a href="@Model.BackUrl">Back</a></li>
+    </ul>
+}

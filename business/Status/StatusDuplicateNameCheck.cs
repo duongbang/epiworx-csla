@@ -20,7 +20,8 @@ namespace Epiworx.Business
 
             var data = StatusInfoList.FetchStatusInfoList(new StatusDataCriteria
                 {
-                    Name = target.Name
+                    Name = target.Name,
+                    ProjectId = target.ProjectId
                 });
 
             if (data.Count(row => row.StatusId != target.StatusId) != 0)

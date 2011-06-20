@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Epiworx.Business.Helpers;
 
 namespace Epiworx.Business
 {
@@ -37,6 +38,11 @@ namespace Epiworx.Business
         {
             get { return this.GetProperty(RoleIdProperty); }
             set { this.LoadProperty(RoleIdProperty, value); }
+        }
+
+        public string RoleName
+        {
+            get { return DataHelper.FetchRoleName(this.RoleId); }
         }
 
         private static Csla.PropertyInfo<int> UserIdProperty =

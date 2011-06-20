@@ -20,7 +20,7 @@ namespace Epiworx.Test.Helpers
 
         public static ProjectUser ProjectUserNew()
         {
-            return ProjectUserTestHelper.ProjectUserNew(Role.Administrator);
+            return ProjectUserTestHelper.ProjectUserNew(Role.Collaborator);
         }
 
         public static ProjectUser ProjectUserNew(Role roleId)

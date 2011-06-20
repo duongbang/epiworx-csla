@@ -13,6 +13,7 @@
           <EntitySet Name="Role" EntityType="ApplicationModel.Store.Role" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Source" EntityType="ApplicationModel.Store.Source" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SourceType" EntityType="ApplicationModel.Store.SourceType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Status" EntityType="ApplicationModel.Store.Status" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="User" EntityType="ApplicationModel.Store.User" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Feed_UserCreatedBy" Association="ApplicationModel.Store.FK_Feed_UserCreatedBy">
             <End Role="User" EntitySet="User" />
@@ -57,6 +58,18 @@
           <AssociationSet Name="FK_ProjectUserMember_UserModifiedBy" Association="ApplicationModel.Store.FK_ProjectUserMember_UserModifiedBy">
             <End Role="User" EntitySet="User" />
             <End Role="ProjectUserMember" EntitySet="ProjectUserMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_Project" Association="ApplicationModel.Store.FK_Status_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Status" EntitySet="Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_UserCreatedBy" Association="ApplicationModel.Store.FK_Status_UserCreatedBy">
+            <End Role="User" EntitySet="User" />
+            <End Role="Status" EntitySet="Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_UserModifiedBy" Association="ApplicationModel.Store.FK_Status_UserModifiedBy">
+            <End Role="User" EntitySet="User" />
+            <End Role="Status" EntitySet="Status" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Feed">
@@ -132,6 +145,24 @@
           <Property Name="SourceTypeId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="300" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsArchived" Type="bit" Nullable="false" />
+          <Property Name="IsCompleted" Type="bit" Nullable="false" />
+          <Property Name="IsStarted" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Ordinal" Type="int" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -284,6 +315,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Status_Project">
+          <End Role="Project" Type="ApplicationModel.Store.Project" Multiplicity="1" />
+          <End Role="Status" Type="ApplicationModel.Store.Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status_UserCreatedBy">
+          <End Role="User" Type="ApplicationModel.Store.User" Multiplicity="1" />
+          <End Role="Status" Type="ApplicationModel.Store.Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status_UserModifiedBy">
+          <End Role="User" Type="ApplicationModel.Store.User" Multiplicity="1" />
+          <End Role="Status" Type="ApplicationModel.Store.Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -341,7 +408,20 @@
             <End Role="User" EntitySet="Users" />
             <End Role="ProjectUserMember" EntitySet="ProjectUserMembers" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="Statuses" EntityType="ApplicationModel.Status" />
+          <AssociationSet Name="FK_Status_Project" Association="ApplicationModel.FK_Status_Project">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="Status" EntitySet="Statuses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_UserCreatedBy" Association="ApplicationModel.FK_Status_UserCreatedBy">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Status" EntitySet="Statuses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_UserModifiedBy" Association="ApplicationModel.FK_Status_UserModifiedBy">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Status" EntitySet="Statuses" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Feed">
           <Key>
             <PropertyRef Name="FeedId" />
@@ -383,6 +463,7 @@
           <NavigationProperty Name="CreatedByUser" Relationship="ApplicationModel.FK_Project_UserCreatedBy" FromRole="Project" ToRole="User" />
           <NavigationProperty Name="ModifiedByUser" Relationship="ApplicationModel.FK_Project_UserModifiedBy" FromRole="Project" ToRole="User" />
           <NavigationProperty Name="ProjectUserMembers" Relationship="ApplicationModel.FK_ProjectUserMember_Project" FromRole="Project" ToRole="ProjectUserMember" />
+          <NavigationProperty Name="Status" Relationship="ApplicationModel.FK_Status_Project" FromRole="Project" ToRole="Status" />
         </EntityType>
         <EntityType Name="ProjectUserMember">
           <Key>
@@ -582,6 +663,63 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Type="Int32" Name="StatusId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Boolean" Name="IsArchived" Nullable="false" />
+          <Property Type="Boolean" Name="IsCompleted" Nullable="false" />
+          <Property Type="Boolean" Name="IsStarted" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Ordinal" Nullable="false" />
+          <Property Type="Int32" Name="ProjectId" Nullable="false" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <Property Type="Int32" Name="ModifiedBy" Nullable="false" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="ApplicationModel.FK_Status_Project" FromRole="Status" ToRole="Project" />
+          <NavigationProperty Name="CreatedByUser" Relationship="ApplicationModel.FK_Status_UserCreatedBy" FromRole="Status" ToRole="User" />
+          <NavigationProperty Name="ModifiedByUser" Relationship="ApplicationModel.FK_Status_UserModifiedBy" FromRole="Status" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Status_Project">
+          <End Type="ApplicationModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="ApplicationModel.Status" Role="Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status_UserCreatedBy">
+          <End Type="ApplicationModel.User" Role="User" Multiplicity="1" />
+          <End Type="ApplicationModel.Status" Role="Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status_UserModifiedBy">
+          <End Type="ApplicationModel.User" Role="User" Multiplicity="1" />
+          <End Type="ApplicationModel.Status" Role="Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -686,6 +824,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Statuses">
+            <EntityTypeMapping TypeName="ApplicationModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="Ordinal" ColumnName="Ordinal" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsStarted" ColumnName="IsStarted" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -727,22 +884,24 @@
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_FeedSourceMember_Source" >
           <ConnectorPoint PointX="4.5" PointY="10.336293945312502" />
+          <ConnectorPoint PointX="4.666666666666667" PointY="10.336293945312502" />
+          <ConnectorPoint PointX="4.833333333333333" PointY="10.336293945312502" />
           <ConnectorPoint PointX="5.59375" PointY="10.336293945312502" />
           <ConnectorPoint PointX="5.59375" PointY="5.6244921875" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_FeedSourceMember_UserCreatedBy" >
-          <ConnectorPoint PointX="2.625" PointY="4.1930611546147505" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="4.19306115461475" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="4.1930611546147505" />
-          <ConnectorPoint PointX="5.25" PointY="4.1930611546147505" />
+          <ConnectorPoint PointX="2.625" PointY="4.1652999864043805" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="4.16529998640438" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="4.1652999864043805" />
+          <ConnectorPoint PointX="5.25" PointY="4.1652999864043805" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Project_UserCreatedBy" >
-          <ConnectorPoint PointX="2.625" PointY="5.3860579744708534" />
-          <ConnectorPoint PointX="3" PointY="5.3860579744708534" />
+          <ConnectorPoint PointX="2.625" PointY="5.3792281683363576" />
+          <ConnectorPoint PointX="3" PointY="5.3792281683363576" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Project_UserModifiedBy" >
-          <ConnectorPoint PointX="2.625" PointY="4.8805289872354267" />
-          <ConnectorPoint PointX="3" PointY="4.8805289872354267" />
+          <ConnectorPoint PointX="2.625" PointY="4.8771140841681788" />
+          <ConnectorPoint PointX="3" PointY="4.8771140841681788" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_Project" >
           <ConnectorPoint PointX="4.5" PointY="6.2903450520833335" />
@@ -751,34 +910,52 @@
           <ConnectorPoint PointX="8.25" PointY="6.2903450520833335" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_Role" >
-          <ConnectorPoint PointX="7.5" PointY="8.0189925130208355" />
-          <ConnectorPoint PointX="9" PointY="8.0189925130208355" />
-          <ConnectorPoint PointX="9" PointY="6.8936979166666674" />
+          <ConnectorPoint PointX="7.15625" PointY="7.125" />
+          <ConnectorPoint PointX="7.15625" PointY="6.6232739843750013" />
+          <ConnectorPoint PointX="8.25" PointY="6.6232739843750013" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_User" >
-          <ConnectorPoint PointX="2.625" PointY="4.0300227800309791" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="4.0300227800309782" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="4.0300227800309791" />
-          <ConnectorPoint PointX="5" PointY="4.0300227800309791" />
+          <ConnectorPoint PointX="2.625" PointY="4.0093741849098015" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="4.0093741849098006" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="4.0093741849098015" />
+          <ConnectorPoint PointX="5" PointY="4.0093741849098015" />
           <ConnectorPoint PointX="5" PointY="2.625" />
           <ConnectorPoint PointX="9" PointY="2.625" />
           <ConnectorPoint PointX="9" PointY="3.375" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_UserCreatedBy" >
-          <ConnectorPoint PointX="2.625" PointY="3.8513028353279886" />
-          <ConnectorPoint PointX="4.9375" PointY="3.8513028353279886" />
+          <ConnectorPoint PointX="2.625" PointY="3.8409785377673997" />
+          <ConnectorPoint PointX="4.9375" PointY="3.8409785377673997" />
           <ConnectorPoint PointX="4.9375" PointY="2.75" />
           <ConnectorPoint PointX="8.593748" PointY="2.75" />
           <ConnectorPoint PointX="8.593748" PointY="3.375" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_UserModifiedBy" >
-          <ConnectorPoint PointX="2.625" PointY="4.3465330773073756" />
-          <ConnectorPoint PointX="4.875" PointY="4.3465330773073756" />
+          <ConnectorPoint PointX="2.625" PointY="4.3326524932021915" />
+          <ConnectorPoint PointX="4.875" PointY="4.3326524932021915" />
           <ConnectorPoint PointX="4.875" PointY="2.5" />
           <ConnectorPoint PointX="9.406252" PointY="2.5" />
           <ConnectorPoint PointX="9.406252" PointY="3.375" />
         </AssociationConnector>
-      </Diagram>
+        <EntityTypeShape EntityType="ApplicationModel.Status" Width="1.5" PointX="8.25" PointY="8.125" Height="4.0956022135416674" />
+        <AssociationConnector Association="ApplicationModel.FK_Status_Project" >
+          <ConnectorPoint PointX="3.75" PointY="8.0186979166666656" />
+          <ConnectorPoint PointX="3.75" PointY="9" />
+          <ConnectorPoint PointX="4.75" PointY="9" />
+          <ConnectorPoint PointX="4.75" PointY="11.278447579427084" />
+          <ConnectorPoint PointX="8.25" PointY="11.278447579427084" />
+        </AssociationConnector>
+        <AssociationConnector Association="ApplicationModel.FK_Status_UserCreatedBy" >
+          <ConnectorPoint PointX="1.2109359375000002" PointY="5.701396484375" />
+          <ConnectorPoint PointX="1.2109359375000002" PointY="11.98730197753906" />
+          <ConnectorPoint PointX="8.25" PointY="11.98730197753906" />
+        </AssociationConnector>
+        <AssociationConnector Association="ApplicationModel.FK_Status_UserModifiedBy" >
+          <ConnectorPoint PointX="1.94922046875" PointY="5.701396484375" />
+          <ConnectorPoint PointX="1.94922046875" PointY="11.704942434082039" />
+          <ConnectorPoint PointX="8.25" PointY="11.704942434082039" />
+        </AssociationConnector>
+        </Diagram>
     </Diagrams>
   </Designer>
 </edmx:Edmx>

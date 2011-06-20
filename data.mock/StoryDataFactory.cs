@@ -27,10 +27,6 @@ namespace Epiworx.Data.Mock
                     .Single();
             }
 
-            data.Category = MockDb.Categories
-                 .Where(row => row.CategoryId == data.CategoryId)
-                 .Single();
-
             data.Project = MockDb.Projects
                 .Where(row => row.ProjectId == data.ProjectId)
                 .Single();

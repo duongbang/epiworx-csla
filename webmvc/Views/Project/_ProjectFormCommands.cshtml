@@ -7,7 +7,7 @@
     <li><span>or</span></li>
     @if (!Model.Project.IsNew)
     { 
-        <li>@Html.ActionLink("Delete", "Delete", new { id = Model.Project.ProjectId, returnUrl = Model.ReturnUrl }, new { @class = "delete" })</li>
+        <li>@Html.ActionLink("Delete", "Delete", new { id = Model.Project.ProjectId })</li>
     }
-    <li><a href="@Server.UrlDecode(Model.ReturnUrl)">Back</a></li>
-</div> 
+    <li><a href="@if (Model.Project.IsNew) {<text>@Url.Action("Index", "Home")</text> } else {<text>@Url.Action("Details", new { id = Model.Project.ProjectId})</text>}">Back</a></li>
+</ul>

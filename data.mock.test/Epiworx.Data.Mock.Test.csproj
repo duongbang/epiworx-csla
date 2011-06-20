@@ -51,8 +51,6 @@
   <ItemGroup>
     <Compile Include="Attachment\AttachmentTest.cs" />
     <Compile Include="Attachment\AttachmentTestHelper.cs" />
-    <Compile Include="Category\CategoryTest.cs" />
-    <Compile Include="Category\CategoryTestHelper.cs" />
     <Compile Include="FeedSourceMember\FeedSourceMemberTest.cs" />
     <Compile Include="Feed\FeedTest.cs" />
     <Compile Include="Feed\FeedTestHelper.cs" />

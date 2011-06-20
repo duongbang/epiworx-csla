@@ -158,12 +158,14 @@ namespace <%= NamespaceName %>.Data.EntityFramework
                 
                 if (column.DataType == DbType.Date 
                     || column.DataType == DbType.DateTime) { %>
-            if (criteria.<%= column.Name %>.DateFrom.Date != DateTime.MinValue.Date)
+            if (criteria.<%= column.Name %> != null
+                && criteria.<%= column.Name %>.DateFrom.Date != DateTime.MinValue.Date)
             {
                 query = query.Where(row => row.<%= column.Name %> >= criteria.<%= column.Name %>.DateFrom);
             }
             
-            if (criteria.<%= column.Name %>.DateTo.Date != DateTime.MaxValue.Date)
+            if criteria.<%= column.Name %> != null
+                && (criteria.<%= column.Name %>.DateTo.Date != DateTime.MaxValue.Date)
             {
                 query = query.Where(row => row.<%= column.Name %> <= criteria.<%= column.Name %>.DateTo);
 			}

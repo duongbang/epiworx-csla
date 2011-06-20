@@ -42,6 +42,10 @@ namespace Epiworx.Test
             Assert.IsTrue(
                 ValidationHelper.ContainsRule(status, DbType.String, "Name"),
                "Name should be required");
+
+            Assert.IsTrue(
+                ValidationHelper.ContainsRule(status, DbType.Int32, "ProjectId"),
+               "ProjectId should be required");
         }
 
         [TestMethod]
@@ -92,6 +96,7 @@ namespace Epiworx.Test
 
             status = StatusRepository.StatusNew();
 
+            status.ProjectId = status.ProjectId;
             status.Name = name;
 
             Assert.IsTrue(

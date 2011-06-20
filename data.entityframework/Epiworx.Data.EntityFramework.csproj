@@ -63,6 +63,7 @@
     <Compile Include="ProjectUserMemberDataFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SourceDataFactory.cs" />
+    <Compile Include="StatusDataFactory.cs" />
     <Compile Include="UserDataFactory.cs" />
   </ItemGroup>
   <ItemGroup>

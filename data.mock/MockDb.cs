@@ -13,7 +13,6 @@ namespace Epiworx.Data.Mock
     public static class MockDb
     {
         public static List<AttachmentData> Attachments { get; private set; }
-        public static List<CategoryData> Categories { get; private set; }
         public static List<FeedData> Feeds { get; private set; }
         public static List<FeedSourceMemberData> FeedSourceMembers { get; private set; }
         public static List<FilterData> Filters { get; private set; }
@@ -31,8 +30,6 @@ namespace Epiworx.Data.Mock
         static MockDb()
         {
             Attachments = new List<AttachmentData>();
-
-            Categories = new List<CategoryData>();
 
             Feeds = new List<FeedData>();
 

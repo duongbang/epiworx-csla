@@ -3,11 +3,11 @@
 {
     <div class="part">
         <div class="wrapper">
-            <h3>Things to Do</h3>
             <ul class="actions">
                 @foreach (var action in Model.Actions)
                 {
-                    <li class="@action.CssClass">
+                    <li@if (!string.IsNullOrEmpty(action.CssClass))
+                       {<text> class="@action.CssClass"</text>}>
                         @if (!string.IsNullOrEmpty(action.ImageUrl))
                         {<text><img src="@action.ImageUrl" alt="@action.Caption"/></text>}<a href="@action.NavigateUrl">@action.Caption</a></li>
                 }

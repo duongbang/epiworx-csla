@@ -1,7 +1,24 @@
 ﻿@model Epiworx.WebMvc.Models.ProjectFormModel
-
-@{
-    ViewBag.Title = "Details";
+@using Epiworx.WebMvc.Helpers
+@using Epiworx.WebMvc.Models
+<div class="hgroup">
+    <h2>
+        @Model.Project.Name</h2>
+</div>
+<fieldset>
+    <legend>Project</legend>
+    <p>
+        <label>
+            Name</label>
+        <span class="big">@Model.Project.Name</span></p>
+    <p>
+        <label>
+            Description</label>
+        <span>@Model.Project.Description</span></p>
+</fieldset>
+@section SideBar
+{
+    @Html.Partial("_PartActionItemList")
+    @Html.Partial("_PartStatusList")
+    @Html.Partial("_PartUserList")
 }
-
-<h2>Details</h2>

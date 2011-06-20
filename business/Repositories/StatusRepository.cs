@@ -19,6 +19,17 @@ namespace Epiworx.Business
                 });
         }
 
+        public static StatusInfoList StatusFetchInfoList(int projectId)
+        {
+            ProjectUserRepository.AuthorizeProjectUser(projectId);
+
+            return StatusInfoList.FetchStatusInfoList(
+                new StatusDataCriteria
+                    {
+                        ProjectId = projectId
+                    });
+        }
+
         public static StatusInfoList StatusFetchInfoList(StatusDataCriteria criteria)
         {
             return StatusInfoList.FetchStatusInfoList(criteria);
@@ -56,6 +67,8 @@ namespace Epiworx.Business
 
         public static Status StatusUpdate(Status status)
         {
+            ProjectUserRepository.AuthorizeProjectUser(status.ProjectId);
+
             status = status.Save();
 
             SourceRepository.SourceUpdate(status.StatusId, SourceType.Status, status.Name);

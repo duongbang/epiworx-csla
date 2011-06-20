@@ -7,6 +7,8 @@ using Epiworx.Data;
 
 namespace Epiworx.Business
 {
+    using System.Security;
+
     using Epiworx.Business.Security;
 
     [Serializable]
@@ -14,6 +16,8 @@ namespace Epiworx.Business
     {
         public static Project ProjectFetch(int projectId)
         {
+            ProjectUserRepository.AuthorizeProjectUser(projectId);
+
             return Project.FetchProject(
                 new ProjectDataCriteria
                 {
@@ -29,7 +33,8 @@ namespace Epiworx.Business
         public static ProjectInfoList ProjectFetchInfoList(ProjectDataCriteria criteria)
         {
             // this will ensure that users can only view projects that they are assigned to
-            criteria.UserId = ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
+            criteria.UserId =
+                ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
 
             return ProjectInfoList.FetchProjectInfoList(criteria);
         }
@@ -69,6 +74,8 @@ namespace Epiworx.Business
 
         public static Project ProjectUpdate(Project project)
         {
+            ProjectUserRepository.AuthorizeProjectUser(project.ProjectId);
+
             project = project.Save();
 
             SourceRepository.SourceUpdate(project.ProjectId, SourceType.Project, project.Name);
@@ -85,6 +92,8 @@ namespace Epiworx.Business
 
         public static bool ProjectDelete(Project project)
         {
+            ProjectUserRepository.AuthorizeProjectUser(project.ProjectId);
+
             Project.DeleteProject(
                 new ProjectDataCriteria
                 {

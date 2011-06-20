@@ -1,7 +1,12 @@
 ﻿@model Epiworx.WebMvc.Models.ProjectFormModel
-
-@{
-    ViewBag.Title = "Edit";
+@using Epiworx.WebMvc.Helpers
+<div class="hgroup">
+    <h2>
+        New Project</h2>
+</div>
+@Html.ValidationSummary(false, "Oh snap! Looks like we ran into some trouble. Please correct the errors and try again.")
+@using (Html.BeginForm(new { id = Model.Project.ProjectId }))
+{
+    @Html.Partial("_ProjectForm")
+    @Html.Partial("_ProjectFormCommands")
 }
-
-<h2>Edit</h2>

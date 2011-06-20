@@ -7,89 +7,89 @@ using System.Text;
 
 namespace Epiworx.Data.EntityFramework
 {
-    public class ProjectUserMemberDataFactory : IProjectUserMemberDataFactory
+    public class StatusDataFactory : IStatusDataFactory
     {
-        public ProjectUserMemberData Fetch(ProjectUserMemberDataCriteria criteria)
+        public StatusData Fetch(StatusDataCriteria criteria)
         {
             using (var ctx = Csla.Data.ObjectContextManager<ApplicationEntities>
                          .GetManager(Database.ApplicationConnection, false))
             {
-                var projectUserMember = this.Fetch(ctx, criteria)
+                var status = this.Fetch(ctx, criteria)
                     .Single();
 
-                var projectUserMemberData = new ProjectUserMemberData();
+                var statusData = new StatusData();
 
-                this.Fetch(projectUserMember, projectUserMemberData);
+                this.Fetch(status, statusData);
 
-                return projectUserMemberData;
+                return statusData;
             }
         }
 
-        public ProjectUserMemberData[] FetchInfoList(ProjectUserMemberDataCriteria criteria)
+        public StatusData[] FetchInfoList(StatusDataCriteria criteria)
         {
             using (var ctx = Csla.Data.ObjectContextManager<ApplicationEntities>
                           .GetManager(Database.ApplicationConnection, false))
             {
-                var projectUserMembers = this.Fetch(ctx, criteria)
+                var statuss = this.Fetch(ctx, criteria)
                     .AsEnumerable();
 
-                var projectUserMemberDataList = new List<ProjectUserMemberData>();
+                var statusDataList = new List<StatusData>();
 
-                foreach (var projectUserMember in projectUserMembers)
+                foreach (var status in statuss)
                 {
-                    var projectUserMemberData = new ProjectUserMemberData();
+                    var statusData = new StatusData();
 
-                    this.Fetch(projectUserMember, projectUserMemberData);
+                    this.Fetch(status, statusData);
 
-                    projectUserMemberDataList.Add(projectUserMemberData);
+                    statusDataList.Add(statusData);
                 }
 
-                return projectUserMemberDataList.ToArray();
+                return statusDataList.ToArray();
             }
         }
 
-        public ProjectUserMemberData[] FetchLookupInfoList(ProjectUserMemberDataCriteria criteria)
+        public StatusData[] FetchLookupInfoList(StatusDataCriteria criteria)
         {
             using (var ctx = Csla.Data.ObjectContextManager<ApplicationEntities>
                           .GetManager(Database.ApplicationConnection, false))
             {
-                var projectUserMembers = this.Fetch(ctx, criteria)
+                var statuss = this.Fetch(ctx, criteria)
                     .AsEnumerable();
 
-                var projectUserMemberDataList = new List<ProjectUserMemberData>();
+                var statusDataList = new List<StatusData>();
 
-                foreach (var projectUserMember in projectUserMembers)
+                foreach (var status in statuss)
                 {
-                    var projectUserMemberData = new ProjectUserMemberData();
+                    var statusData = new StatusData();
 
-                    this.Fetch(projectUserMember, projectUserMemberData);
+                    this.Fetch(status, statusData);
 
-                    projectUserMemberDataList.Add(projectUserMemberData);
+                    statusDataList.Add(statusData);
                 }
 
-                return projectUserMemberDataList.ToArray();
+                return statusDataList.ToArray();
             }
         }
 
-        public ProjectUserMemberData Create()
+        public StatusData Create()
         {
-            return new ProjectUserMemberData();
+            return new StatusData();
         }
 
-        public ProjectUserMemberData Update(ProjectUserMemberData data)
+        public StatusData Update(StatusData data)
         {
             using (var ctx = Csla.Data.ObjectContextManager<ApplicationEntities>
                          .GetManager(Database.ApplicationConnection, false))
             {
-                var projectUserMember =
-                    new ProjectUserMember
+                var status =
+                    new Status
                     {
-                        ProjectUserMemberId = data.ProjectUserMemberId
+                        StatusId = data.StatusId
                     };
 
-                ctx.ObjectContext.ProjectUserMembers.Attach(projectUserMember);
+                ctx.ObjectContext.Statuses.Attach(status);
 
-                DataMapper.Map(data, projectUserMember);
+                Csla.Data.DataMapper.Map(data, status);
 
                 ctx.ObjectContext.SaveChanges();
 
@@ -97,84 +97,105 @@ namespace Epiworx.Data.EntityFramework
             }
         }
 
-        public ProjectUserMemberData Insert(ProjectUserMemberData data)
+        public StatusData Insert(StatusData data)
         {
             using (var ctx = Csla.Data.ObjectContextManager<ApplicationEntities>
                            .GetManager(Database.ApplicationConnection, false))
             {
-                var projectUserMember = new ProjectUserMember();
+                var status = new Status();
 
-                DataMapper.Map(data, projectUserMember);
+                Csla.Data.DataMapper.Map(data, status);
 
-                ctx.ObjectContext.AddToProjectUserMembers(projectUserMember);
+                ctx.ObjectContext.AddToStatuses(status);
 
                 ctx.ObjectContext.SaveChanges();
 
-                data.ProjectUserMemberId = projectUserMember.ProjectUserMemberId;
+                data.StatusId = status.StatusId;
 
                 return data;
             }
         }
 
-        public void Delete(ProjectUserMemberDataCriteria criteria)
+        public void Delete(StatusDataCriteria criteria)
         {
             using (var ctx = Csla.Data.ObjectContextManager<ApplicationEntities>
                           .GetManager(Database.ApplicationConnection, false))
             {
-                var projectUserMember = this.Fetch(ctx, criteria)
+                var status = this.Fetch(ctx, criteria)
                     .Single();
 
-                ctx.ObjectContext.ProjectUserMembers.DeleteObject(projectUserMember);
+                ctx.ObjectContext.Statuses.DeleteObject(status);
 
                 ctx.ObjectContext.SaveChanges();
             }
         }
 
-        private void Fetch(ProjectUserMember projectUserMember, ProjectUserMemberData projectUserMemberData)
+        private void Fetch(Status status, StatusData statusData)
         {
-            DataMapper.Map(projectUserMember, projectUserMemberData);
+            DataMapper.Map(status, statusData);
 
-            projectUserMemberData.Project = new ProjectData();
-            DataMapper.Map(projectUserMember.Project, projectUserMemberData.Project);
+            statusData.Project = new ProjectData();
+            DataMapper.Map(status.Project, statusData.Project);
 
-            projectUserMemberData.User = new UserData();
-            DataMapper.Map(projectUserMember.User, projectUserMemberData.User);
+            statusData.CreatedByUser = new UserData();
+            DataMapper.Map(status.CreatedByUser, statusData.CreatedByUser);
 
-            projectUserMemberData.CreatedByUser = new UserData();
-            DataMapper.Map(projectUserMember.CreatedByUser, projectUserMemberData.CreatedByUser);
-
-            projectUserMemberData.ModifiedByUser = new UserData();
-            DataMapper.Map(projectUserMember.ModifiedByUser, projectUserMemberData.ModifiedByUser);
+            statusData.ModifiedByUser = new UserData();
+            DataMapper.Map(status.ModifiedByUser, statusData.ModifiedByUser);
         }
 
-        private IQueryable<ProjectUserMember> Fetch(
+        private IQueryable<Status> Fetch(
              Csla.Data.ObjectContextManager<ApplicationEntities> ctx,
-             ProjectUserMemberDataCriteria criteria)
+             StatusDataCriteria criteria)
         {
-            IQueryable<ProjectUserMember> query = ctx.ObjectContext.ProjectUserMembers
+            IQueryable<Status> query = ctx.ObjectContext.Statuses
                 .Include("Project")
-                .Include("User")
                 .Include("CreatedByUser")
                 .Include("ModifiedByUser");
 
-            if (criteria.ProjectUserMemberId != null)
+            if (criteria.StatusId != null)
             {
-                query = query.Where(row => row.ProjectUserMemberId == criteria.ProjectUserMemberId);
+                query = query.Where(row => row.StatusId == criteria.StatusId);
+            }
+
+            if (criteria.Description != null)
+            {
+                query = query.Where(row => row.Description == criteria.Description);
+            }
+
+            if (criteria.IsActive != null)
+            {
+                query = query.Where(row => row.IsActive == criteria.IsActive);
+            }
+
+            if (criteria.IsArchived != null)
+            {
+                query = query.Where(row => row.IsArchived == criteria.IsArchived);
+            }
+
+            if (criteria.IsCompleted != null)
+            {
+                query = query.Where(row => row.IsCompleted == criteria.IsCompleted);
+            }
+
+            if (criteria.IsStarted != null)
+            {
+                query = query.Where(row => row.IsStarted == criteria.IsStarted);
+            }
+
+            if (criteria.Name != null)
+            {
+                query = query.Where(row => row.Name == criteria.Name);
+            }
+
+            if (criteria.Ordinal != null)
+            {
+                query = query.Where(row => row.Ordinal == criteria.Ordinal);
             }
 
             if (criteria.ProjectId != null)
             {
                 query = query.Where(row => row.ProjectId == criteria.ProjectId);
-            }
-
-            if (criteria.RoleId != null)
-            {
-                query = query.Where(row => row.RoleId == criteria.RoleId);
-            }
-
-            if (criteria.UserId != null)
-            {
-                query = query.Where(row => row.UserId == criteria.UserId);
             }
 
             if (criteria.CreatedBy != null)
@@ -209,6 +230,11 @@ namespace Epiworx.Data.EntityFramework
                 && criteria.ModifiedDate.DateTo.Date != DateTime.MaxValue.Date)
             {
                 query = query.Where(row => row.ModifiedDate <= criteria.ModifiedDate.DateTo);
+            }
+
+            if (criteria.Text != null)
+            {
+                query = query.Where(row => row.Name.Contains(criteria.Text));
             }
 
             if (criteria.SortBy != null)

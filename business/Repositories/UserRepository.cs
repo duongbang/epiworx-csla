@@ -38,6 +38,12 @@ namespace Epiworx.Business
                 });
         }
 
+        public static UserInfoList UserFetchInfoList()
+        {
+            return UserRepository.UserFetchInfoList(
+                new UserDataCriteria());
+        }
+
         public static UserInfoList UserFetchInfoList(UserDataCriteria criteria)
         {
             return UserInfoList.FetchUserInfoList(criteria);

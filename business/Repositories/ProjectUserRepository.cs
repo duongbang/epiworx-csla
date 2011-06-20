@@ -1,24 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
+using Epiworx.Business.Security;
 using Epiworx.Core;
 using Epiworx.Data;
 
 namespace Epiworx.Business
 {
-    using Epiworx.Business.Security;
-
     [Serializable]
     public class ProjectUserRepository
     {
-        public static ProjectUser ProjectUserFetch(int projectId)
+        public static void AuthorizeProjectUser(int projectId)
+        {
+            var userId =
+                ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
+
+            ProjectUserRepository.AuthorizeProjectUser(projectId, userId);
+        }
+
+        public static void AuthorizeProjectUser(int projectId, int userId)
+        {
+            var projects = ProjectRepository.ProjectFetchInfoList();
+
+            if (!projects.Any(project => project.ProjectId == projectId))
+            {
+                throw new SecurityException("You are not a member of this project.");
+            }
+        }
+
+        public static ProjectUser ProjectUserFetch(int projectUserMemberId)
         {
             return ProjectUser.FetchProjectUser(
                 new ProjectUserMemberDataCriteria
                 {
-                    ProjectUserMemberId = projectId
+                    ProjectUserMemberId = projectUserMemberId
                 });
+        }
+
+        public static ProjectUser ProjectUserFetch(int projectId, int userId)
+        {
+            return ProjectUser.FetchProjectUser(
+                new ProjectUserMemberDataCriteria
+                {
+                    ProjectId = projectId,
+                    UserId = userId
+                });
+        }
+
+        public static ProjectUserInfoList ProjectUserFetchInfoList(int projectId)
+        {
+            ProjectUserRepository.AuthorizeProjectUser(projectId);
+
+            return ProjectUserInfoList.FetchProjectUserInfoList(
+                new ProjectUserMemberDataCriteria
+                    {
+                        ProjectId = projectId
+                    });
         }
 
         public static ProjectUserInfoList ProjectUserFetchInfoList(ProjectUserMemberDataCriteria criteria)

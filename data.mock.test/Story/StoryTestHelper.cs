@@ -21,11 +21,9 @@ namespace Epiworx.Test.Helpers
         {
             var project = ProjectTestHelper.ProjectAdd();
             var status = StatusTestHelper.StatusAdd();
-            var category = CategoryTestHelper.CategoryAdd();
 
             var story = StoryRepository.StoryNew();
 
-            story.CategoryId = category.CategoryId;
             story.Description = DataHelper.RandomString(50);
             story.ProjectId = project.ProjectId;
             story.StatusId = status.StatusId;

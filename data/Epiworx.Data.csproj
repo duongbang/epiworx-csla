@@ -50,9 +50,6 @@
     <Compile Include="BusinessIdentity\BusinessIdentityData.cs" />
     <Compile Include="BusinessIdentity\BusinessIdentityDataCriteria.cs" />
     <Compile Include="BusinessIdentity\IBusinessIdentityDataFactory.cs" />
-    <Compile Include="Category\CategoryData.cs" />
-    <Compile Include="Category\CategoryDataCriteria.cs" />
-    <Compile Include="Category\ICategoryDataFactory.cs" />
     <Compile Include="FeedSourceMember\FeedSourceMemberData.cs" />
     <Compile Include="FeedSourceMember\FeedSourceMemberDataCriteria.cs" />
     <Compile Include="FeedSourceMember\IFeedSourceMemberDataFactory.cs" />

@@ -14,8 +14,6 @@ namespace Epiworx.Business
             this.AssignedTo = data.AssignedTo;
             this.AssignedToName = data.AssignedToUser.Name;
             this.AssignedDate = data.AssignedDate;
-            this.CategoryId = data.CategoryId;
-            this.CategoryName = data.Category.Name;
             this.CompletedDate = data.CompletedDate;
             this.Description = data.Description;
             this.Duration = data.Duration;

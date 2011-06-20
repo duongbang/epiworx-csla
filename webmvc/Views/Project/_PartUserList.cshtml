@@ -1,0 +1,14 @@
+﻿@model Epiworx.WebMvc.Models.ProjectFormModel
+<div class="part">
+    <div class="wrapper">
+        <h3>
+            Collaborators</h3>
+        <ul>
+            @foreach (var user in Model.Users)
+            {
+                <li>@Html.ActionLink(user.UserName, "Details", "User", new { id = user.UserId }, null)</li>
+            }
+        </ul>
+        @Html.ActionLink("Add a new collaborator", "Create", "ProjectUser", new { projectId = Model.Project.ProjectId }, null)
+    </div>
+</div>

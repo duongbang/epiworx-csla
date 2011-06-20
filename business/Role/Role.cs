@@ -9,9 +9,7 @@ namespace Epiworx.Business
     {
         None = 0,
         Owner = 1,
-        Administrator = 2,
-        Editor = 3,
-        Contributor = 4,
-        Reviewer = 5
+        Collaborator = 2,
+        Reviewer = 3
     }
 }

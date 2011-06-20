@@ -75,6 +75,22 @@ namespace Epiworx.Business
             set { this.SetProperty(OrdinalProperty, value); }
         }
 
+        private static Csla.PropertyInfo<int> ProjectIdProperty =
+            RegisterProperty<int>(row => row.ProjectId, "ProjectId");
+        public int ProjectId
+        {
+            get { return this.GetProperty(ProjectIdProperty); }
+            set { this.SetProperty(ProjectIdProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<string> ProjectNameProperty =
+            RegisterProperty<string>(row => row.ProjectName, "ProjectName");
+        public string ProjectName
+        {
+            get { return this.GetProperty(ProjectNameProperty); }
+            private set { this.SetProperty(ProjectNameProperty, value); }
+        }
+
         private static Csla.PropertyInfo<int> CreatedByProperty =
             RegisterProperty<int>(row => row.CreatedBy, "CreatedBy");
         public int CreatedBy
@@ -90,7 +106,7 @@ namespace Epiworx.Business
             get { return this.GetProperty(CreatedByNameProperty); }
             private set { this.SetProperty(CreatedByNameProperty, value); }
         }
-        
+
         private static Csla.PropertyInfo<DateTime> CreatedDateProperty =
             RegisterProperty<DateTime>(row => row.CreatedDate, "CreatedDate");
         public DateTime CreatedDate
@@ -114,7 +130,7 @@ namespace Epiworx.Business
             get { return this.GetProperty(ModifiedByNameProperty); }
             private set { this.SetProperty(ModifiedByNameProperty, value); }
         }
-        
+
         private static Csla.PropertyInfo<DateTime> ModifiedDateProperty =
             RegisterProperty<DateTime>(row => row.ModifiedDate, "ModifiedDate");
         public DateTime ModifiedDate
@@ -122,13 +138,5 @@ namespace Epiworx.Business
             get { return this.GetProperty(ModifiedDateProperty); }
             private set { this.SetProperty(ModifiedDateProperty, value); }
         }
-
-        // public static Csla.PropertyInfo<ChildPropertyType> ChildPropertyProperty =
-        //     RegisterProperty<ChildPropertyType>(row => row.ChildProperty);
-        // public ChildPropertyType ChildProperty
-        // {
-        //     get { return GetProperty(ChildPropertyProperty); }
-        //     private set { LoadProperty(ChildPropertyProperty, value); }
-        // }
     }
 }

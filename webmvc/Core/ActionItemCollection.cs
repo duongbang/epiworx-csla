@@ -19,15 +19,21 @@ namespace Epiworx.WebMvc
 
         public ActionItem Add(string caption, string navigateUrl)
         {
-            return this.Add(caption.Replace(" ", string.Empty), caption, navigateUrl, string.Empty);
+            return this.Add(caption.Replace(" ", string.Empty), caption, navigateUrl, string.Empty, string.Empty);
         }
 
-        public ActionItem Add(string name, string caption, string navigateUrl, string imageUrl)
+        public ActionItem Add(string caption, string navigateUrl, string cssClass)
+        {
+            return this.Add(caption.Replace(" ", string.Empty), caption, navigateUrl, string.Empty, cssClass);
+        }
+
+        public ActionItem Add(string name, string caption, string navigateUrl, string imageUrl, string cssClass)
         {
             var item = new ActionItem();
 
             item.Name = name;
             item.Caption = caption;
+            item.CssClass = cssClass;
             item.NavigateUrl = navigateUrl;
             item.ImageUrl = imageUrl;
 

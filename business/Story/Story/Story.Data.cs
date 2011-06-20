@@ -44,8 +44,6 @@ namespace Epiworx.Business
             this.AssignedTo = data.AssignedTo;
             this.AssignedToName = data.AssignedToUser.Name;
             this.AssignedDate = data.AssignedDate;
-            this.CategoryId = data.CategoryId;
-            this.CategoryName = data.Category.Name;
             this.CompletedDate = data.CompletedDate;
             this.Description = data.Description;
             this.Duration = data.Duration;
@@ -127,7 +125,6 @@ namespace Epiworx.Business
             data.StoryId = this.StoryId;
             data.AssignedTo = this.AssignedTo;
             data.AssignedDate = this.AssignedDate;
-            data.CategoryId = this.CategoryId;
             data.CompletedDate = this.CompletedDate;
             data.Description = this.Description;
             data.Duration = this.Duration;

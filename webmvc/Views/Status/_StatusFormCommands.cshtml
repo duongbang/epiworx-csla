@@ -1,0 +1,13 @@
+﻿@model Epiworx.WebMvc.Models.StatusFormModel
+@using Epiworx.WebMvc.Helpers
+<ul class="commands">
+    <li>
+        <button>
+            Save Changes</button></li>
+    <li><span>or</span></li>
+    @if (!Model.Status.IsNew)
+    { 
+        <li>@Html.ActionLink("Delete", "Delete", new { id = Model.Status.StatusId })</li>
+    }
+    <li><a href="@Url.Action("Details", "Project", new { id = Model.Status.ProjectId})">Back</a></li>
+</ul> 

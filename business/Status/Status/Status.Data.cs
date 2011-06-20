@@ -49,6 +49,8 @@ namespace Epiworx.Business
             this.IsStarted = data.IsStarted;
             this.Name = data.Name;
             this.Ordinal = data.Ordinal;
+            this.ProjectId = data.ProjectId;
+            this.ProjectName = data.Project.Name;
             this.CreatedBy = data.CreatedBy;
             this.CreatedByName = data.CreatedByUser.Name;
             this.CreatedDate = data.CreatedDate;
@@ -122,6 +124,7 @@ namespace Epiworx.Business
             data.IsStarted = this.IsStarted;
             data.Name = this.Name;
             data.Ordinal = this.Ordinal;
+            data.ProjectId = this.ProjectId;
             data.CreatedBy = this.CreatedBy;
             data.CreatedDate = this.CreatedDate;
             data.ModifiedBy = this.ModifiedBy;

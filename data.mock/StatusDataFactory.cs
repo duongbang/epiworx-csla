@@ -20,6 +20,10 @@ namespace Epiworx.Data.Mock
 
         public StatusData Fetch(StatusData data)
         {
+            data.Project = MockDb.Projects
+               .Where(row => row.ProjectId == data.ProjectId)
+               .Single();
+
             data.CreatedByUser = MockDb.Users
                 .Where(row => row.UserId == data.CreatedBy)
                 .Single();

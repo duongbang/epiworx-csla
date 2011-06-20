@@ -63,7 +63,6 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AttachmentController.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\FilterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -92,6 +91,9 @@
     <Compile Include="Core\ModelBase.cs" />
     <Compile Include="Models\Account\AccountRegisterModel.cs" />
     <Compile Include="Models\Account\AccountRegisterSuccessModel.cs" />
+    <Compile Include="Models\ProjectUser\ProjectUserFormModel.cs" />
+    <Compile Include="Models\DeleteModel.cs" />
+    <Compile Include="Models\Status\StatusFormModel.cs" />
     <Compile Include="Models\FindModel.cs" />
     <Compile Include="Models\Home\HomeIndexModel.cs" />
     <Compile Include="Models\Project\ProjectListModel.cs" />
@@ -195,6 +197,10 @@
       <Project>{1F729C3F-3278-4949-B50B-DC08796CFDCC}</Project>
       <Name>Epiworx.Data.Mock</Name>
     </ProjectReference>
+    <ProjectReference Include="..\data\Epiworx.Data.csproj">
+      <Project>{1641C95F-FED3-4623-BC61-4B220B5BFF58}</Project>
+      <Name>Epiworx.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Index.cshtml" />
@@ -237,7 +243,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_PartProjectList.cshtml" />
+    <Content Include="Views\Home\_PartProjectList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_PartFeedList.cshtml" />
@@ -261,13 +267,34 @@
     <Content Include="Views\Project\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Project\Delete.cshtml" />
+    <Content Include="Views\Shared\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Project\_ProjectForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Project\_ProjectFormCommands.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Project\_PartStatusList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Status\_StatusForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Status\_StatusFormCommands.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Status\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Status\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Project\_PartUserList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ProjectUser\Create.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

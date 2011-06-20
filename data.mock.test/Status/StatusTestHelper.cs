@@ -20,8 +20,10 @@ namespace Epiworx.Test.Helpers
         public static Status StatusNew()
         {
             var status = StatusRepository.StatusNew();
+            var project = ProjectTestHelper.ProjectAdd();
 
             status.Name = DataHelper.RandomString(20);
+            status.ProjectId = project.ProjectId;
 
             return status;
         }

@@ -10,20 +10,22 @@ namespace Epiworx.Business
     {
         private void Child_Fetch(StatusData data)
         {
-		    this.StatusId = data.StatusId;
-		    this.Description = data.Description;
-		    this.IsActive = data.IsActive;
-		    this.IsArchived = data.IsArchived;
-		    this.IsCompleted = data.IsCompleted;
-		    this.IsStarted = data.IsStarted;
-		    this.Name = data.Name;
-		    this.Ordinal = data.Ordinal;
-		    this.CreatedBy = data.CreatedBy;
+            this.StatusId = data.StatusId;
+            this.Description = data.Description;
+            this.IsActive = data.IsActive;
+            this.IsArchived = data.IsArchived;
+            this.IsCompleted = data.IsCompleted;
+            this.IsStarted = data.IsStarted;
+            this.Name = data.Name;
+            this.Ordinal = data.Ordinal;
+            this.ProjectId = data.ProjectId;
+            this.ProjectName = data.Project.Name;
+            this.CreatedBy = data.CreatedBy;
             this.CreatedByName = data.CreatedByUser.Name;
-		    this.CreatedDate = data.CreatedDate;
-		    this.ModifiedBy = data.ModifiedBy;
+            this.CreatedDate = data.CreatedDate;
+            this.ModifiedBy = data.ModifiedBy;
             this.ModifiedByName = data.ModifiedByUser.Name;
-		    this.ModifiedDate = data.ModifiedDate;
+            this.ModifiedDate = data.ModifiedDate;
         }
     }
 }

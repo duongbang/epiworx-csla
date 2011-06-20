@@ -90,7 +90,7 @@ namespace Epiworx.Data.EntityFramework
 
                 ctx.ObjectContext.Sources.Attach(source);
 
-                Csla.Data.DataMapper.Map(data, source);
+                DataMapper.Map(data, source);
 
                 ctx.ObjectContext.SaveChanges();
 
@@ -105,7 +105,7 @@ namespace Epiworx.Data.EntityFramework
             {
                 var source = new Source();
 
-                Csla.Data.DataMapper.Map(data, source);
+                DataMapper.Map(data, source);
 
                 ctx.ObjectContext.AddToSources(source);
 
@@ -133,16 +133,14 @@ namespace Epiworx.Data.EntityFramework
 
         private void Fetch(Source source, SourceData sourceData)
         {
-            Csla.Data.DataMapper.Map(source, sourceData);
+            DataMapper.Map(source, sourceData);
         }
 
         private IQueryable<Source> Fetch(
              Csla.Data.ObjectContextManager<ApplicationEntities> ctx,
              SourceDataCriteria criteria)
         {
-            IQueryable<Source> query = ctx.ObjectContext.Sources
-                .Include("CreatedByUser")
-                .Include("ModifiedByUser");
+            IQueryable<Source> query = ctx.ObjectContext.Sources;
 
             if (criteria.SourceId != null)
             {

@@ -7,6 +7,23 @@ namespace Epiworx.Business.Helpers
 {
     public class DataHelper
     {
+        public static string FetchRoleName(int roleId)
+        {
+            switch ((Role)roleId)
+            {
+                case Role.Collaborator:
+                    return "Collaborator";
+                case Role.None:
+                    return "None";
+                case Role.Owner:
+                    return "Owner";
+                case Role.Reviewer:
+                    return "Reviewer";
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
         public static string FetchSourceTypeName(int sourceTypeId)
         {
             switch ((SourceType)sourceTypeId)
