@@ -1,0 +1,39 @@
+﻿@model Epiworx.WebMvc.Models.StoryFormModel
+@using Epiworx.WebMvc.Helpers
+@using Epiworx.WebMvc.Models
+<div class="hgroup">
+    <h2>
+        @Model.Story.Description</h2>
+</div>
+<fieldset>
+    <legend>Story</legend>
+    <p>
+        <label>
+            Description</label>
+        <span class="big">@Model.Story.Description</span></p>
+    <p>
+        <label>
+            Story</label>
+        <span class="big">@Model.Story.StoryDescription</span></p>
+    <p>
+        <label>
+            Estimated Completed On</label>
+        <span>@Model.Story.EstimatedCompletedDate.ToShortDateString()</span></p>
+    <p>
+        <label>
+            Estimated Duration</label>
+        <span>@Model.Story.EstimatedDuration</span></p>
+    <p>
+        <label>
+            Completed On</label>
+        <span>@Model.Story.CompletedDate.ToShortDateString()</span></p>
+    <p>
+        <label>
+            Duration</label>
+        <span>@Model.Story.Duration</span></p>
+</fieldset>
+@section SideBar
+{
+    @Html.Partial("_PartActionItemList")
+    @Html.Partial("_PartStatusList")
+}

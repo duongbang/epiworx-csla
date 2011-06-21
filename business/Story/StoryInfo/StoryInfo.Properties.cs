@@ -39,22 +39,6 @@ namespace Epiworx.Business
             set { this.LoadProperty(AssignedDateProperty, value); }
         }
 
-        private static Csla.PropertyInfo<int> CategoryIdProperty =
-            RegisterProperty<int>(row => row.CategoryId, "CategoryId");
-        public int CategoryId
-        {
-            get { return this.GetProperty(CategoryIdProperty); }
-            set { this.LoadProperty(CategoryIdProperty, value); }
-        }
-
-        private static Csla.PropertyInfo<string> CategoryNameProperty =
-            RegisterProperty<string>(row => row.CategoryName, "CategoryName");
-        public string CategoryName
-        {
-            get { return this.GetProperty(CategoryNameProperty); }
-            set { this.LoadProperty(CategoryNameProperty, value); }
-        }
-
         private static Csla.PropertyInfo<DateTime> CompletedDateProperty =
             RegisterProperty<DateTime>(row => row.CompletedDate, "CompletedDate");
         public DateTime CompletedDate
@@ -101,6 +85,14 @@ namespace Epiworx.Business
         {
             get { return this.GetProperty(IsArchivedProperty); }
             set { this.LoadProperty(IsArchivedProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<bool> IsCompletedProperty =
+            RegisterProperty<bool>(row => row.IsCompleted, "IsCompleted");
+        public bool IsCompleted
+        {
+            get { return this.GetProperty(IsCompletedProperty); }
+            set { this.LoadProperty(IsCompletedProperty, value); }
         }
 
         private static Csla.PropertyInfo<int> ProjectIdProperty =

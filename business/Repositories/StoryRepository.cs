@@ -19,6 +19,29 @@ namespace Epiworx.Business
                 });
         }
 
+        public static StoryInfoList StoryFetchInfoList(int projectId)
+        {
+            ProjectUserRepository.AuthorizeProjectUser(projectId);
+
+            return StoryInfoList.FetchStoryInfoList(
+                new StoryDataCriteria
+                {
+                    ProjectId = projectId
+                });
+        }
+
+        public static StoryInfoList StoryFetchInfoList(int projectId, int sprintId)
+        {
+            ProjectUserRepository.AuthorizeProjectUser(projectId);
+
+            return StoryInfoList.FetchStoryInfoList(
+                new StoryDataCriteria
+                {
+                    ProjectId = projectId,
+                    SprintId = sprintId
+                });
+        }
+
         public static StoryInfoList StoryFetchInfoList(StoryDataCriteria criteria)
         {
             return StoryInfoList.FetchStoryInfoList(criteria);
@@ -30,6 +53,8 @@ namespace Epiworx.Business
             {
                 return story;
             }
+
+            ProjectUserRepository.AuthorizeProjectUser(story.ProjectId);
 
             Story result;
 
@@ -72,6 +97,8 @@ namespace Epiworx.Business
 
         public static bool StoryDelete(Story story)
         {
+            ProjectUserRepository.AuthorizeProjectUser(story.ProjectId);
+
             Story.DeleteStory(
                 new StoryDataCriteria
                 {

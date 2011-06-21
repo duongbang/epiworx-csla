@@ -91,6 +91,8 @@
     <Compile Include="Core\ModelBase.cs" />
     <Compile Include="Models\Account\AccountRegisterModel.cs" />
     <Compile Include="Models\Account\AccountRegisterSuccessModel.cs" />
+    <Compile Include="Models\Story\StoryFormModel.cs" />
+    <Compile Include="Models\Story\StoryListModel.cs" />
     <Compile Include="Models\Sprint\SprintFormModel.cs" />
     <Compile Include="Models\Sprint\SprintListModel.cs" />
     <Compile Include="Models\ProjectUser\ProjectUserFormModel.cs" />
@@ -321,6 +323,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Project\_PartSprintList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Story\_StoryForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Story\_StoryFormCommands.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Story\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Story\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Story\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Story\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_StoryList.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

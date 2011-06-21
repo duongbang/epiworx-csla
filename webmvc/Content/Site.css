@@ -66,6 +66,37 @@
     font-size: 24px;
 }
 
+.stories
+{
+    font-size: 18px;
+}
+
+.stories input
+{
+    float: left;
+    margin-top: 4px;
+    margin-right: 10px;
+    width: 20px;
+}
+
+.stories strong
+{
+    float: left;
+    color: #808080;
+    font-weight: normal;
+    margin-right: 10px;
+    width: 50px;
+}
+
+.stories span
+{
+    display: block;
+    margin-left: 95px;
+    font-size: 14px;
+    margin-top: 5px;
+    color: #808080;
+}
+
 .validation-summary-errors
 {
     color: #CC0000;
@@ -137,6 +168,11 @@
     padding: 0px 20px 0px 20px;
 }
 
+#main h3
+{
+    margin-bottom: 20px;
+}
+
 #content
 {
     margin-right: 320px;
@@ -152,6 +188,13 @@
     font-size: 12px;
     margin-left: 5px;
 }
+
+#content .stories li a
+{
+    font-size: 18px;
+    margin: 0px;
+    font-weight: bold;
+} 
 
 #aside
 {
@@ -218,6 +261,23 @@ input[type="text"], input[type="password"]
 input[type="text"].big, input[type="password"].big
 {
     font-size: 24px;
+}
+
+select
+{
+    padding: 5px;
+    width: 312px;
+    font-family: 'Times New Roman' , Times, serif;
+    margin-bottom: 10px;
+}
+
+textarea
+{
+    padding: 5px;
+    height: 100px;
+    width: 300px;
+    margin-bottom: 10px;
+    font-family: 'Times New Roman' , Times, serif;
 }
 
 fieldset

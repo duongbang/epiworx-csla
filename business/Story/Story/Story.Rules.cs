@@ -15,7 +15,6 @@ namespace Epiworx.Business
         {
             base.AddBusinessRules();
 
-            this.BusinessRules.AddRule(new IntegerRequired(CategoryIdProperty));
             this.BusinessRules.AddRule(new StringRequired(DescriptionProperty));
             this.BusinessRules.AddRule(new IntegerRequired(ProjectIdProperty));
             this.BusinessRules.AddRule(new IntegerRequired(StatusIdProperty));

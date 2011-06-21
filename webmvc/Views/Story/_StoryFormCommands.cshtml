@@ -1,0 +1,13 @@
+﻿@model Epiworx.WebMvc.Models.StoryFormModel
+@using Epiworx.WebMvc.Helpers
+<ul class="commands">
+    <li>
+        <button>
+            Save Changes</button></li>
+    <li><span>or</span></li>
+    @if (!Model.Story.IsNew)
+    { 
+        <li>@Html.ActionLink("Delete", "Delete", new { id = Model.Story.StoryId })</li>
+    }
+    <li><a href="@if (Model.Story.IsNew) {<text>@Url.Action("Index", "Home")</text> } else {<text>@Url.Action("Details", new { id = Model.Story.StoryId})</text>}">Back</a></li>
+</ul>

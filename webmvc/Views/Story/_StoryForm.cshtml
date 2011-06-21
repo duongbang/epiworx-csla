@@ -1,0 +1,48 @@
+﻿@model Epiworx.WebMvc.Models.StoryFormModel
+@using Epiworx.WebMvc.Helpers
+<fieldset>
+    <legend>Story</legend>
+    <p>
+        <label>
+            Project</label>
+        <span class="big">@Model.Story.ProjectName</span></p>
+    <label for="Description">
+        Description</label>
+    <textarea id="Description" name="Description">@Model.Story.Description</textarea>
+    <label for="StatusId">
+        Status</label>
+    <select id="StatusId" name="StatusId">
+        <option value="0">Select a status...</option>
+        @foreach (var status in Model.Statuses)
+        { 
+            <option value="@status.StatusId">@status.Name</option>
+        }
+    </select>
+    <label for="SprintId">
+        Sprint</label>
+    <select id="SprintId" name="SprintId">
+        <option value="0">Select a sprint...</option>
+        @foreach (var sprint in Model.Sprints)
+        { 
+            <option value="@sprint.SprintId">@sprint.Name</option>
+        }
+    </select>
+     <label for="AssignedTo">
+        Assigned To</label>
+    <select id="AssignedTo" name="AssignedTo">
+        <option value="0">Select a user...</option>
+        @foreach (var user in Model.Users)
+        { 
+            <option value="@user.UserId">@user.UserName</option>
+        }
+    </select>
+   <label for="EstimatedCompletedDate">
+        Estimated Completed On</label>
+    <input type="text" id="EstimatedCompletedDate" name="EstimatedCompletedDate" value="@Model.Story.EstimatedCompletedDate.ToShortDateString()" class="date" />
+    <label for="EstimatedDuration">
+        Estimated Duration</label>
+    <input type="text" id="EstimatedDuration" name="EstimatedDuration" value="@Model.Story.EstimatedDuration" class="number" />
+    <label for="IsArchived">
+        <input type="checkbox" id="IsArchived" name="IsArchived" @Html.ToChecked(Model.Story.IsArchived)/>This
+        story is archived</label>
+</fieldset>

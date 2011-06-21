@@ -11,14 +11,13 @@ namespace Epiworx.Business
         int AssignedTo { get; }
         string AssignedToName { get; }
         DateTime AssignedDate { get; }
-        int CategoryId { get; }
-        string CategoryName { get; }
         DateTime CompletedDate { get; }
         string Description { get; }
         decimal Duration { get; }
         DateTime EstimatedCompletedDate { get; }
         decimal EstimatedDuration { get; }
         bool IsArchived { get; }
+        bool IsCompleted { get; }
         int ProjectId { get; }
         string ProjectName { get; }
         int SprintId { get; }

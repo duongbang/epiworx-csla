@@ -1,0 +1,20 @@
+﻿@model Epiworx.WebMvc.Models.StoryListModel
+@foreach (var status in Model.Statuses)
+{
+    if (Model.Stories.Any(row => row.StatusId == status.StatusId))
+    {
+    <h3>@status.Name</h3>
+    <ul class="stories">
+        @foreach (var story in Model.Stories.Where(row => row.StatusId == status.StatusId))
+        {
+            <li>
+                <input type="checkbox" id="StoryId" name="StoryId" value="@story.StoryId" />
+                <strong>@story.StoryId</strong>
+                <p>
+                    <a href="@Url.Action("Details", "Story", new { id = story.StoryId})">@story.Description</a>
+                    <span>by @story.CreatedByName @story.CreatedDate.ToString("MMMM d, yyyy")</span></p>
+            </li> 
+        }
+    </ul>
+    }
+}

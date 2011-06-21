@@ -145,6 +145,50 @@ namespace Epiworx.Data.EntityFramework
             destination.ModifiedDate = source.ModifiedDate;
         }
 
+        internal static void Map(Story source, StoryData destination)
+        {
+            destination.StoryId = source.StoryId;
+            destination.AssignedTo = source.AssignedTo;
+            destination.AssignedDate = source.AssignedDate;
+            destination.CompletedDate = source.CompletedDate;
+            destination.Description = source.Description;
+            destination.Duration = source.Duration;
+            destination.EstimatedCompletedDate = source.EstimatedCompletedDate;
+            destination.EstimatedDuration = source.EstimatedDuration;
+            destination.IsArchived = source.IsArchived;
+            destination.IsCompleted = source.IsCompleted;
+            destination.ProjectId = source.ProjectId;
+            destination.SprintId = source.SprintId;
+            destination.StartDate = source.StartDate;
+            destination.StatusId = source.StatusId;
+            destination.ModifiedBy = source.ModifiedBy;
+            destination.ModifiedDate = source.ModifiedDate;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+        }
+
+        internal static void Map(StoryData source, Story destination)
+        {
+            destination.StoryId = source.StoryId;
+            destination.AssignedTo = source.AssignedTo;
+            destination.AssignedDate = source.AssignedDate;
+            destination.CompletedDate = source.CompletedDate;
+            destination.Description = source.Description;
+            destination.Duration = source.Duration;
+            destination.EstimatedCompletedDate = source.EstimatedCompletedDate;
+            destination.EstimatedDuration = source.EstimatedDuration;
+            destination.IsArchived = source.IsArchived;
+            destination.IsCompleted = source.IsCompleted;
+            destination.ProjectId = source.ProjectId;
+            destination.SprintId = source.SprintId;
+            destination.StartDate = source.StartDate;
+            destination.StatusId = source.StatusId;
+            destination.ModifiedBy = source.ModifiedBy;
+            destination.ModifiedDate = source.ModifiedDate;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+        }
+
         internal static void Map(User source, UserData destination)
         {
             destination.UserId = source.UserId;

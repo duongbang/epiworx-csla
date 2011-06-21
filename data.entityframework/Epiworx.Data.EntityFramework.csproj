@@ -65,6 +65,7 @@
     <Compile Include="SourceDataFactory.cs" />
     <Compile Include="SprintDataFactory.cs" />
     <Compile Include="StatusDataFactory.cs" />
+    <Compile Include="StoryDataFactory.cs" />
     <Compile Include="UserDataFactory.cs" />
   </ItemGroup>
   <ItemGroup>

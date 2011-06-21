@@ -24,6 +24,23 @@ namespace Epiworx.Business.Helpers
             }
         }
 
+        public static string FetchSprintName(int sprintId)
+        {
+            if (sprintId == 0)
+            {
+                return string.Empty;
+            }
+
+            try
+            {
+                return SprintRepository.SprintFetch(sprintId).Name;
+            }
+            catch (Exception)
+            {
+                return "Unknown";
+            }
+        }
+
         public static string FetchRoleName(int roleId)
         {
             switch ((Role)roleId)

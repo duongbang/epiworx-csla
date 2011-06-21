@@ -14,8 +14,12 @@ namespace Epiworx.Business
         {
             using (this.BypassPropertyChecks)
             {
-                this.ModifiedDate = DateTime.Now;
+                this.AssignedDate = DateTime.MaxValue;
+                this.CompletedDate = DateTime.MaxValue;
                 this.CreatedDate = DateTime.Now;
+                this.EstimatedCompletedDate = DateTime.MaxValue;
+                this.StartDate = DateTime.MaxValue;
+                this.ModifiedDate = DateTime.Now;
             }
 
             base.DataPortal_Create();
@@ -50,6 +54,7 @@ namespace Epiworx.Business
             this.EstimatedCompletedDate = data.EstimatedCompletedDate;
             this.EstimatedDuration = data.EstimatedDuration;
             this.IsArchived = data.IsArchived;
+            this.IsCompleted = data.IsCompleted;
             this.ProjectId = data.ProjectId;
             this.ProjectName = data.Project.Name;
             this.SprintId = data.SprintId;
@@ -131,6 +136,7 @@ namespace Epiworx.Business
             data.EstimatedCompletedDate = this.EstimatedCompletedDate;
             data.EstimatedDuration = this.EstimatedDuration;
             data.IsArchived = this.IsArchived;
+            data.IsCompleted = this.IsCompleted;
             data.ProjectId = this.ProjectId;
             data.SprintId = this.SprintId;
             data.StartDate = this.StartDate;

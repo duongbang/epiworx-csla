@@ -6,10 +6,10 @@ using Epiworx.Business;
 
 namespace Epiworx.WebMvc.Models
 {
-    public class SprintFormModel : ModelBase
+    public class StoryListModel : ModelBase
     {
-        public Sprint Sprint { get; set; }
-        public IEnumerable<StatusInfo> Statuses { get; set; }
         public IEnumerable<StoryInfo> Stories { get; set; }
+        public IEnumerable<StatusInfo> Statuses { get; set; }
+        public IEnumerable<UserInfo> Users { get; set; }
     }
 }

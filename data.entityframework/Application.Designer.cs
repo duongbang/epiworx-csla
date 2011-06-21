@@ -35,6 +35,12 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Sprint_Project", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.Project), "Sprint", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Sprint), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Sprint_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Sprint", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Sprint), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Sprint_UserModifiedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Sprint", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Sprint), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Story_Project", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.Project), "Story", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Story), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Story_Sprint", "Sprint", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.Sprint), "Story", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Story), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Story_Status", "Status", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.Status), "Story", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Story), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Story_UserAssignedTo", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Story", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Story), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Story_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Story", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Story), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Story_UserModifiedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Story", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Story), true)]
 
 #endregion
 
@@ -245,6 +251,22 @@ namespace Epiworx.Data.EntityFramework
             }
         }
         private ObjectSet<Sprint> _Sprints;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Story> Stories
+        {
+            get
+            {
+                if ((_Stories == null))
+                {
+                    _Stories = base.CreateObjectSet<Story>("Stories");
+                }
+                return _Stories;
+            }
+        }
+        private ObjectSet<Story> _Stories;
 
         #endregion
         #region AddTo Methods
@@ -327,6 +349,14 @@ namespace Epiworx.Data.EntityFramework
         public void AddToSprints(Sprint sprint)
         {
             base.AddObject("Sprints", sprint);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Stories EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToStories(Story story)
+        {
+            base.AddObject("Stories", story);
         }
 
         #endregion
@@ -1236,6 +1266,28 @@ namespace Epiworx.Data.EntityFramework
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Sprint>("ApplicationModel.FK_Sprint_Project", "Sprint", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Story_Project", "Story")]
+        public EntityCollection<Story> Stories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Story>("ApplicationModel.FK_Story_Project", "Story");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Story>("ApplicationModel.FK_Story_Project", "Story", value);
                 }
             }
         }
@@ -2605,6 +2657,28 @@ namespace Epiworx.Data.EntityFramework
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Story_Sprint", "Story")]
+        public EntityCollection<Story> Stories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Story>("ApplicationModel.FK_Story_Sprint", "Story");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Story>("ApplicationModel.FK_Story_Sprint", "Story", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -3086,6 +3160,756 @@ namespace Epiworx.Data.EntityFramework
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_Status_UserModifiedBy", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Story_Status", "Story")]
+        public EntityCollection<Story> Stories
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Story>("ApplicationModel.FK_Story_Status", "Story");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Story>("ApplicationModel.FK_Story_Status", "Story", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ApplicationModel", Name="Story")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Story : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Story object.
+        /// </summary>
+        /// <param name="storyId">Initial value of the StoryId property.</param>
+        /// <param name="assignedTo">Initial value of the AssignedTo property.</param>
+        /// <param name="assignedDate">Initial value of the AssignedDate property.</param>
+        /// <param name="completedDate">Initial value of the CompletedDate property.</param>
+        /// <param name="description">Initial value of the Description property.</param>
+        /// <param name="duration">Initial value of the Duration property.</param>
+        /// <param name="estimatedCompletedDate">Initial value of the EstimatedCompletedDate property.</param>
+        /// <param name="estimatedDuration">Initial value of the EstimatedDuration property.</param>
+        /// <param name="isArchived">Initial value of the IsArchived property.</param>
+        /// <param name="isCompleted">Initial value of the IsCompleted property.</param>
+        /// <param name="projectId">Initial value of the ProjectId property.</param>
+        /// <param name="sprintId">Initial value of the SprintId property.</param>
+        /// <param name="startDate">Initial value of the StartDate property.</param>
+        /// <param name="statusId">Initial value of the StatusId property.</param>
+        /// <param name="modifiedBy">Initial value of the ModifiedBy property.</param>
+        /// <param name="modifiedDate">Initial value of the ModifiedDate property.</param>
+        /// <param name="createdBy">Initial value of the CreatedBy property.</param>
+        /// <param name="createdDate">Initial value of the CreatedDate property.</param>
+        public static Story CreateStory(global::System.Int32 storyId, global::System.Int32 assignedTo, global::System.DateTime assignedDate, global::System.DateTime completedDate, global::System.String description, global::System.Decimal duration, global::System.DateTime estimatedCompletedDate, global::System.Decimal estimatedDuration, global::System.Boolean isArchived, global::System.Boolean isCompleted, global::System.Int32 projectId, global::System.Int32 sprintId, global::System.DateTime startDate, global::System.Int32 statusId, global::System.Int32 modifiedBy, global::System.DateTime modifiedDate, global::System.Int32 createdBy, global::System.DateTime createdDate)
+        {
+            Story story = new Story();
+            story.StoryId = storyId;
+            story.AssignedTo = assignedTo;
+            story.AssignedDate = assignedDate;
+            story.CompletedDate = completedDate;
+            story.Description = description;
+            story.Duration = duration;
+            story.EstimatedCompletedDate = estimatedCompletedDate;
+            story.EstimatedDuration = estimatedDuration;
+            story.IsArchived = isArchived;
+            story.IsCompleted = isCompleted;
+            story.ProjectId = projectId;
+            story.SprintId = sprintId;
+            story.StartDate = startDate;
+            story.StatusId = statusId;
+            story.ModifiedBy = modifiedBy;
+            story.ModifiedDate = modifiedDate;
+            story.CreatedBy = createdBy;
+            story.CreatedDate = createdDate;
+            return story;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 StoryId
+        {
+            get
+            {
+                return _StoryId;
+            }
+            set
+            {
+                if (_StoryId != value)
+                {
+                    OnStoryIdChanging(value);
+                    ReportPropertyChanging("StoryId");
+                    _StoryId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("StoryId");
+                    OnStoryIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _StoryId;
+        partial void OnStoryIdChanging(global::System.Int32 value);
+        partial void OnStoryIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 AssignedTo
+        {
+            get
+            {
+                return _AssignedTo;
+            }
+            set
+            {
+                OnAssignedToChanging(value);
+                ReportPropertyChanging("AssignedTo");
+                _AssignedTo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("AssignedTo");
+                OnAssignedToChanged();
+            }
+        }
+        private global::System.Int32 _AssignedTo;
+        partial void OnAssignedToChanging(global::System.Int32 value);
+        partial void OnAssignedToChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime AssignedDate
+        {
+            get
+            {
+                return _AssignedDate;
+            }
+            set
+            {
+                OnAssignedDateChanging(value);
+                ReportPropertyChanging("AssignedDate");
+                _AssignedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("AssignedDate");
+                OnAssignedDateChanged();
+            }
+        }
+        private global::System.DateTime _AssignedDate;
+        partial void OnAssignedDateChanging(global::System.DateTime value);
+        partial void OnAssignedDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CompletedDate
+        {
+            get
+            {
+                return _CompletedDate;
+            }
+            set
+            {
+                OnCompletedDateChanging(value);
+                ReportPropertyChanging("CompletedDate");
+                _CompletedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CompletedDate");
+                OnCompletedDateChanged();
+            }
+        }
+        private global::System.DateTime _CompletedDate;
+        partial void OnCompletedDateChanging(global::System.DateTime value);
+        partial void OnCompletedDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal Duration
+        {
+            get
+            {
+                return _Duration;
+            }
+            set
+            {
+                OnDurationChanging(value);
+                ReportPropertyChanging("Duration");
+                _Duration = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Duration");
+                OnDurationChanged();
+            }
+        }
+        private global::System.Decimal _Duration;
+        partial void OnDurationChanging(global::System.Decimal value);
+        partial void OnDurationChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime EstimatedCompletedDate
+        {
+            get
+            {
+                return _EstimatedCompletedDate;
+            }
+            set
+            {
+                OnEstimatedCompletedDateChanging(value);
+                ReportPropertyChanging("EstimatedCompletedDate");
+                _EstimatedCompletedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("EstimatedCompletedDate");
+                OnEstimatedCompletedDateChanged();
+            }
+        }
+        private global::System.DateTime _EstimatedCompletedDate;
+        partial void OnEstimatedCompletedDateChanging(global::System.DateTime value);
+        partial void OnEstimatedCompletedDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal EstimatedDuration
+        {
+            get
+            {
+                return _EstimatedDuration;
+            }
+            set
+            {
+                OnEstimatedDurationChanging(value);
+                ReportPropertyChanging("EstimatedDuration");
+                _EstimatedDuration = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("EstimatedDuration");
+                OnEstimatedDurationChanged();
+            }
+        }
+        private global::System.Decimal _EstimatedDuration;
+        partial void OnEstimatedDurationChanging(global::System.Decimal value);
+        partial void OnEstimatedDurationChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsArchived
+        {
+            get
+            {
+                return _IsArchived;
+            }
+            set
+            {
+                OnIsArchivedChanging(value);
+                ReportPropertyChanging("IsArchived");
+                _IsArchived = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsArchived");
+                OnIsArchivedChanged();
+            }
+        }
+        private global::System.Boolean _IsArchived;
+        partial void OnIsArchivedChanging(global::System.Boolean value);
+        partial void OnIsArchivedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsCompleted
+        {
+            get
+            {
+                return _IsCompleted;
+            }
+            set
+            {
+                OnIsCompletedChanging(value);
+                ReportPropertyChanging("IsCompleted");
+                _IsCompleted = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsCompleted");
+                OnIsCompletedChanged();
+            }
+        }
+        private global::System.Boolean _IsCompleted;
+        partial void OnIsCompletedChanging(global::System.Boolean value);
+        partial void OnIsCompletedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ProjectId
+        {
+            get
+            {
+                return _ProjectId;
+            }
+            set
+            {
+                OnProjectIdChanging(value);
+                ReportPropertyChanging("ProjectId");
+                _ProjectId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ProjectId");
+                OnProjectIdChanged();
+            }
+        }
+        private global::System.Int32 _ProjectId;
+        partial void OnProjectIdChanging(global::System.Int32 value);
+        partial void OnProjectIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SprintId
+        {
+            get
+            {
+                return _SprintId;
+            }
+            set
+            {
+                OnSprintIdChanging(value);
+                ReportPropertyChanging("SprintId");
+                _SprintId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SprintId");
+                OnSprintIdChanged();
+            }
+        }
+        private global::System.Int32 _SprintId;
+        partial void OnSprintIdChanging(global::System.Int32 value);
+        partial void OnSprintIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime StartDate
+        {
+            get
+            {
+                return _StartDate;
+            }
+            set
+            {
+                OnStartDateChanging(value);
+                ReportPropertyChanging("StartDate");
+                _StartDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("StartDate");
+                OnStartDateChanged();
+            }
+        }
+        private global::System.DateTime _StartDate;
+        partial void OnStartDateChanging(global::System.DateTime value);
+        partial void OnStartDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 StatusId
+        {
+            get
+            {
+                return _StatusId;
+            }
+            set
+            {
+                OnStatusIdChanging(value);
+                ReportPropertyChanging("StatusId");
+                _StatusId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("StatusId");
+                OnStatusIdChanged();
+            }
+        }
+        private global::System.Int32 _StatusId;
+        partial void OnStatusIdChanging(global::System.Int32 value);
+        partial void OnStatusIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ModifiedBy
+        {
+            get
+            {
+                return _ModifiedBy;
+            }
+            set
+            {
+                OnModifiedByChanging(value);
+                ReportPropertyChanging("ModifiedBy");
+                _ModifiedBy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModifiedBy");
+                OnModifiedByChanged();
+            }
+        }
+        private global::System.Int32 _ModifiedBy;
+        partial void OnModifiedByChanging(global::System.Int32 value);
+        partial void OnModifiedByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime ModifiedDate
+        {
+            get
+            {
+                return _ModifiedDate;
+            }
+            set
+            {
+                OnModifiedDateChanging(value);
+                ReportPropertyChanging("ModifiedDate");
+                _ModifiedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModifiedDate");
+                OnModifiedDateChanged();
+            }
+        }
+        private global::System.DateTime _ModifiedDate;
+        partial void OnModifiedDateChanging(global::System.DateTime value);
+        partial void OnModifiedDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CreatedBy
+        {
+            get
+            {
+                return _CreatedBy;
+            }
+            set
+            {
+                OnCreatedByChanging(value);
+                ReportPropertyChanging("CreatedBy");
+                _CreatedBy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedBy");
+                OnCreatedByChanged();
+            }
+        }
+        private global::System.Int32 _CreatedBy;
+        partial void OnCreatedByChanging(global::System.Int32 value);
+        partial void OnCreatedByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreatedDate
+        {
+            get
+            {
+                return _CreatedDate;
+            }
+            set
+            {
+                OnCreatedDateChanging(value);
+                ReportPropertyChanging("CreatedDate");
+                _CreatedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedDate");
+                OnCreatedDateChanged();
+            }
+        }
+        private global::System.DateTime _CreatedDate;
+        partial void OnCreatedDateChanging(global::System.DateTime value);
+        partial void OnCreatedDateChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Story_Project", "Project")]
+        public Project Project
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("ApplicationModel.FK_Story_Project", "Project").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("ApplicationModel.FK_Story_Project", "Project").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Project> ProjectReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("ApplicationModel.FK_Story_Project", "Project");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Project>("ApplicationModel.FK_Story_Project", "Project", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Story_Sprint", "Sprint")]
+        public Sprint Sprint
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Sprint>("ApplicationModel.FK_Story_Sprint", "Sprint").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Sprint>("ApplicationModel.FK_Story_Sprint", "Sprint").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Sprint> SprintReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Sprint>("ApplicationModel.FK_Story_Sprint", "Sprint");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Sprint>("ApplicationModel.FK_Story_Sprint", "Sprint", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Story_Status", "Status")]
+        public Status Status
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Status>("ApplicationModel.FK_Story_Status", "Status").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Status>("ApplicationModel.FK_Story_Status", "Status").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Status> StatusReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Status>("ApplicationModel.FK_Story_Status", "Status");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Status>("ApplicationModel.FK_Story_Status", "Status", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Story_UserAssignedTo", "User")]
+        public User AssignedToUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Story_UserAssignedTo", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Story_UserAssignedTo", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> AssignedToUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Story_UserAssignedTo", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_Story_UserAssignedTo", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Story_UserCreatedBy", "User")]
+        public User CreatedByUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Story_UserCreatedBy", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Story_UserCreatedBy", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> CreatedByUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Story_UserCreatedBy", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_Story_UserCreatedBy", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Story_UserModifiedBy", "User")]
+        public User ModifiedByUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Story_UserModifiedBy", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Story_UserModifiedBy", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> ModifiedByUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Story_UserModifiedBy", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_Story_UserModifiedBy", "User", value);
                 }
             }
         }
