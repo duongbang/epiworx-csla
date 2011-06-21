@@ -25,6 +25,7 @@ namespace Epiworx.WebMvc.Controllers
             model.Project = project;
             model.Statuses = StatusRepository.StatusFetchInfoList(id);
             model.Users = ProjectUserRepository.ProjectUserFetchInfoList(id);
+            model.Sprints = SprintRepository.SprintFetchInfoList(id);
             model.Actions.Add("Edit this project", Url.Action("Edit", new { id }), "primary");
             model.Actions.Add("Add a story", Url.Action("Create", "Story", new { projectId = id }));
             model.Actions.Add("Add a sprint", Url.Action("Create", "Sprint", new { projectId = id }));

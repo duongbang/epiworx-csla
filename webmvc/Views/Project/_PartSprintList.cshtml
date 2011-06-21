@@ -1,0 +1,14 @@
+﻿@model Epiworx.WebMvc.Models.ProjectFormModel
+<div class="part">
+    <div class="wrapper">
+        <h3>
+            Sprints</h3>
+        <ul>
+            @foreach (var sprint in Model.Sprints)
+            {
+                <li>@Html.ActionLink(sprint.Name, "Edit", "Sprint", new { id = sprint.SprintId }, null)</li>
+            }
+        </ul>
+        @Html.ActionLink("Add a new sprint", "Create", "Sprint", new { projectId = Model.Project.ProjectId }, null)
+    </div>
+</div>

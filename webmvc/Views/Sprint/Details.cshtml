@@ -1,0 +1,39 @@
+﻿@model Epiworx.WebMvc.Models.SprintFormModel
+@using Epiworx.WebMvc.Helpers
+@using Epiworx.WebMvc.Models
+<div class="hgroup">
+    <h2>
+        @Model.Sprint.Name</h2>
+</div>
+<fieldset>
+    <legend>Sprint</legend>
+    <p>
+        <label>
+            Name</label>
+        <span class="big">@Model.Sprint.Name</span></p>
+    <p>
+        <label>
+            Project</label>
+        <span class="big">@Model.Sprint.ProjectName</span></p>
+    <p>
+        <label>
+            Estimated Completed On</label>
+        <span>@Model.Sprint.EstimatedCompletedDate.ToShortDateString()</span></p>
+    <p>
+        <label>
+            Estimated Duration</label>
+        <span>@Model.Sprint.EstimatedDuration</span></p>
+    <p>
+        <label>
+            Completed On</label>
+        <span>@Model.Sprint.CompletedDate.ToShortDateString()</span></p>
+    <p>
+        <label>
+            Duration</label>
+        <span>@Model.Sprint.Duration</span></p>
+</fieldset>
+@section SideBar
+{
+    @Html.Partial("_PartActionItemList")
+    @Html.Partial("_PartStatusList")
+}

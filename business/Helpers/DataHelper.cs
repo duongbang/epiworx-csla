@@ -7,6 +7,23 @@ namespace Epiworx.Business.Helpers
 {
     public class DataHelper
     {
+        public static string FetchProjectName(int projectId)
+        {
+            if (projectId == 0)
+            {
+                return string.Empty;
+            }
+
+            try
+            {
+                return ProjectRepository.ProjectFetch(projectId).Name;
+            }
+            catch (Exception)
+            {
+                return "Unknown";
+            }
+        }
+
         public static string FetchRoleName(int roleId)
         {
             switch ((Role)roleId)

@@ -22,6 +22,8 @@ namespace Epiworx.Business
                 this.CreatedDate = DateTime.Now;
             }
 
+            this.PropertyHasChanged(ProjectIdProperty);
+
             base.DataPortal_Create();
         }
 

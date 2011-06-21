@@ -91,6 +91,8 @@
     <Compile Include="Core\ModelBase.cs" />
     <Compile Include="Models\Account\AccountRegisterModel.cs" />
     <Compile Include="Models\Account\AccountRegisterSuccessModel.cs" />
+    <Compile Include="Models\Sprint\SprintFormModel.cs" />
+    <Compile Include="Models\Sprint\SprintListModel.cs" />
     <Compile Include="Models\ProjectUser\ProjectUserFormModel.cs" />
     <Compile Include="Models\DeleteModel.cs" />
     <Compile Include="Models\Status\StatusFormModel.cs" />
@@ -295,6 +297,30 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\ProjectUser\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Sprint\_PartStatusList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Sprint\_SprintForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Sprint\_SprintFormCommands.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Sprint\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Sprint\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Sprint\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Sprint\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Project\_PartSprintList.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

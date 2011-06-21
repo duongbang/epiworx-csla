@@ -102,7 +102,7 @@ namespace <%= NamespaceName %>.Data.EntityFramework
 
                 ctx.ObjectContext.<%= ClassPluralName%>.Attach(<%= StringUtil.ToCamelCase(ClassName) %>);
 
-                Csla.Data.DataMapper.Map(data, <%= StringUtil.ToCamelCase(ClassName) %>);
+                DataMapper.Map(data, <%= StringUtil.ToCamelCase(ClassName) %>);
 
                 ctx.ObjectContext.SaveChanges();
 
@@ -117,7 +117,7 @@ namespace <%= NamespaceName %>.Data.EntityFramework
             {
                 var <%= StringUtil.ToCamelCase(ClassName) %> = new <%= ClassName%>();
 
-                Csla.Data.DataMapper.Map(data, <%= StringUtil.ToCamelCase(ClassName) %>);
+                DataMapper.Map(data, <%= StringUtil.ToCamelCase(ClassName) %>);
 
                 ctx.ObjectContext.AddTo<%= ClassPluralName%>(<%= StringUtil.ToCamelCase(ClassName) %>);
 
@@ -164,8 +164,8 @@ namespace <%= NamespaceName %>.Data.EntityFramework
                 query = query.Where(row => row.<%= column.Name %> >= criteria.<%= column.Name %>.DateFrom);
             }
             
-            if criteria.<%= column.Name %> != null
-                && (criteria.<%= column.Name %>.DateTo.Date != DateTime.MaxValue.Date)
+            if (criteria.<%= column.Name %> != null
+                && (criteria.<%= column.Name %>.DateTo.Date != DateTime.MaxValue.Date))
             {
                 query = query.Where(row => row.<%= column.Name %> <= criteria.<%= column.Name %>.DateTo);
 			}

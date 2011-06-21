@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Epiworx.Business.Helpers;
 using Epiworx.Business.Security.Helpers;
 using Epiworx.Data;
 
@@ -29,9 +30,17 @@ namespace Epiworx.Business
 
             switch (property.Name)
             {
+                case "ProjectId":
+                    this.OnProjectIdChanged();
+                    break;
                 default:
                     break;
             }
+        }
+
+        private void OnProjectIdChanged()
+        {
+            this.ProjectName = DataHelper.FetchProjectName(this.ProjectId);
         }
 
         internal static Sprint NewSprint(int projectId)

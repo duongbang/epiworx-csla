@@ -75,6 +75,42 @@ namespace Epiworx.Data.EntityFramework
             destination.ModifiedDate = source.ModifiedDate;
         }
 
+        internal static void Map(Sprint source, SprintData destination)
+        {
+            destination.SprintId = source.SprintId;
+            destination.CompletedDate = source.CompletedDate;
+            destination.IsActive = source.IsActive;
+            destination.IsArchived = source.IsArchived;
+            destination.IsCompleted = source.IsCompleted;
+            destination.Duration = source.Duration;
+            destination.EstimatedCompletedDate = source.EstimatedCompletedDate;
+            destination.EstimatedDuration = source.EstimatedDuration;
+            destination.Name = source.Name;
+            destination.ProjectId = source.ProjectId;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+            destination.ModifiedBy = source.ModifiedBy;
+            destination.ModifiedDate = source.ModifiedDate;
+        }
+
+        internal static void Map(SprintData source, Sprint destination)
+        {
+            destination.SprintId = source.SprintId;
+            destination.CompletedDate = source.CompletedDate;
+            destination.IsActive = source.IsActive;
+            destination.IsArchived = source.IsArchived;
+            destination.IsCompleted = source.IsCompleted;
+            destination.Duration = source.Duration;
+            destination.EstimatedCompletedDate = source.EstimatedCompletedDate;
+            destination.EstimatedDuration = source.EstimatedDuration;
+            destination.Name = source.Name;
+            destination.ProjectId = source.ProjectId;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+            destination.ModifiedBy = source.ModifiedBy;
+            destination.ModifiedDate = source.ModifiedDate;
+        }
+
         internal static void Map(Status source, StatusData destination)
         {
             destination.StatusId = source.StatusId;

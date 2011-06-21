@@ -19,6 +19,17 @@ namespace Epiworx.Business
                 });
         }
 
+        public static SprintInfoList SprintFetchInfoList(int projectId)
+        {
+            ProjectUserRepository.AuthorizeProjectUser(projectId);
+
+            return SprintInfoList.FetchSprintInfoList(
+                new SprintDataCriteria
+                    {
+                        ProjectId = projectId
+                    });
+        }
+
         public static SprintInfoList SprintFetchInfoList(SprintDataCriteria criteria)
         {
             return SprintInfoList.FetchSprintInfoList(criteria);
@@ -30,6 +41,8 @@ namespace Epiworx.Business
             {
                 return sprint;
             }
+
+            ProjectUserRepository.AuthorizeProjectUser(sprint.ProjectId);
 
             Sprint result;
 
@@ -72,6 +85,8 @@ namespace Epiworx.Business
 
         public static bool SprintDelete(Sprint sprint)
         {
+            ProjectUserRepository.AuthorizeProjectUser(sprint.ProjectId);
+
             Sprint.DeleteSprint(
                 new SprintDataCriteria
                 {

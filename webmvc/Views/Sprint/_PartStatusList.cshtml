@@ -1,0 +1,14 @@
+﻿@model Epiworx.WebMvc.Models.SprintFormModel
+<div class="part">
+    <div class="wrapper">
+        <h3>
+            Statuses</h3>
+        <ul>
+            @foreach (var status in Model.Statuses)
+            {
+                <li>@Html.ActionLink(status.Name, "Edit", "Status", new { id = status.StatusId }, null)</li>
+            }
+        </ul>
+        @Html.ActionLink("Add a new status", "Create", "Status", new { projectId = Model.Sprint.ProjectId }, null)
+    </div>
+</div>
