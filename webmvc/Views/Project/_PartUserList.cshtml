@@ -3,10 +3,10 @@
     <div class="wrapper">
         <h3>
             Collaborators</h3>
-        <ul>
+        <ul class="collaborators">
             @foreach (var user in Model.Users)
             {
-                <li>@Html.ActionLink(user.UserName, "Details", "User", new { id = user.UserId }, null)</li>
+                <li>@user.UserName @Html.ActionLink("Delete", "Delete", "ProjectUser", new { id = user.ProjectUserMemberId }, null)</li>
             }
         </ul>
         @Html.ActionLink("Add a new collaborator", "Create", "ProjectUser", new { projectId = Model.Project.ProjectId }, null)

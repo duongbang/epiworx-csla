@@ -44,7 +44,7 @@ namespace Epiworx.WebMvc.Controllers
 
             model.Title = "Project User Delete";
             model.Id = projectUser.ProjectUserMemberId;
-            model.Name = "ProjectUser";
+            model.Name = "Project User";
             model.Description = projectUser.UserName;
             model.ControllerName = "ProjectUser";
             model.BackUrl = Url.Action("Details", "Project", new { id = projectUser.ProjectId });

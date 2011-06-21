@@ -72,6 +72,8 @@ namespace Epiworx.Business
                 return projectUserMember;
             }
 
+            ProjectUserRepository.AuthorizeProjectUser(projectUserMember.ProjectId);
+
             ProjectUser result;
 
             if (projectUserMember.IsNew)
@@ -120,6 +122,14 @@ namespace Epiworx.Business
 
         public static bool ProjectUserDelete(ProjectUser projectUserMember)
         {
+            ProjectUserRepository.AuthorizeProjectUser(projectUserMember.ProjectId);
+
+            if (ProjectUserRepository.ProjectUserFetch(
+                projectUserMember.ProjectId, projectUserMember.UserId).RoleId == (int)Role.Owner)
+            {
+                throw new NotSupportedException("You cannot delete the owner of a project");
+            }
+
             ProjectUser.DeleteProjectUser(
                 new ProjectUserMemberDataCriteria
                 {
