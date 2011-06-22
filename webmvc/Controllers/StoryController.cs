@@ -11,6 +11,16 @@ namespace Epiworx.WebMvc.Controllers
 {
     public class StoryController : Controller
     {
+        public ActionResult Index()
+        {
+            var model = new StoryListModel();
+            var stories = StoryRepository.StoryFetchInfoList();
+
+            model.Stories = stories;
+
+            return this.View(model);
+        }
+
         public ActionResult Details(int id)
         {
             var model = new StoryFormModel();

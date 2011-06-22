@@ -19,9 +19,15 @@ namespace Epiworx.Business
                 });
         }
 
-        public static HourInfoList HourFetchInfoList(IStory story)
+        public static HourInfoList HourFetchInfoList()
         {
             return HourRepository.HourFetchInfoList(
+                new HourDataCriteria());
+        }
+
+        public static HourInfoList HourFetchInfoList(IStory story)
+        {
+            return HourInfoList.FetchHourInfoList(
                 new HourDataCriteria
                     {
                         StoryId = story.StoryId
@@ -30,25 +36,29 @@ namespace Epiworx.Business
 
         public static HourInfoList HourFetchInfoList(IProject project)
         {
-            return HourRepository.HourFetchInfoList(
+            return HourInfoList.FetchHourInfoList(
                 new HourDataCriteria
                 {
-                    ProjectId = project.ProjectId
+                    ProjectId = new[] { project.ProjectId }
                 });
         }
 
         public static HourInfoList HourFetchInfoList(ISprint sprint)
         {
-            return HourRepository.HourFetchInfoList(
+            return HourInfoList.FetchHourInfoList(
                 new HourDataCriteria
                 {
-                    ProjectId = sprint.ProjectId,
+                    ProjectId = new[] { sprint.ProjectId },
                     SprintId = sprint.SprintId
                 });
         }
 
         public static HourInfoList HourFetchInfoList(HourDataCriteria criteria)
         {
+            criteria.ProjectId = ProjectRepository.ProjectFetchInfoList()
+                .Select(row => row.ProjectId)
+                .ToArray();
+
             return HourInfoList.FetchHourInfoList(criteria);
         }
 

@@ -202,7 +202,7 @@ namespace Epiworx.Data.EntityFramework
 
             if (criteria.ProjectId != null)
             {
-                query = query.Where(row => row.Story.ProjectId == criteria.ProjectId);
+                query = query.Where(row => criteria.ProjectId.Contains(row.Story.ProjectId));
             }
 
             if (criteria.SprintId != null)

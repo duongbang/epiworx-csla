@@ -376,3 +376,19 @@ legend
 {
     display: none;
 }
+
+table
+{
+    width: 100%;
+}
+
+th, td
+{
+    padding: 10px;
+    text-align: left;
+}
+
+th.first, td.first
+{
+    padding-left: 0px;
+}

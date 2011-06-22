@@ -17,7 +17,7 @@ namespace Epiworx.Data
         public decimal? EstimatedDuration { get; set; }
         public bool? IsArchived { get; set; }
         public bool? IsCompleted { get; set; }
-        public int? ProjectId { get; set; }
+        public int[] ProjectId { get; set; }
         public int? SprintId { get; set; }
         public DateRangeCriteria StartDate { get; set; }
         public int? StatusId { get; set; }

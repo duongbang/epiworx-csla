@@ -1,7 +1,24 @@
 ﻿@model Epiworx.WebMvc.Models.ProjectListModel
-
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
+@using Epiworx.WebMvc.Helpers
+<div class="hgroup">
+    <h2>
+        Projects</h2>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th class="first last">
+                Name
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var project in Model.Projects)
+        { 
+            <tr>
+                <td class="first last">@Html.ActionLink(project.Name, "Details", new { id = project.ProjectId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

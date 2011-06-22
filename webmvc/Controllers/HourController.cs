@@ -11,6 +11,16 @@ namespace Epiworx.WebMvc.Controllers
 {
     public class HourController : Controller
     {
+        public ActionResult Index()
+        {
+            var model = new HourListModel();
+            var hours = HourRepository.HourFetchInfoList();
+
+            model.Hours = hours;
+
+            return this.View(model);
+        }
+
         public ActionResult Details(int id)
         {
             var model = new HourFormModel();

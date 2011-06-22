@@ -1,7 +1,40 @@
 ﻿@model Epiworx.WebMvc.Models.StoryListModel
-
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
+@using Epiworx.WebMvc.Helpers
+<div class="hgroup">
+    <h2>
+        Stories</h2>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th class="first" style="width: 80px">
+                No.
+            </th>
+            <th style="width: 200px">
+                Project
+            </th>
+            <th>
+                Description
+            </th>
+            <th class="last" style="width: 100px">
+                Duration
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var story in Model.Stories)
+        { 
+            <tr>
+                <td class="first">
+                    <input type="checkbox" id="StoryId" name="StoryId" value="@story.StoryId" />@Html.ActionLink(story.StoryId.ToString(), "Details", new { id = story.StoryId })
+                </td>
+                <td>@story.ProjectName
+                </td>
+                <td>@story.Description
+                </td>
+                <td>@story.Duration.ToString("F2")
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

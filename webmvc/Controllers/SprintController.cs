@@ -21,7 +21,7 @@ namespace Epiworx.WebMvc.Controllers
             model.Attachments = AttachmentRepository.AttachmentFetchInfoList(id, SourceType.Sprint);
             model.Notes = NoteRepository.NoteFetchInfoList(id, SourceType.Sprint);
             model.Statuses = StatusRepository.StatusFetchInfoList(sprint.ProjectId);
-            model.Stories = StoryRepository.StoryFetchInfoList(sprint.ProjectId, id);
+            model.Stories = StoryRepository.StoryFetchInfoList(sprint);
             model.Users = ProjectUserRepository.ProjectUserFetchInfoList(sprint.ProjectId);
             model.Actions.Add("Edit this sprint", Url.Action("Edit", new { id }), "primary");
             model.Actions.Add("Add a story", Url.Action("Create", "Story", new { projectId = sprint.ProjectId, sprintId = id }));

@@ -13,7 +13,12 @@ namespace Epiworx.WebMvc.Controllers
     {
         public ActionResult Index()
         {
-            return this.View();
+            var model = new ProjectListModel();
+            var projects = ProjectRepository.ProjectFetchInfoList();
+
+            model.Projects = projects;
+
+            return this.View(model);
         }
 
         public ActionResult Details(int id)
@@ -27,7 +32,7 @@ namespace Epiworx.WebMvc.Controllers
             model.Notes = NoteRepository.NoteFetchInfoList(id, SourceType.Project);
             model.Sprints = SprintRepository.SprintFetchInfoList(id);
             model.Statuses = StatusRepository.StatusFetchInfoList(id);
-            model.Stories = StoryRepository.StoryFetchInfoList(id);
+            model.Stories = StoryRepository.StoryFetchInfoList(project);
             model.Users = ProjectUserRepository.ProjectUserFetchInfoList(id);
             model.Actions.Add("Edit this project", Url.Action("Edit", new { id }), "primary");
             model.Actions.Add("Add a story", Url.Action("Create", "Story", new { projectId = id }));
