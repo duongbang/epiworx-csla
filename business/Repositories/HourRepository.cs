@@ -19,6 +19,34 @@ namespace Epiworx.Business
                 });
         }
 
+        public static HourInfoList HourFetchInfoList(IStory story)
+        {
+            return HourRepository.HourFetchInfoList(
+                new HourDataCriteria
+                    {
+                        StoryId = story.StoryId
+                    });
+        }
+
+        public static HourInfoList HourFetchInfoList(IProject project)
+        {
+            return HourRepository.HourFetchInfoList(
+                new HourDataCriteria
+                {
+                    ProjectId = project.ProjectId
+                });
+        }
+
+        public static HourInfoList HourFetchInfoList(ISprint sprint)
+        {
+            return HourRepository.HourFetchInfoList(
+                new HourDataCriteria
+                {
+                    ProjectId = sprint.ProjectId,
+                    SprintId = sprint.SprintId
+                });
+        }
+
         public static HourInfoList HourFetchInfoList(HourDataCriteria criteria)
         {
             return HourInfoList.FetchHourInfoList(criteria);

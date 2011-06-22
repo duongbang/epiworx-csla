@@ -1,0 +1,13 @@
+﻿@model Epiworx.WebMvc.Models.HourFormModel
+@using Epiworx.WebMvc.Helpers
+<ul class="commands">
+    <li>
+        <button>
+            Save Changes</button></li>
+    <li><span>or</span></li>
+    @if (!Model.Hour.IsNew)
+    { 
+        <li>@Html.ActionLink("Delete", "Delete", new { id = Model.Hour.HourId })</li>
+    }
+    <li>@Html.ActionLink("Back", "Details", "Story", new { id = Model.Hour.StoryId }, null)</li>
+</ul>

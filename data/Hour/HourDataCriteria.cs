@@ -13,6 +13,7 @@ namespace Epiworx.Data
         public string Notes { get; set; }
         public int? StoryId { get; set; }
         public int? ProjectId { get; set; }
+        public int? SprintId { get; set; }
         public int? UserId { get; set; }
         public int? CreatedBy { get; set; }
         public DateRangeCriteria CreatedDate { get; set; }

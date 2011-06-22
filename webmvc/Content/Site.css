@@ -12,7 +12,7 @@
 {
     font-size: 12px;
     padding: 2px 5px 2px 5px;
-    background-color: #D4E2F7;
+    background-color: #E8E8E8;
     margin-left: 5px;
 }
 
@@ -31,6 +31,16 @@
     margin-bottom: 20px;
 }
 
+.developer.note
+{
+    border: 1px solid #FFFF66;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #FFFFCC;
+    line-height: 150%;
+    box-shadow: 5px 5px 5px #CCC;
+}
+
 .hgroup
 {
     margin-bottom: 20px;
@@ -44,6 +54,20 @@
 .hgroup p
 {
     color: #808080;
+}
+
+.hours
+{
+}
+
+.hours a
+{
+    float: right;
+}
+
+.hours strong
+{
+    margin-right: 10px;
 }
 
 .part
@@ -71,12 +95,11 @@
     font-size: 18px;
 }
 
-.stories input
+.stories em
 {
-    float: left;
-    margin-top: 4px;
-    margin-right: 10px;
-    width: 20px;
+    font-style: normal;
+    color: #000000;
+    font-weight: bold;
 }
 
 .stories strong
@@ -85,13 +108,19 @@
     color: #808080;
     font-weight: normal;
     margin-right: 10px;
-    width: 50px;
+    height: 40px;
+    width: 55px;
 }
 
-.stories span
+.stories .assignment
+{
+    float: right;
+    font-size: 14px;
+}
+
+.stories .date
 {
     display: block;
-    margin-left: 95px;
     font-size: 14px;
     margin-top: 5px;
     color: #808080;
@@ -175,7 +204,7 @@
 
 #content
 {
-    margin-right: 320px;
+    margin-right: 340px;
 }
 
 #content li
@@ -261,6 +290,11 @@ input[type="text"], input[type="password"]
 input[type="text"].big, input[type="password"].big
 {
     font-size: 24px;
+}
+
+input[type="text"].number, input[type="text"].date
+{
+    width: 150px;
 }
 
 select

@@ -30,9 +30,11 @@ namespace Epiworx.WebMvc.Controllers
             model.Actions.Add("Edit this project", Url.Action("Edit", new { id }), "primary");
             model.Actions.Add("Add a story", Url.Action("Create", "Story", new { projectId = id }));
             model.Actions.Add("Add a sprint", Url.Action("Create", "Sprint", new { projectId = id }));
+            model.Actions.Add("Add an email", string.Empty);
             model.Actions.Add("Add an attachment", Url.Action("Create", "Note", new { sourceId = id, sourceTypeId = (int)SourceType.Project }));
             model.Actions.Add("Add a note", Url.Action("Create", "Attachment", new { sourceId = id, sourceTypeId = (int)SourceType.Project }));
             model.Actions.Add("Add a collaborator", Url.Action("Create", "ProjectUser", new { projectId = id }));
+            model.Actions.Add("Add a status", Url.Action("Create", "Status", new { projectId = id }));
 
             return this.View(model);
         }

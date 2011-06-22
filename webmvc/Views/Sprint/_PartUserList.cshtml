@@ -1,4 +1,4 @@
-﻿@model Epiworx.WebMvc.Models.ProjectFormModel
+﻿@model Epiworx.WebMvc.Models.SprintFormModel
 <div class="part">
     <div class="wrapper">
         <h3>
@@ -6,7 +6,7 @@
         <ul class="collaborators">
             @foreach (var user in Model.Users)
             {
-                <li>@user.UserName @Html.ActionLink("Delete", "Delete", "ProjectUser", new { id = user.ProjectUserMemberId }, null)</li>
+                <li>@user.UserName</li>
             }
         </ul>
     </div>

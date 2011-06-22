@@ -41,6 +41,10 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Story_UserAssignedTo", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Story", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Story), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Story_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Story", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Story), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Story_UserModifiedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Story", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Story), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Hour_Story", "Story", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.Story), "Hour", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Hour), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Hour_User", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Hour", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Hour), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Hour_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Hour", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Hour), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Hour_UserModifiedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Hour", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Hour), true)]
 
 #endregion
 
@@ -267,6 +271,22 @@ namespace Epiworx.Data.EntityFramework
             }
         }
         private ObjectSet<Story> _Stories;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Hour> Hours
+        {
+            get
+            {
+                if ((_Hours == null))
+                {
+                    _Hours = base.CreateObjectSet<Hour>("Hours");
+                }
+                return _Hours;
+            }
+        }
+        private ObjectSet<Hour> _Hours;
 
         #endregion
         #region AddTo Methods
@@ -357,6 +377,14 @@ namespace Epiworx.Data.EntityFramework
         public void AddToStories(Story story)
         {
             base.AddObject("Stories", story);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Hours EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToHours(Hour hour)
+        {
+            base.AddObject("Hours", hour);
         }
 
         #endregion
@@ -858,6 +886,476 @@ namespace Epiworx.Data.EntityFramework
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_FeedSourceMember_UserCreatedBy", "User", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ApplicationModel", Name="Hour")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Hour : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Hour object.
+        /// </summary>
+        /// <param name="hourId">Initial value of the HourId property.</param>
+        /// <param name="date">Initial value of the Date property.</param>
+        /// <param name="duration">Initial value of the Duration property.</param>
+        /// <param name="isArchived">Initial value of the IsArchived property.</param>
+        /// <param name="notes">Initial value of the Notes property.</param>
+        /// <param name="storyId">Initial value of the StoryId property.</param>
+        /// <param name="userId">Initial value of the UserId property.</param>
+        /// <param name="createdBy">Initial value of the CreatedBy property.</param>
+        /// <param name="createdDate">Initial value of the CreatedDate property.</param>
+        /// <param name="modifiedBy">Initial value of the ModifiedBy property.</param>
+        /// <param name="modifiedDate">Initial value of the ModifiedDate property.</param>
+        public static Hour CreateHour(global::System.Int32 hourId, global::System.DateTime date, global::System.Decimal duration, global::System.Boolean isArchived, global::System.String notes, global::System.Int32 storyId, global::System.Int32 userId, global::System.Int32 createdBy, global::System.DateTime createdDate, global::System.Int32 modifiedBy, global::System.DateTime modifiedDate)
+        {
+            Hour hour = new Hour();
+            hour.HourId = hourId;
+            hour.Date = date;
+            hour.Duration = duration;
+            hour.IsArchived = isArchived;
+            hour.Notes = notes;
+            hour.StoryId = storyId;
+            hour.UserId = userId;
+            hour.CreatedBy = createdBy;
+            hour.CreatedDate = createdDate;
+            hour.ModifiedBy = modifiedBy;
+            hour.ModifiedDate = modifiedDate;
+            return hour;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 HourId
+        {
+            get
+            {
+                return _HourId;
+            }
+            set
+            {
+                if (_HourId != value)
+                {
+                    OnHourIdChanging(value);
+                    ReportPropertyChanging("HourId");
+                    _HourId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("HourId");
+                    OnHourIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _HourId;
+        partial void OnHourIdChanging(global::System.Int32 value);
+        partial void OnHourIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                OnDateChanging(value);
+                ReportPropertyChanging("Date");
+                _Date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Date");
+                OnDateChanged();
+            }
+        }
+        private global::System.DateTime _Date;
+        partial void OnDateChanging(global::System.DateTime value);
+        partial void OnDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal Duration
+        {
+            get
+            {
+                return _Duration;
+            }
+            set
+            {
+                OnDurationChanging(value);
+                ReportPropertyChanging("Duration");
+                _Duration = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Duration");
+                OnDurationChanged();
+            }
+        }
+        private global::System.Decimal _Duration;
+        partial void OnDurationChanging(global::System.Decimal value);
+        partial void OnDurationChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsArchived
+        {
+            get
+            {
+                return _IsArchived;
+            }
+            set
+            {
+                OnIsArchivedChanging(value);
+                ReportPropertyChanging("IsArchived");
+                _IsArchived = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsArchived");
+                OnIsArchivedChanged();
+            }
+        }
+        private global::System.Boolean _IsArchived;
+        partial void OnIsArchivedChanging(global::System.Boolean value);
+        partial void OnIsArchivedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Notes
+        {
+            get
+            {
+                return _Notes;
+            }
+            set
+            {
+                OnNotesChanging(value);
+                ReportPropertyChanging("Notes");
+                _Notes = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Notes");
+                OnNotesChanged();
+            }
+        }
+        private global::System.String _Notes;
+        partial void OnNotesChanging(global::System.String value);
+        partial void OnNotesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 StoryId
+        {
+            get
+            {
+                return _StoryId;
+            }
+            set
+            {
+                OnStoryIdChanging(value);
+                ReportPropertyChanging("StoryId");
+                _StoryId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("StoryId");
+                OnStoryIdChanged();
+            }
+        }
+        private global::System.Int32 _StoryId;
+        partial void OnStoryIdChanging(global::System.Int32 value);
+        partial void OnStoryIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                OnUserIdChanging(value);
+                ReportPropertyChanging("UserId");
+                _UserId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserId");
+                OnUserIdChanged();
+            }
+        }
+        private global::System.Int32 _UserId;
+        partial void OnUserIdChanging(global::System.Int32 value);
+        partial void OnUserIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CreatedBy
+        {
+            get
+            {
+                return _CreatedBy;
+            }
+            set
+            {
+                OnCreatedByChanging(value);
+                ReportPropertyChanging("CreatedBy");
+                _CreatedBy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedBy");
+                OnCreatedByChanged();
+            }
+        }
+        private global::System.Int32 _CreatedBy;
+        partial void OnCreatedByChanging(global::System.Int32 value);
+        partial void OnCreatedByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreatedDate
+        {
+            get
+            {
+                return _CreatedDate;
+            }
+            set
+            {
+                OnCreatedDateChanging(value);
+                ReportPropertyChanging("CreatedDate");
+                _CreatedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedDate");
+                OnCreatedDateChanged();
+            }
+        }
+        private global::System.DateTime _CreatedDate;
+        partial void OnCreatedDateChanging(global::System.DateTime value);
+        partial void OnCreatedDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ModifiedBy
+        {
+            get
+            {
+                return _ModifiedBy;
+            }
+            set
+            {
+                OnModifiedByChanging(value);
+                ReportPropertyChanging("ModifiedBy");
+                _ModifiedBy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModifiedBy");
+                OnModifiedByChanged();
+            }
+        }
+        private global::System.Int32 _ModifiedBy;
+        partial void OnModifiedByChanging(global::System.Int32 value);
+        partial void OnModifiedByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime ModifiedDate
+        {
+            get
+            {
+                return _ModifiedDate;
+            }
+            set
+            {
+                OnModifiedDateChanging(value);
+                ReportPropertyChanging("ModifiedDate");
+                _ModifiedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModifiedDate");
+                OnModifiedDateChanged();
+            }
+        }
+        private global::System.DateTime _ModifiedDate;
+        partial void OnModifiedDateChanging(global::System.DateTime value);
+        partial void OnModifiedDateChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Hour_Story", "Story")]
+        public Story Story
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Story>("ApplicationModel.FK_Hour_Story", "Story").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Story>("ApplicationModel.FK_Hour_Story", "Story").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Story> StoryReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Story>("ApplicationModel.FK_Hour_Story", "Story");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Story>("ApplicationModel.FK_Hour_Story", "Story", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Hour_User", "User")]
+        public User User
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Hour_User", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Hour_User", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> UserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Hour_User", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_Hour_User", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Hour_UserCreatedBy", "User")]
+        public User CreatedByUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Hour_UserCreatedBy", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Hour_UserCreatedBy", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> CreatedByUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Hour_UserCreatedBy", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_Hour_UserCreatedBy", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Hour_UserModifiedBy", "User")]
+        public User ModifiedByUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Hour_UserModifiedBy", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Hour_UserModifiedBy", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> ModifiedByUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Hour_UserModifiedBy", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_Hour_UserModifiedBy", "User", value);
                 }
             }
         }
@@ -3910,6 +4408,28 @@ namespace Epiworx.Data.EntityFramework
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_Story_UserModifiedBy", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Hour_Story", "Hour")]
+        public EntityCollection<Hour> Hours
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Hour>("ApplicationModel.FK_Hour_Story", "Hour");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Hour>("ApplicationModel.FK_Hour_Story", "Hour", value);
                 }
             }
         }

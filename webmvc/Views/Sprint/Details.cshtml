@@ -14,7 +14,7 @@
     <p>
         <label>
             Project</label>
-        <span class="big">@Model.Sprint.ProjectName</span></p>
+        <span><a href="@Url.Action("Details", "Project", new { id = Model.Sprint.ProjectId })">@Model.Sprint.ProjectName</a></span></p>
     <p>
         <label>
             Estimated Completed On</label>
@@ -32,8 +32,15 @@
             Duration</label>
         <span>@Model.Sprint.Duration</span></p>
 </fieldset>
+<div class="hgroup">
+    <h2>
+        Stories</h2>
+</div>
+@Html.Partial("_StoryList", new StoryListModel { Stories = Model.Stories, Statuses = Model.Statuses })
 @section SideBar
 {
+    <div class="developer note">Make it so we can drag and drop a status or collaborator onto a story and have it automatically update OR drag a status or collaborator onto a story</div>
     @Html.Partial("_PartActionItemList")
     @Html.Partial("_PartStatusList")
+    @Html.Partial("_PartUserList")
 }

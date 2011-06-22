@@ -15,7 +15,7 @@
         <option value="0">Select a status...</option>
         @foreach (var status in Model.Statuses)
         { 
-            <option value="@status.StatusId">@status.Name</option>
+            <option value="@status.StatusId"@if (Model.Story.StatusId == status.StatusId) {<text> selected</text>}>@status.Name</option>
         }
     </select>
     <label for="SprintId">
@@ -24,7 +24,7 @@
         <option value="0">Select a sprint...</option>
         @foreach (var sprint in Model.Sprints)
         { 
-            <option value="@sprint.SprintId">@sprint.Name</option>
+            <option value="@sprint.SprintId"@if (Model.Story.SprintId == sprint.SprintId) {<text> selected</text>}>@sprint.Name</option>
         }
     </select>
      <label for="AssignedTo">
@@ -33,7 +33,7 @@
         <option value="0">Select a user...</option>
         @foreach (var user in Model.Users)
         { 
-            <option value="@user.UserId">@user.UserName</option>
+            <option value="@user.UserId"@if (Model.Story.AssignedTo == user.UserId) {<text> selected</text>}>@user.UserName</option>
         }
     </select>
    <label for="EstimatedCompletedDate">

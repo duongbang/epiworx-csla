@@ -149,6 +149,9 @@ namespace Epiworx.Data.EntityFramework
                 DataMapper.Map(story.Sprint, storyData.Sprint);
             }
 
+            storyData.Status = new StatusData();
+            DataMapper.Map(story.Status, storyData.Status);
+
             storyData.CreatedByUser = new UserData();
             DataMapper.Map(story.CreatedByUser, storyData.CreatedByUser);
 
@@ -163,6 +166,7 @@ namespace Epiworx.Data.EntityFramework
             IQueryable<Story> query = ctx.ObjectContext.Stories
                 .Include("Project")
                 .Include("Sprint")
+                .Include("Status")
                 .Include("AssignedToUser")
                 .Include("CreatedByUser")
                 .Include("ModifiedByUser");

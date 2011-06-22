@@ -12,6 +12,8 @@ namespace Epiworx.Business
         decimal Duration { get; }
         bool IsArchived { get; }
         string Notes { get; }
+        int ProjectId { get; }
+        string ProjectName { get; }
         int StoryId { get; }
         int UserId { get; }
         string UserName { get; }

@@ -1,0 +1,12 @@
+﻿@model Epiworx.WebMvc.Models.HourFormModel
+@using Epiworx.WebMvc.Helpers
+<div class="hgroup">
+    <h2>
+        New Hour</h2>
+</div>
+@Html.ValidationSummary(false, "Oh snap! Looks like we ran into some trouble. Please correct the errors and try again.")
+@using (Html.BeginForm(new { storyId = Model.Hour.StoryId }))
+{
+    @Html.Partial("_HourForm")
+    @Html.Partial("_HourFormCommands")
+}

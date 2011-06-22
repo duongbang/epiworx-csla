@@ -1,0 +1,25 @@
+﻿@model Epiworx.WebMvc.Models.HourFormModel
+@using Epiworx.WebMvc.Helpers
+<fieldset>
+    <legend>Hour</legend>
+    <p>
+        <label>
+            Story</label>
+        <span class="big"><a href="@Url.Action("Details", "Story", new { id = Model.Hour.StoryId })">@Model.Story.StoryId</a></span></p>
+    <p>
+        <label>
+            Story</label>
+        <span class="big">@Model.Story.Description</span></p>
+    <label for="Date">
+        Date</label>
+    <input type="text" id="Date" name="Date" value="@Model.Hour.Date.ToShortDateString()" class="date" />
+    <label for="Duration">
+        Duration</label>
+    <input type="text" id="Duration" name="Duration" value="@Model.Hour.Duration.ToString("F2")" class="number" />
+    <label for="Notes">
+        Notes</label>
+    <textarea id="Notes" name="Notes">@Model.Hour.Notes</textarea>
+    <label for="IsArchived">
+        <input type="checkbox" id="IsArchived" name="IsArchived" @Html.ToChecked(Model.Hour.IsArchived)/>This
+        story is archived</label>
+</fieldset>

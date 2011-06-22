@@ -59,6 +59,7 @@
     <Compile Include="Database.cs" />
     <Compile Include="DataFactoryManager.cs" />
     <Compile Include="DataMapper.cs" />
+    <Compile Include="HourDataFactory.cs" />
     <Compile Include="ProjectDataFactory.cs" />
     <Compile Include="ProjectUserMemberDataFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,0 +1,14 @@
+﻿@model Epiworx.WebMvc.Models.StoryFormModel
+<div class="part">
+    <div class="wrapper">
+        <h3>
+            Hours</h3>
+        <ul class="hours">
+            @foreach (var hour in Model.Hours.OrderBy(row => row.Date))
+            {
+                <li>@Html.ActionLink(hour.Duration.ToString("F2"), "Edit", "Hour", new { id = hour.HourId }, null)
+                    <strong>@hour.Date.ToShortDateString()</strong><span>@hour.UserName</span> </li>
+            }
+        </ul>
+    </div>
+</div>

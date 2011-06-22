@@ -18,8 +18,11 @@ namespace Epiworx.WebMvc.Controllers
 
             model.Title = string.Format("Story {0}", story.Description);
             model.Story = story;
+            model.Hours = HourRepository.HourFetchInfoList(story);
             model.Statuses = StatusRepository.StatusFetchInfoList(story.ProjectId);
             model.Actions.Add("Edit this story", Url.Action("Edit", new { id }), "primary");
+            model.Actions.Add("Add an hour", Url.Action("Create", "Hour", new { storyId = id }));
+            model.Actions.Add("Add an email", string.Empty);
             model.Actions.Add("Add an attachment", Url.Action("Create", "Note", new { sourceId = id, sourceTypeId = (int)SourceType.Story }));
             model.Actions.Add("Add a note", Url.Action("Create", "Attachment", new { sourceId = id, sourceTypeId = (int)SourceType.Story }));
 

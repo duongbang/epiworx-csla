@@ -15,6 +15,10 @@ namespace Epiworx.Business
             this.Duration = data.Duration;
             this.IsArchived = data.IsArchived;
             this.Notes = data.Notes;
+            this.ProjectId = data.ProjectId;
+            this.ProjectName = data.Project.Name;
+            this.SprintId = data.SprintId;
+            this.SprintName = data.Sprint.Name;
             this.StoryId = data.StoryId;
             this.UserId = data.UserId;
             this.UserName = data.User.Name;

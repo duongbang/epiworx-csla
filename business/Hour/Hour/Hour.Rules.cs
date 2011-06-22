@@ -17,6 +17,8 @@ namespace Epiworx.Business
 
             this.BusinessRules.AddRule(new IntegerRequired(StoryIdProperty));
             this.BusinessRules.AddRule(new IntegerRequired(UserIdProperty));
+            this.BusinessRules.AddRule(new DateRequired(DateProperty));
+            this.BusinessRules.AddRule(new DecimalRequired(DurationProperty, 0));
         }
 
         protected static void AddObjectAuthorizationRules()

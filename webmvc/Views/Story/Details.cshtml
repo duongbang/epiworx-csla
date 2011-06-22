@@ -3,7 +3,7 @@
 @using Epiworx.WebMvc.Models
 <div class="hgroup">
     <h2>
-        @Model.Story.Description</h2>
+        @Model.Story.StoryId</h2>
 </div>
 <fieldset>
     <legend>Story</legend>
@@ -13,8 +13,20 @@
         <span class="big">@Model.Story.Description</span></p>
     <p>
         <label>
-            Story</label>
-        <span class="big">@Model.Story.StoryDescription</span></p>
+            Project</label>
+        <span><a href="@Url.Action("Details", "Project", new { id = Model.Story.ProjectId })">@Model.Story.ProjectName</a></span></p>
+    <p>
+        <label>
+            Sprint</label>
+        <span><a href="@Url.Action("Details", "Sprint", new { id = Model.Story.ProjectId })">@Model.Story.SprintName</a></span></p>
+    <p>
+        <label>
+            Status</label>
+        <span>@Model.Story.StatusName</span></p>
+    <p>
+        <label>
+            Assigned To</label>
+        <span>@Model.Story.AssignedToName</span></p>
     <p>
         <label>
             Estimated Completed On</label>
@@ -35,5 +47,5 @@
 @section SideBar
 {
     @Html.Partial("_PartActionItemList")
-    @Html.Partial("_PartStatusList")
+    @Html.Partial("_PartHourList")
 }

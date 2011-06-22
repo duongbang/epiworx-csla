@@ -7,6 +7,36 @@ namespace Epiworx.Data.EntityFramework
 {
     public class DataMapper
     {
+        internal static void Map(Hour source, HourData destination)
+        {
+            destination.HourId = source.HourId;
+            destination.Date = source.Date;
+            destination.Duration = source.Duration;
+            destination.IsArchived = source.IsArchived;
+            destination.Notes = source.Notes;
+            destination.StoryId = source.StoryId;
+            destination.UserId = source.UserId;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+            destination.ModifiedBy = source.ModifiedBy;
+            destination.ModifiedDate = source.ModifiedDate;
+        }
+
+        internal static void Map(HourData source, Hour destination)
+        {
+            destination.HourId = source.HourId;
+            destination.Date = source.Date;
+            destination.Duration = source.Duration;
+            destination.IsArchived = source.IsArchived;
+            destination.Notes = source.Notes;
+            destination.StoryId = source.StoryId;
+            destination.UserId = source.UserId;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+            destination.ModifiedBy = source.ModifiedBy;
+            destination.ModifiedDate = source.ModifiedDate;
+        }
+
         internal static void Map(Project source, ProjectData destination)
         {
             destination.ProjectId = source.ProjectId;

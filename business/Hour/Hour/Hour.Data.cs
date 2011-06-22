@@ -15,6 +15,7 @@ namespace Epiworx.Business
             using (this.BypassPropertyChecks)
             {
                 this.Date = DateTime.Now;
+                this.UserId = ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
                 this.ModifiedDate = DateTime.Now;
                 this.CreatedDate = DateTime.Now;
             }
@@ -44,6 +45,10 @@ namespace Epiworx.Business
             this.Duration = data.Duration;
             this.IsArchived = data.IsArchived;
             this.Notes = data.Notes;
+            this.ProjectId = data.ProjectId;
+            this.ProjectName = data.Project.Name;
+            this.SprintId = data.SprintId;
+            this.SprintName = data.Sprint.Name;
             this.StoryId = data.StoryId;
             this.UserId = data.UserId;
             this.UserName = data.User.Name;

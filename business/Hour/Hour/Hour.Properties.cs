@@ -51,6 +51,38 @@ namespace Epiworx.Business
             set { this.SetProperty(NotesProperty, value); }
         }
 
+        private static Csla.PropertyInfo<int> ProjectIdProperty =
+            RegisterProperty<int>(row => row.ProjectId, "ProjectId");
+        public int ProjectId
+        {
+            get { return this.GetProperty(ProjectIdProperty); }
+            internal set { this.SetProperty(ProjectIdProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<string> ProjectNameProperty =
+            RegisterProperty<string>(row => row.ProjectName, "ProjectName");
+        public string ProjectName
+        {
+            get { return this.GetProperty(ProjectNameProperty); }
+            internal set { this.SetProperty(ProjectNameProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<int> SprintIdProperty =
+            RegisterProperty<int>(row => row.SprintId, "SprintId");
+        public int SprintId
+        {
+            get { return this.GetProperty(SprintIdProperty); }
+            internal set { this.SetProperty(SprintIdProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<string> SprintNameProperty =
+            RegisterProperty<string>(row => row.SprintName, "SprintName");
+        public string SprintName
+        {
+            get { return this.GetProperty(SprintNameProperty); }
+            internal set { this.SetProperty(SprintNameProperty, value); }
+        }
+
         private static Csla.PropertyInfo<int> StoryIdProperty =
             RegisterProperty<int>(row => row.StoryId, "StoryId");
         public int StoryId

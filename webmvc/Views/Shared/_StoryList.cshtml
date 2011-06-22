@@ -8,11 +8,11 @@
         @foreach (var story in Model.Stories.Where(row => row.StatusId == status.StatusId))
         {
             <li>
-                <input type="checkbox" id="StoryId" name="StoryId" value="@story.StoryId" />
                 <strong>@story.StoryId</strong>
                 <p>
+                    <span class="assignment">@story.AssignedToName</span>
                     <a href="@Url.Action("Details", "Story", new { id = story.StoryId})">@story.Description</a>
-                    <span>by @story.CreatedByName @story.CreatedDate.ToString("MMMM d, yyyy")</span></p>
+                    <span class="date">by <em>@story.CreatedByName</em> @story.CreatedDate.ToString("MMMM d, yyyy")</span></p>
             </li> 
         }
     </ul>
