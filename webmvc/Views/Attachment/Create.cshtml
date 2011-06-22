@@ -1,0 +1,12 @@
+﻿@model Epiworx.WebMvc.Models.AttachmentFormModel
+@using Epiworx.WebMvc.Helpers
+<div class="hgroup">
+    <h2>
+        New Attachment</h2>
+</div>
+@Html.ValidationSummary(false, "Oh snap! Looks like we ran into some trouble. Please correct the errors and try again.")
+@using (Html.BeginForm("Create", "Attachment", new { sourceId = Model.Attachment.SourceId, sourceTypeId = Model.Attachment.SourceTypeId }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.Partial("_AttachmentForm")
+    @Html.Partial("_AttachmentFormCommands")
+}

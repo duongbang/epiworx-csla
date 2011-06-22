@@ -1,0 +1,12 @@
+﻿@model Epiworx.WebMvc.Models.AttachmentFormModel
+@using Epiworx.WebMvc.Helpers
+<fieldset>
+    <legend>Attachment</legend>
+    <label for="Name">
+        Name</label>
+    <input type="text" id="Name" name="Name" value="@Model.Attachment.Name" class="big" />
+    <label for="FileData">
+        File
+    </label>
+    <input type="file" id="FileData" name="FileData" />
+</fieldset>

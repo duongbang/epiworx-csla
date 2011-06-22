@@ -33,10 +33,12 @@
         <span>@Model.Sprint.Duration</span></p>
 </fieldset>
 @Html.Partial("_StoryList", new StoryListModel { Stories = Model.Stories, Statuses = Model.Statuses })
+@Html.Partial("_NoteList", new NoteListModel { Notes = Model.Notes })
 @section SideBar
 {
     <div class="developer note">Make it so we can drag and drop a status or collaborator onto a story and have it automatically update OR drag a status or collaborator onto a story</div>
     @Html.Partial("_PartActionItemList")
     @Html.Partial("_PartStatusList")
     @Html.Partial("_PartUserList")
+    @Html.Partial("_PartAttachmentList", new AttachmentListModel { Attachments = Model.Attachments })
 }

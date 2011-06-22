@@ -7,6 +7,36 @@ namespace Epiworx.Data.EntityFramework
 {
     public class DataMapper
     {
+        internal static void Map(Attachment source, AttachmentData destination)
+        {
+            destination.AttachmentId = source.AttachmentId;
+            destination.FileData = source.FileData;
+            destination.FileType = source.FileType;
+            destination.IsArchived = source.IsArchived;
+            destination.Name = source.Name;
+            destination.SourceId = source.SourceId;
+            destination.SourceTypeId = source.SourceTypeId;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+            destination.ModifiedBy = source.ModifiedBy;
+            destination.ModifiedDate = source.ModifiedDate;
+        }
+
+        internal static void Map(AttachmentData source, Attachment destination)
+        {
+            destination.AttachmentId = source.AttachmentId;
+            destination.FileData = source.FileData;
+            destination.FileType = source.FileType;
+            destination.IsArchived = source.IsArchived;
+            destination.Name = source.Name;
+            destination.SourceId = source.SourceId;
+            destination.SourceTypeId = source.SourceTypeId;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+            destination.ModifiedBy = source.ModifiedBy;
+            destination.ModifiedDate = source.ModifiedDate;
+        }
+
         internal static void Map(Hour source, HourData destination)
         {
             destination.HourId = source.HourId;

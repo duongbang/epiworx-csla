@@ -1,0 +1,13 @@
+﻿@model Epiworx.WebMvc.Models.AttachmentListModel
+<div class="part">
+    <div class="wrapper">
+        <h3>
+            Attachments</h3>
+        <ul class="attachments">
+            @foreach (var attachment in Model.Attachments)
+            {
+                <li>@Html.ActionLink(attachment.Name, "Details", "Attachment", new { id = attachment.AttachmentId }, null)@Html.ActionLink("Edit", "Edit", "Attachment", new { id = attachment.AttachmentId }, new { @class = "action" })</li>
+            }
+        </ul>
+    </div>
+</div>

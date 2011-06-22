@@ -48,6 +48,9 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Note_Source", "Source", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.Source), "Note", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Note), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Note_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Note", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Note), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Note_UserModifiedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Note", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Note), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Attachment_Source", "Source", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.Source), "Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Attachment), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Attachment_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Attachment), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Attachment_UserModifiedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Attachment), true)]
 
 #endregion
 
@@ -306,6 +309,22 @@ namespace Epiworx.Data.EntityFramework
             }
         }
         private ObjectSet<Note> _Notes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Attachment> Attachments
+        {
+            get
+            {
+                if ((_Attachments == null))
+                {
+                    _Attachments = base.CreateObjectSet<Attachment>("Attachments");
+                }
+                return _Attachments;
+            }
+        }
+        private ObjectSet<Attachment> _Attachments;
 
         #endregion
         #region AddTo Methods
@@ -413,6 +432,14 @@ namespace Epiworx.Data.EntityFramework
         {
             base.AddObject("Notes", note);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Attachments EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToAttachments(Attachment attachment)
+        {
+            base.AddObject("Attachments", attachment);
+        }
 
         #endregion
     }
@@ -421,6 +448,436 @@ namespace Epiworx.Data.EntityFramework
     #endregion
     
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ApplicationModel", Name="Attachment")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Attachment : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Attachment object.
+        /// </summary>
+        /// <param name="attachmentId">Initial value of the AttachmentId property.</param>
+        /// <param name="fileType">Initial value of the FileType property.</param>
+        /// <param name="isArchived">Initial value of the IsArchived property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="sourceId">Initial value of the SourceId property.</param>
+        /// <param name="sourceTypeId">Initial value of the SourceTypeId property.</param>
+        /// <param name="createdBy">Initial value of the CreatedBy property.</param>
+        /// <param name="createdDate">Initial value of the CreatedDate property.</param>
+        /// <param name="modifiedBy">Initial value of the ModifiedBy property.</param>
+        /// <param name="modifiedDate">Initial value of the ModifiedDate property.</param>
+        public static Attachment CreateAttachment(global::System.Int32 attachmentId, global::System.String fileType, global::System.Boolean isArchived, global::System.String name, global::System.Int32 sourceId, global::System.Int32 sourceTypeId, global::System.Int32 createdBy, global::System.DateTime createdDate, global::System.Int32 modifiedBy, global::System.DateTime modifiedDate)
+        {
+            Attachment attachment = new Attachment();
+            attachment.AttachmentId = attachmentId;
+            attachment.FileType = fileType;
+            attachment.IsArchived = isArchived;
+            attachment.Name = name;
+            attachment.SourceId = sourceId;
+            attachment.SourceTypeId = sourceTypeId;
+            attachment.CreatedBy = createdBy;
+            attachment.CreatedDate = createdDate;
+            attachment.ModifiedBy = modifiedBy;
+            attachment.ModifiedDate = modifiedDate;
+            return attachment;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 AttachmentId
+        {
+            get
+            {
+                return _AttachmentId;
+            }
+            set
+            {
+                if (_AttachmentId != value)
+                {
+                    OnAttachmentIdChanging(value);
+                    ReportPropertyChanging("AttachmentId");
+                    _AttachmentId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("AttachmentId");
+                    OnAttachmentIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _AttachmentId;
+        partial void OnAttachmentIdChanging(global::System.Int32 value);
+        partial void OnAttachmentIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.Byte[] FileData
+        {
+            get
+            {
+                return StructuralObject.GetValidValue(_FileData);
+            }
+            set
+            {
+                OnFileDataChanging(value);
+                ReportPropertyChanging("FileData");
+                _FileData = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("FileData");
+                OnFileDataChanged();
+            }
+        }
+        private global::System.Byte[] _FileData;
+        partial void OnFileDataChanging(global::System.Byte[] value);
+        partial void OnFileDataChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FileType
+        {
+            get
+            {
+                return _FileType;
+            }
+            set
+            {
+                OnFileTypeChanging(value);
+                ReportPropertyChanging("FileType");
+                _FileType = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("FileType");
+                OnFileTypeChanged();
+            }
+        }
+        private global::System.String _FileType;
+        partial void OnFileTypeChanging(global::System.String value);
+        partial void OnFileTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsArchived
+        {
+            get
+            {
+                return _IsArchived;
+            }
+            set
+            {
+                OnIsArchivedChanging(value);
+                ReportPropertyChanging("IsArchived");
+                _IsArchived = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsArchived");
+                OnIsArchivedChanged();
+            }
+        }
+        private global::System.Boolean _IsArchived;
+        partial void OnIsArchivedChanging(global::System.Boolean value);
+        partial void OnIsArchivedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SourceId
+        {
+            get
+            {
+                return _SourceId;
+            }
+            set
+            {
+                OnSourceIdChanging(value);
+                ReportPropertyChanging("SourceId");
+                _SourceId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SourceId");
+                OnSourceIdChanged();
+            }
+        }
+        private global::System.Int32 _SourceId;
+        partial void OnSourceIdChanging(global::System.Int32 value);
+        partial void OnSourceIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SourceTypeId
+        {
+            get
+            {
+                return _SourceTypeId;
+            }
+            set
+            {
+                OnSourceTypeIdChanging(value);
+                ReportPropertyChanging("SourceTypeId");
+                _SourceTypeId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SourceTypeId");
+                OnSourceTypeIdChanged();
+            }
+        }
+        private global::System.Int32 _SourceTypeId;
+        partial void OnSourceTypeIdChanging(global::System.Int32 value);
+        partial void OnSourceTypeIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CreatedBy
+        {
+            get
+            {
+                return _CreatedBy;
+            }
+            set
+            {
+                OnCreatedByChanging(value);
+                ReportPropertyChanging("CreatedBy");
+                _CreatedBy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedBy");
+                OnCreatedByChanged();
+            }
+        }
+        private global::System.Int32 _CreatedBy;
+        partial void OnCreatedByChanging(global::System.Int32 value);
+        partial void OnCreatedByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreatedDate
+        {
+            get
+            {
+                return _CreatedDate;
+            }
+            set
+            {
+                OnCreatedDateChanging(value);
+                ReportPropertyChanging("CreatedDate");
+                _CreatedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedDate");
+                OnCreatedDateChanged();
+            }
+        }
+        private global::System.DateTime _CreatedDate;
+        partial void OnCreatedDateChanging(global::System.DateTime value);
+        partial void OnCreatedDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ModifiedBy
+        {
+            get
+            {
+                return _ModifiedBy;
+            }
+            set
+            {
+                OnModifiedByChanging(value);
+                ReportPropertyChanging("ModifiedBy");
+                _ModifiedBy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModifiedBy");
+                OnModifiedByChanged();
+            }
+        }
+        private global::System.Int32 _ModifiedBy;
+        partial void OnModifiedByChanging(global::System.Int32 value);
+        partial void OnModifiedByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime ModifiedDate
+        {
+            get
+            {
+                return _ModifiedDate;
+            }
+            set
+            {
+                OnModifiedDateChanging(value);
+                ReportPropertyChanging("ModifiedDate");
+                _ModifiedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModifiedDate");
+                OnModifiedDateChanged();
+            }
+        }
+        private global::System.DateTime _ModifiedDate;
+        partial void OnModifiedDateChanging(global::System.DateTime value);
+        partial void OnModifiedDateChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Attachment_Source", "Source")]
+        public Source Source
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Source>("ApplicationModel.FK_Attachment_Source", "Source").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Source>("ApplicationModel.FK_Attachment_Source", "Source").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Source> SourceReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Source>("ApplicationModel.FK_Attachment_Source", "Source");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Source>("ApplicationModel.FK_Attachment_Source", "Source", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Attachment_UserCreatedBy", "User")]
+        public User CreatedByUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Attachment_UserCreatedBy", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Attachment_UserCreatedBy", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> CreatedByUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Attachment_UserCreatedBy", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_Attachment_UserCreatedBy", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Attachment_UserModifiedBy", "User")]
+        public User ModifiedByUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Attachment_UserModifiedBy", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Attachment_UserModifiedBy", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> ModifiedByUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Attachment_UserModifiedBy", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_Attachment_UserModifiedBy", "User", value);
+                }
+            }
+        }
+
+        #endregion
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -2964,6 +3421,28 @@ namespace Epiworx.Data.EntityFramework
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Note>("ApplicationModel.FK_Note_Source", "Note", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Attachment_Source", "Attachment")]
+        public EntityCollection<Attachment> Attachments
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Attachment>("ApplicationModel.FK_Attachment_Source", "Attachment");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Attachment>("ApplicationModel.FK_Attachment_Source", "Attachment", value);
                 }
             }
         }

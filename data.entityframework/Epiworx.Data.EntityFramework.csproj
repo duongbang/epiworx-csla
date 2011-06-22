@@ -56,6 +56,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Application.edmx</DependentUpon>
     </Compile>
+    <Compile Include="AttachmentDataFactory.cs" />
     <Compile Include="BusinessIdentityDataFactory.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DataFactoryManager.cs" />

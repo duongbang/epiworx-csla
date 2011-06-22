@@ -18,14 +18,16 @@ namespace Epiworx.WebMvc.Controllers
 
             model.Title = string.Format("Sprint {0}", sprint.Name);
             model.Sprint = sprint;
+            model.Attachments = AttachmentRepository.AttachmentFetchInfoList(id, SourceType.Sprint);
+            model.Notes = NoteRepository.NoteFetchInfoList(id, SourceType.Sprint);
             model.Statuses = StatusRepository.StatusFetchInfoList(sprint.ProjectId);
-            model.Users = ProjectUserRepository.ProjectUserFetchInfoList(sprint.ProjectId);
             model.Stories = StoryRepository.StoryFetchInfoList(sprint.ProjectId, id);
+            model.Users = ProjectUserRepository.ProjectUserFetchInfoList(sprint.ProjectId);
             model.Actions.Add("Edit this sprint", Url.Action("Edit", new { id }), "primary");
             model.Actions.Add("Add a story", Url.Action("Create", "Story", new { projectId = sprint.ProjectId, sprintId = id }));
             model.Actions.Add("Add an email", string.Empty);
-            model.Actions.Add("Add an attachment", Url.Action("Create", "Note", new { sourceId = id, sourceTypeId = (int)SourceType.Sprint }));
-            model.Actions.Add("Add a note", Url.Action("Create", "Attachment", new { sourceId = id, sourceTypeId = (int)SourceType.Sprint }));
+            model.Actions.Add("Add an attachment", Url.Action("Create", "Attachment", new { sourceId = id, sourceTypeId = (int)SourceType.Sprint }));
+            model.Actions.Add("Add a note", Url.Action("Create", "Note", new { sourceId = id, sourceTypeId = (int)SourceType.Sprint }));
 
             return this.View(model);
         }

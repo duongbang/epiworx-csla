@@ -6,7 +6,7 @@
         <ul class="collaborators">
             @foreach (var user in Model.Users)
             {
-                <li>@user.UserName @Html.ActionLink("Delete", "Delete", "ProjectUser", new { id = user.ProjectUserMemberId }, null)</li>
+                <li>@user.UserName@Html.ActionLink("Delete", "Delete", "ProjectUser", new { id = user.ProjectUserMemberId }, new { @class = "action" })</li>
             }
         </ul>
     </div>

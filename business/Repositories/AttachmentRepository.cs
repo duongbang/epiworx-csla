@@ -19,6 +19,17 @@ namespace Epiworx.Business
                 });
         }
 
+        public static AttachmentInfoList AttachmentFetchInfoList(int sourceId, SourceType sourceType)
+        {
+            return
+                AttachmentRepository.AttachmentFetchInfoList(
+                    new AttachmentDataCriteria
+                    {
+                        SourceId = sourceId,
+                        SourceTypeId = (int)sourceType
+                    });
+        }
+
         public static AttachmentInfoList AttachmentFetchInfoList(AttachmentDataCriteria criteria)
         {
             return AttachmentInfoList.FetchAttachmentInfoList(criteria);
