@@ -20,6 +20,11 @@
 {
 }
 
+.commands a
+{
+    font-size: 16px;
+}
+
 .commands li
 {
     display: inline;
@@ -90,6 +95,37 @@
     font-size: 24px;
 }
 
+.notes
+{
+    font-size: 18px;
+}
+
+.notes .date
+{
+    display: block;
+    font-size: 14px;
+    margin-top: 5px;
+    color: #808080;
+}
+
+.notes a
+{
+    float: right;
+    font-size: 14px;
+}
+
+.notes em
+{
+    font-style: normal;
+    color: #000000;
+    font-weight: bold;
+}
+
+.notes li
+{
+    margin-bottom: 10px;
+}
+
 .stories
 {
     font-size: 18px;
@@ -101,6 +137,18 @@
     color: #000000;
     font-weight: bold;
 }
+
+.stories li
+{
+    margin-bottom: 10px;
+}
+
+.stories li a
+{
+    font-size: 18px;
+    margin: 0px;
+    font-weight: bold;
+} 
 
 .stories strong
 {
@@ -206,24 +254,6 @@
 {
     margin-right: 340px;
 }
-
-#content li
-{
-    margin-bottom: 10px;
-}
-
-#content li a
-{
-    font-size: 12px;
-    margin-left: 5px;
-}
-
-#content .stories li a
-{
-    font-size: 18px;
-    margin: 0px;
-    font-weight: bold;
-} 
 
 #aside
 {

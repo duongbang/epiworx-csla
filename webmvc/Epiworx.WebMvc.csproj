@@ -91,6 +91,8 @@
     <Compile Include="Core\ModelBase.cs" />
     <Compile Include="Models\Account\AccountRegisterModel.cs" />
     <Compile Include="Models\Account\AccountRegisterSuccessModel.cs" />
+    <Compile Include="Models\Note\NoteFormModel.cs" />
+    <Compile Include="Models\Note\NoteListModel.cs" />
     <Compile Include="Models\Hour\HourFormModel.cs" />
     <Compile Include="Models\Hour\HourListModel.cs" />
     <Compile Include="Models\Story\StoryFormModel.cs" />
@@ -367,6 +369,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Story\_PartHourList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_NoteList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Note\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Note\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Note\_NoteForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Note\_NoteFormCommands.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

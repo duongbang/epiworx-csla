@@ -16,11 +16,8 @@
             Description</label>
         <span>@Model.Project.Description</span></p>
 </fieldset>
-<div class="hgroup">
-    <h2>
-        Stories</h2>
-</div>
 @Html.Partial("_StoryList", new StoryListModel { Stories = Model.Stories, Statuses = Model.Statuses })
+@Html.Partial("_NoteList", new NoteListModel { Notes = Model.Notes, SourceId = Model.Project.ProjectId, SourceType = Epiworx.Business.SourceType.Project })
 
 @section SideBar
 {

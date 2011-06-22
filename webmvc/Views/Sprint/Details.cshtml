@@ -32,10 +32,6 @@
             Duration</label>
         <span>@Model.Sprint.Duration</span></p>
 </fieldset>
-<div class="hgroup">
-    <h2>
-        Stories</h2>
-</div>
 @Html.Partial("_StoryList", new StoryListModel { Stories = Model.Stories, Statuses = Model.Statuses })
 @section SideBar
 {

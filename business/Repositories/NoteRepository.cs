@@ -19,6 +19,17 @@ namespace Epiworx.Business
                 });
         }
 
+        public static NoteInfoList NoteFetchInfoList(int sourceId, SourceType sourceType)
+        {
+            return
+                NoteRepository.NoteFetchInfoList(
+                    new NoteDataCriteria
+                        {
+                            SourceId = sourceId,
+                            SourceTypeId = (int)sourceType
+                        });
+        }
+
         public static NoteInfoList NoteFetchInfoList(NoteDataCriteria criteria)
         {
             return NoteInfoList.FetchNoteInfoList(criteria);
@@ -66,6 +77,16 @@ namespace Epiworx.Business
         public static Note NoteNew()
         {
             var note = Note.NewNote();
+
+            return note;
+        }
+
+        public static Note NoteNew(int sourceId, SourceType sourceType)
+        {
+            var note = Note.NewNote();
+
+            note.SourceId = sourceId;
+            note.SourceTypeId = (int)sourceType;
 
             return note;
         }

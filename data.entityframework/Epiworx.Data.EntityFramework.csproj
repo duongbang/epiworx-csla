@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application.cs" />
     <Compile Include="Application.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -60,6 +61,7 @@
     <Compile Include="DataFactoryManager.cs" />
     <Compile Include="DataMapper.cs" />
     <Compile Include="HourDataFactory.cs" />
+    <Compile Include="NoteDataFactory.cs" />
     <Compile Include="ProjectDataFactory.cs" />
     <Compile Include="ProjectUserMemberDataFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

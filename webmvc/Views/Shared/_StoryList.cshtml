@@ -1,4 +1,8 @@
 ﻿@model Epiworx.WebMvc.Models.StoryListModel
+<div class="hgroup">
+    <h2>
+        Stories</h2>
+</div>
 @foreach (var status in Model.Statuses)
 {
     if (Model.Stories.Any(row => row.StatusId == status.StatusId))

@@ -1,0 +1,13 @@
+﻿@model Epiworx.WebMvc.Models.NoteFormModel
+@using Epiworx.WebMvc.Helpers
+<ul class="commands">
+    <li>
+        <button>
+            Save Changes</button></li>
+    <li><span>or</span></li>
+    @if (!Model.Note.IsNew)
+    { 
+        <li>@Html.ActionLink("Delete", "Delete", new { id = Model.Note.NoteId })</li>
+    }
+    <li><a href="@Url.Action("Details", Model.Note.SourceTypeName, new { id = Model.Note.SourceId })">Back</a></li>
+</ul>

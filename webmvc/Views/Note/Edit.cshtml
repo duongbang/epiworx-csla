@@ -1,0 +1,12 @@
+﻿@model Epiworx.WebMvc.Models.NoteFormModel
+@using Epiworx.WebMvc.Helpers
+<div class="hgroup">
+    <h2>
+        New Note</h2>
+</div>
+@Html.ValidationSummary(false, "Oh snap! Looks like we ran into some trouble. Please correct the errors and try again.")
+@using (Html.BeginForm(new { id = Model.Note.NoteId }))
+{
+    @Html.Partial("_NoteForm")
+    @Html.Partial("_NoteFormCommands")
+}

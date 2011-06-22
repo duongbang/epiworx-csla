@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Objects.DataClasses;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Text;
 
 namespace Epiworx.Data.EntityFramework
 {
+    using System.Data.Objects;
+
     public class SprintDataFactory : ISprintDataFactory
     {
         public SprintData Fetch(SprintDataCriteria criteria)
@@ -21,6 +24,8 @@ namespace Epiworx.Data.EntityFramework
 
                 this.Fetch(sprint, sprintData);
 
+                sprintData.Duration = ctx.ObjectContext.GetSprintDuration(sprint.SprintId) ?? 0;
+
                 return sprintData;
             }
         }
@@ -30,8 +35,12 @@ namespace Epiworx.Data.EntityFramework
             using (var ctx = Csla.Data.ObjectContextManager<ApplicationEntities>
                           .GetManager(Database.ApplicationConnection, false))
             {
-                var sprints = this.Fetch(ctx, criteria)
-                    .AsEnumerable();
+                var sprints = from sprint in this.Fetch(ctx, criteria)
+                              select new
+                              {
+                                  Sprint = sprint,
+                                  Duration = ctx.ObjectContext.GetSprintDuration(sprint.SprintId) ?? 0
+                              };
 
                 var sprintDataList = new List<SprintData>();
 
@@ -39,7 +48,9 @@ namespace Epiworx.Data.EntityFramework
                 {
                     var sprintData = new SprintData();
 
-                    this.Fetch(sprint, sprintData);
+                    this.Fetch(sprint.Sprint, sprintData);
+
+                    sprintData.Duration = sprint.Duration;
 
                     sprintDataList.Add(sprintData);
                 }
@@ -275,6 +286,19 @@ namespace Epiworx.Data.EntityFramework
             }
 
             return query;
+        }
+
+        [EdmFunction("ApplicationModel", "SprintDuration")]
+        public static decimal Duration(int sprintId)
+        {
+            throw new NotSupportedException("Direct calls are not support!");
+        }
+
+        public static decimal? Duration(
+            Csla.Data.ObjectContextManager<ApplicationEntities> ctx,
+            int sprintId)
+        {
+            return ctx.ObjectContext.ExecuteFunction("SprintDuration", new ObjectParameter("SprintId", sprintId));
         }
     }
 }

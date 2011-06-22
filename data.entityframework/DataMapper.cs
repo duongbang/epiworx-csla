@@ -37,6 +37,32 @@ namespace Epiworx.Data.EntityFramework
             destination.ModifiedDate = source.ModifiedDate;
         }
 
+        internal static void Map(Note source, NoteData destination)
+        {
+            destination.NoteId = source.NoteId;
+            destination.Body = source.Body;
+            destination.IsArchived = source.IsArchived;
+            destination.SourceId = source.SourceId;
+            destination.SourceTypeId = source.SourceTypeId;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+            destination.ModifiedBy = source.ModifiedBy;
+            destination.ModifiedDate = source.ModifiedDate;
+        }
+
+        internal static void Map(NoteData source, Note destination)
+        {
+            destination.NoteId = source.NoteId;
+            destination.Body = source.Body;
+            destination.IsArchived = source.IsArchived;
+            destination.SourceId = source.SourceId;
+            destination.SourceTypeId = source.SourceTypeId;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+            destination.ModifiedBy = source.ModifiedBy;
+            destination.ModifiedDate = source.ModifiedDate;
+        }
+
         internal static void Map(Project source, ProjectData destination)
         {
             destination.ProjectId = source.ProjectId;

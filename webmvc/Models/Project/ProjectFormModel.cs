@@ -13,5 +13,6 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<ProjectUserInfo> Users { get; set; }
         public IEnumerable<SprintInfo> Sprints { get; set; }
         public IEnumerable<StoryInfo> Stories { get; set; }
+        public IEnumerable<NoteInfo> Notes { get; set; }
     }
 }

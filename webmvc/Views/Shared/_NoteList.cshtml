@@ -1,0 +1,23 @@
+﻿@model Epiworx.WebMvc.Models.NoteListModel
+<div class="hgroup">
+    <h2>
+        Notes</h2>
+</div>
+@if (Model.Notes.Count() == 0)
+{ 
+    <p class="no-records">
+        No notes have been created.</p>
+}
+else
+{ 
+    <ul class="notes">
+        @foreach (var note in Model.Notes.OrderByDescending(row => row.CreatedDate))
+        {
+            <li>
+                @Html.ActionLink("Edit", "Edit", "Note", new { id = note.NoteId }, null)
+                <p>@note.Body
+                    <span class="date">by <em>@note.CreatedByName</em> @note.CreatedDate.ToString("MMMM d, yyyy")</span></p>
+            </li>
+        }
+    </ul>
+}
