@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Epiworx.Business;
+using Epiworx.Data;
 using Epiworx.WebMvc.Helpers;
 using Epiworx.WebMvc.Models;
 
@@ -11,10 +12,15 @@ namespace Epiworx.WebMvc.Controllers
 {
     public class HourController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(int? userId, DateTime? dateFrom, DateTime? dateTo)
         {
             var model = new HourListModel();
-            var hours = HourRepository.HourFetchInfoList();
+            var criteria = new HourDataCriteria
+                {
+                    UserId = userId,
+                    Date = new DateRangeCriteria(dateFrom, dateTo)
+                };
+            var hours = HourRepository.HourFetchInfoList(criteria);
 
             model.Hours = hours;
 

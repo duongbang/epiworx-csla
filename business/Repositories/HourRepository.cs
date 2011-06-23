@@ -53,6 +53,25 @@ namespace Epiworx.Business
                 });
         }
 
+        public static HourInfoList HourFetchInfoList(IUser user)
+        {
+            return HourInfoList.FetchHourInfoList(
+                new HourDataCriteria
+                {
+                    UserId = user.UserId
+                });
+        }
+
+        public static HourInfoList HourFetchInfoList(IUser user, DateTime dateFrom, DateTime dateTo)
+        {
+            return HourInfoList.FetchHourInfoList(
+                new HourDataCriteria
+                {
+                    UserId = user.UserId,
+                    Date = new DateRangeCriteria(dateFrom, dateTo)
+                });
+        }
+
         public static HourInfoList HourFetchInfoList(HourDataCriteria criteria)
         {
             criteria.ProjectId = ProjectRepository.ProjectFetchInfoList()

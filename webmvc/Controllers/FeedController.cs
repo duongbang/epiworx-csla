@@ -8,13 +8,9 @@ namespace Epiworx.WebMvc.Controllers
 {
     public class FeedController : Controller
     {
-        //
-        // GET: /Feed/
-
         public ActionResult Index()
         {
             return View();
         }
-
     }
 }

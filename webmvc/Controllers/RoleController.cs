@@ -8,13 +8,9 @@ namespace Epiworx.WebMvc.Controllers
 {
     public class RoleController : Controller
     {
-        //
-        // GET: /Role/
-
         public ActionResult Index()
         {
             return View();
         }
-
     }
 }

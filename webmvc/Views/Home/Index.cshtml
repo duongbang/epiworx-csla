@@ -6,7 +6,7 @@
 @Html.Partial("_PartFeedList")
 @section SideBar
 {
-    @Html.Partial("_PartUserHourByDayList")
-    @Html.Partial("_PartProjectList", new ProjectListModel { Projects = Model.Projects })
-    @Html.Partial("_PartUserHourByWeekList")
+    @Html.Partial("_PartHourByDayList")
+    @Html.Partial("_PartProjectList")
+    @Html.Partial("_PartHourByWeekList")
 }

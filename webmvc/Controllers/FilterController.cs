@@ -8,13 +8,9 @@ namespace Epiworx.WebMvc.Controllers
 {
     public class FilterController : Controller
     {
-        //
-        // GET: /Filter/
-
         public ActionResult Index()
         {
             return View();
         }
-
     }
 }

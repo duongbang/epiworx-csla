@@ -1,0 +1,25 @@
+﻿@model Epiworx.WebMvc.Models.HomeIndexModel
+@using Epiworx.Core
+<div class="part">
+    <div class="wrapper">
+        <h3>
+            Your Hours for The Week</h3>
+        <div class="summary first">
+            <span>Total<br />Hours</br>Today</span><strong>@Model.Hours.Where(hour => hour.Date >= DateTime.Now.Date).Sum(hour => hour.Duration).ToString("F2")</strong></div>
+        <div class="summary last">
+            <span>Total<br />Hours</br>Week</span><strong>@Model.Hours.Where(hour => hour.Date >= DateTime.Now.ToStartOfWeek().Date && hour.Date <= DateTime.Now.AddDays(6).Date).Sum(hour => hour.Duration).ToString("F2")</strong></div>
+        <ul class="hours">
+            @{        
+                var startDate = DateTime.Now.ToStartOfWeek();
+                var currentDate = startDate;
+
+                while (currentDate <= startDate.ToEndOfWeek())
+                {
+                <text><li>@Html.ActionLink(Model.Hours.Where(hour => hour.Date.Date == currentDate.Date).Sum(hour => hour.Duration).ToString("F2"), "Index", "Hour", new { userId = Model.User.UserId, dateFrom = currentDate.ToShortDateString(), dateTo = currentDate.ToShortDateString() }, null)
+                    @currentDate.ToString("ddd d")</li></text>
+                    currentDate = currentDate.AddDays(1);
+                }
+            }
+        </ul>
+    </div>
+</div>

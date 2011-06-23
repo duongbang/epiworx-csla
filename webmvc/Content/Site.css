@@ -81,6 +81,36 @@
     margin-right: 10px;
 }
 
+.summary
+{
+    color: #808080;
+    margin-bottom: 10px;
+    width: 150px;
+    float: left;
+}
+
+.summary.first
+{
+    width: 140px;
+    margin-right: 10px;
+}
+
+.summary span
+{
+    font-size: 12px;
+    float: left;
+    line-height: 125%;
+    margin-top: 3px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.summary strong
+{
+    font-size: 48px;
+    float: right;
+}
+
 .part
 {
     margin-bottom: 40px;

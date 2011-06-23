@@ -259,10 +259,10 @@
     <Content Include="Views\Shared\_PartFeedList.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_PartUserHourByDayList.cshtml" />
+    <Content Include="Views\Home\_PartHourByDayList.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_PartUserHourByWeekList.cshtml" />
+    <Content Include="Views\Home\_PartHourByWeekList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Project\Index.cshtml" />

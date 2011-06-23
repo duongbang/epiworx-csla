@@ -1,0 +1,21 @@
+﻿@model Epiworx.WebMvc.Models.HomeIndexModel
+@using Epiworx.Core
+@using Epiworx.Core
+<div class="part">
+    <div class="wrapper">
+        <h3>
+            Your Hours for the Last 8 Weeks</h3>
+        <ul class="hours">
+            @{        
+                var startDate = Model.EndDate;
+                var currentDate = startDate;
+
+                while (currentDate >= Model.StartDate)
+                {
+                    <text><li>@Html.ActionLink(Model.Hours.Where(hour => hour.Date.Date >= currentDate.AddDays(-6).Date && hour.Date.Date <= currentDate.Date).Sum(hour => hour.Duration).ToString("F2"), "Index", "Hour", new { userId = Model.User.UserId, dateFrom = currentDate.AddDays(-6).ToShortDateString(), dateTo = currentDate.ToShortDateString() }, null) @currentDate.AddDays(-6).ToString("MMM d")</li></text>
+                    currentDate = currentDate.AddDays(-7);
+                }
+            }
+        </ul>
+    </div>
+</div>

@@ -8,13 +8,9 @@ namespace Epiworx.WebMvc.Controllers
 {
     public class UserPasswordResetController : Controller
     {
-        //
-        // GET: /UserPasswordReset/
-
         public ActionResult Index()
         {
             return View();
         }
-
     }
 }
