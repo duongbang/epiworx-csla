@@ -23,6 +23,8 @@ namespace Epiworx.WebMvc.Controllers
             var controllerName = collection["FindCategory"];
             var queryString = collection["FindText"];
 
+            queryString = queryString.Replace(":", "=");
+
             return this.Redirect(Url.Action("Index", controllerName) + "?" + queryString);
         }
     }

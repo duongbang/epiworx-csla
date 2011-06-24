@@ -13,13 +13,19 @@ namespace Epiworx.WebMvc.Controllers
     [Authorize]
     public class ProjectController : Controller
     {
-        public ActionResult Index(string projectName, string isArchived)
+        public ActionResult Index(
+            string createdDate,
+            string isArchived,
+            string modifiedDate,
+            string projectName)
         {
             var model = new ProjectListModel();
             var criteria = new ProjectDataCriteria
             {
+                CreatedDate = CriteriaHelper.ToDateRangeCriteria(createdDate),
+                IsArchived = CriteriaHelper.ToBoolean(isArchived),
                 Name = projectName,
-                IsArchived = CriteriaHelper.ToBoolean(isArchived)
+                ModifiedDate = CriteriaHelper.ToDateRangeCriteria(modifiedDate)
             };
             var projects = ProjectRepository.ProjectFetchInfoList(criteria);
 

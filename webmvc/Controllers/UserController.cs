@@ -4,17 +4,26 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Epiworx.Business;
+using Epiworx.Data;
 using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Controllers
 {
+
     [Authorize]
     public class UserController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(
+            int? userId,
+            string userName)
         {
             var model = new UserListModel();
-            var users = UserRepository.UserFetchInfoList();
+            var criteria = new UserDataCriteria
+                {
+                    UserId = userId,
+                    Name = userName
+                };
+            var users = UserRepository.UserFetchInfoList(criteria);
 
             model.Users = users;
 

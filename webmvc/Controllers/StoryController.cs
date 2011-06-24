@@ -14,28 +14,32 @@ namespace Epiworx.WebMvc.Controllers
     public class StoryController : Controller
     {
         public ActionResult Index(
-            string userName,
+            string createdDate,
             string description,
             string isArchived,
+            string modifiedDate,
+            int? projectId,
             string projectName,
+            int? statusId,
             string statusName,
             int? storyId,
-            DateTime? createdDateFrom,
-            DateTime? createdDateTo,
-            DateTime? modifiedDateFrom,
-            DateTime? modifiedDateTo)
+            int? userId,
+            string userName)
         {
             var model = new StoryListModel();
             var criteria = new StoryDataCriteria
             {
+                AssignedTo = userId,
                 AssignedToName = userName,
+                CreatedDate = CriteriaHelper.ToDateRangeCriteria(createdDate),
                 Description = description,
                 IsArchived = CriteriaHelper.ToBoolean(isArchived),
+                ModifiedDate = CriteriaHelper.ToDateRangeCriteria(modifiedDate),
+                ProjectId = CriteriaHelper.ToArray(projectId),
                 ProjectName = projectName,
                 StoryId = storyId,
-                StatusName = statusName,
-                CreatedDate = new DateRangeCriteria(createdDateFrom, createdDateTo),
-                ModifiedDate = new DateRangeCriteria(modifiedDateFrom, modifiedDateTo)
+                StatusId = statusId,
+                StatusName = statusName
             };
             var stories = StoryRepository.StoryFetchInfoList(criteria);
 

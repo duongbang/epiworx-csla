@@ -4,11 +4,45 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using Epiworx.Data;
 
 namespace Epiworx.WebMvc.Helpers
 {
     public class CriteriaHelper
     {
+        public static DateRangeCriteria ToDateRangeCriteria(string value)
+        {
+            var result = new DateRangeCriteria();
+
+            if (!string.IsNullOrEmpty(value))
+            {
+                var dates = value.Split(',');
+
+                if (dates.Count() == 1)
+                {
+                    result.DateFrom = DateTime.Parse(dates[0]);
+                    result.DateTo = result.DateFrom;
+                }
+                else
+                {
+                    result.DateFrom = DateTime.Parse(dates[0]);
+                    result.DateTo = DateTime.Parse(dates[1]);
+                }
+            }
+
+            return result;
+        }
+
+        public static int[] ToArray(int? value)
+        {
+            if (value.HasValue)
+            {
+                return new[] { value.Value };
+            }
+
+            return null;
+        }
+
         public static bool? ToBoolean(string value)
         {
             if (string.IsNullOrEmpty(value))

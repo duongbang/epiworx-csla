@@ -13,13 +13,29 @@ namespace Epiworx.WebMvc.Controllers
     [Authorize]
     public class HourController : Controller
     {
-        public ActionResult Index(int? userId, string projectName, string userName, DateTime? dateFrom, DateTime? dateTo)
+        public ActionResult Index(
+            string createdDate,
+            string date,
+            string isArchived,
+            string modifiedDate,
+            int? projectId,
+            string projectName,
+            int? storyId,
+            int? userId,
+            string userName)
         {
             var model = new HourListModel();
             var criteria = new HourDataCriteria
                 {
+                    CreatedDate = CriteriaHelper.ToDateRangeCriteria(createdDate),
+                    Date = CriteriaHelper.ToDateRangeCriteria(date),
+                    IsArchived = CriteriaHelper.ToBoolean(isArchived),
+                    ModifiedDate = CriteriaHelper.ToDateRangeCriteria(modifiedDate),
+                    ProjectId = CriteriaHelper.ToArray(projectId),
+                    ProjectName = projectName,
+                    StoryId = storyId,
                     UserId = userId,
-                    Date = new DateRangeCriteria(dateFrom, dateTo)
+                    UserName = userName
                 };
             var hours = HourRepository.HourFetchInfoList(criteria);
 
