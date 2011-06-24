@@ -8,8 +8,8 @@ namespace Epiworx.Data
     {
         public int? StoryId { get; set; }
         public int? AssignedTo { get; set; }
+        public string AssignedToName { get; set; }
         public DateRangeCriteria AssignedDate { get; set; }
-        public int? CategoryId { get; set; }
         public DateRangeCriteria CompletedDate { get; set; }
         public string Description { get; set; }
         public decimal? Duration { get; set; }
@@ -18,9 +18,11 @@ namespace Epiworx.Data
         public bool? IsArchived { get; set; }
         public bool? IsCompleted { get; set; }
         public int[] ProjectId { get; set; }
+        public string ProjectName { get; set; }
         public int? SprintId { get; set; }
         public DateRangeCriteria StartDate { get; set; }
         public int? StatusId { get; set; }
+        public string StatusName { get; set; }
         public int? ModifiedBy { get; set; }
         public DateRangeCriteria ModifiedDate { get; set; }
         public int? CreatedBy { get; set; }

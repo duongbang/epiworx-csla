@@ -10,5 +10,10 @@ namespace Epiworx.WebMvc.Models
     {
         public Hour Hour { get; set; }
         public Story Story { get; set; }
+
+        public HourFormModel()
+        {
+            this.FindCategory = "Hour";
+        }
     }
 }

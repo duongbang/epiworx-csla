@@ -17,19 +17,16 @@ namespace Epiworx.Data
             get { return this.DateFrom != DateTime.MinValue || this.DateTo != DateTime.MaxValue; }
         }
 
-        public List<DateTime> Dates
+        public List<DateTime> GetDates()
         {
-            get
+            var result = new List<DateTime>();
+
+            for (var i = 0; i < this.DateTo.Subtract(this.DateFrom).Days + 1; i++)
             {
-                var result = new List<DateTime>();
-
-                for (var i = 0; i < this.DateTo.Subtract(this.DateFrom).Days + 1; i++)
-                {
-                    result.Add(this.DateFrom.AddDays(i).Date);
-                }
-
-                return result;
+                result.Add(this.DateFrom.AddDays(i).Date);
             }
+
+            return result;
         }
 
         public DateRangeCriteria()

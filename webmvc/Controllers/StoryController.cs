@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Epiworx.Business;
+using Epiworx.Data;
 using Epiworx.WebMvc.Helpers;
 using Epiworx.WebMvc.Models;
 
@@ -11,10 +12,31 @@ namespace Epiworx.WebMvc.Controllers
 {
     public class StoryController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(
+            string userName,
+            string description,
+            string isArchived,
+            string projectName,
+            string statusName,
+            int? storyId,
+            DateTime? createdDateFrom,
+            DateTime? createdDateTo,
+            DateTime? modifiedDateFrom,
+            DateTime? modifiedDateTo)
         {
             var model = new StoryListModel();
-            var stories = StoryRepository.StoryFetchInfoList();
+            var criteria = new StoryDataCriteria
+            {
+                AssignedToName = userName,
+                Description = description,
+                IsArchived = CriteriaHelper.ToBoolean(isArchived),
+                ProjectName = projectName,
+                StoryId = storyId,
+                StatusName = statusName,
+                CreatedDate = new DateRangeCriteria(createdDateFrom, createdDateTo),
+                ModifiedDate = new DateRangeCriteria(modifiedDateFrom, modifiedDateTo)
+            };
+            var stories = StoryRepository.StoryFetchInfoList(criteria);
 
             model.Stories = stories;
 

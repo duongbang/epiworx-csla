@@ -1,21 +1,44 @@
 ﻿@model Epiworx.WebMvc.Models.HomeIndexModel
-@using Epiworx.Core
-@using Epiworx.Core
+@using Epiworx.WebMvc.Helpers
+<script src="@Url.Content("~/Scripts/jquery.sparkline.min.js")" type="text/javascript"></script>
 <div class="part">
     <div class="wrapper">
         <h3>
             Your Hours for the Last 8 Weeks</h3>
-        <ul class="hours">
-            @{        
-                var startDate = Model.EndDate;
-                var currentDate = startDate;
-
-                while (currentDate >= Model.StartDate)
-                {
-                    <text><li>@Html.ActionLink(Model.Hours.Where(hour => hour.Date.Date >= currentDate.AddDays(-6).Date && hour.Date.Date <= currentDate.Date).Sum(hour => hour.Duration).ToString("F2"), "Index", "Hour", new { userId = Model.User.UserId, dateFrom = currentDate.AddDays(-6).ToShortDateString(), dateTo = currentDate.ToShortDateString() }, null) @currentDate.AddDays(-6).ToString("MMM d")</li></text>
-                    currentDate = currentDate.AddDays(-7);
+        <div class="chart">
+            <img src="@Url.Action("BarChart", "Chart", new { valuesX = Model.HoursForTrailingWeeks.ToStringOfDates(), valuesY = Model.HoursForTrailingWeeks.ToStringOfDurations() })" alt="Chart"/>
+         </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Date
+                    </th>
+                    <th class="number">
+                        Hours
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var hourSummaryByDate in Model.HoursForTrailingWeeks)
+                { 
+                    <tr>
+                        <td>@hourSummaryByDate.StartDate.ToString("MMM d")
+                        </td>
+                        <td class="number">@Html.ActionLink(hourSummaryByDate.Duration.ToString("F2"), "Index", "Hour", new { userId = Model.User.UserId, dateFrom = hourSummaryByDate.StartDate.ToShortDateString(), dateTo = hourSummaryByDate.EndDate.ToShortDateString() }, null)
+                        </td>
+                    </tr>
                 }
-            }
-        </ul>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        Total
+                    </td>
+                    <td class="number">@Model.HoursForTrailingWeeks.Sum(hourSummaryByDate => hourSummaryByDate.Duration).ToString("F2")
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 </div>

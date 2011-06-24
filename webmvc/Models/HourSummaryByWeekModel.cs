@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Epiworx.WebMvc.Models
 {
-    public class FindModel
+    public class HourSummaryByWeekModel
     {
-        public string Text { get; set; }
-        public string Action { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

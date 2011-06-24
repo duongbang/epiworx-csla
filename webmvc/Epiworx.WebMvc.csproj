@@ -37,6 +37,7 @@
     <Reference Include="Csla">
       <HintPath>..\packages\CSLA-Core.4.1.0.1\Lib\NET4.0\Csla.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -63,8 +64,10 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AttachmentController.cs" />
+    <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\FilterController.cs" />
+    <Compile Include="Controllers\FindController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HourController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
@@ -80,6 +83,7 @@
     <Compile Include="Controllers\UserPasswordResetRequestController.cs" />
     <Compile Include="Core\ActionItem.cs" />
     <Compile Include="Core\ActionItemCollection.cs" />
+    <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Helpers\FormsAuthenticationService.cs" />
     <Compile Include="Helpers\HtmlHelperExtensions.cs" />
     <Compile Include="Helpers\IFormsAuthenticationService.cs" />
@@ -93,6 +97,9 @@
     <Compile Include="Models\Account\AccountRegisterSuccessModel.cs" />
     <Compile Include="Models\Attachment\AttachmentFormModel.cs" />
     <Compile Include="Models\Attachment\AttachmentListModel.cs" />
+    <Compile Include="Models\FilterField.cs" />
+    <Compile Include="Models\Find\FindIndexModel.cs" />
+    <Compile Include="Models\HourSummaryByDate.cs" />
     <Compile Include="Models\Note\NoteFormModel.cs" />
     <Compile Include="Models\Note\NoteListModel.cs" />
     <Compile Include="Models\Hour\HourFormModel.cs" />
@@ -104,7 +111,6 @@
     <Compile Include="Models\ProjectUser\ProjectUserFormModel.cs" />
     <Compile Include="Models\DeleteModel.cs" />
     <Compile Include="Models\Status\StatusFormModel.cs" />
-    <Compile Include="Models\FindModel.cs" />
     <Compile Include="Models\Home\HomeIndexModel.cs" />
     <Compile Include="Models\Project\ProjectListModel.cs" />
     <Compile Include="Models\Project\ProjectFormModel.cs" />
@@ -113,6 +119,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Find.png" />
     <Content Include="Content\Reset.css" />
     <Content Include="Content\Themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\Themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -143,11 +150,12 @@
     <Content Include="Content\Themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.5.1.js" />
-    <Content Include="Scripts\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\jquery-1.5.2-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.5.2.js" />
+    <Content Include="Scripts\jquery-1.5.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery.sparkline.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -401,6 +409,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_PartAttachmentList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_LayoutFind.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Find\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

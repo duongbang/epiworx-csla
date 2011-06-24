@@ -9,5 +9,10 @@ namespace Epiworx.WebMvc.Models
     public class ProjectListModel : ModelBase
     {
         public IEnumerable<ProjectInfo> Projects { get; set; }
+
+        public ProjectListModel()
+        {
+            this.FindCategory = "Project";
+        }
     }
 }

@@ -1,0 +1,32 @@
+﻿@model Epiworx.WebMvc.ModelBase
+<div id="header-find">
+    @using (Html.BeginForm("Index", "Find"))
+    {  
+        <a href="@Url.Action("Index", "Find")">Advanced Find</a>
+        <select id="FindCategory" name="FindCategory">
+            <option value="Hour"@if (Model.FindCategory == "Hour") { <text> selected</text> }>Hours</option>
+            <option value="Project"@if (Model.FindCategory == "Project") { <text> selected</text> }>Projects</option>
+            <option value="Story"@if (Model.FindCategory == "Story") { <text> selected</text> }>Stories</option>
+            <option value="User"@if (Model.FindCategory == "User") { <text> selected</text> }>Users</option>
+        </select>
+        <input type="text" id="FindText" name="FindText" value="" /><img src="@Url.Content("~/Content/Find.png")" alt="Find" id="FindButton" />
+    }
+</div>
+<script type="text/javascript">
+
+    $('#FindButton').click(function () {
+        find();
+    });
+
+    $('#FindText').keypress(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == "13") {
+            find();
+        }
+    });
+
+    function find() {
+        $("form:first").submit();
+    }
+
+</script>

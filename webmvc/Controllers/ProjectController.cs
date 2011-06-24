@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Epiworx.Business;
+using Epiworx.Data;
 using Epiworx.WebMvc.Helpers;
 using Epiworx.WebMvc.Models;
 
@@ -11,10 +12,14 @@ namespace Epiworx.WebMvc.Controllers
 {
     public class ProjectController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string isArchived)
         {
             var model = new ProjectListModel();
-            var projects = ProjectRepository.ProjectFetchInfoList();
+            var criteria = new ProjectDataCriteria
+            {
+                IsArchived = CriteriaHelper.ToBoolean(isArchived)
+            };
+            var projects = ProjectRepository.ProjectFetchInfoList(criteria);
 
             model.Projects = projects;
 

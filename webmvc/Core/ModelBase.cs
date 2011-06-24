@@ -18,14 +18,16 @@ namespace Epiworx.WebMvc
     {
         public string Title { get; set; }
         public string ReturnUrl { get; set; }
+        public string FindCategory { get; set; }
+        public string FindText { get; set; }
         public string Message { get; set; }
-        public FindModel FindModel { get; set; }
         public MessageType MessageType { get; set; }
         public ActionItemCollection Actions { get; set; }
 
         public ModelBase()
         {
-            this.FindModel = new FindModel();
+            this.FindCategory = "Story";
+            this.FindText = string.Empty;
             this.MessageType = MessageType.None;
             this.Actions = new ActionItemCollection();
         }

@@ -15,5 +15,10 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<HourInfo> Hours { get; set; }
         public IEnumerable<NoteInfo> Notes { get; set; }
         public IEnumerable<AttachmentInfo> Attachments { get; set; }
+
+        public StoryFormModel()
+        {
+            this.FindCategory = "Story";
+        }
     }
 }

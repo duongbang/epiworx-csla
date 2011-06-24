@@ -10,6 +10,11 @@
     clear: both;
 }
 
+.center
+{
+    text-align: center;
+}
+
 .collaborators
 {
 }
@@ -65,50 +70,6 @@
 .hgroup p
 {
     color: #808080;
-}
-
-.hours
-{
-}
-
-.hours a
-{
-    float: right;
-}
-
-.hours strong
-{
-    margin-right: 10px;
-}
-
-.summary
-{
-    color: #808080;
-    margin-bottom: 10px;
-    width: 150px;
-    float: left;
-}
-
-.summary.first
-{
-    width: 140px;
-    margin-right: 10px;
-}
-
-.summary span
-{
-    font-size: 12px;
-    float: left;
-    line-height: 125%;
-    margin-top: 3px;
-    margin-right: 10px;
-    font-weight: bold;
-}
-
-.summary strong
-{
-    font-size: 48px;
-    float: right;
 }
 
 .part
@@ -237,6 +198,33 @@
     clear: both;
 }
 
+#advanced-find
+{
+}
+
+#advanced-find label
+{
+    display: inline;
+    font-size: 24px;
+    margin-right: 5px;
+}
+
+#advanced-find button
+{
+    font-size: 24px;
+}
+
+#advanced-find table span
+{
+    background-color: #E4E4E4;
+    font-family: 'Courier New' , Courier, monospace;
+    font-size: 14px;
+    padding: 5px;
+    width: 150px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 #header
 {
     padding: 20px 20px 20px 20px;
@@ -274,6 +262,38 @@
     display: block;
     font-size: 24px;
     margin-right: 20px;
+}
+
+#header-find
+{
+    float: right;
+}
+
+#header-find a
+{
+    font-size: 14px;
+    float: left;
+    margin: 10px 10px 0px 0px;
+}
+
+#header-find select
+{
+    width: 100px;
+    float: left;
+    margin-right: 10px;
+}
+
+#header-find input[type="text"]
+{
+    width: 240px;
+    float: left;
+}
+
+#header-find img
+{
+    position: absolute;
+    margin-top: 10px;
+    margin-left: -24px;
 }
 
 #main
@@ -367,8 +387,14 @@ select
 {
     padding: 5px;
     width: 312px;
+    font-size: 16px;
     font-family: 'Times New Roman' , Times, serif;
     margin-bottom: 10px;
+}
+
+select.big
+{
+    font-size: 24px;
 }
 
 textarea
@@ -414,11 +440,17 @@ table
 
 th, td
 {
-    padding: 10px;
+    padding: 10px 0px 10px 0px;
     text-align: left;
 }
 
-th.first, td.first
+th.number, td.number
 {
-    padding-left: 0px;
+    width: 100px;
+    text-align: right;
+}
+
+tfoot
+{
+    font-weight: bold;
 }

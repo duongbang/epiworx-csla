@@ -181,6 +181,11 @@ namespace Epiworx.Data.EntityFramework
                 query = query.Where(row => row.AssignedTo == criteria.AssignedTo);
             }
 
+            if (criteria.AssignedToName != null)
+            {
+                query = query.Where(row => row.AssignedToUser.Name == criteria.AssignedToName);
+            }
+
             if (criteria.AssignedDate != null
                 && criteria.AssignedDate.DateFrom.Date != DateTime.MinValue.Date)
             {
@@ -207,7 +212,7 @@ namespace Epiworx.Data.EntityFramework
 
             if (criteria.Description != null)
             {
-                query = query.Where(row => row.Description == criteria.Description);
+                query = query.Where(row => row.Description.Contains(criteria.Description));
             }
 
             if (criteria.Duration != null)
@@ -247,6 +252,11 @@ namespace Epiworx.Data.EntityFramework
                 query = query.Where(row => criteria.ProjectId.Contains(row.ProjectId));
             }
 
+            if (criteria.ProjectName != null)
+            {
+                query = query.Where(row => row.Project.Name == criteria.ProjectName);
+            }
+
             if (criteria.SprintId != null)
             {
                 query = query.Where(row => row.SprintId == criteria.SprintId);
@@ -267,6 +277,11 @@ namespace Epiworx.Data.EntityFramework
             if (criteria.StatusId != null)
             {
                 query = query.Where(row => row.StatusId == criteria.StatusId);
+            }
+
+            if (criteria.StatusName != null)
+            {
+                query = query.Where(row => row.Status.Name == criteria.StatusName);
             }
 
             if (criteria.ModifiedBy != null)

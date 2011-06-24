@@ -14,5 +14,10 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<StoryInfo> Stories { get; set; }
         public IEnumerable<NoteInfo> Notes { get; set; }
         public IEnumerable<AttachmentInfo> Attachments { get; set; }
+
+        public SprintFormModel()
+        {
+            this.FindCategory = "Project";
+        }
     }
 }

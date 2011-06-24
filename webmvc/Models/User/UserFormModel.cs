@@ -9,5 +9,10 @@ namespace Epiworx.WebMvc.Models
     public class UserFormModel : ModelBase
     {
         public User User { get; set; }
+
+        public UserFormModel()
+        {
+            this.FindCategory = "User";
+        }
     }
 }

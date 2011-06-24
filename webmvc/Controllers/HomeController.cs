@@ -24,6 +24,47 @@ namespace Epiworx.WebMvc.Controllers
             model.EndDate = DateTime.Now.ToEndOfWeek().Date;
             model.Hours = HourRepository.HourFetchInfoList(user, model.StartDate, model.EndDate);
 
+            DateTime startDate;
+            DateTime currentDate;
+
+            startDate = DateTime.Now.ToStartOfWeek();
+            currentDate = startDate;
+
+            var hoursForCurrentWeek = new List<HourSummaryByDate>();
+
+            while (currentDate <= startDate.ToEndOfWeek())
+            {
+                hoursForCurrentWeek.Add(
+                    new HourSummaryByDate
+                        {
+                            StartDate = currentDate.Date,
+                            EndDate = currentDate.Date,
+                            Duration = model.Hours.Where(hour => hour.Date.Date == currentDate.Date).Sum(hour => hour.Duration)
+                        });
+                currentDate = currentDate.AddDays(1);
+            }
+
+            model.HoursForCurrentWeek = hoursForCurrentWeek;
+
+            var hoursForTrailingWeeks = new List<HourSummaryByDate>();
+
+            startDate = model.EndDate;
+            currentDate = startDate;
+
+            while (currentDate >= model.StartDate)
+            {
+                hoursForTrailingWeeks.Add(
+                      new HourSummaryByDate
+                      {
+                          StartDate = currentDate.AddDays(-6).Date,
+                          EndDate = currentDate.Date,
+                          Duration = model.Hours.Where(hour => hour.Date.Date >= currentDate.AddDays(-6).Date && hour.Date.Date <= currentDate.Date).Sum(hour => hour.Duration)
+                      });
+                currentDate = currentDate.AddDays(-7);
+            }
+
+            model.HoursForTrailingWeeks = hoursForTrailingWeeks;
+
             return View(model);
         }
     }

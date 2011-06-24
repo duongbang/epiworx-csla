@@ -9,5 +9,10 @@ namespace Epiworx.WebMvc.Models
     public class SprintListModel : ModelBase
     {
         public IEnumerable<SprintInfo> Sprints { get; set; }
+
+        public SprintListModel()
+        {
+            this.FindCategory = "Project";
+        }
     }
 }

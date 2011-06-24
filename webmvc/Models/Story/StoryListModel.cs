@@ -11,5 +11,10 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<StoryInfo> Stories { get; set; }
         public IEnumerable<StatusInfo> Statuses { get; set; }
         public IEnumerable<UserInfo> Users { get; set; }
+
+        public StoryListModel()
+        {
+            this.FindCategory = "Story";
+        }
     }
 }

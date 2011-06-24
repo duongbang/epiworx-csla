@@ -13,10 +13,14 @@ namespace Epiworx.WebMvc.Models
         public User User { get; set; }
         public IEnumerable<ProjectInfo> Projects { get; set; }
         public IEnumerable<HourInfo> Hours { get; set; }
+        public IEnumerable<HourSummaryByDate> HoursForCurrentWeek { get; set; }
+        public IEnumerable<HourSummaryByDate> HoursForTrailingWeeks { get; set; }
 
         public HomeIndexModel()
         {
             this.Title = "Dashboard";
+            this.HoursForCurrentWeek = new List<HourSummaryByDate>();
+            this.HoursForTrailingWeeks = new List<HourSummaryByDate>();
         }
     }
 }
