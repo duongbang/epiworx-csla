@@ -9,6 +9,7 @@ using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Controllers
 {
+    [Authorize]
     public class NoteController : Controller
     {
         public ActionResult Index()

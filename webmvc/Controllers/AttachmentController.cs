@@ -10,9 +10,9 @@ using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Controllers
 {
+    [Authorize]
     public class AttachmentController : Controller
     {
-        [Authorize]
         public ActionResult Details(int id)
         {
             var attachment = AttachmentRepository.AttachmentFetch(id);

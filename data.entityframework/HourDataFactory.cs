@@ -205,6 +205,11 @@ namespace Epiworx.Data.EntityFramework
                 query = query.Where(row => criteria.ProjectId.Contains(row.Story.ProjectId));
             }
 
+            if (criteria.ProjectName != null)
+            {
+                query = query.Where(row => row.Story.Project.Name == criteria.ProjectName);
+            }
+
             if (criteria.SprintId != null)
             {
                 query = query.Where(row => row.Story.SprintId == criteria.SprintId);
@@ -218,6 +223,11 @@ namespace Epiworx.Data.EntityFramework
             if (criteria.UserId != null)
             {
                 query = query.Where(row => row.UserId == criteria.UserId);
+            }
+
+            if (criteria.UserName != null)
+            {
+                query = query.Where(row => row.User.Name == criteria.UserName);
             }
 
             if (criteria.CreatedBy != null)

@@ -10,9 +10,10 @@ using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Controllers
 {
+    [Authorize]
     public class HourController : Controller
     {
-        public ActionResult Index(int? userId, DateTime? dateFrom, DateTime? dateTo)
+        public ActionResult Index(int? userId, string projectName, string userName, DateTime? dateFrom, DateTime? dateTo)
         {
             var model = new HourListModel();
             var criteria = new HourDataCriteria

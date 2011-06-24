@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Epiworx.WebMvc.Controllers
 {
-
+    [Authorize]
     public class ChartController : Controller
     {
         public ActionResult BarChart(string valuesX, string valuesY)

@@ -43,9 +43,6 @@ namespace Epiworx.Business.Security
             this.FullName = data.FullName;
             this.Name = data.Name;
             this.IsAuthenticated = true;
-
-            // this.Projects = data.Projects
-            //    .Select(project => Csla.DataPortal.FetchChild<BusinessIdentityProject>(project)).ToList();
         }
     }
 }

@@ -9,6 +9,7 @@ using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Controllers
 {
+    [Authorize]
     public class ProjectUserController : Controller
     {
         public ActionResult Create(int projectId)

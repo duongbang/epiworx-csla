@@ -10,13 +10,15 @@ using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Controllers
 {
+    [Authorize]
     public class ProjectController : Controller
     {
-        public ActionResult Index(string isArchived)
+        public ActionResult Index(string projectName, string isArchived)
         {
             var model = new ProjectListModel();
             var criteria = new ProjectDataCriteria
             {
+                Name = projectName,
                 IsArchived = CriteriaHelper.ToBoolean(isArchived)
             };
             var projects = ProjectRepository.ProjectFetchInfoList(criteria);

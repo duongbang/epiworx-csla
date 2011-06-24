@@ -10,6 +10,7 @@ using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Controllers
 {
+    [Authorize]
     public class StoryController : Controller
     {
         public ActionResult Index(

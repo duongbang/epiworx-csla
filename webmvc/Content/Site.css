@@ -57,6 +57,24 @@
     box-shadow: 5px 5px 5px #CCC;
 }
 
+.filter-fields
+{
+}
+
+.filter-fields strong
+{
+   margin-bottom: 10px;
+    background-color: #E4E4E4;
+    padding: 5px;
+}
+
+.filter-fields span
+{
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 .hgroup
 {
     margin-bottom: 20px;
@@ -145,7 +163,7 @@
     font-size: 18px;
     margin: 0px;
     font-weight: bold;
-} 
+}
 
 .stories strong
 {
@@ -196,33 +214,6 @@
 {
     display: block;
     clear: both;
-}
-
-#advanced-find
-{
-}
-
-#advanced-find label
-{
-    display: inline;
-    font-size: 24px;
-    margin-right: 5px;
-}
-
-#advanced-find button
-{
-    font-size: 24px;
-}
-
-#advanced-find table span
-{
-    background-color: #E4E4E4;
-    font-family: 'Courier New' , Courier, monospace;
-    font-size: 14px;
-    padding: 5px;
-    width: 150px;
-    margin-left: 20px;
-    margin-right: 20px;
 }
 
 #header

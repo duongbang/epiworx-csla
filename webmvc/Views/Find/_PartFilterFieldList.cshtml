@@ -1,0 +1,13 @@
+﻿@model Epiworx.WebMvc.Models.FindIndexModel
+<div class="part">
+    <div class="wrapper">
+        <h3>
+            Available filter fields</h3>
+        <ul class="filter-fields">
+            @foreach (var filterField in Model.FilterFields.OrderBy(filterField => filterField.Name))
+            {
+                <li><strong>@filterField.Name</strong><span>@filterField.Description</span></li>
+            }
+        </ul>
+    </div>
+</div>

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Epiworx.WebMvc.Controllers
 {
+    [Authorize]
     public class FeedController : Controller
     {
         public ActionResult Index()

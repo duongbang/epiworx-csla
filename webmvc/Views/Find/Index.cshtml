@@ -5,70 +5,30 @@
         Advanced Find</h2>
 </div>
 @Html.ValidationSummary(false, "Oh snap! Looks like we ran into some trouble. Please correct the errors and try again.")
-@using (Html.BeginForm("Index", "Find", FormMethod.Post, new { id = "advanced-find" }))
+@using (Html.BeginForm())
 {
     <fieldset>
         <legend>Advanced Find</legend>
         <label for="FindText">
             Search for</label>
-        <input type="text" id="FindText" name="FindText" class="big" />
+        <textarea id="FindText" name="FindText"></textarea>
         <label for="FindCategory">
-            in</label>
-        <select id="FindCategory" name="FindCategory" class="big">
+            Search in</label>
+        <select id="FindCategory" name="FindCategory">
             <option value="Hour">Hours</option>
             <option value="Project">Projects</option>
             <option value="Story">Stories</option>
             <option value="User">Users</option>
         </select>
-        <button>
-            Find Now</button>
     </fieldset>
-    <h3>
-        You filter results by the following fields:</h3>
-    <table style="width: auto;">
-        <thead>
-            <th>
-                Field
-            </th>
-            <th>
-            </th>
-            <th style="width: 100px;" class="center">
-                Hour
-            </th>
-            <th style="width: 100px;" class="center">
-                Project
-            </th>
-            <th style="width: 100px;" class="center">
-                Story
-            </th>
-            <th style="width: 100px;" class="center">
-                User
-            </th>
-        </thead>
-        <tbody>
-            @foreach (var filterField in Model.FilterFields.OrderBy(filterField => filterField.Name))
-            {
-                <tr>
-                    <td>
-                        <strong>@filterField.Description</strong>
-                    </td>
-                    <td>
-                        <span>@filterField.Name=</span>
-                    </td>
-                    <td class="center">
-                        @if (filterField.Categories.Contains("Hour")) { <text>Yes</text> }
-                    </td>
-                    <td class="center">
-                        @if (filterField.Categories.Contains("Project")) { <text>Yes</text> }
-                    </td>
-                    <td class="center">
-                        @if (filterField.Categories.Contains("Story")) { <text>Yes</text> }
-                    </td>
-                    <td class="center">
-                        @if (filterField.Categories.Contains("User")) { <text>Yes</text> }
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <ul class="commands">
+        <li>
+            <button>
+                Find Now</button></li>
+    </ul>
+}
+
+@section SideBar
+{
+    @Html.Partial("_PartFilterFieldList")
 }
