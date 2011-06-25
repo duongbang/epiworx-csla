@@ -29,7 +29,7 @@
         { 
             <tr>
                 <td>
-                    <input type="checkbox" id="StoryId" name="StoryId" value="@story.StoryId" />@Html.ActionLink(story.StoryId.ToString(), "Details", new { id = story.StoryId })
+                    @Html.ActionLink(story.StoryId.ToString(), "Details", new { id = story.StoryId })
                 </td>
                 <td>@story.ProjectName
                 </td>

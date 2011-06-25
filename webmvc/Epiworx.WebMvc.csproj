@@ -83,6 +83,8 @@
     <Compile Include="Controllers\UserPasswordResetRequestController.cs" />
     <Compile Include="Core\ActionItem.cs" />
     <Compile Include="Core\ActionItemCollection.cs" />
+    <Compile Include="Core\Parameter.cs" />
+    <Compile Include="Core\ParameterCollection.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Helpers\FormsAuthenticationService.cs" />
     <Compile Include="Helpers\HtmlHelperExtensions.cs" />
@@ -411,9 +413,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_LayoutFind.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Find\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
