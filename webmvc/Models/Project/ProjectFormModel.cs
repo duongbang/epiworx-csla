@@ -18,7 +18,6 @@ namespace Epiworx.WebMvc.Models
 
         public ProjectFormModel()
         {
-            this.FindCategory = "Project";
         }
     }
 }

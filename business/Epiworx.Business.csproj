@@ -95,6 +95,7 @@
     <Compile Include="Filter\Filter\Filter.Properties.cs" />
     <Compile Include="Filter\Filter\Filter.Rules.cs" />
     <Compile Include="Filter\IFilter.cs" />
+    <Compile Include="Helpers\FindResult.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Hour\HourInfoList\HourInfoList.cs" />
     <Compile Include="Hour\HourInfoList\HourInfoList.Data.cs" />
@@ -153,6 +154,7 @@
     <Compile Include="Repositories\AttachmentRepository.cs" />
     <Compile Include="Repositories\FeedRepository.cs" />
     <Compile Include="Repositories\FilterRepository.cs" />
+    <Compile Include="Repositories\FindRepository.cs" />
     <Compile Include="Repositories\HourRepository.cs" />
     <Compile Include="Repositories\NoteRepository.cs" />
     <Compile Include="Repositories\ProjectUserRepository.cs" />

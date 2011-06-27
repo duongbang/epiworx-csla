@@ -198,6 +198,74 @@
     clear: both;
 }
 
+#find
+{
+}
+
+#find input[type="text"]
+{
+    font-size: 18px;
+    width: 600px;
+}
+
+#find .scope
+{
+    margin-bottom: 20px;
+}
+
+#find .result
+{
+    margin-bottom: 20px;
+}
+
+#find .result h1
+{
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+#find .result h1 .type
+{
+    padding: 5px;
+    background-color: #000;
+    font-size: 14px;
+    color: #FFF;
+    width: 60px;
+    float: left;
+    text-align: center;
+    margin-right: 5px;
+}
+
+#find .result .description
+{
+    margin-bottom: 5px;
+} 
+
+#find .result .date
+{
+    color: #808080;
+}
+
+#find .no-results
+{
+}
+
+#find .no-results p
+{
+    margin-bottom: 10px;
+}
+
+#find .no-results ul
+{
+    list-style-type: inherit;
+}
+
+#find .no-results li
+{
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+
 #header
 {
     padding: 20px 20px 20px 20px;

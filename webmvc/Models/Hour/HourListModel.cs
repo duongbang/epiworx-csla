@@ -12,7 +12,6 @@ namespace Epiworx.WebMvc.Models
 
         public HourListModel()
         {
-            this.FindCategory = "Hour";
         }
     }
 }

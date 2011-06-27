@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Epiworx.WinPhone")]
+[assembly: AssemblyTitle("Epiworx.Wp7")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Epiworx.WinPhone")]
+[assembly: AssemblyProduct("Epiworx.Wp7")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d32a7704-b922-4be7-8ba5-681d44060e3c")]
+[assembly: Guid("b9510e19-f796-4511-a0d1-9b2ac8050854")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -17,7 +17,6 @@ namespace Epiworx.WebMvc.Models
 
         public SprintFormModel()
         {
-            this.FindCategory = "Project";
         }
     }
 }

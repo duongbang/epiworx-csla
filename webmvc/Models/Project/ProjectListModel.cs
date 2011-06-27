@@ -12,7 +12,6 @@ namespace Epiworx.WebMvc.Models
 
         public ProjectListModel()
         {
-            this.FindCategory = "Project";
         }
     }
 }

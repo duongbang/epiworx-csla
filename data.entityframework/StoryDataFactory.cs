@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Objects.SqlClient;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Text;
@@ -320,7 +321,12 @@ namespace Epiworx.Data.EntityFramework
 
             if (criteria.Text != null)
             {
-                query = query.Where(row => row.Description.Contains(criteria.Text));
+                query = query.Where(row => SqlFunctions.StringConvert((double)row.StoryId).Contains(criteria.Text)
+                    || row.Description.Contains(criteria.Text)
+                    || row.Project.Name.Contains(criteria.Text)
+                    || row.AssignedToUser.Name.Contains(criteria.Text)
+                    || row.Status.Name.Contains(criteria.Text)
+                    || row.Sprint.Name.Contains(criteria.Text));
             }
 
             if (criteria.SortBy != null)

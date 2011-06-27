@@ -11,12 +11,11 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 
-namespace Epiworx.WinPhone
+namespace Epiworx.Wp7
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class LogonPage : PhoneApplicationPage
     {
-        // Constructor
-        public MainPage()
+        public LogonPage()
         {
             InitializeComponent();
         }

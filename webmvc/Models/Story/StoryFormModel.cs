@@ -18,7 +18,6 @@ namespace Epiworx.WebMvc.Models
 
         public StoryFormModel()
         {
-            this.FindCategory = "Story";
         }
     }
 }

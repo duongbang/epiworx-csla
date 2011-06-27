@@ -412,7 +412,7 @@
     <Content Include="Views\Shared\_PartAttachmentList.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_LayoutFind.cshtml" />
+    <Content Include="Views\Find\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

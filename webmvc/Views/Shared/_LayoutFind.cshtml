@@ -1,9 +1,6 @@
 ﻿@model Epiworx.WebMvc.ModelBase
 <div id="header-find">
-    @using (Html.BeginForm("Index", "Find"))
-    {  
-        <input type="text" id="FindText" name="FindText" value="" /><img src="@Url.Content("~/Content/Find.png")" alt="Find" id="FindButton" />
-    }
+    <input type="text" id="FindText" name="Terms" value="" /><img src="@Url.Content("~/Content/Find.png")" alt="Find" id="FindButton" />
 </div>
 <script type="text/javascript">
 
@@ -19,7 +16,10 @@
     });
 
     function find() {
-        $("form:first").submit();
+        var url = @Url.Action("Index","Find")/global=true&scope=all&terms=";
+
+        alert(url);
+        location.href = url;
     }
 
 </script>

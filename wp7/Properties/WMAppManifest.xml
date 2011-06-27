@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.0">
-  <App xmlns="" ProductID="{fb518e3c-3a69-4f4c-8996-360b6d1abc22}" Title="Epiworx.WinPhone" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Epiworx.WinPhone author" Description="Sample description" Publisher="Epiworx.WinPhone">
+  <App xmlns="" ProductID="{b2ddf748-15e9-4773-81a3-14c78ff424a3}" Title="Epiworx" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="wp7 author" Description="Sample description" Publisher="wp7">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES" />
@@ -19,11 +19,11 @@
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
     </Tasks>
     <Tokens>
-      <PrimaryToken TokenID="Epiworx.WinPhoneToken" TaskName="_default">
+      <PrimaryToken TokenID="wp7Token" TaskName="_default">
         <TemplateType5>
           <BackgroundImageURI IsRelative="true" IsResource="false">Background.png</BackgroundImageURI>
           <Count>0</Count>
-          <Title>Epiworx.WinPhone</Title>
+          <Title>Epiworx</Title>
         </TemplateType5>
       </PrimaryToken>
     </Tokens>

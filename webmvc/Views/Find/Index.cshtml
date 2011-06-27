@@ -1,29 +1,77 @@
 ﻿@model Epiworx.WebMvc.Models.FindIndexModel
 @using Epiworx.WebMvc.Helpers
-<div class="hgroup">
-    <h2>
-        Advanced Find</h2>
-</div>
-@Html.ValidationSummary(false, "Oh snap! Looks like we ran into some trouble. Please correct the errors and try again.")
-@using (Html.BeginForm())
-{
-    <fieldset>
-        <legend>Advanced Find</legend>
-        <label for="FindText">
-            Search for</label>
-        <textarea id="FindText" name="FindText"></textarea>
-        <label for="FindCategory">
-            Search in</label>
-        <select id="FindCategory" name="FindCategory">
-            <option value="Hour">Hours</option>
-            <option value="Project">Projects</option>
-            <option value="Story">Stories</option>
-            <option value="User">Users</option>
-        </select>
-    </fieldset>
-    <ul class="commands">
-        <li>
+<div id="find">
+    <div class="hgroup">
+        <h2>
+            Search across all projects, stories and users</h2>
+    </div>
+    @Html.ValidationSummary(false, "Oh snap! Looks like we ran into some trouble. Please correct the errors and try again.")
+    @using (Html.BeginForm("Index", "Find", FormMethod.Get))
+    {
+        <fieldset>
+            <legend>Find</legend>
+            <input type="hidden" id="Global" name="global" value="true" />
+            <input type="hidden" id="Scope" name="scope" value="all" />
+            <input type="text" id="FindText" name="terms" value="@Model.FindText" class="big"/>
             <button>
-                Find Now</button></li>
-    </ul>
+                Find Now</button>
+        </fieldset>
+    }
+    @if (Model.ShowScope)
+    {
+        <div class="scope">
+            <p>
+                Show <a href="" data-scope="all">All Matches</a> or filter by <a href="" data-scope="hours">
+                    Hours</a>, <a href="" data-scope="projects">
+                    Projects</a>, <a href="" data-scope="stories">Stories</a> and <a href="" data-scope="users">
+                        Users</a></p>
+        </div>
+    }
+    @if (!string.IsNullOrEmpty(Model.FindText) && Model.FindResults.Count() == 0)
+    { 
+        <div class="no-results">
+            <p>
+                Sorry, your search for <strong>@Model.FindText</strong> had no results.</p>
+            <p>
+                Suggestions:</p>
+            <ul>
+                <li>Check your spelling.</li>
+                <li>Use fewer words (results have to match the exact phrase you type).</li>
+            </ul>
+        </div>
+    }
+    else
+    {
+        foreach (var findResult in Model.FindResults)
+        {         
+        <div class="result">
+            <div class="@findResult.Type.ToLower()">
+                <h1>
+                    <span class="type">@findResult.Type</span> <a href="@Url.Action("Details", findResult.Type, new { id = findResult.Id })">@findResult.Name</a>
+                </h1>
+                @if (!string.IsNullOrEmpty(findResult.Description))
+                {
+                    <p class="description">@findResult.Description</p>
+                }
+                <p class="date">
+                    Created on @findResult.CreatedDate</p>
+            </div>
+        </div>
+        }
+    }
+</div>
+@section SideBar
+{
+    <div class="developer note">
+        The purpose of find is to search for items based on provided criteria and not reporting,
+        these are two separate functions</div>
 }
+<script type="text/javascript">
+
+    $(".scope a").click(function (e) {
+        e.preventDefault();
+        $("#Scope").val($(this).attr("data-scope"));
+        $("#find form").submit();
+    });
+
+</script>
