@@ -48,6 +48,7 @@ namespace Epiworx.Business
         {
             this.SprintId = data.SprintId;
             this.CompletedDate = data.CompletedDate;
+            this.Description = data.Description;
             this.IsActive = data.IsActive;
             this.IsArchived = data.IsArchived;
             this.IsCompleted = data.IsCompleted;
@@ -124,6 +125,7 @@ namespace Epiworx.Business
         {
             data.SprintId = this.SprintId;
             data.CompletedDate = this.CompletedDate;
+            data.Description = this.Description;
             data.IsActive = this.IsActive;
             data.IsArchived = this.IsArchived;
             data.IsCompleted = this.IsCompleted;

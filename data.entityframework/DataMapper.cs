@@ -67,6 +67,48 @@ namespace Epiworx.Data.EntityFramework
             destination.ModifiedDate = source.ModifiedDate;
         }
 
+        internal static void Map(Feed source, FeedData destination)
+        {
+            destination.FeedId = source.FeedId;
+            destination.Action = source.Action;
+            destination.Description = source.Description;
+            destination.SourceId = source.SourceId;
+            destination.SourceTypeId = source.SourceTypeId;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+        }
+
+        internal static void Map(FeedData source, Feed destination)
+        {
+            destination.FeedId = source.FeedId;
+            destination.Action = source.Action;
+            destination.Description = source.Description;
+            destination.SourceId = source.SourceId;
+            destination.SourceTypeId = source.SourceTypeId;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+        }
+
+        internal static void Map(FeedSourceMember source, FeedSourceMemberData destination)
+        {
+            destination.FeedSourceMemberId = source.FeedSourceMemberId;
+            destination.FeedId = source.FeedId;
+            destination.SourceId = source.SourceId;
+            destination.SourceTypeId = source.SourceTypeId;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+        }
+
+        internal static void Map(FeedSourceMemberData source, FeedSourceMember destination)
+        {
+            destination.FeedSourceMemberId = source.FeedSourceMemberId;
+            destination.FeedId = source.FeedId;
+            destination.SourceId = source.SourceId;
+            destination.SourceTypeId = source.SourceTypeId;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+        }
+
         internal static void Map(Note source, NoteData destination)
         {
             destination.NoteId = source.NoteId;
@@ -165,6 +207,7 @@ namespace Epiworx.Data.EntityFramework
         {
             destination.SprintId = source.SprintId;
             destination.CompletedDate = source.CompletedDate;
+            destination.Description = source.Description;
             destination.IsActive = source.IsActive;
             destination.IsArchived = source.IsArchived;
             destination.IsCompleted = source.IsCompleted;
@@ -183,6 +226,7 @@ namespace Epiworx.Data.EntityFramework
         {
             destination.SprintId = source.SprintId;
             destination.CompletedDate = source.CompletedDate;
+            destination.Description = source.Description;
             destination.IsActive = source.IsActive;
             destination.IsArchived = source.IsArchived;
             destination.IsCompleted = source.IsCompleted;

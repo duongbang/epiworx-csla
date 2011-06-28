@@ -18,7 +18,7 @@ namespace Epiworx.WebMvc.Controllers
 
             model.FindText = terms;
 
-            if (ModelState.IsValid)
+            if (!string.IsNullOrEmpty(terms))
             {
                 var findResults = FindRepository.Find(model.FindText)
                     .OrderBy(row => row.Type)

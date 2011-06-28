@@ -8,6 +8,7 @@ namespace Epiworx.Data
     {
         public int SprintId { get; set; }
         public DateTime CompletedDate { get; set; }
+        public string Description { get; set; }
         public bool IsActive { get; set; }
         public bool IsArchived { get; set; }
         public bool IsCompleted { get; set; }

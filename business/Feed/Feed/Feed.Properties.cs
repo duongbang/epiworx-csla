@@ -6,6 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using Epiworx.Business;
+using Epiworx.Business.Helpers;
 
 namespace Epiworx.Business
 {
@@ -26,6 +27,43 @@ namespace Epiworx.Business
         {
             get { return this.GetProperty(ActionProperty); }
             set { this.SetProperty(ActionProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<string> DescriptionProperty =
+            RegisterProperty<string>(row => row.Description, "Description");
+        public string Description
+        {
+            get { return this.GetProperty(DescriptionProperty); }
+            set { this.SetProperty(DescriptionProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<int> SourceIdProperty =
+            RegisterProperty<int>(row => row.SourceId, "SourceId");
+        public int SourceId
+        {
+            get { return this.GetProperty(SourceIdProperty); }
+            set { this.SetProperty(SourceIdProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<string> SourceNameProperty =
+            RegisterProperty<string>(row => row.SourceName, "SourceName");
+        public string SourceName
+        {
+            get { return this.GetProperty(SourceNameProperty); }
+            set { this.SetProperty(SourceNameProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<int> SourceTypeIdProperty =
+            RegisterProperty<int>(row => row.SourceTypeId, "SourceTypeId");
+        public int SourceTypeId
+        {
+            get { return this.GetProperty(SourceTypeIdProperty); }
+            set { this.SetProperty(SourceTypeIdProperty, value); }
+        }
+
+        public string SourceTypeName
+        {
+            get { return DataHelper.FetchSourceTypeName(this.SourceTypeId); }
         }
 
         private static Csla.PropertyInfo<int> CreatedByProperty =

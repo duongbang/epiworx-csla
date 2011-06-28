@@ -33,6 +33,10 @@
             <End Role="User" EntitySet="User" />
             <End Role="Attachment" EntitySet="Attachment" />
           </AssociationSet>
+          <AssociationSet Name="FK_Feed_Source" Association="ApplicationModel.Store.FK_Feed_Source">
+            <End Role="Source" EntitySet="Source" />
+            <End Role="Feed" EntitySet="Feed" />
+          </AssociationSet>
           <AssociationSet Name="FK_Feed_UserCreatedBy" Association="ApplicationModel.Store.FK_Feed_UserCreatedBy">
             <End Role="User" EntitySet="User" />
             <End Role="Feed" EntitySet="Feed" />
@@ -184,6 +188,9 @@
           </Key>
           <Property Name="FeedId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Action" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SourceId" Type="int" Nullable="false" />
+          <Property Name="SourceTypeId" Type="int" Nullable="false" />
           <Property Name="CreatedBy" Type="int" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
@@ -303,6 +310,7 @@
           </Key>
           <Property Name="SprintId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="CompletedDate" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="300" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="IsArchived" Type="bit" Nullable="false" />
           <Property Name="IsCompleted" Type="bit" Nullable="false" />
@@ -409,6 +417,20 @@
             </Principal>
             <Dependent Role="Attachment">
               <PropertyRef Name="ModifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feed_Source">
+          <End Role="Source" Type="ApplicationModel.Store.Source" Multiplicity="1" />
+          <End Role="Feed" Type="ApplicationModel.Store.Feed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Source">
+              <PropertyRef Name="SourceId" />
+              <PropertyRef Name="SourceTypeId" />
+            </Principal>
+            <Dependent Role="Feed">
+              <PropertyRef Name="SourceId" />
+              <PropertyRef Name="SourceTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -814,7 +836,6 @@
           </DefiningExpression>
         </Function>
         <EntityContainer Name="ApplicationEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Feeds" EntityType="ApplicationModel.Feed" />
           <EntitySet Name="FeedSourceMembers" EntityType="ApplicationModel.FeedSourceMember" />
           <EntitySet Name="Projects" EntityType="ApplicationModel.Project" />
           <EntitySet Name="ProjectUserMembers" EntityType="ApplicationModel.ProjectUserMember" />
@@ -822,14 +843,6 @@
           <EntitySet Name="Sources" EntityType="ApplicationModel.Source" />
           <EntitySet Name="SourceTypes" EntityType="ApplicationModel.SourceType" />
           <EntitySet Name="Users" EntityType="ApplicationModel.User" />
-          <AssociationSet Name="FK_Feed_UserCreatedBy" Association="ApplicationModel.FK_Feed_UserCreatedBy">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Feed" EntitySet="Feeds" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FeedSourceMember_Feed" Association="ApplicationModel.FK_FeedSourceMember_Feed">
-            <End Role="Feed" EntitySet="Feeds" />
-            <End Role="FeedSourceMember" EntitySet="FeedSourceMembers" />
-          </AssociationSet>
           <AssociationSet Name="FK_FeedSourceMember_Source" Association="ApplicationModel.FK_FeedSourceMember_Source">
             <End Role="Source" EntitySet="Sources" />
             <End Role="FeedSourceMember" EntitySet="FeedSourceMembers" />
@@ -969,18 +982,20 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Filter" EntitySet="Filters" />
           </AssociationSet>
+          <EntitySet Name="Feeds" EntityType="ApplicationModel.Feed" />
+          <AssociationSet Name="FK_Feed_Source" Association="ApplicationModel.FK_Feed_Source">
+            <End Role="Source" EntitySet="Sources" />
+            <End Role="Feed" EntitySet="Feeds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feed_UserCreatedBy" Association="ApplicationModel.FK_Feed_UserCreatedBy">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Feed" EntitySet="Feeds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FeedSourceMember_Feed" Association="ApplicationModel.FK_FeedSourceMember_Feed">
+            <End Role="Feed" EntitySet="Feeds" />
+            <End Role="FeedSourceMember" EntitySet="FeedSourceMembers" />
+          </AssociationSet>
           </EntityContainer>
-        <EntityType Name="Feed">
-          <Key>
-            <PropertyRef Name="FeedId" />
-          </Key>
-          <Property Type="Int32" Name="FeedId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Action" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
-          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
-          <NavigationProperty Name="CreatedByUser" Relationship="ApplicationModel.FK_Feed_UserCreatedBy" FromRole="Feed" ToRole="User" />
-          <NavigationProperty Name="FeedSourceMembers" Relationship="ApplicationModel.FK_FeedSourceMember_Feed" FromRole="Feed" ToRole="FeedSourceMember" />
-        </EntityType>
         <EntityType Name="FeedSourceMember">
           <Key>
             <PropertyRef Name="FeedSourceMemberId" />
@@ -991,9 +1006,9 @@
           <Property Type="Int32" Name="SourceTypeId" Nullable="false" />
           <Property Type="Int32" Name="CreatedBy" Nullable="false" />
           <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
-          <NavigationProperty Name="Feed" Relationship="ApplicationModel.FK_FeedSourceMember_Feed" FromRole="FeedSourceMember" ToRole="Feed" />
           <NavigationProperty Name="Source" Relationship="ApplicationModel.FK_FeedSourceMember_Source" FromRole="FeedSourceMember" ToRole="Source" />
           <NavigationProperty Name="CreatedByUser" Relationship="ApplicationModel.FK_FeedSourceMember_UserCreatedBy" FromRole="FeedSourceMember" ToRole="User" />
+          <NavigationProperty Name="Feed" Relationship="ApplicationModel.FK_FeedSourceMember_Feed" FromRole="FeedSourceMember" ToRole="Feed" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -1055,6 +1070,7 @@
           <NavigationProperty Name="FeedSourceMembers" Relationship="ApplicationModel.FK_FeedSourceMember_Source" FromRole="Source" ToRole="FeedSourceMember" />
           <NavigationProperty Name="Notes" Relationship="ApplicationModel.FK_Note_Source" FromRole="Source" ToRole="Note" />
           <NavigationProperty Name="Attachments" Relationship="ApplicationModel.FK_Attachment_Source" FromRole="Source" ToRole="Attachment" />
+          <NavigationProperty Name="Feeds" Relationship="ApplicationModel.FK_Feed_Source" FromRole="Source" ToRole="Feed" />
         </EntityType>
         <EntityType Name="SourceType">
           <Key>
@@ -1081,30 +1097,6 @@
           <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
           <Property Type="DateTime" Name="ModifiedDate" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Feed_UserCreatedBy">
-          <End Type="ApplicationModel.User" Role="User" Multiplicity="1" />
-          <End Type="ApplicationModel.Feed" Role="Feed" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Feed">
-              <PropertyRef Name="CreatedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FeedSourceMember_Feed">
-          <End Type="ApplicationModel.Feed" Role="Feed" Multiplicity="1" />
-          <End Type="ApplicationModel.FeedSourceMember" Role="FeedSourceMember" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Feed">
-              <PropertyRef Name="FeedId" />
-            </Principal>
-            <Dependent Role="FeedSourceMember">
-              <PropertyRef Name="FeedId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_FeedSourceMember_Source">
           <End Type="ApplicationModel.Source" Role="Source" Multiplicity="1" />
           <End Type="ApplicationModel.FeedSourceMember" Role="FeedSourceMember" Multiplicity="*" />
@@ -1295,6 +1287,7 @@
           <NavigationProperty Name="CreatedByUser" Relationship="ApplicationModel.FK_Sprint_UserCreatedBy" FromRole="Sprint" ToRole="User" />
           <NavigationProperty Name="ModifiedByUser" Relationship="ApplicationModel.FK_Sprint_UserModifiedBy" FromRole="Sprint" ToRole="User" />
           <NavigationProperty Name="Stories" Relationship="ApplicationModel.FK_Story_Sprint" FromRole="Sprint" ToRole="Story" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Sprint_Project">
           <End Type="ApplicationModel.Project" Role="Project" Multiplicity="1" />
@@ -1655,22 +1648,65 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Feed">
+          <Key>
+            <PropertyRef Name="FeedId" />
+          </Key>
+          <Property Type="Int32" Name="FeedId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Action" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="SourceId" Nullable="false" />
+          <Property Type="Int32" Name="SourceTypeId" Nullable="false" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <NavigationProperty Name="Source" Relationship="ApplicationModel.FK_Feed_Source" FromRole="Feed" ToRole="Source" />
+          <NavigationProperty Name="CreatedByUser" Relationship="ApplicationModel.FK_Feed_UserCreatedBy" FromRole="Feed" ToRole="User" />
+          <NavigationProperty Name="FeedSourceMembers" Relationship="ApplicationModel.FK_FeedSourceMember_Feed" FromRole="Feed" ToRole="FeedSourceMember" />
+        </EntityType>
+        <Association Name="FK_Feed_Source">
+          <End Type="ApplicationModel.Source" Role="Source" Multiplicity="1" />
+          <End Type="ApplicationModel.Feed" Role="Feed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Source">
+              <PropertyRef Name="SourceId" />
+              <PropertyRef Name="SourceTypeId" />
+            </Principal>
+            <Dependent Role="Feed">
+              <PropertyRef Name="SourceId" />
+              <PropertyRef Name="SourceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feed_UserCreatedBy">
+          <End Type="ApplicationModel.User" Role="User" Multiplicity="1" />
+          <End Type="ApplicationModel.Feed" Role="Feed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Feed">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FeedSourceMember_Feed">
+          <End Type="ApplicationModel.Feed" Role="Feed" Multiplicity="1" />
+          <End Type="ApplicationModel.FeedSourceMember" Role="FeedSourceMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Feed">
+              <PropertyRef Name="FeedId" />
+            </Principal>
+            <Dependent Role="FeedSourceMember">
+              <PropertyRef Name="FeedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ApplicationModelStoreContainer" CdmEntityContainer="ApplicationEntities">
-          <EntitySetMapping Name="Feeds">
-            <EntityTypeMapping TypeName="ApplicationModel.Feed">
-              <MappingFragment StoreEntitySet="Feed">
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="Action" ColumnName="Action" />
-                <ScalarProperty Name="FeedId" ColumnName="FeedId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="FeedSourceMembers">
             <EntityTypeMapping TypeName="ApplicationModel.FeedSourceMember">
               <MappingFragment StoreEntitySet="FeedSourceMember">
@@ -1781,6 +1817,7 @@
           <EntitySetMapping Name="Sprints">
             <EntityTypeMapping TypeName="ApplicationModel.Sprint">
               <MappingFragment StoreEntitySet="Sprint">
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
@@ -1887,6 +1924,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Feeds">
+            <EntityTypeMapping TypeName="ApplicationModel.Feed">
+              <MappingFragment StoreEntitySet="Feed">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="SourceTypeId" ColumnName="SourceTypeId" />
+                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="FeedId" ColumnName="FeedId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1908,358 +1958,318 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Application">
-        <EntityTypeShape EntityType="ApplicationModel.Feed" Width="1.5" PointX="3.625" PointY="21" Height="2.172587890624996" />
-        <EntityTypeShape EntityType="ApplicationModel.FeedSourceMember" Width="1.5" PointX="5.875" PointY="19.375" Height="2.749492187499996" />
-        <EntityTypeShape EntityType="ApplicationModel.Project" Width="1.5" PointX="3.625" PointY="23.875" Height="3.903300781249996" />
-        <EntityTypeShape EntityType="ApplicationModel.ProjectUserMember" Width="1.5" PointX="5.875" PointY="23.25" Height="3.5186979166666674" />
-        <EntityTypeShape EntityType="ApplicationModel.Role" Width="1.5" PointX="3.625" PointY="29.125" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="ApplicationModel.Source" Width="1.5" PointX="1.375" PointY="10.625" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="ApplicationModel.FeedSourceMember" Width="1.5" PointX="8.875" PointY="18.75" Height="2.7494921875000031" />
+        <EntityTypeShape EntityType="ApplicationModel.Project" Width="1.5" PointX="3.625" PointY="36" Height="3.903300781249996" />
+        <EntityTypeShape EntityType="ApplicationModel.ProjectUserMember" Width="1.5" PointX="5.875" PointY="22.375" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="ApplicationModel.Role" Width="1.5" PointX="3.625" PointY="28.25" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="ApplicationModel.Source" Width="1.5" PointX="1.375" PointY="13.75" Height="2.7494921875000014" />
         <EntityTypeShape EntityType="ApplicationModel.SourceType" Width="1.5" PointX="0.75" PointY="0.75" Height="1.5956835937500031" />
-        <EntityTypeShape EntityType="ApplicationModel.User" Width="2.125" PointX="0.75" PointY="14.25" Height="3.3263964843750031" />
-        <AssociationConnector Association="ApplicationModel.FK_Feed_UserCreatedBy" >
-          <ConnectorPoint PointX="1.8759783203125" PointY="17.576396484375003" />
-          <ConnectorPoint PointX="1.8759783203125" PointY="22.086293945312498" />
-          <ConnectorPoint PointX="1.9632998209635419" PointY="22.086293945312498" />
-          <ConnectorPoint PointX="2.1299664876302087" PointY="22.086293945312498" />
-          <ConnectorPoint PointX="2.5570501725260413" PointY="22.086293945312498" />
-          <ConnectorPoint PointX="2.7237168391927082" PointY="22.086293945312498" />
-          <ConnectorPoint PointX="3.625" PointY="22.086293945312498" />
-        </AssociationConnector>
-        <AssociationConnector Association="ApplicationModel.FK_FeedSourceMember_Feed" >
-          <ConnectorPoint PointX="5.125" PointY="21.562246093749998" />
-          <ConnectorPoint PointX="5.541666666666667" PointY="21.562246093749998" />
-          <ConnectorPoint PointX="5.708333333333333" PointY="21.562246093749998" />
-          <ConnectorPoint PointX="5.875" PointY="21.562246093749998" />
-        </AssociationConnector>
+        <EntityTypeShape EntityType="ApplicationModel.User" Width="2.125" PointX="0.75" PointY="18.375" Height="3.3263964843750031" />
         <AssociationConnector Association="ApplicationModel.FK_FeedSourceMember_Source" >
-          <ConnectorPoint PointX="2.875" PointY="13.035543619791664" />
-          <ConnectorPoint PointX="6.21875" PointY="13.035543619791664" />
-          <ConnectorPoint PointX="6.21875" PointY="19.375" />
+          <ConnectorPoint PointX="2.875" PointY="15.124746093750002" />
+          <ConnectorPoint PointX="3.375" PointY="15.124746093750002" />
+          <ConnectorPoint PointX="3.375" PointY="17.210999348958339" />
+          <ConnectorPoint PointX="3.4166666666666665" PointY="17.210999348958339" />
+          <ConnectorPoint PointX="3.5833333333333335" PointY="17.210999348958339" />
+          <ConnectorPoint PointX="9.625" PointY="17.210999348958339" />
+          <ConnectorPoint PointX="9.625" PointY="18.75" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_FeedSourceMember_UserCreatedBy" >
-          <ConnectorPoint PointX="2.3662140625" PointY="17.576396484375003" />
-          <ConnectorPoint PointX="2.3662140625" PointY="20.15625" />
-          <ConnectorPoint PointX="2.5570501725260413" PointY="20.15625" />
-          <ConnectorPoint PointX="2.7237168391927082" PointY="20.15625" />
-          <ConnectorPoint PointX="5.541666666666667" PointY="20.15625" />
-          <ConnectorPoint PointX="5.708333333333333" PointY="20.15625" />
-          <ConnectorPoint PointX="5.875" PointY="20.15625" />
+          <ConnectorPoint PointX="2.875" PointY="18.406249999801318" />
+          <ConnectorPoint PointX="3.1666666666666665" PointY="18.406249999801318" />
+          <ConnectorPoint PointX="3.3333333333333335" PointY="18.406249999801318" />
+          <ConnectorPoint PointX="6.166666666666667" PointY="18.406249999801318" />
+          <ConnectorPoint PointX="6.333333333333333" PointY="18.406249999801318" />
+          <ConnectorPoint PointX="7.291666666666667" PointY="18.406249999801318" />
+          <ConnectorPoint PointX="7.458333333333333" PointY="18.406249999801318" />
+          <ConnectorPoint PointX="9.2187475" PointY="18.406249999801318" />
+          <ConnectorPoint PointX="9.2187475" PointY="18.75" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Project_UserCreatedBy" >
-          <ConnectorPoint PointX="1.29687359375" PointY="17.576396484375003" />
-          <ConnectorPoint PointX="1.29687359375" PointY="26.487545128173828" />
-          <ConnectorPoint PointX="3.625" PointY="26.487545128173828" />
+          <ConnectorPoint PointX="1.8125" PointY="21.701396484375003" />
+          <ConnectorPoint PointX="1.8125" PointY="38.45518923828125" />
+          <ConnectorPoint PointX="3.625" PointY="38.45518923828125" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Project_UserModifiedBy" >
-          <ConnectorPoint PointX="2.6403835058593748" PointY="17.576396484375003" />
-          <ConnectorPoint PointX="2.6403835058593748" PointY="25.150020064086913" />
-          <ConnectorPoint PointX="3.625" PointY="25.150020064086913" />
+          <ConnectorPoint PointX="2.3750025" PointY="21.701396484375003" />
+          <ConnectorPoint PointX="2.3750025" PointY="37.196342119140624" />
+          <ConnectorPoint PointX="3.625" PointY="37.196342119140624" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_Project" >
-          <ConnectorPoint PointX="5.125" PointY="25.321848958333334" />
-          <ConnectorPoint PointX="5.541666666666667" PointY="25.321848958333334" />
-          <ConnectorPoint PointX="5.708333333333333" PointY="25.321848958333334" />
-          <ConnectorPoint PointX="5.875" PointY="25.321848958333334" />
+          <ConnectorPoint PointX="5.1250000000000018" PointY="36" />
+          <ConnectorPoint PointX="5.5" PointY="35.625" />
+          <ConnectorPoint PointX="5.5" PointY="24.134348958333334" />
+          <ConnectorPoint PointX="5.875" PointY="24.134348958333334" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_Role" >
-          <ConnectorPoint PointX="5.125" PointY="30.018992513020834" />
-          <ConnectorPoint PointX="6.625" PointY="30.018992513020834" />
-          <ConnectorPoint PointX="6.625" PointY="26.768697916666667" />
+          <ConnectorPoint PointX="5.125" PointY="28.313460538461534" />
+          <ConnectorPoint PointX="5.4410744349011209" PointY="27.997386103560412" />
+          <ConnectorPoint PointX="5.5589255650988791" PointY="27.879534973362656" />
+          <ConnectorPoint PointX="5.5625" PointY="27.875960538461534" />
+          <ConnectorPoint PointX="5.5625" PointY="25.045275437500003" />
+          <ConnectorPoint PointX="5.875" PointY="25.045275437500003" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_User" >
-          <ConnectorPoint PointX="2.0466331542968752" PointY="17.576396484375003" />
-          <ConnectorPoint PointX="2.0466331542968752" PointY="23.53125" />
-          <ConnectorPoint PointX="2.5570501725260413" PointY="23.53125" />
-          <ConnectorPoint PointX="2.7237168391927082" PointY="23.53125" />
-          <ConnectorPoint PointX="5.541666666666667" PointY="23.53125" />
-          <ConnectorPoint PointX="5.708333333333333" PointY="23.53125" />
-          <ConnectorPoint PointX="5.875" PointY="23.53125" />
+          <ConnectorPoint PointX="1.953125625" PointY="21.701396484375003" />
+          <ConnectorPoint PointX="1.953125625" PointY="22.7031225" />
+          <ConnectorPoint PointX="2.0104179166666665" PointY="22.703122499999996" />
+          <ConnectorPoint PointX="2.8802127083333335" PointY="22.7031225" />
+          <ConnectorPoint PointX="5.875" PointY="22.7031225" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_UserCreatedBy" >
-          <ConnectorPoint PointX="1.4941403906250002" PointY="17.576396484375003" />
-          <ConnectorPoint PointX="1.4941403906250002" PointY="23.3593725" />
-          <ConnectorPoint PointX="1.9632998209635419" PointY="23.3593725" />
-          <ConnectorPoint PointX="2.1299664876302087" PointY="23.3593725" />
-          <ConnectorPoint PointX="2.5570501725260413" PointY="23.3593725" />
-          <ConnectorPoint PointX="2.7237168391927082" PointY="23.3593725" />
-          <ConnectorPoint PointX="5.541666666666667" PointY="23.3593725" />
-          <ConnectorPoint PointX="5.708333333333333" PointY="23.3593725" />
-          <ConnectorPoint PointX="5.875" PointY="23.3593725" />
+          <ConnectorPoint PointX="1.671874375" PointY="21.701396484375003" />
+          <ConnectorPoint PointX="1.671874375" PointY="23.4843775" />
+          <ConnectorPoint PointX="1.7291666666666667" PointY="23.4843775" />
+          <ConnectorPoint PointX="1.8958333333333333" PointY="23.4843775" />
+          <ConnectorPoint PointX="2.0104179166666665" PointY="23.484377499999997" />
+          <ConnectorPoint PointX="2.8802127083333335" PointY="23.4843775" />
+          <ConnectorPoint PointX="5.875" PointY="23.4843775" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_ProjectUserMember_UserModifiedBy" >
-          <ConnectorPoint PointX="0.94628575781249991" PointY="17.576396484375003" />
-          <ConnectorPoint PointX="0.94628575781249991" PointY="23.7031275" />
-          <ConnectorPoint PointX="1.2135402604166667" PointY="23.7031275" />
-          <ConnectorPoint PointX="1.3802069270833333" PointY="23.7031275" />
-          <ConnectorPoint PointX="2.5570501725260413" PointY="23.7031275" />
-          <ConnectorPoint PointX="2.7237168391927082" PointY="23.7031275" />
-          <ConnectorPoint PointX="5.541666666666667" PointY="23.7031275" />
-          <ConnectorPoint PointX="5.708333333333333" PointY="23.7031275" />
-          <ConnectorPoint PointX="5.875" PointY="23.7031275" />
+          <ConnectorPoint PointX="1.2499975" PointY="21.701396484375003" />
+          <ConnectorPoint PointX="1.2499975" PointY="23.09375" />
+          <ConnectorPoint PointX="1.3776026041666667" PointY="23.09375" />
+          <ConnectorPoint PointX="1.5442692708333332" PointY="23.09375" />
+          <ConnectorPoint PointX="1.5885410416666668" PointY="23.09375" />
+          <ConnectorPoint PointX="1.895833333333333" PointY="23.09375" />
+          <ConnectorPoint PointX="2.0104179166666665" PointY="23.093749999999996" />
+          <ConnectorPoint PointX="2.8802127083333335" PointY="23.09375" />
+          <ConnectorPoint PointX="5.875" PointY="23.09375" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="ApplicationModel.Status" Width="1.5" PointX="8.875" PointY="18.875" Height="4.2879036458333317" />
+        <EntityTypeShape EntityType="ApplicationModel.Status" Width="1.5" PointX="8.875" PointY="27" Height="4.2879036458333317" />
         <AssociationConnector Association="ApplicationModel.FK_Status_Project" >
-          <ConnectorPoint PointX="5.125" PointY="27.304749348958332" />
-          <ConnectorPoint PointX="6.541666666666667" PointY="27.304749348958332" />
-          <ConnectorPoint PointX="6.708333333333333" PointY="27.304749348958332" />
-          <ConnectorPoint PointX="9.625" PointY="27.304749348958332" />
-          <ConnectorPoint PointX="9.625" PointY="23.162903645833332" />
+          <ConnectorPoint PointX="5.125" PointY="37.982902890625" />
+          <ConnectorPoint PointX="9.625" PointY="37.982902890625" />
+          <ConnectorPoint PointX="9.625" PointY="31.287903645833332" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Status_UserCreatedBy" >
-          <ConnectorPoint PointX="2.7576917529296878" PointY="17.576396484375003" />
-          <ConnectorPoint PointX="2.7576917529296878" PointY="19.186036796874994" />
-          <ConnectorPoint PointX="5.541666666666667" PointY="19.186036796874994" />
-          <ConnectorPoint PointX="5.708333333333333" PointY="19.186036796874994" />
-          <ConnectorPoint PointX="6.135416666666667" PointY="19.186036796874994" />
-          <ConnectorPoint PointX="6.302083333333333" PointY="19.186036796874994" />
-          <ConnectorPoint PointX="8.875" PointY="19.186036796874994" />
+          <ConnectorPoint PointX="2.875" PointY="19.977226397251496" />
+          <ConnectorPoint PointX="3.375" PointY="19.977226397251496" />
+          <ConnectorPoint PointX="3.375" PointY="22.107646484375003" />
+          <ConnectorPoint PointX="9.2369776666666663" PointY="22.107646484375003" />
+          <ConnectorPoint PointX="9.4036443333333342" PointY="22.107646484375003" />
+          <ConnectorPoint PointX="9.828126000000001" PointY="22.107646484375003" />
+          <ConnectorPoint PointX="9.828126000000001" PointY="27" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Status_UserModifiedBy" >
-          <ConnectorPoint PointX="2.5032987841796874" PointY="17.576396484375003" />
-          <ConnectorPoint PointX="2.5032987841796874" PointY="18.999265898437503" />
-          <ConnectorPoint PointX="2.5570501725260413" PointY="18.999265898437503" />
-          <ConnectorPoint PointX="2.8410250862630213" PointY="18.999265898437503" />
-          <ConnectorPoint PointX="5.541666666666667" PointY="18.999265898437503" />
-          <ConnectorPoint PointX="5.708333333333333" PointY="18.999265898437503" />
-          <ConnectorPoint PointX="6.135416666666667" PointY="18.999265898437503" />
-          <ConnectorPoint PointX="6.302083333333333" PointY="18.999265898437503" />
-          <ConnectorPoint PointX="8.875" PointY="18.999265898437503" />
+          <ConnectorPoint PointX="2.875" PointY="21.003656590562507" />
+          <ConnectorPoint PointX="3.1666666666666665" PointY="21.003656590562507" />
+          <ConnectorPoint PointX="3.4583333333333335" PointY="21.003656590562507" />
+          <ConnectorPoint PointX="3.5" PointY="21.003656590562507" />
+          <ConnectorPoint PointX="3.5" PointY="22.013896484375003" />
+          <ConnectorPoint PointX="9.320311" PointY="22.013896484375003" />
+          <ConnectorPoint PointX="9.320311" PointY="27" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="ApplicationModel.Sprint" Width="1.5" PointX="8.875" PointY="12.75" Height="4.480205078124996" />
+        <EntityTypeShape EntityType="ApplicationModel.Sprint" Width="1.5" PointX="5.875" PointY="26.875" Height="4.480205078124996" />
         <AssociationConnector Association="ApplicationModel.FK_Sprint_Project" >
-          <ConnectorPoint PointX="5.125" PointY="26.313299153645833" />
-          <ConnectorPoint PointX="5.625" PointY="26.313299153645833" />
-          <ConnectorPoint PointX="5.625" PointY="18.625" />
-          <ConnectorPoint PointX="6.135416666666667" PointY="18.625" />
-          <ConnectorPoint PointX="6.302083333333333" PointY="18.625" />
-          <ConnectorPoint PointX="9.625" PointY="18.625" />
-          <ConnectorPoint PointX="9.625" PointY="17.230205078124996" />
+          <ConnectorPoint PointX="5.125" PointY="36.9914514453125" />
+          <ConnectorPoint PointX="6.625" PointY="36.9914514453125" />
+          <ConnectorPoint PointX="6.625" PointY="31.355205078124996" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Sprint_UserCreatedBy" >
-          <ConnectorPoint PointX="0.86084032812499989" PointY="14.25" />
-          <ConnectorPoint PointX="0.86084032812499989" PointY="13.48886797200521" />
-          <ConnectorPoint PointX="0.93058559635416649" PointY="13.488867972005208" />
-          <ConnectorPoint PointX="1.1945409309895834" PointY="13.48886797200521" />
-          <ConnectorPoint PointX="3.0983438834635448" PointY="13.48886797200521" />
-          <ConnectorPoint PointX="3.2650105501302118" PointY="13.48886797200521" />
-          <ConnectorPoint PointX="6.135416666666667" PointY="13.48886797200521" />
-          <ConnectorPoint PointX="6.302083333333333" PointY="13.48886797200521" />
-          <ConnectorPoint PointX="7.3234955897435894" PointY="13.48886797200521" />
-          <ConnectorPoint PointX="7.4901622564102555" PointY="13.48886797200521" />
-          <ConnectorPoint PointX="8.875" PointY="13.48886797200521" />
+          <ConnectorPoint PointX="2.65625375" PointY="21.701396484375003" />
+          <ConnectorPoint PointX="2.65625375" PointY="30.727845052083332" />
+          <ConnectorPoint PointX="2.7135460416666661" PointY="30.727845052083332" />
+          <ConnectorPoint PointX="2.8802127083333331" PointY="30.727845052083332" />
+          <ConnectorPoint PointX="5.416666666666667" PointY="30.727845052083332" />
+          <ConnectorPoint PointX="5.583333333333333" PointY="30.727845052083332" />
+          <ConnectorPoint PointX="5.875" PointY="30.727845052083332" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Sprint_UserModifiedBy" >
-          <ConnectorPoint PointX="1.208496265625" PointY="14.25" />
-          <ConnectorPoint PointX="1.208496265625" PointY="13.744436486002599" />
-          <ConnectorPoint PointX="3.1666666666666665" PointY="13.744436486002599" />
-          <ConnectorPoint PointX="3.3333333333333335" PointY="13.744436486002599" />
-          <ConnectorPoint PointX="3.3609791806640694" PointY="13.744436486002599" />
-          <ConnectorPoint PointX="3.5276458473307364" PointY="13.744436486002599" />
-          <ConnectorPoint PointX="6.135416666666667" PointY="13.744436486002597" />
-          <ConnectorPoint PointX="6.4539226654897783" PointY="13.744436486002599" />
-          <ConnectorPoint PointX="7.3234955897435894" PointY="13.744436486002599" />
-          <ConnectorPoint PointX="7.4901622564102555" PointY="13.744436486002599" />
-          <ConnectorPoint PointX="8.875" PointY="13.744436486002599" />
+          <ConnectorPoint PointX="2.09375125" PointY="21.701396484375003" />
+          <ConnectorPoint PointX="2.09375125" PointY="27.725698242187498" />
+          <ConnectorPoint PointX="2.2916691666666664" PointY="27.725698242187498" />
+          <ConnectorPoint PointX="2.4583358333333334" PointY="27.725698242187498" />
+          <ConnectorPoint PointX="2.5729204166666664" PointY="27.725698242187498" />
+          <ConnectorPoint PointX="2.8802127083333326" PointY="27.725698242187498" />
+          <ConnectorPoint PointX="5.416666666666667" PointY="27.725698242187498" />
+          <ConnectorPoint PointX="5.645833333333333" PointY="27.725698242187498" />
+          <ConnectorPoint PointX="5.875" PointY="27.725698242187498" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="ApplicationModel.Story" Width="1.5" PointX="11.125" PointY="17.375" Height="5.82631510416666" />
+        <EntityTypeShape EntityType="ApplicationModel.Story" Width="1.5" PointX="11.125" PointY="26.25" Height="5.8263151041666568" />
         <AssociationConnector Association="ApplicationModel.FK_Story_Project" >
-          <ConnectorPoint PointX="5.125" PointY="27.0367211328125" />
-          <ConnectorPoint PointX="6.541666666666667" PointY="27.0367211328125" />
-          <ConnectorPoint PointX="6.708333333333333" PointY="27.0367211328125" />
-          <ConnectorPoint PointX="9.5416666666666661" PointY="27.0367211328125" />
-          <ConnectorPoint PointX="9.7083333333333339" PointY="27.0367211328125" />
-          <ConnectorPoint PointX="11.875" PointY="27.0367211328125" />
-          <ConnectorPoint PointX="11.875" PointY="23.20131510416666" />
+          <ConnectorPoint PointX="5.125" PointY="38.9743543359375" />
+          <ConnectorPoint PointX="11.875" PointY="38.9743543359375" />
+          <ConnectorPoint PointX="11.875" PointY="32.076315104166653" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Story_Sprint" >
-          <ConnectorPoint PointX="10.375" PointY="14.990102539062498" />
-          <ConnectorPoint PointX="11.875" PointY="14.990102539062498" />
-          <ConnectorPoint PointX="11.875" PointY="17.375" />
+          <ConnectorPoint PointX="7.375" PointY="26.90625" />
+          <ConnectorPoint PointX="9.2369776666666663" PointY="26.90625" />
+          <ConnectorPoint PointX="9.4036443333333342" PointY="26.90625" />
+          <ConnectorPoint PointX="9.7447926666666671" PointY="26.90625" />
+          <ConnectorPoint PointX="9.911459333333335" PointY="26.90625" />
+          <ConnectorPoint PointX="11.125" PointY="26.90625" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Story_Status" >
-          <ConnectorPoint PointX="10.375" PointY="21.018951822916666" />
-          <ConnectorPoint PointX="11.125" PointY="21.018951822916666" />
+          <ConnectorPoint PointX="10.375" PointY="29.143951822916666" />
+          <ConnectorPoint PointX="11.125" PointY="29.143951822916666" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Story_UserAssignedTo" >
-          <ConnectorPoint PointX="2.2064236083984379" PointY="17.576396484375003" />
-          <ConnectorPoint PointX="2.2064236083984379" PointY="17.929749348958339" />
-          <ConnectorPoint PointX="2.2828807291666666" PointY="17.929749348958335" />
-          <ConnectorPoint PointX="2.8410250862630213" PointY="17.929749348958339" />
-          <ConnectorPoint PointX="3.0416666666666665" PointY="17.929749348958339" />
-          <ConnectorPoint PointX="3.3116861979166683" PointY="17.929749348958339" />
-          <ConnectorPoint PointX="6.135416666666667" PointY="17.929749348958339" />
-          <ConnectorPoint PointX="6.302083333333333" PointY="17.929749348958339" />
-          <ConnectorPoint PointX="6.324069512820512" PointY="17.929749348958339" />
-          <ConnectorPoint PointX="6.4907361794871781" PointY="17.929749348958339" />
-          <ConnectorPoint PointX="9.5416666666666661" PointY="17.929749348958339" />
-          <ConnectorPoint PointX="9.7083333333333339" PointY="17.929749348958339" />
-          <ConnectorPoint PointX="10.666666666666666" PointY="17.929749348958339" />
-          <ConnectorPoint PointX="10.958333333333334" PointY="17.929749348958339" />
-          <ConnectorPoint PointX="11.125" PointY="17.929749348958339" />
+          <ConnectorPoint PointX="1.4609359375" PointY="21.701396484375003" />
+          <ConnectorPoint PointX="1.4609359375" PointY="31.747010091145825" />
+          <ConnectorPoint PointX="1.7291666666666667" PointY="31.747010091145825" />
+          <ConnectorPoint PointX="1.8958333333333333" PointY="31.747010091145825" />
+          <ConnectorPoint PointX="2.2916691666666664" PointY="31.747010091145825" />
+          <ConnectorPoint PointX="2.4583358333333334" PointY="31.747010091145825" />
+          <ConnectorPoint PointX="2.7135460416666661" PointY="31.747010091145825" />
+          <ConnectorPoint PointX="2.8802127083333331" PointY="31.747010091145825" />
+          <ConnectorPoint PointX="5.416666666666667" PointY="31.747010091145825" />
+          <ConnectorPoint PointX="5.583333333333333" PointY="31.747010091145825" />
+          <ConnectorPoint PointX="6.541666666666667" PointY="31.747010091145825" />
+          <ConnectorPoint PointX="6.708333333333333" PointY="31.747010091145825" />
+          <ConnectorPoint PointX="9.5416666666666661" PointY="31.747010091145825" />
+          <ConnectorPoint PointX="9.7083333333333339" PointY="31.747010091145825" />
+          <ConnectorPoint PointX="11.125" PointY="31.747010091145825" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Story_UserCreatedBy" >
-          <ConnectorPoint PointX="1.12157967578125" PointY="17.576396484375003" />
-          <ConnectorPoint PointX="1.12157967578125" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="1.2135402604166667" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="1.3802069270833333" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="1.4108070572916669" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="1.5774737239583334" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="1.7926449869791667" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="1.9593116536458333" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="1.9632998209635419" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="2.1299664876302087" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="2.2828807291666666" PointY="18.462791036376945" />
-          <ConnectorPoint PointX="2.8410250862630213" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="3.0416666666666665" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="3.2708333333333335" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="6.135416666666667" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="6.302083333333333" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="9.5416666666666661" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="9.7083333333333339" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="10.666666666666666" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="10.958333333333334" PointY="18.462791036376949" />
-          <ConnectorPoint PointX="11.125" PointY="18.462791036376949" />
+          <ConnectorPoint PointX="0.96874625000000014" PointY="21.701396484375003" />
+          <ConnectorPoint PointX="0.96874625000000014" PointY="31.551105084635417" />
+          <ConnectorPoint PointX="1.3776026041666667" PointY="31.551105084635417" />
+          <ConnectorPoint PointX="1.5442692708333332" PointY="31.551105084635417" />
+          <ConnectorPoint PointX="1.7291666666666667" PointY="31.551105084635417" />
+          <ConnectorPoint PointX="1.8958333333333333" PointY="31.551105084635417" />
+          <ConnectorPoint PointX="2.2916691666666664" PointY="31.551105084635417" />
+          <ConnectorPoint PointX="2.4583358333333334" PointY="31.551105084635417" />
+          <ConnectorPoint PointX="2.7135460416666661" PointY="31.551105084635417" />
+          <ConnectorPoint PointX="2.8802127083333331" PointY="31.551105084635417" />
+          <ConnectorPoint PointX="5.416666666666667" PointY="31.551105084635417" />
+          <ConnectorPoint PointX="5.583333333333333" PointY="31.551105084635417" />
+          <ConnectorPoint PointX="6.541666666666667" PointY="31.551105084635417" />
+          <ConnectorPoint PointX="6.708333333333333" PointY="31.551105084635417" />
+          <ConnectorPoint PointX="9.5416666666666661" PointY="31.551105084635417" />
+          <ConnectorPoint PointX="9.7083333333333339" PointY="31.551105084635417" />
+          <ConnectorPoint PointX="11.125" PointY="31.551105084635417" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Story_UserModifiedBy" >
-          <ConnectorPoint PointX="1.68505935546875" PointY="17.576396484375003" />
-          <ConnectorPoint PointX="1.68505935546875" PointY="18.24314269266765" />
-          <ConnectorPoint PointX="1.7926449869791667" PointY="18.24314269266765" />
-          <ConnectorPoint PointX="1.9593116536458333" PointY="18.24314269266765" />
-          <ConnectorPoint PointX="1.9632998209635419" PointY="18.24314269266765" />
-          <ConnectorPoint PointX="2.1299664876302087" PointY="18.24314269266765" />
-          <ConnectorPoint PointX="2.2828807291666666" PointY="18.243142692667647" />
-          <ConnectorPoint PointX="2.8410250862630213" PointY="18.24314269266765" />
-          <ConnectorPoint PointX="3.0416666666666665" PointY="18.24314269266765" />
-          <ConnectorPoint PointX="3.2708333333333335" PointY="18.24314269266765" />
-          <ConnectorPoint PointX="6.135416666666667" PointY="18.24314269266765" />
-          <ConnectorPoint PointX="6.302083333333333" PointY="18.24314269266765" />
-          <ConnectorPoint PointX="9.5416666666666661" PointY="18.24314269266765" />
-          <ConnectorPoint PointX="9.7083333333333339" PointY="18.24314269266765" />
-          <ConnectorPoint PointX="10.666666666666666" PointY="18.24314269266765" />
-          <ConnectorPoint PointX="10.958333333333334" PointY="18.24314269266765" />
-          <ConnectorPoint PointX="11.125" PointY="18.24314269266765" />
+          <ConnectorPoint PointX="2.7968793749999996" PointY="21.701396484375003" />
+          <ConnectorPoint PointX="2.7968793749999996" PointY="31.942915097656233" />
+          <ConnectorPoint PointX="5.416666666666667" PointY="31.942915097656233" />
+          <ConnectorPoint PointX="5.583333333333333" PointY="31.942915097656233" />
+          <ConnectorPoint PointX="6.541666666666667" PointY="31.942915097656233" />
+          <ConnectorPoint PointX="6.708333333333333" PointY="31.942915097656233" />
+          <ConnectorPoint PointX="9.5416666666666661" PointY="31.942915097656233" />
+          <ConnectorPoint PointX="9.7083333333333339" PointY="31.942915097656233" />
+          <ConnectorPoint PointX="11.125" PointY="31.942915097656233" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="ApplicationModel.Hour" Width="1.5" PointX="13.375" PointY="16.75" Height="3.9033007812500031" />
+        <EntityTypeShape EntityType="ApplicationModel.Hour" Width="1.5" PointX="13.375" PointY="23.25" Height="3.9033007812500031" />
         <AssociationConnector Association="ApplicationModel.FK_Hour_Story" >
-          <ConnectorPoint PointX="12.625" PointY="19.014150390625" />
-          <ConnectorPoint PointX="12.916666666666666" PointY="19.014150390625" />
-          <ConnectorPoint PointX="13.083333333333334" PointY="19.014150390625" />
-          <ConnectorPoint PointX="13.375" PointY="19.014150390625" />
+          <ConnectorPoint PointX="12.625" PointY="26.701650390625" />
+          <ConnectorPoint PointX="13.375" PointY="26.701650390625" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Hour_User" >
-          <ConnectorPoint PointX="0.8168908789062499" PointY="17.576396484375003" />
-          <ConnectorPoint PointX="0.8168908789062499" PointY="18.625" />
-          <ConnectorPoint PointX="0.86295242447916654" PointY="18.625" />
-          <ConnectorPoint PointX="1.0296190911458332" PointY="18.625" />
-          <ConnectorPoint PointX="1.2135402604166667" PointY="18.625" />
-          <ConnectorPoint PointX="1.3802069270833333" PointY="18.625" />
-          <ConnectorPoint PointX="1.4108070572916669" PointY="18.625" />
-          <ConnectorPoint PointX="1.5774737239583334" PointY="18.625" />
-          <ConnectorPoint PointX="1.7926449869791667" PointY="18.625" />
-          <ConnectorPoint PointX="1.9593116536458333" PointY="18.625" />
-          <ConnectorPoint PointX="1.9632998209635419" PointY="18.625" />
-          <ConnectorPoint PointX="2.1299664876302087" PointY="18.625" />
-          <ConnectorPoint PointX="2.2828807291666666" PointY="18.624999999999996" />
-          <ConnectorPoint PointX="2.8410250862630213" PointY="18.625" />
-          <ConnectorPoint PointX="6.135416666666667" PointY="18.625" />
-          <ConnectorPoint PointX="6.302083333333333" PointY="18.625" />
-          <ConnectorPoint PointX="10.875" PointY="18.625" />
-          <ConnectorPoint PointX="10.875" PointY="17.125" />
-          <ConnectorPoint PointX="11.791666666666666" PointY="17.125" />
-          <ConnectorPoint PointX="11.958333333333334" PointY="17.125" />
-          <ConnectorPoint PointX="12.75" PointY="17.125" />
-          <ConnectorPoint PointX="12.75" PointY="17.893348933105475" />
-          <ConnectorPoint PointX="12.791666666666666" PointY="17.893348933105475" />
-          <ConnectorPoint PointX="13.083333333333334" PointY="17.893348933105475" />
-          <ConnectorPoint PointX="13.375" PointY="17.893348933105475" />
+          <ConnectorPoint PointX="2.875" PointY="18.421874999900659" />
+          <ConnectorPoint PointX="3.1666666666666665" PointY="18.421874999900659" />
+          <ConnectorPoint PointX="3.3333333333333335" PointY="18.421874999900659" />
+          <ConnectorPoint PointX="6.166666666666667" PointY="18.421874999900659" />
+          <ConnectorPoint PointX="6.333333333333333" PointY="18.421874999900659" />
+          <ConnectorPoint PointX="7.291666666666667" PointY="18.421874999900659" />
+          <ConnectorPoint PointX="7.458333333333333" PointY="18.421874999900659" />
+          <ConnectorPoint PointX="9.5416666666666661" PointY="18.421874999900659" />
+          <ConnectorPoint PointX="9.7083333333333339" PointY="18.421874999900659" />
+          <ConnectorPoint PointX="14.125" PointY="18.421874999900659" />
+          <ConnectorPoint PointX="14.125" PointY="23.25" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Hour_UserCreatedBy" >
-          <ConnectorPoint PointX="2.319823578125" PointY="14.25" />
-          <ConnectorPoint PointX="2.319823578125" PointY="14" />
-          <ConnectorPoint PointX="3.125" PointY="14" />
-          <ConnectorPoint PointX="3.125" PointY="18.625" />
-          <ConnectorPoint PointX="6.135416666666667" PointY="18.625" />
-          <ConnectorPoint PointX="6.302083333333333" PointY="18.625" />
-          <ConnectorPoint PointX="10.8125" PointY="18.625" />
-          <ConnectorPoint PointX="10.8125" PointY="17.109375" />
-          <ConnectorPoint PointX="11.791666666666666" PointY="17.109375" />
-          <ConnectorPoint PointX="11.958333333333334" PointY="17.109375" />
-          <ConnectorPoint PointX="13" PointY="17.109375" />
-          <ConnectorPoint PointX="13" PointY="19.727816323730465" />
-          <ConnectorPoint PointX="13.375" PointY="19.727816323730465" />
+          <ConnectorPoint PointX="2.875" PointY="18.390624999900659" />
+          <ConnectorPoint PointX="3.1666666666666665" PointY="18.390624999900659" />
+          <ConnectorPoint PointX="3.3333333333333335" PointY="18.390624999900659" />
+          <ConnectorPoint PointX="6.166666666666667" PointY="18.390624999900659" />
+          <ConnectorPoint PointX="6.333333333333333" PointY="18.390624999900659" />
+          <ConnectorPoint PointX="7.291666666666667" PointY="18.390624999900659" />
+          <ConnectorPoint PointX="7.458333333333333" PointY="18.390624999900659" />
+          <ConnectorPoint PointX="9.5416666666666661" PointY="18.390624999900659" />
+          <ConnectorPoint PointX="9.7083333333333339" PointY="18.390624999900659" />
+          <ConnectorPoint PointX="13.7187475" PointY="18.390624999900659" />
+          <ConnectorPoint PointX="13.7187475" PointY="23.25" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Hour_UserModifiedBy" >
-          <ConnectorPoint PointX="1.764159921875" PointY="14.25" />
-          <ConnectorPoint PointX="1.764159921875" PointY="13.984375" />
-          <ConnectorPoint PointX="3.1875" PointY="13.984375" />
-          <ConnectorPoint PointX="3.1875" PointY="18.625" />
-          <ConnectorPoint PointX="6.135416666666667" PointY="18.625" />
-          <ConnectorPoint PointX="6.302083333333333" PointY="18.625" />
-          <ConnectorPoint PointX="10.75" PointY="18.625" />
-          <ConnectorPoint PointX="10.75" PointY="17.09375" />
-          <ConnectorPoint PointX="11.791666666666666" PointY="17.09375" />
-          <ConnectorPoint PointX="11.958333333333334" PointY="17.09375" />
-          <ConnectorPoint PointX="12.875" PointY="17.09375" />
-          <ConnectorPoint PointX="12.875" PointY="18.810582628417968" />
-          <ConnectorPoint PointX="12.916666666666666" PointY="18.810582628417968" />
-          <ConnectorPoint PointX="13.083333333333334" PointY="18.810582628417968" />
-          <ConnectorPoint PointX="13.375" PointY="18.810582628417968" />
+          <ConnectorPoint PointX="2.875" PointY="20.490441493907" />
+          <ConnectorPoint PointX="3.25" PointY="20.490441493907" />
+          <ConnectorPoint PointX="3.25" PointY="21.951396484375003" />
+          <ConnectorPoint PointX="3.2916666666666665" PointY="21.951396484375003" />
+          <ConnectorPoint PointX="3.4583333333333335" PointY="21.951396484375003" />
+          <ConnectorPoint PointX="13.635414166666665" PointY="21.951396484375003" />
+          <ConnectorPoint PointX="13.802080833333333" PointY="21.951396484375003" />
+          <ConnectorPoint PointX="14.041666666666666" PointY="21.951396484375003" />
+          <ConnectorPoint PointX="14.208333333333334" PointY="21.951396484375003" />
+          <ConnectorPoint PointX="14.531252" PointY="21.951396484375003" />
+          <ConnectorPoint PointX="14.531252" PointY="23.25" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="ApplicationModel.Note" Width="1.5" PointX="3.625" PointY="14.25" Height="3.3263964843750031" />
+        <EntityTypeShape EntityType="ApplicationModel.Note" Width="1.5" PointX="3.625" PointY="18.5" Height="3.3263964843750031" />
         <AssociationConnector Association="ApplicationModel.FK_Note_Source" >
-          <ConnectorPoint PointX="2.8749999999999996" PointY="13.182190755208332" />
-          <ConnectorPoint PointX="3.25" PointY="13.557190755208332" />
-          <ConnectorPoint PointX="3.25" PointY="16.764331363281244" />
-          <ConnectorPoint PointX="3.625" PointY="16.764331363281244" />
+          <ConnectorPoint PointX="2.8749999999999978" PointY="16.499492187500003" />
+          <ConnectorPoint PointX="3.25" PointY="16.874492187500003" />
+          <ConnectorPoint PointX="3.25" PointY="19.556286972072556" />
+          <ConnectorPoint PointX="3.625" PointY="19.556286972072556" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Note_UserCreatedBy" >
-          <ConnectorPoint PointX="2.875" PointY="15.885856242187495" />
-          <ConnectorPoint PointX="3.0416666666666665" PointY="15.885856242187494" />
-          <ConnectorPoint PointX="3.3333333333333335" PointY="15.885856242187495" />
-          <ConnectorPoint PointX="3.625" PointY="15.885856242187495" />
+          <ConnectorPoint PointX="2.875" PointY="21.415026537468755" />
+          <ConnectorPoint PointX="3.1666666666666665" PointY="21.415026537468755" />
+          <ConnectorPoint PointX="3.5833333333333335" PointY="21.415026537468755" />
+          <ConnectorPoint PointX="3.625" PointY="21.415026537468755" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Note_UserModifiedBy" >
-          <ConnectorPoint PointX="2.875" PointY="15.005428121093747" />
-          <ConnectorPoint PointX="3.0416666666666665" PointY="15.005428121093745" />
-          <ConnectorPoint PointX="3.3333333333333335" PointY="15.005428121093747" />
-          <ConnectorPoint PointX="3.625" PointY="15.005428121093747" />
+          <ConnectorPoint PointX="2.875" PointY="18.965643486036278" />
+          <ConnectorPoint PointX="3.1666666666666665" PointY="18.965643486036278" />
+          <ConnectorPoint PointX="3.3333333333333335" PointY="18.965643486036278" />
+          <ConnectorPoint PointX="3.625" PointY="18.965643486036278" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="ApplicationModel.Attachment" Width="1.5" PointX="6.625" PointY="14" Height="3.7109993489583388" />
+        <EntityTypeShape EntityType="ApplicationModel.Attachment" Width="1.5" PointX="3.625" PointY="13.25" Height="3.7109993489583388" />
         <AssociationConnector Association="ApplicationModel.FK_Attachment_Source" >
-          <ConnectorPoint PointX="2.875" PointY="13.140119687499999" />
-          <ConnectorPoint PointX="6.135416666666667" PointY="13.140119687499999" />
-          <ConnectorPoint PointX="6.302083333333333" PointY="13.140119687499999" />
-          <ConnectorPoint PointX="7.4068289230769224" PointY="13.140119687499999" />
-          <ConnectorPoint PointX="7.4068289230769224" PointY="14" />
+          <ConnectorPoint PointX="2.875" PointY="14.374873046875" />
+          <ConnectorPoint PointX="3.625" PointY="14.374873046875" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Attachment_UserCreatedBy" >
-          <ConnectorPoint PointX="2.875" PointY="14.313749000000001" />
-          <ConnectorPoint PointX="3.1910744349011204" PointY="13.99767456509888" />
-          <ConnectorPoint PointX="3.3089255650988791" PointY="13.879823434901123" />
-          <ConnectorPoint PointX="3.5625" PointY="13.626249000000001" />
-          <ConnectorPoint PointX="3.5625" PointY="13.625" />
-          <ConnectorPoint PointX="6.2511528461538459" PointY="13.625" />
-          <ConnectorPoint PointX="6.6261528461538459" PointY="14" />
+          <ConnectorPoint PointX="0.97656375" PointY="18.375" />
+          <ConnectorPoint PointX="0.97656375" PointY="13.46875" />
+          <ConnectorPoint PointX="3.625" PointY="13.46875" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Attachment_UserModifiedBy" >
-          <ConnectorPoint PointX="2.8749999999999996" PointY="17.576396484375003" />
-          <ConnectorPoint PointX="3.0660744349011217" PointY="17.767470919276125" />
-          <ConnectorPoint PointX="3.2464255650988791" PointY="17.947822049473881" />
-          <ConnectorPoint PointX="3.375" PointY="18.076396484375003" />
-          <ConnectorPoint PointX="3.375" PointY="18.085999348958339" />
-          <ConnectorPoint PointX="6.2511528461538468" PointY="18.085999348958339" />
-          <ConnectorPoint PointX="6.6261528461538459" PointY="17.710999348958339" />
+          <ConnectorPoint PointX="1.1757843749999999" PointY="18.375" />
+          <ConnectorPoint PointX="1.1757843749999999" PointY="16.761495768229171" />
+          <ConnectorPoint PointX="3.0536702473958335" PointY="16.761495768229171" />
+          <ConnectorPoint PointX="3.2203369140625004" PointY="16.761495768229171" />
+          <ConnectorPoint PointX="3.2916666666666665" PointY="16.761495768229171" />
+          <ConnectorPoint PointX="3.5833333333333335" PointY="16.761495768229171" />
+          <ConnectorPoint PointX="3.625" PointY="16.761495768229171" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="ApplicationModel.Filter" Width="1.5" PointX="3.625" PointY="9.5" Height="3.326396484374996" />
+        <EntityTypeShape EntityType="ApplicationModel.Filter" Width="1.5" PointX="3.625" PointY="23.875" Height="3.326396484374996" />
         <AssociationConnector Association="ApplicationModel.FK_Filter_UserCreatedBy" >
-          <ConnectorPoint PointX="1.0139189296874998" PointY="14.25" />
-          <ConnectorPoint PointX="1.0139189296874998" PointY="9.8457015625000039" />
-          <ConnectorPoint PointX="3.625" PointY="9.8457015625000039" />
+          <ConnectorPoint PointX="2.515628125" PointY="21.701396484375003" />
+          <ConnectorPoint PointX="2.515628125" PointY="25.969624052734368" />
+          <ConnectorPoint PointX="2.5729204166666664" PointY="25.969624052734368" />
+          <ConnectorPoint PointX="2.8802127083333326" PointY="25.969624052734368" />
+          <ConnectorPoint PointX="3.625" PointY="25.969624052734368" />
         </AssociationConnector>
         <AssociationConnector Association="ApplicationModel.FK_Filter_UserModifiedBy" >
-          <ConnectorPoint PointX="1.11120759765625" PointY="14.25" />
-          <ConnectorPoint PointX="1.11120759765625" PointY="10.235353281249996" />
-          <ConnectorPoint PointX="3.625" PointY="10.235353281249996" />
+          <ConnectorPoint PointX="2.2343768749999997" PointY="21.701396484375003" />
+          <ConnectorPoint PointX="2.2343768749999997" PointY="24.89105952636719" />
+          <ConnectorPoint PointX="2.2916691666666664" PointY="24.891059526367187" />
+          <ConnectorPoint PointX="2.8802127083333331" PointY="24.89105952636719" />
+          <ConnectorPoint PointX="3.625" PointY="24.89105952636719" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ApplicationModel.Feed" Width="1.5" PointX="6.625" PointY="18.625" Height="2.9417936197916674" />
+        <AssociationConnector Association="ApplicationModel.FK_Feed_Source" >
+          <ConnectorPoint PointX="2.875" PointY="15.812119140625002" />
+          <ConnectorPoint PointX="3.2916666666666665" PointY="15.812119140625002" />
+          <ConnectorPoint PointX="3.4583333333333335" PointY="15.812119140625002" />
+          <ConnectorPoint PointX="3.5" PointY="15.812119140625002" />
+          <ConnectorPoint PointX="3.5" PointY="17.460999348958339" />
+          <ConnectorPoint PointX="7.375" PointY="17.460999348958339" />
+          <ConnectorPoint PointX="7.375" PointY="18.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="ApplicationModel.FK_Feed_UserCreatedBy" >
+          <ConnectorPoint PointX="2.0566441875" PointY="18.375" />
+          <ConnectorPoint PointX="2.0566441875" PointY="18.125" />
+          <ConnectorPoint PointX="3.1666666666666665" PointY="18.125" />
+          <ConnectorPoint PointX="3.3333333333333335" PointY="18.125" />
+          <ConnectorPoint PointX="6.25" PointY="18.125" />
+          <ConnectorPoint PointX="6.25" PointY="20.095896809895834" />
+          <ConnectorPoint PointX="6.625" PointY="20.095896809895834" />
+        </AssociationConnector>
+        <AssociationConnector Association="ApplicationModel.FK_FeedSourceMember_Feed" >
+          <ConnectorPoint PointX="8.125" PointY="20.12474609375" />
+          <ConnectorPoint PointX="8.875" PointY="20.12474609375" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>

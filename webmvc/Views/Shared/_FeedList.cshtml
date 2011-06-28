@@ -1,0 +1,27 @@
+﻿@model Epiworx.WebMvc.Models.FeedListModel
+@using Epiworx.WebMvc.Helpers
+<div class="hgroup">
+    <h2>
+        Feeds</h2>
+</div>
+<div class="feeds">
+    @foreach (var feed in Model.Feeds)
+    {
+        <div class="feed">
+            <h1>
+                <a href="@Url.Action("Details", "User", new { id = feed.CreatedBy })" class="user">@feed.CreatedByName</a>
+                <strong class="action">@feed.Action</strong> <span class="type">@feed.SourceTypeName</span>
+                <a href="@Url.Action("Details", feed.SourceTypeName, new { id = feed.SourceId })" class="source">@feed.SourceName</a>
+                @foreach (var source in feed.Sources)
+                {
+                    <span class="type">for the @source.SourceTypeName</span>
+                    <a href="@Url.Action("Details", source.SourceTypeName, new { id = source.SourceId })" class="source">@source.SourceName</a>
+                }
+                <span class="relative-date">@Html.ToRelativeDate(feed.CreatedDate)</span>
+            </h1>
+            @Html.Gravatar(feed.CreatedByEmail, feed.CreatedByName)
+            <p>
+                <strong>@feed.SourceTypeName's description</strong>@Html.ToDefaultValue(feed.Description, "No description available")</p>
+        </div>
+    }
+</div>

@@ -8,6 +8,11 @@ namespace Epiworx.Data
     {
         public int FeedId { get; set; }
         public string Action { get; set; }
+        public string Description { get; set; }
+        public int SourceId { get; set; }
+        public SourceData Source { get; set; }
+        public int SourceTypeId { get; set; }
+        public SourceTypeData SourceType { get; set; }
         public int CreatedBy { get; set; }
         public UserData CreatedByUser { get; set; }
         public DateTime CreatedDate { get; set; }

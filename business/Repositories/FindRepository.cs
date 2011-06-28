@@ -23,7 +23,9 @@ namespace Epiworx.Business.Repositories
                 Name = hour.Date.ToShortDateString(),
                 Description = hour.Notes,
                 CreatedDate = hour.CreatedDate,
-                ModifiedDate = hour.ModifiedDate
+                CreatedByName = hour.CreatedByName,
+                ModifiedDate = hour.ModifiedDate,
+                ModifiedByName = hour.ModifiedByName
             }));
 
             // search projects
@@ -36,7 +38,9 @@ namespace Epiworx.Business.Repositories
                     Name = project.Name,
                     Description = project.Description,
                     CreatedDate = project.CreatedDate,
-                    ModifiedDate = project.ModifiedDate
+                    CreatedByName = project.CreatedByName,
+                    ModifiedDate = project.ModifiedDate,
+                    ModifiedByName = project.ModifiedByName
                 }));
 
             // search stories
@@ -49,7 +53,9 @@ namespace Epiworx.Business.Repositories
                     Name = story.StoryId.ToString(),
                     Description = story.Description,
                     CreatedDate = story.CreatedDate,
-                    ModifiedDate = story.ModifiedDate
+                    CreatedByName = story.CreatedByName,
+                    ModifiedDate = story.ModifiedDate,
+                    ModifiedByName = story.ModifiedByName
                 }));
 
             // search users
@@ -62,7 +68,9 @@ namespace Epiworx.Business.Repositories
                     Name = user.Name,
                     Description = string.Empty,
                     CreatedDate = user.CreatedDate,
-                    ModifiedDate = user.ModifiedDate
+                    CreatedByName = user.Name,
+                    ModifiedDate = user.ModifiedDate,
+                    ModifiedByName = user.Name
                 }));
 
             return result;

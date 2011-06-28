@@ -106,12 +106,20 @@ namespace Epiworx.Business
         {
             hour = hour.Save();
 
+            SourceRepository.SourceAdd(hour.HourId, SourceType.Hour, hour.Date.ToShortDateString());
+
+            FeedRepository.FeedAdd(FeedAction.Created, hour);
+
             return hour;
         }
 
         public static Hour HourUpdate(Hour hour)
         {
             hour = hour.Save();
+
+            SourceRepository.SourceUpdate(hour.HourId, SourceType.Hour, hour.Date.ToShortDateString());
+
+            FeedRepository.FeedAdd(FeedAction.Edited, hour);
 
             return hour;
         }
@@ -130,6 +138,8 @@ namespace Epiworx.Business
                 {
                     HourId = hour.HourId
                 });
+
+            FeedRepository.FeedAdd(FeedAction.Deleted, hour);
 
             return true;
         }

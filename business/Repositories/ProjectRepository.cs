@@ -65,9 +65,11 @@ namespace Epiworx.Business
             project = project.Save();
 
             ProjectUserRepository.ProjectUserAdd(
-                project.ProjectId, ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId, Role.Owner);
+                project.ProjectId, ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId, Role.Owner, true);
 
             SourceRepository.SourceAdd(project.ProjectId, SourceType.Project, project.Name);
+
+            FeedRepository.FeedAdd(FeedAction.Created, project);
 
             return project;
         }
@@ -79,6 +81,8 @@ namespace Epiworx.Business
             project = project.Save();
 
             SourceRepository.SourceUpdate(project.ProjectId, SourceType.Project, project.Name);
+
+            FeedRepository.FeedAdd(FeedAction.Edited, project);
 
             return project;
         }
@@ -100,7 +104,7 @@ namespace Epiworx.Business
                     ProjectId = project.ProjectId
                 });
 
-            SourceRepository.SourceDelete(project.ProjectId, SourceType.Project);
+            FeedRepository.FeedAdd(FeedAction.Deleted, project);
 
             return true;
         }

@@ -64,6 +64,8 @@ namespace Epiworx.Business
 
             SourceRepository.SourceAdd(sprint.SprintId, SourceType.Sprint, sprint.Name);
 
+            FeedRepository.FeedAdd(FeedAction.Created, sprint);
+
             return sprint;
         }
 
@@ -72,6 +74,8 @@ namespace Epiworx.Business
             sprint = sprint.Save();
 
             SourceRepository.SourceUpdate(sprint.SprintId, SourceType.Sprint, sprint.Name);
+
+            FeedRepository.FeedAdd(FeedAction.Edited, sprint);
 
             return sprint;
         }
@@ -93,7 +97,7 @@ namespace Epiworx.Business
                     SprintId = sprint.SprintId
                 });
 
-            SourceRepository.SourceDelete(sprint.SprintId, SourceType.Sprint);
+            FeedRepository.FeedAdd(FeedAction.Deleted, sprint);
 
             return true;
         }

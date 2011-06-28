@@ -18,8 +18,6 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Feed_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Feed", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Feed), true)]
-[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_FeedSourceMember_Feed", "Feed", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.Feed), "FeedSourceMember", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.FeedSourceMember), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_FeedSourceMember_Source", "Source", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.Source), "FeedSourceMember", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.FeedSourceMember), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_FeedSourceMember_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "FeedSourceMember", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.FeedSourceMember), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Project_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Project), true)]
@@ -53,6 +51,9 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Attachment_UserModifiedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Attachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Attachment), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Filter_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Filter", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Filter), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Filter_UserModifiedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Filter", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Filter), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Feed_Source", "Source", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.Source), "Feed", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Feed), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Feed_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Feed", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Feed), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_FeedSourceMember_Feed", "Feed", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.Feed), "FeedSourceMember", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.FeedSourceMember), true)]
 
 #endregion
 
@@ -103,22 +104,6 @@ namespace Epiworx.Data.EntityFramework
         #endregion
     
         #region ObjectSet Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<Feed> Feeds
-        {
-            get
-            {
-                if ((_Feeds == null))
-                {
-                    _Feeds = base.CreateObjectSet<Feed>("Feeds");
-                }
-                return _Feeds;
-            }
-        }
-        private ObjectSet<Feed> _Feeds;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -343,17 +328,25 @@ namespace Epiworx.Data.EntityFramework
             }
         }
         private ObjectSet<Filter> _Filters;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Feed> Feeds
+        {
+            get
+            {
+                if ((_Feeds == null))
+                {
+                    _Feeds = base.CreateObjectSet<Feed>("Feeds");
+                }
+                return _Feeds;
+            }
+        }
+        private ObjectSet<Feed> _Feeds;
 
         #endregion
         #region AddTo Methods
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Feeds EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToFeeds(Feed feed)
-        {
-            base.AddObject("Feeds", feed);
-        }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the FeedSourceMembers EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
@@ -465,6 +458,14 @@ namespace Epiworx.Data.EntityFramework
         public void AddToFilters(Filter filter)
         {
             base.AddObject("Filters", filter);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Feeds EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToFeeds(Feed feed)
+        {
+            base.AddObject("Feeds", feed);
         }
 
         #endregion
@@ -920,13 +921,19 @@ namespace Epiworx.Data.EntityFramework
         /// </summary>
         /// <param name="feedId">Initial value of the FeedId property.</param>
         /// <param name="action">Initial value of the Action property.</param>
+        /// <param name="description">Initial value of the Description property.</param>
+        /// <param name="sourceId">Initial value of the SourceId property.</param>
+        /// <param name="sourceTypeId">Initial value of the SourceTypeId property.</param>
         /// <param name="createdBy">Initial value of the CreatedBy property.</param>
         /// <param name="createdDate">Initial value of the CreatedDate property.</param>
-        public static Feed CreateFeed(global::System.Int32 feedId, global::System.String action, global::System.Int32 createdBy, global::System.DateTime createdDate)
+        public static Feed CreateFeed(global::System.Int32 feedId, global::System.String action, global::System.String description, global::System.Int32 sourceId, global::System.Int32 sourceTypeId, global::System.Int32 createdBy, global::System.DateTime createdDate)
         {
             Feed feed = new Feed();
             feed.FeedId = feedId;
             feed.Action = action;
+            feed.Description = description;
+            feed.SourceId = sourceId;
+            feed.SourceTypeId = sourceTypeId;
             feed.CreatedBy = createdBy;
             feed.CreatedDate = createdDate;
             return feed;
@@ -991,6 +998,78 @@ namespace Epiworx.Data.EntityFramework
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SourceId
+        {
+            get
+            {
+                return _SourceId;
+            }
+            set
+            {
+                OnSourceIdChanging(value);
+                ReportPropertyChanging("SourceId");
+                _SourceId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SourceId");
+                OnSourceIdChanged();
+            }
+        }
+        private global::System.Int32 _SourceId;
+        partial void OnSourceIdChanging(global::System.Int32 value);
+        partial void OnSourceIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SourceTypeId
+        {
+            get
+            {
+                return _SourceTypeId;
+            }
+            set
+            {
+                OnSourceTypeIdChanging(value);
+                ReportPropertyChanging("SourceTypeId");
+                _SourceTypeId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SourceTypeId");
+                OnSourceTypeIdChanged();
+            }
+        }
+        private global::System.Int32 _SourceTypeId;
+        partial void OnSourceTypeIdChanging(global::System.Int32 value);
+        partial void OnSourceTypeIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
         public global::System.Int32 CreatedBy
         {
             get
@@ -1037,6 +1116,44 @@ namespace Epiworx.Data.EntityFramework
         #endregion
     
         #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Feed_Source", "Source")]
+        public Source Source
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Source>("ApplicationModel.FK_Feed_Source", "Source").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Source>("ApplicationModel.FK_Feed_Source", "Source").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Source> SourceReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Source>("ApplicationModel.FK_Feed_Source", "Source");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Source>("ApplicationModel.FK_Feed_Source", "Source", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1292,44 +1409,6 @@ namespace Epiworx.Data.EntityFramework
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_FeedSourceMember_Feed", "Feed")]
-        public Feed Feed
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Feed>("ApplicationModel.FK_FeedSourceMember_Feed", "Feed").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Feed>("ApplicationModel.FK_FeedSourceMember_Feed", "Feed").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Feed> FeedReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Feed>("ApplicationModel.FK_FeedSourceMember_Feed", "Feed");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Feed>("ApplicationModel.FK_FeedSourceMember_Feed", "Feed", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_FeedSourceMember_Source", "Source")]
         public Source Source
         {
@@ -1396,6 +1475,44 @@ namespace Epiworx.Data.EntityFramework
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_FeedSourceMember_UserCreatedBy", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_FeedSourceMember_Feed", "Feed")]
+        public Feed Feed
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Feed>("ApplicationModel.FK_FeedSourceMember_Feed", "Feed").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Feed>("ApplicationModel.FK_FeedSourceMember_Feed", "Feed").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Feed> FeedReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Feed>("ApplicationModel.FK_FeedSourceMember_Feed", "Feed");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Feed>("ApplicationModel.FK_FeedSourceMember_Feed", "Feed", value);
                 }
             }
         }
@@ -3840,6 +3957,28 @@ namespace Epiworx.Data.EntityFramework
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Feed_Source", "Feed")]
+        public EntityCollection<Feed> Feeds
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Feed>("ApplicationModel.FK_Feed_Source", "Feed");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Feed>("ApplicationModel.FK_Feed_Source", "Feed", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -3978,7 +4117,8 @@ namespace Epiworx.Data.EntityFramework
         /// <param name="createdDate">Initial value of the CreatedDate property.</param>
         /// <param name="modifiedBy">Initial value of the ModifiedBy property.</param>
         /// <param name="modifiedDate">Initial value of the ModifiedDate property.</param>
-        public static Sprint CreateSprint(global::System.Int32 sprintId, global::System.DateTime completedDate, global::System.Boolean isActive, global::System.Boolean isArchived, global::System.Boolean isCompleted, global::System.Decimal duration, global::System.DateTime estimatedCompletedDate, global::System.Decimal estimatedDuration, global::System.String name, global::System.Int32 projectId, global::System.Int32 createdBy, global::System.DateTime createdDate, global::System.Int32 modifiedBy, global::System.DateTime modifiedDate)
+        /// <param name="description">Initial value of the Description property.</param>
+        public static Sprint CreateSprint(global::System.Int32 sprintId, global::System.DateTime completedDate, global::System.Boolean isActive, global::System.Boolean isArchived, global::System.Boolean isCompleted, global::System.Decimal duration, global::System.DateTime estimatedCompletedDate, global::System.Decimal estimatedDuration, global::System.String name, global::System.Int32 projectId, global::System.Int32 createdBy, global::System.DateTime createdDate, global::System.Int32 modifiedBy, global::System.DateTime modifiedDate, global::System.String description)
         {
             Sprint sprint = new Sprint();
             sprint.SprintId = sprintId;
@@ -3995,6 +4135,7 @@ namespace Epiworx.Data.EntityFramework
             sprint.CreatedDate = createdDate;
             sprint.ModifiedBy = modifiedBy;
             sprint.ModifiedDate = modifiedDate;
+            sprint.Description = description;
             return sprint;
         }
 
@@ -4339,6 +4480,30 @@ namespace Epiworx.Data.EntityFramework
         private global::System.DateTime _ModifiedDate;
         partial void OnModifiedDateChanging(global::System.DateTime value);
         partial void OnModifiedDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
 
         #endregion
     

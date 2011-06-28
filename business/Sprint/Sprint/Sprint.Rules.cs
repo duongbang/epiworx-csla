@@ -15,13 +15,10 @@ namespace Epiworx.Business
         {
             base.AddBusinessRules();
 
+            this.BusinessRules.AddRule(new MaxLength(DescriptionProperty, 300));
             this.BusinessRules.AddRule(new StringRequired(NameProperty));
             this.BusinessRules.AddRule(new MaxLength(NameProperty, 100));
             this.BusinessRules.AddRule(new IntegerRequired(ProjectIdProperty));
-        }
-
-        protected static void AddObjectAuthorizationRules()
-        {
         }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Epiworx.Business.Helpers;
 using Epiworx.Business.Security.Helpers;
 using Epiworx.Data;
 
@@ -11,7 +12,7 @@ namespace Epiworx.Business
     {
         public override string ToString()
         {
-			return string.Format("{0}", this.Date);
+            return string.Format("{0}", this.Date);
         }
 
         public HourInfo ToHourInfo()
@@ -29,8 +30,26 @@ namespace Epiworx.Business
 
             switch (property.Name)
             {
+                case "StoryId":
+                    this.OnStoryIdChanged();
+                    break;
                 default:
                     break;
+            }
+        }
+
+        private void OnStoryIdChanged()
+        {
+            if (this.StoryId == 0)
+            {
+                this.ProjectId = 0;
+                this.ProjectName = string.Empty;
+            }
+            else
+            {
+                var story = Story.FetchStory(new StoryDataCriteria { StoryId = this.StoryId });
+                this.ProjectId = story.ProjectId;
+                this.ProjectName = story.ProjectName;
             }
         }
 

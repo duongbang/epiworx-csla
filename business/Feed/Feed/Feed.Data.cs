@@ -43,6 +43,9 @@ namespace Epiworx.Business
         {
             this.FeedId = data.FeedId;
             this.Action = data.Action;
+            this.Description = data.Description;
+            this.SourceId = data.SourceId;
+            this.SourceTypeId = data.SourceTypeId;
             this.CreatedBy = data.CreatedBy;
             this.CreatedByEmail = data.CreatedByUser.Email;
             this.CreatedByName = data.CreatedByUser.Name;
@@ -83,6 +86,9 @@ namespace Epiworx.Business
         {
             data.FeedId = this.FeedId;
             data.Action = this.Action;
+            data.Description = this.Description;
+            data.SourceId = this.SourceId;
+            data.SourceTypeId = this.SourceTypeId;
             data.CreatedBy = this.CreatedBy;
             data.CreatedDate = this.CreatedDate;
         }

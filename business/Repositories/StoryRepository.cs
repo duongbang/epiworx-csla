@@ -83,7 +83,9 @@ namespace Epiworx.Business
         {
             story = story.Save();
 
-            SourceRepository.SourceAdd(story.StoryId, SourceType.Story, story.Description);
+            SourceRepository.SourceAdd(story.StoryId, SourceType.Story, story.StoryId.ToString());
+
+            FeedRepository.FeedAdd(FeedAction.Created, story);
 
             return story;
         }
@@ -92,7 +94,9 @@ namespace Epiworx.Business
         {
             story = story.Save();
 
-            SourceRepository.SourceUpdate(story.StoryId, SourceType.Story, story.Description);
+            SourceRepository.SourceUpdate(story.StoryId, SourceType.Story, story.StoryId.ToString());
+
+            FeedRepository.FeedAdd(FeedAction.Edited, story);
 
             return story;
         }
@@ -114,7 +118,7 @@ namespace Epiworx.Business
                     StoryId = story.StoryId
                 });
 
-            SourceRepository.SourceDelete(story.StoryId, SourceType.Story);
+            FeedRepository.FeedAdd(FeedAction.Deleted, story);
 
             return true;
         }

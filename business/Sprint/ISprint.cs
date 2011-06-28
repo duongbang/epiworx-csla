@@ -9,6 +9,7 @@ namespace Epiworx.Business
     {
         int SprintId { get; }
         DateTime CompletedDate { get; }
+        string Description { get; }
         bool IsActive { get; }
         bool IsArchived { get; }
         bool IsCompleted { get; }

@@ -62,6 +62,8 @@ namespace Epiworx.Business
 
             SourceRepository.SourceAdd(note.NoteId, SourceType.Note, note.Body);
 
+            FeedRepository.FeedAdd(FeedAction.Created, note);
+
             return note;
         }
 
@@ -70,6 +72,8 @@ namespace Epiworx.Business
             note = note.Save();
 
             SourceRepository.SourceUpdate(note.NoteId, SourceType.Note, note.Body);
+
+            FeedRepository.FeedAdd(FeedAction.Edited, note);
 
             return note;
         }
@@ -99,7 +103,7 @@ namespace Epiworx.Business
                     NoteId = note.NoteId
                 });
 
-            SourceRepository.SourceDelete(note.NoteId, SourceType.Note);
+            FeedRepository.FeedAdd(FeedAction.Deleted, note);
 
             return true;
         }

@@ -57,6 +57,65 @@
     box-shadow: 5px 5px 5px #CCC;
 }
 
+.feed
+{
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    min-height: 80px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #E8E8E8;
+}
+
+.feed h1
+{
+    font-size: 16px;
+    margin-bottom: 5px;    
+}
+
+.feed .action
+{
+    text-transform: lowercase;
+    padding: 2px 5px 2px 5px;
+    background-color: #E8E8E8;
+    margin: 0px;
+    font-size: 16px;
+}
+
+.feed .source
+{
+    margin: 0px;
+}
+
+.feed .type
+{
+    margin: 0px;
+    text-transform: lowercase;
+}
+
+.feed img
+{
+    border: 1px solid #CCCCCC;
+    float: left;
+    width: 32px;
+    height: 32px;
+    margin: 10px 10px 0px 0px;
+    padding: 2px;
+}
+
+.feed p
+{
+    padding: 10px 0px 0px 60px;
+    font-weight: normal;
+}
+
+.feed p strong
+{
+    display: block;
+    padding-bottom: 5px;
+}
+
 .hgroup
 {
     margin-bottom: 20px;
@@ -239,7 +298,7 @@
 #find .result .description
 {
     margin-bottom: 5px;
-} 
+}
 
 #find .result .date
 {

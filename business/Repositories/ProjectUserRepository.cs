@@ -92,12 +92,16 @@ namespace Epiworx.Business
         {
             projectUserMember = projectUserMember.Save();
 
+            FeedRepository.FeedAdd(FeedAction.Created, projectUserMember);
+
             return projectUserMember;
         }
 
         public static ProjectUser ProjectUserUpdate(ProjectUser projectUserMember)
         {
             projectUserMember = projectUserMember.Save();
+
+            FeedRepository.FeedAdd(FeedAction.Edited, projectUserMember);
 
             return projectUserMember;
         }
@@ -109,6 +113,24 @@ namespace Epiworx.Business
             projectUserMember.RoleId = (int)role;
 
             projectUserMember = ProjectUserRepository.ProjectUserSave(projectUserMember);
+
+            return projectUserMember;
+        }
+
+        internal static ProjectUser ProjectUserAdd(int projectId, int userId, Role role, bool ignoreAuthorization)
+        {
+            var projectUserMember = ProjectUser.NewProjectUser(projectId, userId);
+
+            projectUserMember.RoleId = (int)role;
+
+            if (ignoreAuthorization)
+            {
+                projectUserMember = ProjectUserRepository.ProjectUserInsert(projectUserMember);
+            }
+            else
+            {
+                projectUserMember = ProjectUserRepository.ProjectUserSave(projectUserMember);
+            }
 
             return projectUserMember;
         }
@@ -135,6 +157,8 @@ namespace Epiworx.Business
                 {
                     ProjectUserMemberId = projectUserMember.ProjectUserMemberId
                 });
+
+            FeedRepository.FeedAdd(FeedAction.Deleted, projectUserMember);
 
             return true;
         }

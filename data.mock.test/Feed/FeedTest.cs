@@ -29,8 +29,13 @@ namespace Epiworx.Test
         [TestMethod]
         public void Feed_Fetch_Info_List()
         {
-            FeedTestHelper.FeedAdd();
-            FeedTestHelper.FeedAdd();
+            Project project;
+
+            project = ProjectTestHelper.ProjectAdd();
+            FeedTestHelper.FeedAdd(project.SourceType, project.SourceId);
+
+            project = ProjectTestHelper.ProjectAdd();
+            FeedTestHelper.FeedAdd(project.SourceType, project.SourceId);
 
             var feeds = FeedRepository.FeedFetchInfoList(new FeedDataCriteria());
 
@@ -40,7 +45,8 @@ namespace Epiworx.Test
         [TestMethod]
         public void Feed_Add()
         {
-            var feed = FeedTestHelper.FeedNew();
+            var project = ProjectTestHelper.ProjectAdd();
+            var feed = FeedTestHelper.FeedNew(project.SourceType, project.SourceId);
 
             Assert.IsTrue(feed.IsValid, "IsValid should be true");
 

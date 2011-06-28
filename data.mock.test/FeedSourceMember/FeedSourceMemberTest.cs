@@ -29,12 +29,13 @@ namespace Epiworx.Test
         [TestMethod]
         public void Feed_Add_Feed_Sources()
         {
-            var feed = FeedTestHelper.FeedNew();
+            var project = ProjectTestHelper.ProjectAdd();
+            var feed = FeedTestHelper.FeedNew(project.SourceType, project.SourceId);
 
             Assert.IsTrue(feed.IsValid, "IsValid should be true");
 
-            feed.Sources.Add(UserTestHelper.UserAdd().UserId, SourceType.User);
-            feed.Sources.Add(UserTestHelper.UserAdd().UserId, SourceType.User);
+            feed.Sources.Add(SourceType.User, UserTestHelper.UserAdd().UserId);
+            feed.Sources.Add(SourceType.User, UserTestHelper.UserAdd().UserId);
 
             feed = FeedRepository.FeedSave(feed);
 

@@ -12,6 +12,10 @@ namespace Epiworx.Business
         {
             this.FeedId = data.FeedId;
             this.Action = data.Action;
+            this.Description = data.Description;
+            this.SourceId = data.SourceId;
+            this.SourceName = data.Source.Name;
+            this.SourceTypeId = data.SourceTypeId;
             this.CreatedBy = data.CreatedBy;
             this.CreatedByEmail = data.CreatedByUser.Email;
             this.CreatedByName = data.CreatedByUser.Name;

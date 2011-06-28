@@ -25,14 +25,9 @@ namespace Epiworx.Business
             return result.ToString();
         }
 
-        public FeedSource Add(ISource source)
+        public FeedSource Add(SourceType sourceType, int sourceId)
         {
-            return this.Add(source.SourceId, source.SourceType);
-        }
-
-        public FeedSource Add(int sourceId, SourceType sourceTypeId)
-        {
-            if (this.Contains(sourceId, sourceTypeId))
+            if (this.Contains(sourceType, sourceId))
             {
                 throw new ArgumentException("Source already belongs to the collection.");
             }
@@ -41,7 +36,7 @@ namespace Epiworx.Business
                 new FeedSourceMemberDataCriteria
                 {
                     SourceId = sourceId,
-                    SourceTypeId = (int)sourceTypeId
+                    SourceTypeId = (int)sourceType
                 });
 
             this.Add(child);
@@ -49,20 +44,20 @@ namespace Epiworx.Business
             return child;
         }
 
-        public void Remove(int sourceId, SourceType sourceTypeId)
+        public void Remove(SourceType sourceType, int sourceId)
         {
             foreach (var child in this.Where(child => child.SourceId == sourceId
-                && child.SourceTypeId == (int)sourceTypeId))
+                && child.SourceTypeId == (int)sourceType))
             {
                 this.Remove(child);
                 break;
             }
         }
 
-        public bool Contains(int sourceId, SourceType sourceTypeId)
+        public bool Contains(SourceType sourceType, int sourceId)
         {
             return this.Any(child => child.SourceId == sourceId
-                && child.SourceTypeId == (int)sourceTypeId);
+                && child.SourceTypeId == (int)sourceType);
         }
     }
 }

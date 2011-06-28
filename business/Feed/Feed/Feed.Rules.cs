@@ -17,10 +17,8 @@ namespace Epiworx.Business
 
             this.BusinessRules.AddRule(new StringRequired(ActionProperty));
             this.BusinessRules.AddRule(new MaxLength(ActionProperty, 50));
-        }
-
-        protected static void AddObjectAuthorizationRules()
-        {
+            this.BusinessRules.AddRule(new IntegerRequired(SourceIdProperty));
+            this.BusinessRules.AddRule(new IntegerRequired(SourceTypeIdProperty));
         }
     }
 }

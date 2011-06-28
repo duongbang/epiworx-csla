@@ -23,6 +23,7 @@ namespace Epiworx.WebMvc.Controllers
             model.StartDate = DateTime.Now.AddDays(-48).ToStartOfWeek().Date;
             model.EndDate = DateTime.Now.ToEndOfWeek().Date;
             model.Hours = HourRepository.HourFetchInfoList(user, model.StartDate, model.EndDate);
+            model.FeedListModel = new FeedListModel { Feeds = FeedRepository.FeedFetchInfoList(20) };
 
             DateTime startDate;
             DateTime currentDate;

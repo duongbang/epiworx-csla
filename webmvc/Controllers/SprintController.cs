@@ -127,6 +127,7 @@ namespace Epiworx.WebMvc.Controllers
         private void Map(FormCollection source, Sprint destination)
         {
             destination.CompletedDate = DateTime.Parse(source["CompletedDate"]);
+            destination.Description = source["Description"];
             destination.IsActive = ModelHelper.ToBoolean(source["IsActive"]);
             destination.IsArchived = ModelHelper.ToBoolean(source["IsArchived"]);
             destination.IsCompleted = ModelHelper.ToBoolean(source["IsCompleted"]);

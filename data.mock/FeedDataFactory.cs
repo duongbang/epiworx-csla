@@ -20,6 +20,10 @@ namespace Epiworx.Data.Mock
 
         public FeedData Fetch(FeedData data)
         {
+            data.Source = MockDb.Sources
+               .Where(row => row.SourceId == data.SourceId && row.SourceTypeId == data.SourceTypeId)
+               .Single();
+
             data.CreatedByUser = MockDb.Users
                 .Where(row => row.UserId == data.CreatedBy)
                 .Single();

@@ -17,9 +17,5 @@ namespace Epiworx.Business
             this.BusinessRules.AddRule(new IntegerRequired(SourceIdProperty));
             this.BusinessRules.AddRule(new IntegerRequired(SourceTypeIdProperty));
         }
-
-        protected static void AddObjectAuthorizationRules()
-        {
-        }
     }
 }

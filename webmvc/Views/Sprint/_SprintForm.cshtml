@@ -9,6 +9,9 @@
         <label>
             Project</label>
         <span class="big">@Model.Sprint.ProjectName</span></p>
+    <label for="Description">
+        Description</label>
+    <input type="text" id="Description" name="Description" value="@Model.Sprint.Description" />
     <label for="EstimatedCompletedDate">
         Estimated Completed On</label>
     <input type="text" id="EstimatedCompletedDate" name="EstimatedCompletedDate" value="@Model.Sprint.EstimatedCompletedDate.ToShortDateString()" class="date" />

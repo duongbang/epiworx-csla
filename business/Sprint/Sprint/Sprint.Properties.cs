@@ -27,6 +27,14 @@ namespace Epiworx.Business
             set { this.SetProperty(CompletedDateProperty, value); }
         }
 
+        private static Csla.PropertyInfo<string> DescriptionProperty =
+            RegisterProperty<string>(row => row.Description, "Description");
+        public string Description
+        {
+            get { return this.GetProperty(DescriptionProperty); }
+            set { this.SetProperty(DescriptionProperty, value); }
+        }
+
         private static Csla.PropertyInfo<bool> IsActiveProperty =
             RegisterProperty<bool>(row => row.IsActive, "IsActive");
         public bool IsActive

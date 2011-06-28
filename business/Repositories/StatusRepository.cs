@@ -62,6 +62,8 @@ namespace Epiworx.Business
 
             SourceRepository.SourceAdd(status.StatusId, SourceType.Status, status.Name);
 
+            FeedRepository.FeedAdd(FeedAction.Created, status);
+
             return status;
         }
 
@@ -72,6 +74,8 @@ namespace Epiworx.Business
             status = status.Save();
 
             SourceRepository.SourceUpdate(status.StatusId, SourceType.Status, status.Name);
+
+            FeedRepository.FeedAdd(FeedAction.Edited, status);
 
             return status;
         }
@@ -91,7 +95,7 @@ namespace Epiworx.Business
                     StatusId = status.StatusId
                 });
 
-            SourceRepository.SourceDelete(status.StatusId, SourceType.Status);
+            FeedRepository.FeedAdd(FeedAction.Deleted, status);
 
             return true;
         }

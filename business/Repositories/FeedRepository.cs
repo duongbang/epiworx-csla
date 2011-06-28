@@ -47,9 +47,95 @@ namespace Epiworx.Business
             return FeedInfoList.FetchFeedInfoList(criteria);
         }
 
+        internal static void FeedAdd(string action, Hour hour)
+        {
+            var feed = FeedRepository.FeedNew(action, SourceType.Hour, hour.HourId);
+
+            feed.Sources.Add(SourceType.Project, hour.ProjectId);
+            feed.Sources.Add(SourceType.Story, hour.StoryId);
+            feed.Sources.Add(SourceType.User, hour.UserId);
+
+            feed.Save();
+        }
+
+        internal static void FeedAdd(string action, Note note)
+        {
+            var feed = FeedRepository.FeedNew(action, SourceType.Note, note.NoteId);
+
+            switch ((SourceType)note.SourceTypeId)
+            {
+                case SourceType.Project:
+                    feed.Sources.Add(SourceType.Project, note.SourceId);
+                    break;
+                case SourceType.Sprint:
+                    var sprint = SprintRepository.SprintFetch(note.SourceId);
+                    feed.Sources.Add(SourceType.Project, sprint.ProjectId);
+                    feed.Sources.Add(SourceType.Sprint, sprint.SprintId);
+                    break;
+                case SourceType.Story:
+                    var story = StoryRepository.StoryFetch(note.SourceId);
+                    feed.Sources.Add(SourceType.Project, story.ProjectId);
+                    feed.Sources.Add(SourceType.Story, story.StoryId);
+                    break;
+            }
+
+            feed.Save();
+        }
+
         internal static void FeedAdd(string action, Project project)
         {
-            var feed = FeedRepository.FeedNew(action, project);
+            var feed = FeedRepository.FeedNew(action, SourceType.Project, project.ProjectId);
+
+            if (action == FeedAction.Created)
+            {
+                feed.Description = project.Description;
+            }
+
+            feed.Save();
+        }
+
+        internal static void FeedAdd(string action, ProjectUser projectUser)
+        {
+            var feed = FeedRepository.FeedNew(action, SourceType.ProjectUser, projectUser.ProjectUserMemberId);
+
+            feed.Sources.Add(SourceType.Project, projectUser.ProjectId);
+
+            feed.Save();
+        }
+
+        internal static void FeedAdd(string action, Sprint sprint)
+        {
+            var feed = FeedRepository.FeedNew(action, SourceType.Sprint, sprint.SprintId);
+
+            if (action == FeedAction.Created)
+            {
+                feed.Description = sprint.Description;
+            }
+
+            feed.Sources.Add(SourceType.Project, sprint.ProjectId);
+
+            feed.Save();
+        }
+
+        internal static void FeedAdd(string action, Status status)
+        {
+            var feed = FeedRepository.FeedNew(action, SourceType.Status, status.StatusId);
+
+            feed.Sources.Add(SourceType.Project, status.ProjectId);
+
+            feed.Save();
+        }
+
+        internal static void FeedAdd(string action, Story story)
+        {
+            var feed = FeedRepository.FeedNew(action, SourceType.Story, story.StoryId);
+
+            if (action == FeedAction.Created)
+            {
+                feed.Description = story.Description;
+            }
+
+            feed.Sources.Add(SourceType.Project, story.ProjectId);
 
             feed.Save();
         }
@@ -96,13 +182,13 @@ namespace Epiworx.Business
             return feed;
         }
 
-        public static Feed FeedNew(string action, ISource source)
+        public static Feed FeedNew(string action, SourceType sourceType, int sourceId)
         {
             var feed = Feed.NewFeed();
 
             feed.Action = action;
-
-            feed.Sources.Add(source);
+            feed.SourceTypeId = (int)sourceType;
+            feed.SourceId = sourceId;
 
             return feed;
         }
