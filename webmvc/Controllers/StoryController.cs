@@ -55,8 +55,9 @@ namespace Epiworx.WebMvc.Controllers
 
             model.Title = string.Format("Story {0}", story.Description);
             model.Story = story;
-            model.Attachments = AttachmentRepository.AttachmentFetchInfoList(id, SourceType.Story);
             model.Notes = NoteRepository.NoteFetchInfoList(id, SourceType.Story);
+            model.Attachments = AttachmentRepository.AttachmentFetchInfoList(
+                model.Notes.Select(row => row.NoteId).Distinct().ToArray(), SourceType.Note);
             model.Hours = HourRepository.HourFetchInfoList(story);
             model.Statuses = StatusRepository.StatusFetchInfoList(story.ProjectId);
             model.Actions.Add("Edit this story", Url.Action("Edit", new { id }), "primary");

@@ -25,6 +25,17 @@ namespace Epiworx.Business
                 AttachmentRepository.AttachmentFetchInfoList(
                     new AttachmentDataCriteria
                     {
+                        SourceId = new[] { sourceId },
+                        SourceTypeId = (int)sourceType
+                    });
+        }
+
+        public static AttachmentInfoList AttachmentFetchInfoList(int[] sourceId, SourceType sourceType)
+        {
+            return
+                AttachmentRepository.AttachmentFetchInfoList(
+                    new AttachmentDataCriteria
+                    {
                         SourceId = sourceId,
                         SourceTypeId = (int)sourceType
                     });

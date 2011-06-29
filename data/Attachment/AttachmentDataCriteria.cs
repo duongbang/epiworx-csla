@@ -10,7 +10,7 @@ namespace Epiworx.Data
         public string FileType { get; set; }
         public bool? IsArchived { get; set; }
         public string Name { get; set; }
-        public int? SourceId { get; set; }
+        public int[] SourceId { get; set; }
         public int? SourceTypeId { get; set; }
         public int? CreatedBy { get; set; }
         public DateRangeCriteria CreatedDate { get; set; }

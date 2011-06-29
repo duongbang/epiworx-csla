@@ -17,7 +17,7 @@
                     <span class="type">for the @source.SourceTypeName</span>
                     <a href="@Url.Action("Details", source.SourceTypeName, new { id = source.SourceId })" class="source">@source.SourceName</a>
                 }
-                <span class="relative-date">@Html.ToRelativeDate(feed.CreatedDate)</span>
+                <span class="date">@Html.ToRelativeDate(feed.CreatedDate)</span>
             </h1>
             @Html.Gravatar(feed.CreatedByEmail, feed.CreatedByName)
             <p>

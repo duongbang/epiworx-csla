@@ -44,10 +44,9 @@
             Duration</label>
         <span>@Model.Story.Duration</span></p>
 </fieldset>
-@Html.Partial("_NoteList", new NoteListModel { Notes = Model.Notes })
+@Html.Partial("_NoteList", new NoteListModel { Notes = Model.Notes, Attachments = Model.Attachments })
 @section SideBar
 {
     @Html.Partial("_PartActionItemList")
     @Html.Partial("_PartHourList")
-    @Html.Partial("_PartAttachmentList", new AttachmentListModel { Attachments = Model.Attachments })
 }

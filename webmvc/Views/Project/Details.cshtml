@@ -17,7 +17,7 @@
         <span>@Model.Project.Description</span></p>
 </fieldset>
 @Html.Partial("_StoryList", new StoryListModel { Stories = Model.Stories, Statuses = Model.Statuses })
-@Html.Partial("_NoteList", new NoteListModel { Notes = Model.Notes })
+@Html.Partial("_NoteList", new NoteListModel { Notes = Model.Notes, Attachments = Model.Attachments })
 
 @section SideBar
 {
@@ -26,5 +26,4 @@
     @Html.Partial("_PartStatusList")
     @Html.Partial("_PartSprintList")
     @Html.Partial("_PartUserList")
-    @Html.Partial("_PartAttachmentList", new AttachmentListModel { Attachments = Model.Attachments })
 }

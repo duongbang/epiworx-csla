@@ -11,5 +11,6 @@ namespace Epiworx.WebMvc.Models
         public int SourceId { get; set; }
         public int SourceTypeId { get; set; }
         public IEnumerable<NoteInfo> Notes { get; set; }
+        public IEnumerable<AttachmentInfo> Attachments { get; set; }
     }
 }

@@ -5,8 +5,8 @@
         New Attachment</h2>
 </div>
 @Html.ValidationSummary(false, "Oh snap! Looks like we ran into some trouble. Please correct the errors and try again.")
-@using (Html.BeginForm("Edit", "Attachment", new { id = Model.Attachment.AttachmentId }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "NoteAttachment", new { noteId = Model.Attachment.SourceId }, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    @Html.Partial("_AttachmentForm")
-    @Html.Partial("_AttachmentFormCommands")
+    @Html.Partial("_NoteAttachmentForm")
+    @Html.Partial("_NoteAttachmentFormCommands")
 }

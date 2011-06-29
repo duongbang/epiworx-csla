@@ -83,6 +83,11 @@
     font-size: 16px;
 }
 
+.feed .date
+{
+    color: #808080;
+}
+
 .feed .source
 {
     margin: 0px;
@@ -151,6 +156,11 @@
     font-size: 24px;
 }
 
+.attachments
+{
+    display: block;
+}
+
 .notes
 {
     font-size: 18px;
@@ -168,6 +178,7 @@
 {
     float: right;
     font-size: 14px;
+    margin-left: 10px;
 }
 
 .notes em
@@ -180,6 +191,18 @@
 .notes li
 {
     margin-bottom: 10px;
+}
+
+.notes .attachments a
+{
+    float: none;
+    display: inline;
+    margin: 0px 5px 0px 0px;
+}
+
+.notes .attachments li
+{
+    display: inline;
 }
 
 .stories

@@ -41,8 +41,9 @@ namespace Epiworx.WebMvc.Controllers
 
             model.Title = string.Format("Project {0}", project.Name);
             model.Project = project;
-            model.Attachments = AttachmentRepository.AttachmentFetchInfoList(id, SourceType.Project);
             model.Notes = NoteRepository.NoteFetchInfoList(id, SourceType.Project);
+            model.Attachments = AttachmentRepository.AttachmentFetchInfoList(
+                model.Notes.Select(row => row.NoteId).Distinct().ToArray(), SourceType.Note);
             model.Sprints = SprintRepository.SprintFetchInfoList(id);
             model.Statuses = StatusRepository.StatusFetchInfoList(id);
             model.Stories = StoryRepository.StoryFetchInfoList(project);

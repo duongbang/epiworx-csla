@@ -11,7 +11,7 @@ using Epiworx.WebMvc.Models;
 namespace Epiworx.WebMvc.Controllers
 {
     [Authorize]
-    public class AttachmentController : Controller
+    public class NoteAttachmentController : Controller
     {
         public ActionResult Details(int id)
         {
@@ -22,10 +22,10 @@ namespace Epiworx.WebMvc.Controllers
             return new FileStreamResult(ms, attachment.FileType);
         }
 
-        public ActionResult Create(int sourceId, int sourceTypeId)
+        public ActionResult Create(int noteId)
         {
             var model = new AttachmentFormModel();
-            var attachment = AttachmentRepository.AttachmentNew(sourceId, (SourceType)sourceTypeId);
+            var attachment = AttachmentRepository.AttachmentNew(noteId, SourceType.Note);
 
             model.Title = "Attachment Create";
             model.Attachment = attachment;
@@ -34,10 +34,11 @@ namespace Epiworx.WebMvc.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(int sourceId, int sourceTypeId, FormCollection collection)
+        public ActionResult Create(int noteId, FormCollection collection)
         {
             var model = new AttachmentFormModel();
-            var attachment = AttachmentRepository.AttachmentNew(sourceId, (SourceType)sourceTypeId);
+            var note = NoteRepository.NoteFetch(noteId);
+            var attachment = AttachmentRepository.AttachmentNew(noteId, SourceType.Note);
 
             this.Map(collection, attachment);
 
@@ -45,7 +46,7 @@ namespace Epiworx.WebMvc.Controllers
 
             if (attachment.IsValid)
             {
-                return this.RedirectToAction("Details", attachment.SourceTypeName, new { id = attachment.SourceId });
+                return this.RedirectToAction("Details", note.SourceTypeName, new { id = note.SourceId });
             }
 
             model.Title = "Attachment Create";
@@ -72,6 +73,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var model = new AttachmentFormModel();
             var attachment = AttachmentRepository.AttachmentFetch(id);
+            var note = NoteRepository.NoteFetch(attachment.SourceId);
 
             this.Map(collection, attachment);
 
@@ -79,7 +81,7 @@ namespace Epiworx.WebMvc.Controllers
 
             if (attachment.IsValid)
             {
-                return this.RedirectToAction("Details", attachment.SourceTypeName, new { id = attachment.SourceId });
+                return this.RedirectToAction("Details", note.SourceTypeName, new { id = note.SourceId });
             }
 
             model.Title = "Attachment Edit";
@@ -94,13 +96,14 @@ namespace Epiworx.WebMvc.Controllers
         {
             var model = new DeleteModel();
             var attachment = AttachmentRepository.AttachmentFetch(id);
+            var note = NoteRepository.NoteFetch(attachment.SourceId);
 
             model.Title = "Attachment Delete";
             model.Id = attachment.AttachmentId;
             model.Name = "Attachment";
             model.Description = attachment.Name;
             model.ControllerName = "Attachment";
-            model.BackUrl = Url.Action("Details", attachment.SourceTypeName, new { id = attachment.SourceId });
+            model.BackUrl = Url.Action("Details", note.SourceTypeName, new { id = note.SourceId });
 
             return this.View(model);
         }
@@ -109,10 +112,11 @@ namespace Epiworx.WebMvc.Controllers
         public ActionResult Delete(int id, FormCollection collection)
         {
             var attachment = AttachmentRepository.AttachmentFetch(id);
+            var note = NoteRepository.NoteFetch(attachment.SourceId);
 
             AttachmentRepository.AttachmentDelete(id);
 
-            return this.RedirectToAction("Details", attachment.SourceTypeName, new { id = attachment.SourceId });
+            return this.RedirectToAction("Details", note.SourceTypeName, new { id = note.SourceId });
         }
 
         private void Map(FormCollection source, Attachment destination)
