@@ -7,7 +7,7 @@
 <table>
     <thead>
         <tr>
-            <th style="width: 300px;">
+            <th style="width: 400px;">
                 Name
             </th>
             <th>
@@ -16,10 +16,10 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var project in Model.Projects)
+        @foreach (var project in Model.Projects.OrderBy(row => row.Name))
         { 
             <tr>
-                <td>@Html.ActionLink(project.Name, "Details", new { id = project.ProjectId })<p class="description">@project.Description</p>
+                <td>@Html.ActionLink(project.Name, "Details", new { id = project.ProjectId }, new { title = @project.Description } )
                 </td>
                 <td>
                     @if (Model.Notes.Count() != 0)

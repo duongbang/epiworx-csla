@@ -23,6 +23,14 @@
 {
 }
 
+.clip
+{
+    line-height: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
 .clear
 {
     display: block;
@@ -615,13 +623,15 @@ td .note
 
 td .note p
 {
-    margin-bottom: 5px;
+    line-height: 150%;
 }
 
 td .note img
 {
     height: 16px;
     width: 16px;
+    float: left;
+    margin-right: 5px;
 }
 
 td .note strong

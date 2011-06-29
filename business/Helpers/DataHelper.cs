@@ -64,8 +64,6 @@ namespace Epiworx.Business.Helpers
             {
                 case SourceType.Attachment:
                     return "Attachment";
-                case SourceType.Category:
-                    return "Category";
                 case SourceType.Hour:
                     return "Hour";
                 case SourceType.None:

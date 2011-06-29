@@ -9,7 +9,6 @@ namespace Epiworx.Business
     {
         None = 0,
         User = 1,
-        Category = 2,
         Status = 3,
         Project = 4,
         ProjectUser = 5,

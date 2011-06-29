@@ -204,13 +204,13 @@ namespace Epiworx.Core
             if (timeSpan <= TimeSpan.FromDays(365))
             {
                 return timeSpan.Days > 30
-                    ? string.Format("about {0} months ago" + (timeSpan.Days / 30))
+                    ? string.Format("about {0} months ago", (timeSpan.Days / 30))
                     : "about a month ago";
             }
 
             // span is greater than 365 days (1 year), measure in years.
             return timeSpan.Days > 365
-                ? string.Format("about {0} years ago" + (timeSpan.Days / 365))
+                ? string.Format("about {0} years ago", (timeSpan.Days / 365))
                 : "about a year ago";
         }
     }

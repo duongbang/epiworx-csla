@@ -15,7 +15,7 @@
                 <strong>@story.StoryId</strong>
                 <p>
                     <span class="assignment">@story.AssignedToName</span>
-                    <a href="@Url.Action("Details", "Story", new { id = story.StoryId})">@story.Description</a>
+                    <div class="clip"><a href="@Url.Action("Details", "Story", new { id = story.StoryId})" title="@story.Description">@story.Description</a></div>
                     <span class="date">by <em>@story.CreatedByName</em> @story.CreatedDate.ToString("MMMM d, yyyy")</span></p>
             </li> 
         }

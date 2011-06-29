@@ -31,7 +31,8 @@ namespace Epiworx.Business
             return StoryInfoList.FetchStoryInfoList(
                 new StoryDataCriteria
                 {
-                    ProjectId = new[] { project.ProjectId }
+                    ProjectId = new[] { project.ProjectId },
+                    IsArchived = false
                 });
         }
 
