@@ -7,8 +7,11 @@
 <table>
     <thead>
         <tr>
-            <th class="first last">
+            <th style="width: 300px;">
                 Name
+            </th>
+            <th>
+                Status
             </th>
         </tr>
     </thead>
@@ -16,7 +19,28 @@
         @foreach (var project in Model.Projects)
         { 
             <tr>
-                <td class="first last">@Html.ActionLink(project.Name, "Details", new { id = project.ProjectId })
+                <td>@Html.ActionLink(project.Name, "Details", new { id = project.ProjectId })<p class="description">@project.Description</p>
+                </td>
+                <td>
+                    @if (Model.Notes.Count() != 0)
+                    {
+                        var notes = Model.Notes
+                            .Where(note => note.SourceId == project.ProjectId)
+                            .OrderByDescending(note => note.CreatedDate);
+
+                        if (notes.Count() != 0)
+                        {
+                            var note = notes.First();
+                        <div class="note">
+                            <p title="@note.Body">
+                                @note.Body
+                            </p>
+                            @Html.Gravatar(note.CreatedByEmail, note.CreatedByName)
+                            <strong class="user">
+                                @note.CreatedByName</strong><span class="date">@Html.ToRelativeDate(note.CreatedDate)</span>
+                        </div>
+                        }
+                    }
                 </td>
             </tr>
         }

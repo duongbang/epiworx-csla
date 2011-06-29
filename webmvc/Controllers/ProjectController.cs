@@ -15,6 +15,7 @@ namespace Epiworx.WebMvc.Controllers
     {
         public ActionResult Index(
             string createdDate,
+            string isActive,
             string isArchived,
             string modifiedDate,
             string projectName)
@@ -23,6 +24,7 @@ namespace Epiworx.WebMvc.Controllers
             var criteria = new ProjectDataCriteria
             {
                 CreatedDate = CriteriaHelper.ToDateRangeCriteria(createdDate),
+                IsActive = CriteriaHelper.ToBoolean(isActive),
                 IsArchived = CriteriaHelper.ToBoolean(isArchived),
                 Name = projectName,
                 ModifiedDate = CriteriaHelper.ToDateRangeCriteria(modifiedDate)
@@ -30,6 +32,11 @@ namespace Epiworx.WebMvc.Controllers
             var projects = ProjectRepository.ProjectFetchInfoList(criteria);
 
             model.Projects = projects;
+
+            var notes = NoteRepository.NoteFetchInfoList(
+                projects.Select(row => row.ProjectId).Distinct().ToArray(), SourceType.Project);
+
+            model.Notes = notes;
 
             return this.View(model);
         }
@@ -52,7 +59,6 @@ namespace Epiworx.WebMvc.Controllers
             model.Actions.Add("Add a story", Url.Action("Create", "Story", new { projectId = id }));
             model.Actions.Add("Add a sprint", Url.Action("Create", "Sprint", new { projectId = id }));
             model.Actions.Add("Add an email", string.Empty);
-            model.Actions.Add("Add an attachment", Url.Action("Create", "Attachment", new { sourceId = id, sourceTypeId = (int)SourceType.Project }));
             model.Actions.Add("Add a note", Url.Action("Create", "Note", new { sourceId = id, sourceTypeId = (int)SourceType.Project }));
             model.Actions.Add("Add a collaborator", Url.Action("Create", "ProjectUser", new { projectId = id }));
             model.Actions.Add("Add a status", Url.Action("Create", "Status", new { projectId = id }));

@@ -28,7 +28,6 @@ namespace Epiworx.WebMvc.Controllers
             model.Actions.Add("Edit this sprint", Url.Action("Edit", new { id }), "primary");
             model.Actions.Add("Add a story", Url.Action("Create", "Story", new { projectId = sprint.ProjectId, sprintId = id }));
             model.Actions.Add("Add an email", string.Empty);
-            model.Actions.Add("Add an attachment", Url.Action("Create", "Attachment", new { sourceId = id, sourceTypeId = (int)SourceType.Sprint }));
             model.Actions.Add("Add a note", Url.Action("Create", "Note", new { sourceId = id, sourceTypeId = (int)SourceType.Sprint }));
 
             return this.View(model);

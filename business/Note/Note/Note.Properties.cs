@@ -73,6 +73,14 @@ namespace Epiworx.Business
             private set { this.SetProperty(CreatedByProperty, value); }
         }
 
+        private static Csla.PropertyInfo<string> CreatedByEmailProperty =
+            RegisterProperty<string>(row => row.CreatedByEmail, "CreatedByEmail");
+        public string CreatedByEmail
+        {
+            get { return this.GetProperty(CreatedByEmailProperty); }
+            private set { this.SetProperty(CreatedByEmailProperty, value); }
+        }
+
         private static Csla.PropertyInfo<string> CreatedByNameProperty =
             RegisterProperty<string>(row => row.CreatedByName, "CreatedByName");
         public string CreatedByName
@@ -95,6 +103,14 @@ namespace Epiworx.Business
         {
             get { return this.GetProperty(ModifiedByProperty); }
             private set { this.SetProperty(ModifiedByProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<string> ModifiedByEmailProperty =
+            RegisterProperty<string>(row => row.ModifiedByEmail, "ModifiedByEmail");
+        public string ModifiedByEmail
+        {
+            get { return this.GetProperty(ModifiedByEmailProperty); }
+            private set { this.SetProperty(ModifiedByEmailProperty, value); }
         }
 
         private static Csla.PropertyInfo<string> ModifiedByNameProperty =

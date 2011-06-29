@@ -9,6 +9,7 @@ namespace Epiworx.WebMvc.Models
     public class ProjectListModel : ModelBase
     {
         public IEnumerable<ProjectInfo> Projects { get; set; }
+        public IEnumerable<NoteInfo> Notes { get; set; }
 
         public ProjectListModel()
         {

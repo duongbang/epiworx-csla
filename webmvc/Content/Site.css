@@ -599,6 +599,41 @@ th.number, td.number
     text-align: right;
 }
 
+td a
+{
+    font-weight: bold;
+}
+
+td .description
+{
+    padding-top: 5px;
+}
+
+td .note
+{
+}
+
+td .note p
+{
+    margin-bottom: 5px;
+}
+
+td .note img
+{
+    height: 16px;
+    width: 16px;
+}
+
+td .note strong
+{
+    margin-right: 5px;
+}
+
+td .note span
+{
+    color: #808080;
+}
+
 tfoot
 {
     font-weight: bold;

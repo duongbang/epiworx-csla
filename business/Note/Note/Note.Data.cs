@@ -47,9 +47,11 @@ namespace Epiworx.Business
             this.SourceName = data.Source.Name;
             this.SourceTypeId = data.SourceTypeId;
             this.CreatedBy = data.CreatedBy;
+            this.CreatedByEmail = data.CreatedByUser.Email;
             this.CreatedByName = data.CreatedByUser.Name;
             this.CreatedDate = data.CreatedDate;
             this.ModifiedBy = data.ModifiedBy;
+            this.ModifiedByEmail = data.ModifiedByUser.Email;
             this.ModifiedByName = data.ModifiedByUser.Name;
             this.ModifiedDate = data.ModifiedDate;
         }

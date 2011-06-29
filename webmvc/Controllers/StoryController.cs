@@ -63,7 +63,6 @@ namespace Epiworx.WebMvc.Controllers
             model.Actions.Add("Edit this story", Url.Action("Edit", new { id }), "primary");
             model.Actions.Add("Add an hour", Url.Action("Create", "Hour", new { storyId = id }));
             model.Actions.Add("Add an email", string.Empty);
-            model.Actions.Add("Add an attachment", Url.Action("Create", "Attachment", new { sourceId = id, sourceTypeId = (int)SourceType.Story }));
             model.Actions.Add("Add a note", Url.Action("Create", "Note", new { sourceId = id, sourceTypeId = (int)SourceType.Story }));
 
             return this.View(model);

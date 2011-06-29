@@ -15,8 +15,12 @@ namespace Epiworx.Business
         int SourceTypeId { get; }
         string SourceTypeName { get; }
         int CreatedBy { get; }
+        string CreatedByEmail { get; }
+        string CreatedByName { get; }
         DateTime CreatedDate { get; }
         int ModifiedBy { get; }
+        string ModifiedByEmail { get; }
+        string ModifiedByName { get; }
         DateTime ModifiedDate { get; }
     }
 }

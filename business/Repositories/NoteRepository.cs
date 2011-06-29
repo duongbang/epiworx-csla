@@ -19,13 +19,24 @@ namespace Epiworx.Business
                 });
         }
 
+        public static NoteInfoList NoteFetchInfoList(int[] sourceId, SourceType sourceType)
+        {
+            return
+                NoteRepository.NoteFetchInfoList(
+                    new NoteDataCriteria
+                    {
+                        SourceId = sourceId,
+                        SourceTypeId = (int)sourceType
+                    });
+        }
+
         public static NoteInfoList NoteFetchInfoList(int sourceId, SourceType sourceType)
         {
             return
                 NoteRepository.NoteFetchInfoList(
                     new NoteDataCriteria
                         {
-                            SourceId = sourceId,
+                            SourceId = new[] { sourceId },
                             SourceTypeId = (int)sourceType
                         });
         }
