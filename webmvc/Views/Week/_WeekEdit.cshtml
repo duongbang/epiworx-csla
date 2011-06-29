@@ -1,0 +1,17 @@
+﻿@model Epiworx.WebMvc.Models.WeekFormModel
+@using Epiworx.WebMvc.Helpers
+<fieldset>
+    <legend>Week</legend>
+    <label for="Name">
+        Name</label>
+    <input type="text" id="Name" name="Name" value="@Model.Week.Name" class="big" />
+    <label for="Description">
+        Description</label>
+    <input type="text" id="Description" name="Description" value="@Model.Week.Description" />
+    <label for="IsActive">
+        <input type="checkbox" id="IsActive" name="IsActive" @Html.ToChecked(Model.Week.IsActive)/>This
+        week is active</label>
+    <label for="IsArchived">
+        <input type="checkbox" id="IsArchived" name="IsArchived" @Html.ToChecked(Model.Week.IsArchived)/>This
+        week is archived</label>
+</fieldset>

@@ -80,6 +80,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User\UserTest.cs" />
     <Compile Include="User\UserTestHelper.cs" />
+    <Compile Include="Week\WeekTest.cs" />
+    <Compile Include="Week\WeekTestHelper.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

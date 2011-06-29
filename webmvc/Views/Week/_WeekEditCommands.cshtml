@@ -1,0 +1,13 @@
+﻿@model Epiworx.WebMvc.Models.WeekFormModel
+@using Epiworx.WebMvc.Helpers
+<ul class="commands">
+    <li>
+        <button>
+            Save Changes</button></li>
+    <li><span>or</span></li>
+    @if (!Model.Week.IsNew)
+    { 
+        <li>@Html.ActionLink("Delete", "Delete", new { id = Model.Week.WeekId })</li>
+    }
+    <li><a href="@Url.Action("Index", new { year = Model.Week.Year })">Back</a></li>
+</ul>

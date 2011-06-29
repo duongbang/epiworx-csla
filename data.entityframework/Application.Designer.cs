@@ -54,6 +54,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Feed_Source", "Source", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.Source), "Feed", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Feed), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Feed_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Feed", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Feed), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_FeedSourceMember_Feed", "Feed", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.Feed), "FeedSourceMember", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.FeedSourceMember), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Week_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Week", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Week), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Week_UserModifiedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Week", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Week), true)]
 
 #endregion
 
@@ -344,6 +346,22 @@ namespace Epiworx.Data.EntityFramework
             }
         }
         private ObjectSet<Feed> _Feeds;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Week> Weeks
+        {
+            get
+            {
+                if ((_Weeks == null))
+                {
+                    _Weeks = base.CreateObjectSet<Week>("Weeks");
+                }
+                return _Weeks;
+            }
+        }
+        private ObjectSet<Week> _Weeks;
 
         #endregion
         #region AddTo Methods
@@ -466,6 +484,14 @@ namespace Epiworx.Data.EntityFramework
         public void AddToFeeds(Feed feed)
         {
             base.AddObject("Feeds", feed);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Weeks EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToWeeks(Week week)
+        {
+            base.AddObject("Weeks", week);
         }
 
         #endregion
@@ -6243,6 +6269,348 @@ namespace Epiworx.Data.EntityFramework
 
         #endregion
     
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ApplicationModel", Name="Week")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Week : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Week object.
+        /// </summary>
+        /// <param name="weekId">Initial value of the WeekId property.</param>
+        /// <param name="endDate">Initial value of the EndDate property.</param>
+        /// <param name="period">Initial value of the Period property.</param>
+        /// <param name="startDate">Initial value of the StartDate property.</param>
+        /// <param name="year">Initial value of the Year property.</param>
+        /// <param name="createdBy">Initial value of the CreatedBy property.</param>
+        /// <param name="createdDate">Initial value of the CreatedDate property.</param>
+        /// <param name="modifiedBy">Initial value of the ModifiedBy property.</param>
+        /// <param name="modifiedDate">Initial value of the ModifiedDate property.</param>
+        public static Week CreateWeek(global::System.Int32 weekId, global::System.DateTime endDate, global::System.Int32 period, global::System.DateTime startDate, global::System.Int32 year, global::System.Int32 createdBy, global::System.DateTime createdDate, global::System.Int32 modifiedBy, global::System.DateTime modifiedDate)
+        {
+            Week week = new Week();
+            week.WeekId = weekId;
+            week.EndDate = endDate;
+            week.Period = period;
+            week.StartDate = startDate;
+            week.Year = year;
+            week.CreatedBy = createdBy;
+            week.CreatedDate = createdDate;
+            week.ModifiedBy = modifiedBy;
+            week.ModifiedDate = modifiedDate;
+            return week;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 WeekId
+        {
+            get
+            {
+                return _WeekId;
+            }
+            set
+            {
+                if (_WeekId != value)
+                {
+                    OnWeekIdChanging(value);
+                    ReportPropertyChanging("WeekId");
+                    _WeekId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("WeekId");
+                    OnWeekIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _WeekId;
+        partial void OnWeekIdChanging(global::System.Int32 value);
+        partial void OnWeekIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime EndDate
+        {
+            get
+            {
+                return _EndDate;
+            }
+            set
+            {
+                OnEndDateChanging(value);
+                ReportPropertyChanging("EndDate");
+                _EndDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("EndDate");
+                OnEndDateChanged();
+            }
+        }
+        private global::System.DateTime _EndDate;
+        partial void OnEndDateChanging(global::System.DateTime value);
+        partial void OnEndDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Period
+        {
+            get
+            {
+                return _Period;
+            }
+            set
+            {
+                OnPeriodChanging(value);
+                ReportPropertyChanging("Period");
+                _Period = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Period");
+                OnPeriodChanged();
+            }
+        }
+        private global::System.Int32 _Period;
+        partial void OnPeriodChanging(global::System.Int32 value);
+        partial void OnPeriodChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime StartDate
+        {
+            get
+            {
+                return _StartDate;
+            }
+            set
+            {
+                OnStartDateChanging(value);
+                ReportPropertyChanging("StartDate");
+                _StartDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("StartDate");
+                OnStartDateChanged();
+            }
+        }
+        private global::System.DateTime _StartDate;
+        partial void OnStartDateChanging(global::System.DateTime value);
+        partial void OnStartDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Year
+        {
+            get
+            {
+                return _Year;
+            }
+            set
+            {
+                OnYearChanging(value);
+                ReportPropertyChanging("Year");
+                _Year = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Year");
+                OnYearChanged();
+            }
+        }
+        private global::System.Int32 _Year;
+        partial void OnYearChanging(global::System.Int32 value);
+        partial void OnYearChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CreatedBy
+        {
+            get
+            {
+                return _CreatedBy;
+            }
+            set
+            {
+                OnCreatedByChanging(value);
+                ReportPropertyChanging("CreatedBy");
+                _CreatedBy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedBy");
+                OnCreatedByChanged();
+            }
+        }
+        private global::System.Int32 _CreatedBy;
+        partial void OnCreatedByChanging(global::System.Int32 value);
+        partial void OnCreatedByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreatedDate
+        {
+            get
+            {
+                return _CreatedDate;
+            }
+            set
+            {
+                OnCreatedDateChanging(value);
+                ReportPropertyChanging("CreatedDate");
+                _CreatedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedDate");
+                OnCreatedDateChanged();
+            }
+        }
+        private global::System.DateTime _CreatedDate;
+        partial void OnCreatedDateChanging(global::System.DateTime value);
+        partial void OnCreatedDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ModifiedBy
+        {
+            get
+            {
+                return _ModifiedBy;
+            }
+            set
+            {
+                OnModifiedByChanging(value);
+                ReportPropertyChanging("ModifiedBy");
+                _ModifiedBy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModifiedBy");
+                OnModifiedByChanged();
+            }
+        }
+        private global::System.Int32 _ModifiedBy;
+        partial void OnModifiedByChanging(global::System.Int32 value);
+        partial void OnModifiedByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime ModifiedDate
+        {
+            get
+            {
+                return _ModifiedDate;
+            }
+            set
+            {
+                OnModifiedDateChanging(value);
+                ReportPropertyChanging("ModifiedDate");
+                _ModifiedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModifiedDate");
+                OnModifiedDateChanged();
+            }
+        }
+        private global::System.DateTime _ModifiedDate;
+        partial void OnModifiedDateChanging(global::System.DateTime value);
+        partial void OnModifiedDateChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Week_UserCreatedBy", "User")]
+        public User CreatedByUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Week_UserCreatedBy", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Week_UserCreatedBy", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> CreatedByUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Week_UserCreatedBy", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_Week_UserCreatedBy", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Week_UserModifiedBy", "User")]
+        public User ModifiedByUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Week_UserModifiedBy", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Week_UserModifiedBy", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> ModifiedByUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Week_UserModifiedBy", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_Week_UserModifiedBy", "User", value);
+                }
+            }
+        }
+
+        #endregion
     }
 
     #endregion

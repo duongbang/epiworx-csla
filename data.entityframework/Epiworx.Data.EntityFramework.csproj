@@ -73,6 +73,7 @@
     <Compile Include="StatusDataFactory.cs" />
     <Compile Include="StoryDataFactory.cs" />
     <Compile Include="UserDataFactory.cs" />
+    <Compile Include="WeekDataFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Application.edmx">

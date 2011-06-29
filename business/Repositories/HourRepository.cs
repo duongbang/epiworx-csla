@@ -72,6 +72,18 @@ namespace Epiworx.Business
                 });
         }
 
+        public static HourInfoList HourFetchInfoList(IUser user, int year)
+        {
+            var weeks = WeekRepository.WeekFetchInfoList(year);
+
+            return HourInfoList.FetchHourInfoList(
+                new HourDataCriteria
+                {
+                    UserId = user.UserId,
+                    Date = new DateRangeCriteria(weeks.Min(row => row.StartDate), weeks.Max(row => row.EndDate))
+                });
+        }
+
         public static HourInfoList HourFetchInfoList(HourDataCriteria criteria)
         {
             criteria.ProjectId = ProjectRepository.ProjectFetchInfoList()

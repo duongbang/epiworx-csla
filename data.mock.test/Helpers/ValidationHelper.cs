@@ -29,6 +29,9 @@ namespace Epiworx.Test.Helpers
                 case DbType.Decimal:
                     return obj.BrokenRulesCollection.Any(
                         brokenRule => brokenRule.RuleName == string.Format("rule://epiworx.core.validation.decimalrequired/{0}", propertyName));
+                case DbType.Date:
+                    return obj.BrokenRulesCollection.Any(
+                      brokenRule => brokenRule.RuleName == string.Format("rule://epiworx.core.validation.daterequired/{0}", propertyName));
                 case DbType.DateTime:
                     return obj.BrokenRulesCollection.Any(
                       brokenRule => brokenRule.RuleName == string.Format("rule://epiworx.core.validation.datetimerequired/{0}", propertyName));

@@ -4,6 +4,25 @@
     margin-left: 5px;
 }
 
+.bullet-graph
+{
+    margin-bottom: 20px;
+}
+
+.bullet-graph a
+{
+    float: right;
+}
+
+.bullet-graph h4
+{
+    margin-bottom: 5px;
+}
+
+.bullet-graph span
+{
+}
+
 .clear
 {
     display: block;
@@ -119,6 +138,20 @@
 {
     display: block;
     padding-bottom: 5px;
+}
+
+.hours
+{
+}
+
+.hours a
+{
+    float: right;
+}
+
+.hours strong
+{
+    margin-right: 5px;
 }
 
 .hgroup

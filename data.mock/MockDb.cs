@@ -26,6 +26,7 @@ namespace Epiworx.Data.Mock
         public static List<StatusData> Statuses { get; private set; }
         public static List<StoryData> Stories { get; private set; }
         public static List<UserData> Users { get; private set; }
+        public static List<WeekData> Weeks { get; private set; }
 
         static MockDb()
         {
@@ -83,6 +84,8 @@ namespace Epiworx.Data.Mock
                                 ModifiedDate = DateTime.Parse("1/1/2011")
                             }
                     };
+
+            Weeks = new List<WeekData>();
         }
 
         public static void LoadData<T>(T obj)

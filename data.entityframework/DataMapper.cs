@@ -346,5 +346,31 @@ namespace Epiworx.Data.EntityFramework
             destination.ModifiedDate = source.ModifiedDate;
             destination.CreatedDate = source.CreatedDate;
         }
+
+        internal static void Map(Week source, WeekData destination)
+        {
+            destination.WeekId = source.WeekId;
+            destination.EndDate = source.EndDate;
+            destination.Period = source.Period;
+            destination.StartDate = source.StartDate;
+            destination.Year = source.Year;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+            destination.ModifiedBy = source.ModifiedBy;
+            destination.ModifiedDate = source.ModifiedDate;
+        }
+
+        internal static void Map(WeekData source, Week destination)
+        {
+            destination.WeekId = source.WeekId;
+            destination.EndDate = source.EndDate;
+            destination.Period = source.Period;
+            destination.StartDate = source.StartDate;
+            destination.Year = source.Year;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+            destination.ModifiedBy = source.ModifiedBy;
+            destination.ModifiedDate = source.ModifiedDate;
+        }
     }
 }

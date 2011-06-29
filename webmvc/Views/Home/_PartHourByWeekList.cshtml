@@ -1,13 +1,9 @@
 ﻿@model Epiworx.WebMvc.Models.HomeIndexModel
 @using Epiworx.WebMvc.Helpers
-<script src="@Url.Content("~/Scripts/jquery.sparkline.min.js")" type="text/javascript"></script>
 <div class="part">
     <div class="wrapper">
         <h3>
             Your Hours for the Last 8 Weeks</h3>
-        <div class="chart">
-            <img src="@Url.Action("BarChart", "Chart", new { valuesX = Model.HoursForTrailingWeeks.ToStringOfDates(), valuesY = Model.HoursForTrailingWeeks.ToStringOfDurations() })" alt="Chart"/>
-         </div>
         <table>
             <thead>
                 <tr>

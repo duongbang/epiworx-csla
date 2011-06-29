@@ -109,6 +109,9 @@
     <Compile Include="User\IUserDataFactory.cs" />
     <Compile Include="User\UserData.cs" />
     <Compile Include="User\UserDataCriteria.cs" />
+    <Compile Include="Week\IWeekDataFactory.cs" />
+    <Compile Include="Week\WeekData.cs" />
+    <Compile Include="Week\WeekDataCriteria.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\core\Epiworx.Core.csproj">

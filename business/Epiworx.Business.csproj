@@ -164,6 +164,7 @@
     <Compile Include="Repositories\StatusRepository.cs" />
     <Compile Include="Repositories\StoryRepository.cs" />
     <Compile Include="Repositories\UserPasswordResetRepository.cs" />
+    <Compile Include="Repositories\WeekRepository.cs" />
     <Compile Include="Role\Role.cs" />
     <Compile Include="SourceType\SourceType.cs" />
     <Compile Include="Source\ISource.cs" />
@@ -248,6 +249,19 @@
     <Compile Include="User\User\User.Methods.cs" />
     <Compile Include="User\User\User.Properties.cs" />
     <Compile Include="User\User\User.Rules.cs" />
+    <Compile Include="Week\IWeek.cs" />
+    <Compile Include="Week\WeekInfoList\WeekInfoList.cs" />
+    <Compile Include="Week\WeekInfoList\WeekInfoList.Data.cs" />
+    <Compile Include="Week\WeekInfoList\WeekInfoList.Methods.cs" />
+    <Compile Include="Week\WeekInfoList\WeekInfoList.Rules.cs" />
+    <Compile Include="Week\WeekInfo\WeekInfo.cs" />
+    <Compile Include="Week\WeekInfo\WeekInfo.Data.cs" />
+    <Compile Include="Week\WeekInfo\WeekInfo.Properties.cs" />
+    <Compile Include="Week\Week\Week.cs" />
+    <Compile Include="Week\Week\Week.Data.cs" />
+    <Compile Include="Week\Week\Week.Methods.cs" />
+    <Compile Include="Week\Week\Week.Properties.cs" />
+    <Compile Include="Week\Week\Week.Rules.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Packages.config" />

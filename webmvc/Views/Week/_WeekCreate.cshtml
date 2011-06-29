@@ -1,0 +1,14 @@
+﻿@model Epiworx.WebMvc.Models.WeekCreateModel
+@using Epiworx.WebMvc.Helpers
+<fieldset>
+    <legend>Week</legend>
+    <label for="Year">
+        Year</label>
+    @Html.TextBoxFor(m => Model.Year, new { @class = "number" })
+    <label for="StartDate">
+        Start on</label>
+    @Html.TextBoxFor(m => Model.StartDate, new { @class = "date" })
+    <label for="NumberOfPeriods">
+        Number of periods</label>
+    @Html.TextBoxFor(m => Model.NumberOfPeriods, new { @class = "number" })
+</fieldset>

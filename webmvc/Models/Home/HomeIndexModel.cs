@@ -15,6 +15,7 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<HourInfo> Hours { get; set; }
         public IEnumerable<HourSummaryByDate> HoursForCurrentWeek { get; set; }
         public IEnumerable<HourSummaryByDate> HoursForTrailingWeeks { get; set; }
+        public IEnumerable<HourSummary> HourSummaries { get; set; }
         public FeedListModel FeedListModel { get; set; }
 
         public HomeIndexModel()
@@ -22,6 +23,7 @@ namespace Epiworx.WebMvc.Models
             this.Title = "Dashboard";
             this.HoursForCurrentWeek = new List<HourSummaryByDate>();
             this.HoursForTrailingWeeks = new List<HourSummaryByDate>();
+            this.HourSummaries = new List<HourSummary>();
             this.FeedListModel = new FeedListModel();
         }
     }

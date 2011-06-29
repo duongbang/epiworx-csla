@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\WeekController.cs" />
     <Compile Include="Controllers\NoteAttachmentController.cs" />
     <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\FeedController.cs" />
@@ -99,6 +100,10 @@
     <Compile Include="Models\Account\AccountRegisterSuccessModel.cs" />
     <Compile Include="Models\Attachment\AttachmentFormModel.cs" />
     <Compile Include="Models\Attachment\AttachmentListModel.cs" />
+    <Compile Include="Models\HourSummary.cs" />
+    <Compile Include="Models\Week\WeekCreateModel.cs" />
+    <Compile Include="Models\Week\WeekEditModel.cs" />
+    <Compile Include="Models\Week\WeekListModel.cs" />
     <Compile Include="Models\Feed\FeedListModel.cs" />
     <Compile Include="Models\Find\FindIndexModel.cs" />
     <Compile Include="Models\HourSummaryByDate.cs" />
@@ -403,13 +408,37 @@
     <Content Include="Views\NoteAttachment\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_PartAttachmentList.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Find\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_FeedList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Week\_PartYearList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Week\_WeekEdit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Week\_WeekEditCommands.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Week\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Week\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Week\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Week\_WeekCreateCommands.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Week\_WeekCreate.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\_PartHourSummaryList.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
