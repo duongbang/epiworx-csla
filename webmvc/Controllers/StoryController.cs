@@ -13,7 +13,21 @@ namespace Epiworx.WebMvc.Controllers
     [Authorize]
     public class StoryController : Controller
     {
-        public ActionResult Index(
+        public ActionResult Index()
+        {
+            var model = new StoryIndexModel();
+            var criteria = new StoryDataCriteria
+            {
+                IsArchived = false,
+            };
+            var stories = StoryRepository.StoryFetchInfoList(criteria);
+
+            model.Stories = stories;
+
+            return this.View(model);
+        }
+
+        public ActionResult List(
             string createdDate,
             string description,
             string isArchived,

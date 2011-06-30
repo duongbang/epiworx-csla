@@ -59,6 +59,8 @@ namespace Epiworx.WebMvc.Controllers
         {
             this.FormsService.SignOut();
 
+            this.Session["EPIWORXUSER"] = null;
+
             BusinessPrincipal.Logout();
 
             return this.RedirectToAction("Index", "Home");

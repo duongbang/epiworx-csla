@@ -25,7 +25,8 @@
         @foreach (var project in Model.Projects.OrderBy(row => row.Name))
         { 
             <tr data-active="@project.IsActive" data-archived="@project.IsArchived">
-                <td>@Html.ActionLink(project.Name, "Details", new { id = project.ProjectId }, new { title = @project.Description })
+                <td>@Html.ActionLink(project.Name, "Details", new { id = project.ProjectId }, null)
+                    <div class="clip" title="@project.Description">@project.Description</div>
                 </td>
                 <td>
                     @if (Model.Notes.Count() != 0)
@@ -52,13 +53,12 @@
         }
     </tbody>
 </table>
-
 <script type="text/javascript">
 
     $("table.projects tr[data-active='False']").hide();
 
-    $(".filter a").click(function () {
-        event.preventDefault();
+    $(".filter a").click(function (e) {
+        e.preventDefault();
         $(".filter li").removeClass("selected");
         $(this).parent("li").addClass("selected");
         $("table.projects tr").hide();

@@ -99,7 +99,9 @@
     <Compile Include="Models\Account\AccountRegisterSuccessModel.cs" />
     <Compile Include="Models\Attachment\AttachmentFormModel.cs" />
     <Compile Include="Models\Attachment\AttachmentListModel.cs" />
+    <Compile Include="Models\Hour\HourIndexModel.cs" />
     <Compile Include="Models\HourSummary.cs" />
+    <Compile Include="Models\Story\StoryIndexModel.cs" />
     <Compile Include="Models\Week\WeekCreateModel.cs" />
     <Compile Include="Models\Week\WeekEditModel.cs" />
     <Compile Include="Models\Week\WeekListModel.cs" />
@@ -166,6 +168,10 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
+    <Content Include="Views\Hour\List.cshtml" />
+    <Content Include="Views\Hour\_PartYearList.cshtml" />
+    <Content Include="Views\Story\List.cshtml" />
+    <Content Include="Views\Story\_PartFilterList.cshtml" />
     <None Include="Web.config" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -180,7 +186,7 @@
     <Content Include="Views\Shared\_LayoutHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Packages.config" />
+    <None Include="Packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\ChangePassword.cshtml" />

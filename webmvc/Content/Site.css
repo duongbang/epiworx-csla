@@ -25,8 +25,7 @@
 
 .clip
 {
-    line-height: 100%;
-    white-space: nowrap;
+    height: 16px;
     overflow: hidden;
     margin-right: 20px;
 }
@@ -211,6 +210,11 @@
     margin-bottom: 10px;
 }
 
+.part h4
+{
+    margin-bottom: 10px;
+}
+
 .part ul
 {
     margin-bottom: 20px;
@@ -219,6 +223,21 @@
 .part li
 {
     margin-bottom: 10px;
+}
+
+.part li .action
+{
+}
+
+.part .filter
+{
+    background-color: inherit;
+    padding: 0px;
+}
+
+.part .filter li
+{ 
+    display: block;
 }
 
 .primary
@@ -275,31 +294,31 @@
     display: inline;
 }
 
-.stories
+ul.stories
 {
     font-size: 18px;
 }
 
-.stories em
+ul.stories em
 {
     font-style: normal;
     color: #000000;
     font-weight: bold;
 }
 
-.stories li
+ul.stories li
 {
     margin-bottom: 10px;
 }
 
-.stories li a
+ul.stories li a
 {
     font-size: 18px;
     margin: 0px;
     font-weight: bold;
 }
 
-.stories strong
+ul.stories strong
 {
     float: left;
     color: #808080;
@@ -309,13 +328,13 @@
     width: 55px;
 }
 
-.stories .assignment
+ul.stories .assignment
 {
     float: right;
     font-size: 14px;
 }
 
-.stories .date
+ul.stories .date
 {
     display: block;
     font-size: 14px;
@@ -513,6 +532,11 @@ a
     color: #CC0000;
 }
 
+a.big
+{
+    font-size: 24px;
+}
+
 a:hover
 {
     color: #000;
@@ -622,6 +646,11 @@ legend
 table
 {
     width: 100%;
+}
+
+table.projects .clip
+{
+    padding-top: 5px;
 }
 
 tr

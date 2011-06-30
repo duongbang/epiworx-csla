@@ -22,8 +22,8 @@
 
     $(".part .projects li[data-active='False']").hide();
 
-    $(".part .filter a").click(function () {
-        event.preventDefault();
+    $(".part .filter a").click(function (e) {
+        e.preventDefault();
         $(".filter li").removeClass("selected");
         $(this).parent("li").addClass("selected");
         $(".part .projects li").hide();

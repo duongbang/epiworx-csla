@@ -1,0 +1,61 @@
+﻿@model Epiworx.WebMvc.Models.HourListModel
+@using Epiworx.WebMvc.Helpers
+<div class="hgroup">
+    <h2>
+        Stories</h2>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 80px">
+                Date
+            </th>
+            <th style="width: 100px">
+                Story
+            </th>
+            <th style="width: 100px">
+                User
+            </th>
+            <th style="width: 200px">
+                Project
+            </th>
+            <th>
+                Notes
+            </th>
+            <th class="number">
+                Duration
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var hour in Model.Hours)
+        { 
+            <tr>
+                <td class="first">
+                    @Html.ActionLink(hour.Date.ToShortDateString(), "Edit", new { id = hour.HourId })
+                </td>
+                <td>
+                    @Html.ActionLink(hour.StoryId.ToString(), "Details", "Hour", new { id = hour.StoryId })
+                </td>
+                <td>@hour.UserName
+                </td>
+                <td>@hour.ProjectName
+                </td>
+                <td>@hour.Notes
+                </td>
+                <td class="number">@hour.Duration.ToString("F2")
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5">
+                Total
+            </td>
+            <td class="number">
+                @Model.Hours.Sum(row => row.Duration).ToString("F2")
+            </td>
+        </tr>
+    </tfoot>
+</table>

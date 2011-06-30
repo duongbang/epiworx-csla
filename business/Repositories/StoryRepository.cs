@@ -50,9 +50,13 @@ namespace Epiworx.Business
 
         public static StoryInfoList StoryFetchInfoList(StoryDataCriteria criteria)
         {
-            criteria.ProjectId = ProjectRepository.ProjectFetchInfoList()
-                .Select(row => row.ProjectId)
-                .ToArray();
+            var projects = ProjectRepository.ProjectFetchInfoList()
+                .Select(row => row.ProjectId);
+
+            if (criteria.ProjectId == null)
+            {
+                criteria.ProjectId = projects.ToArray();
+            }
 
             return StoryInfoList.FetchStoryInfoList(criteria);
         }

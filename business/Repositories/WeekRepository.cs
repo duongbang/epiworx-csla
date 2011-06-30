@@ -58,6 +58,12 @@ namespace Epiworx.Business
                 });
         }
 
+        public static WeekInfoList WeekFetchInfoList()
+        {
+            return WeekInfoList.FetchWeekInfoList(
+                new WeekDataCriteria());
+        }
+
         public static WeekInfoList WeekFetchInfoList(int year)
         {
             return WeekInfoList.FetchWeekInfoList(

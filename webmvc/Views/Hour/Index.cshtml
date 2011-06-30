@@ -1,51 +1,73 @@
-﻿@model Epiworx.WebMvc.Models.HourListModel
+﻿@model Epiworx.WebMvc.Models.HourIndexModel
 @using Epiworx.WebMvc.Helpers
 <div class="hgroup">
     <h2>
-        Stories</h2>
+        Hours</h2>
 </div>
 <table>
     <thead>
         <tr>
-            <th class="first" style="width: 80px">
-                Date
+            <th style="width: 100px;">
+                Period
             </th>
-            <th style="width: 100px">
-                Story
-            </th>
-            <th style="width: 100px">
-                User
-            </th>
-            <th style="width: 200px">
-                Project
+            <th style="width: 150px;">
+                Start on
             </th>
             <th>
-                Notes
+                End on
             </th>
-            <th class="last" style="width: 100px">
+            <th class="number">
                 Duration
             </th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var hour in Model.Hours)
-        { 
+        @{      
+            var currentPeriod = 0;
+        }
+        @foreach (var week in Model.Weeks
+                .Where(row => row.StartDate <= DateTime.Now.Date)
+                .OrderByDescending(row => row.StartDate))
+        {
             <tr>
-                <td class="first">
-                    @Html.ActionLink(hour.Date.ToShortDateString(), "Edit", new { id = hour.HourId })
-                </td>
                 <td>
-                    @Html.ActionLink(hour.StoryId.ToString(), "Details", "Hour", new { id = hour.StoryId })
+                    @if (currentPeriod != week.Period)
+                    { 
+                        <text>@week.Period</text> 
+                        currentPeriod = week.Period;
+                    }
+                    else
+                    {  
+                        <text>&nbsp;</text>
+                    }
                 </td>
-                <td>@hour.UserName
+                <td>@week.StartDate.ToShortDateString()
                 </td>
-                <td>@hour.ProjectName
+                <td>@week.EndDate.ToShortDateString()
                 </td>
-                <td>@hour.Notes
-                </td>
-                <td>@hour.Duration.ToString("F2")
+                <td class="number">
+                    @{ 
+            var duration = Model.Hours.Where(row => row.Date >= week.StartDate && row.Date <= week.EndDate).Sum(row => row.Duration);
+            var userId = Model.UserId;
+            var date = string.Format("{0:d},{1:d}", week.StartDate, week.EndDate);
+                    }
+                    @Html.ActionLink(duration.ToString("F2"), "List", "Hour", new { userId, date }, null)
                 </td>
             </tr>
         }
     </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">
+                Total
+            </td>
+            <td class="number">
+                @Model.Hours.Sum(row => row.Duration).ToString("F2")
+            </td>
+        </tr>
+    </tfoot>
 </table>
+@section SideBar
+{
+    @Html.Partial("_PartYearList")
+}

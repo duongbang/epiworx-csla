@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Epiworx.Business;
+using Epiworx.Business.Security;
+
 using Epiworx.Data;
 using Epiworx.WebMvc.Helpers;
 using Epiworx.WebMvc.Models;
@@ -13,7 +15,36 @@ namespace Epiworx.WebMvc.Controllers
     [Authorize]
     public class HourController : Controller
     {
-        public ActionResult Index(
+        public ActionResult Index(int? year)
+        {
+            var model = new HourIndexModel();
+
+            var weeks = WeekRepository.WeekFetchInfoList();
+            var startDate = weeks
+                .Where(row => row.Year == DateTime.Now.Year || row.Year == year)
+                .Min(row => row.StartDate);
+            var endDate = weeks
+                .Where(row => row.Year == DateTime.Now.Year || row.Year == year)
+                .Max(row => row.StartDate);
+
+            model.UserId = ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
+
+            var criteria = new HourDataCriteria
+            {
+                Date = CriteriaHelper.ToDateRangeCriteria(startDate, endDate),
+                UserId = model.UserId
+            };
+
+            var hours = HourRepository.HourFetchInfoList(criteria);
+
+            model.Hours = hours;
+            model.Weeks = weeks.Where(row => row.Year == DateTime.Now.Year || row.Year == year);
+            model.Years = weeks.Select(row => row.Year).Distinct();
+
+            return this.View(model);
+        }
+
+        public ActionResult List(
             string createdDate,
             string date,
             string isArchived,

@@ -1,16 +1,16 @@
-﻿@model Epiworx.WebMvc.Models.StoryIndexModel
+﻿@model Epiworx.WebMvc.Models.StoryListModel
 @using Epiworx.WebMvc.Helpers
 <div class="hgroup">
     <h2>
         Stories</h2>
 </div>
-<table class="stories">
+<table>
     <thead>
         <tr>
             <th style="width: 60px">
                 No.
             </th>
-            <th style="width: 250px">
+            <th style="width: 300px">
                 Project
             </th>
             <th style="width: 100px">
@@ -27,7 +27,7 @@
     <tbody>
         @foreach (var story in Model.Stories)
         { 
-            <tr data-project-name="@story.ProjectName" data-status-name="@story.StatusName" data-assigned-to-name="@story.AssignedToName">
+            <tr>
                 <td>
                     @Html.ActionLink(story.StoryId.ToString(), "Details", new { id = story.StoryId })
                 </td>
@@ -54,7 +54,3 @@
         </tr>
     </tfoot>
 </table>
-@section SideBar
-{
-    @Html.Partial("_PartFilterList")
-}

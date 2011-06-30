@@ -10,6 +10,13 @@ namespace Epiworx.WebMvc.Helpers
 {
     public class CriteriaHelper
     {
+        public static DateRangeCriteria ToDateRangeCriteria(DateTime startDate, DateTime endDate)
+        {
+            var result = new DateRangeCriteria(startDate, endDate);
+
+            return result;
+        }
+
         public static DateRangeCriteria ToDateRangeCriteria(string value)
         {
             var result = new DateRangeCriteria();

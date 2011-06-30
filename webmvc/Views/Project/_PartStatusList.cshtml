@@ -6,8 +6,9 @@
         <ul>
             @foreach (var status in Model.Statuses)
             {
-                <li>@Html.ActionLink(status.Name, "Edit", "Status", new { id = status.StatusId }, null)</li>
+                <li>@Html.ActionLink(status.Name, "List", "Story", new { projectId = Model.Project.ProjectId, statusId = status.StatusId, isArchived = "false" }, null)@Html.ActionLink("Edit", "Edit", "Status", new { id = status.StatusId }, new { @class = "action" })</li>
             }
+                <li>@Html.ActionLink("Archived", "List", "Story", new { projectId = Model.Project.ProjectId, isArchived = "true" }, null)</li>
         </ul>
     </div>
 </div>
