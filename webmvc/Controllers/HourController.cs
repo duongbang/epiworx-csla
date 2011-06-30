@@ -46,18 +46,7 @@ namespace Epiworx.WebMvc.Controllers
 
         public ActionResult Details(int id)
         {
-            var model = new HourFormModel();
-            var hour = HourRepository.HourFetch(id);
-
-            model.Title = string.Format("Hour {0:d}", hour.Date);
-            model.Hour = hour;
-            model.Story = StoryRepository.StoryFetch(hour.StoryId);
-            model.Actions.Add("Edit this hour", Url.Action("Edit", new { id }), "primary");
-            model.Actions.Add("Add an email", string.Empty);
-            model.Actions.Add("Add an attachment", Url.Action("Create", "Note", new { sourceId = id, sourceTypeId = (int)SourceType.Hour }));
-            model.Actions.Add("Add a note", Url.Action("Create", "Attachment", new { sourceId = id, sourceTypeId = (int)SourceType.Hour }));
-
-            return this.View(model);
+            return this.RedirectToAction("Edit", new { id });
         }
 
         public ActionResult Create(int storyId)

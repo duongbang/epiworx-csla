@@ -4,7 +4,13 @@
     <h2>
         Projects</h2>
 </div>
-<table>
+<ul class="filter">
+    <li><strong>Filters</strong></li>
+    <li class="selected"><a href="" data-filter="Active">Active</a></li>
+    <li><a href="" data-filter="Inactive">Inactive</a></li>
+    <li><a href="" data-filter="Archived">Archived</a></li>
+</ul>
+<table class="projects">
     <thead>
         <tr>
             <th style="width: 400px;">
@@ -18,8 +24,8 @@
     <tbody>
         @foreach (var project in Model.Projects.OrderBy(row => row.Name))
         { 
-            <tr>
-                <td>@Html.ActionLink(project.Name, "Details", new { id = project.ProjectId }, new { title = @project.Description } )
+            <tr data-active="@project.IsActive" data-archived="@project.IsArchived">
+                <td>@Html.ActionLink(project.Name, "Details", new { id = project.ProjectId }, new { title = @project.Description })
                 </td>
                 <td>
                     @if (Model.Notes.Count() != 0)
@@ -46,3 +52,27 @@
         }
     </tbody>
 </table>
+
+<script type="text/javascript">
+
+    $("table.projects tr[data-active='False']").hide();
+
+    $(".filter a").click(function () {
+        event.preventDefault();
+        $(".filter li").removeClass("selected");
+        $(this).parent("li").addClass("selected");
+        $("table.projects tr").hide();
+        switch ($(this).data("filter")) {
+            case "Active":
+                $("table.projects tr[data-active='True']").show();
+                break;
+            case "Inactive":
+                $("table.projects tr[data-active='False'][data-archived='False']").show();
+                break;
+            case "Archived":
+                $("table.projects tr[data-archived='True']").show();
+                break;
+        }
+    });
+
+</script>

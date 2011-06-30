@@ -3,12 +3,41 @@
     <div class="wrapper">
         <h3>
             Your Projects</h3>
-        <ul>
+        <ul class="filter">
+            <li><strong>Filters</strong></li>
+            <li class="selected"><a href="" data-filter="Active">Active</a></li>
+            <li><a href="" data-filter="Inactive">Inactive</a></li>
+            <li><a href="" data-filter="Archived">Archived</a></li>
+        </ul>
+        <ul class="projects">
             @foreach (var project in Model.Projects)
             {
-                <li>@Html.ActionLink(project.Name, "Details", "Project", new { id = project.ProjectId }, null)</li>
+                <li data-active="@project.IsActive" data-archived="@project.IsArchived">@Html.ActionLink(project.Name, "Details", "Project", new { id = project.ProjectId }, null)</li>
             }
         </ul>
         @Html.ActionLink("Add a new project", "Create", "Project")
     </div>
 </div>
+<script type="text/javascript">
+
+    $(".part .projects li[data-active='False']").hide();
+
+    $(".part .filter a").click(function () {
+        event.preventDefault();
+        $(".filter li").removeClass("selected");
+        $(this).parent("li").addClass("selected");
+        $(".part .projects li").hide();
+        switch ($(this).data("filter")) {
+            case "Active":
+                $(".part .projects li[data-active='True']").show();
+                break;
+            case "Inactive":
+                $(".part .projects li[data-active='False'][data-archived='False']").show();
+                break;
+            case "Archived":
+                $(".part .projects li[data-archived='True']").show();
+                break;
+        }
+    });
+
+</script>

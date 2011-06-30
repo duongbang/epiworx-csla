@@ -148,6 +148,30 @@
     padding-bottom: 5px;
 }
 
+.filter
+{
+    padding: 10px;
+    background-color: #E8E8E8;
+    margin-bottom: 20px;
+}
+
+.filter li
+{
+    display: inline;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.filter li.selected
+{
+    font-weight: bold;
+}
+
+.filter li.selected a
+{
+    color: #000;
+}
+
 .hours
 {
 }
@@ -185,6 +209,11 @@
 .part h3
 {
     margin-bottom: 10px;
+}
+
+.part ul
+{
+    margin-bottom: 20px;
 }
 
 .part li
@@ -595,10 +624,20 @@ table
     width: 100%;
 }
 
+tr
+{
+}
+
 th, td
 {
     padding: 10px 0px 10px 0px;
     text-align: left;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+th
+{
+    border-bottom-width: 3px;
 }
 
 th.number, td.number
