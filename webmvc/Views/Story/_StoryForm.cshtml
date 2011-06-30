@@ -15,7 +15,8 @@
         <option value="0">Select a status...</option>
         @foreach (var status in Model.Statuses)
         { 
-            <option value="@status.StatusId"@if (Model.Story.StatusId == status.StatusId) {<text> selected</text>}>@status.Name</option>
+            <option value="@status.StatusId"@if (Model.Story.StatusId == status.StatusId)
+                                            {<text> selected</text>}>@status.Name</option>
         }
     </select>
     <label for="SprintId">
@@ -24,24 +25,36 @@
         <option value="0">Select a sprint...</option>
         @foreach (var sprint in Model.Sprints)
         { 
-            <option value="@sprint.SprintId"@if (Model.Story.SprintId == sprint.SprintId) {<text> selected</text>}>@sprint.Name</option>
+            <option value="@sprint.SprintId"@if (Model.Story.SprintId == sprint.SprintId)
+                                            {<text> selected</text>}>@sprint.Name</option>
         }
     </select>
-     <label for="AssignedTo">
+    <label for="AssignedTo">
         Assigned To</label>
     <select id="AssignedTo" name="AssignedTo">
         <option value="0">Select a user...</option>
         @foreach (var user in Model.Users)
         { 
-            <option value="@user.UserId"@if (Model.Story.AssignedTo == user.UserId) {<text> selected</text>}>@user.UserName</option>
+            <option value="@user.UserId"@if (Model.Story.AssignedTo == user.UserId)
+                                        {<text> selected</text>}>@user.UserName</option>
         }
     </select>
-   <label for="EstimatedCompletedDate">
+    <label for="EstimatedCompletedDate">
         Estimated Completed On</label>
     <input type="text" id="EstimatedCompletedDate" name="EstimatedCompletedDate" value="@Model.Story.EstimatedCompletedDate.ToShortDateString()" class="date" />
     <label for="EstimatedDuration">
         Estimated Duration</label>
-    <input type="text" id="EstimatedDuration" name="EstimatedDuration" value="@Model.Story.EstimatedDuration" class="number" />
+    <select id="EstimatedDuration" name="EstimatedDuration">
+        <option value=".5"@if((double)Model.Story.EstimatedDuration == 0.5) {<text> selected</text>}>½</option>
+        <option value="1"@if((double)Model.Story.EstimatedDuration == 1) {<text> selected</text>}>1</option>
+        <option value="2"@if((double)Model.Story.EstimatedDuration == 2) {<text> selected</text>}>2</option>
+        <option value="4"@if((double)Model.Story.EstimatedDuration == 4) {<text> selected</text>}>4</option>
+        <option value="8"@if((double)Model.Story.EstimatedDuration == 8) {<text> selected</text>}>8</option>
+        <option value="16"@if((double)Model.Story.EstimatedDuration == 16) {<text> selected</text>}>16</option>
+        <option value="24"@if((double)Model.Story.EstimatedDuration == 24) {<text> selected</text>}>24</option>
+        <option value="32"@if((double)Model.Story.EstimatedDuration == 32) {<text> selected</text>}>32</option>
+        <option value="40"@if((double)Model.Story.EstimatedDuration == 40) {<text> selected</text>}>40</option>
+    </select>
     <label for="IsArchived">
         <input type="checkbox" id="IsArchived" name="IsArchived" @Html.ToChecked(Model.Story.IsArchived)/>This
         story is archived</label>

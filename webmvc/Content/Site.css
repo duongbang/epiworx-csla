@@ -229,13 +229,13 @@
 {
 }
 
-.part .filter
+.part .filter.block
 {
     background-color: inherit;
     padding: 0px;
 }
 
-.part .filter li
+.part .filter.block li
 { 
     display: block;
 }

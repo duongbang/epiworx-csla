@@ -196,7 +196,7 @@ namespace Epiworx.WebMvc.Controllers
             destination.AssignedTo = int.Parse(source["AssignedTo"]);
             destination.Description = source["Description"];
             destination.EstimatedCompletedDate = DateTime.Parse(source["EstimatedCompletedDate"]);
-            destination.EstimatedDuration = int.Parse(source["EstimatedDuration"]);
+            destination.EstimatedDuration = decimal.Parse(source["EstimatedDuration"]);
             destination.IsArchived = ModelHelper.ToBoolean(source["IsArchived"]);
             destination.SprintId = int.Parse(source["SprintId"]);
             destination.StatusId = int.Parse(source["StatusId"]);

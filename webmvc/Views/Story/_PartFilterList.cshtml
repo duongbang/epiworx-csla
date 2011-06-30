@@ -1,11 +1,11 @@
 ﻿@model Epiworx.WebMvc.Models.StoryIndexModel
-<div class="part filters">
+<div class="part">
     <div class="wrapper">
         <h3>
             Filters</h3>
         <h4>
             Projects</h4>
-        <ul class="filter" data-filter="project-name">
+        <ul class="filter block" data-filter="project-name">
             @foreach (var projectName in Model.Stories.Select(row => row.ProjectName).Distinct().OrderBy(row => row))
             {
                 <li data-filter-value="@projectName"><a href="">@projectName</a></li>
@@ -13,7 +13,7 @@
         </ul>
         <h4>
             Statuses</h4>
-        <ul class="filter" data-filter="status-name">
+        <ul class="filter block" data-filter="status-name">
             @foreach (var statusName in Model.Stories.Select(row => row.StatusName).Distinct().OrderBy(row => row))
             {
                 <li data-filter-value="@statusName"><a href="">@statusName</a></li>
@@ -21,7 +21,7 @@
         </ul>
         <h4>
             Assignments</h4>
-        <ul class="filter" data-filter="assigned-to-name">
+        <ul class="filter block" data-filter="assigned-to-name">
             @foreach (var assignedToName in Model.Stories.Select(row => row.AssignedToName).Distinct().OrderBy(row => row))
             {
                 <li data-filter-value="@assignedToName"><a href="">@assignedToName</a></li>
