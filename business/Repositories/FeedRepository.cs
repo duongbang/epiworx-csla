@@ -51,6 +51,15 @@ namespace Epiworx.Business
         {
             var feed = FeedRepository.FeedNew(action, SourceType.Hour, hour.HourId);
 
+            if (action == FeedAction.Edited)
+            {
+                feed.Description = "I really want to show edit fields here, somebody please help!";
+            }
+            else
+            {
+                feed.Description = hour.Notes;
+            }
+
             feed.Sources.Add(SourceType.Project, hour.ProjectId);
             feed.Sources.Add(SourceType.Story, hour.StoryId);
             feed.Sources.Add(SourceType.User, hour.UserId);
@@ -86,7 +95,11 @@ namespace Epiworx.Business
         {
             var feed = FeedRepository.FeedNew(action, SourceType.Project, project.ProjectId);
 
-            if (action == FeedAction.Created)
+            if (action == FeedAction.Edited)
+            {
+                feed.Description = "I really want to show edit fields here, somebody please help!";
+            }
+            else
             {
                 feed.Description = project.Description;
             }
@@ -107,7 +120,11 @@ namespace Epiworx.Business
         {
             var feed = FeedRepository.FeedNew(action, SourceType.Sprint, sprint.SprintId);
 
-            if (action == FeedAction.Created)
+            if (action == FeedAction.Edited)
+            {
+                feed.Description = "I really want to show edit fields here, somebody please help!";
+            }
+            else
             {
                 feed.Description = sprint.Description;
             }
@@ -130,7 +147,11 @@ namespace Epiworx.Business
         {
             var feed = FeedRepository.FeedNew(action, SourceType.Story, story.StoryId);
 
-            if (action == FeedAction.Created)
+            if (action == FeedAction.Edited)
+            {
+                feed.Description = "I really want to show edit fields here, somebody please help!";
+            }
+            else
             {
                 feed.Description = story.Description;
             }
