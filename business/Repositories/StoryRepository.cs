@@ -12,11 +12,15 @@ namespace Epiworx.Business
     {
         public static Story StoryFetch(int storyId)
         {
-            return Story.FetchStory(
+            var result = Story.FetchStory(
                 new StoryDataCriteria
                 {
                     StoryId = storyId
                 });
+
+            result.Auditor = new StoryAuditor(result.Clone());
+
+            return result;
         }
 
         public static StoryInfoList StoryFetchInfoList()
@@ -97,6 +101,11 @@ namespace Epiworx.Business
 
         public static Story StoryUpdate(Story story)
         {
+            if (!story.IsDirty)
+            {
+                return story;
+            }
+
             story = story.Save();
 
             SourceRepository.SourceUpdate(story.StoryId, SourceType.Story, story.StoryId.ToString());

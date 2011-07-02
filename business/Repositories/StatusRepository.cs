@@ -12,11 +12,15 @@ namespace Epiworx.Business
     {
         public static Status StatusFetch(int statusId)
         {
-            return Status.FetchStatus(
+            var result = Status.FetchStatus(
                 new StatusDataCriteria
                 {
                     StatusId = statusId
                 });
+
+            result.Auditor = new StatusAuditor(result.Clone());
+
+            return result;
         }
 
         public static StatusInfoList StatusFetchInfoList(int projectId)
@@ -69,6 +73,11 @@ namespace Epiworx.Business
 
         public static Status StatusUpdate(Status status)
         {
+            if (!status.IsDirty)
+            {
+                return status;
+            }
+
             ProjectUserRepository.AuthorizeProjectUser(status.ProjectId);
 
             status = status.Save();

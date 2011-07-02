@@ -50,6 +50,11 @@ namespace Epiworx.WebMvc.Controllers
             return this.View(model);
         }
 
+        public ActionResult Details(int id)
+        {
+            return this.RedirectToAction("Edit", new { id });
+        }
+
         public ActionResult Edit(int id)
         {
             var model = new StatusFormModel();

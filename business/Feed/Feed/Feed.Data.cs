@@ -73,7 +73,7 @@ namespace Epiworx.Business
                     this.FeedId = data.FeedId;
                 }
 
-                this.FieldManager.UpdateChildren(data);
+                this.FieldManager.UpdateChildren(this);
             }
         }
 

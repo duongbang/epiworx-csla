@@ -43,7 +43,7 @@ namespace Epiworx.Business
         }
 
         [Csla.Transactional(Csla.TransactionalTypes.TransactionScope)]
-        protected void Child_Insert(FeedData parentData)
+        protected void Child_Insert(Feed parent)
         {
             using (var dalManager = DataFactoryManager.GetManager())
             {
@@ -53,7 +53,7 @@ namespace Epiworx.Business
 
                 using (this.BypassPropertyChecks)
                 {
-                    this.FeedId = parentData.FeedId;
+                    this.FeedId = parent.FeedId;
                     this.CreatedBy = ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
                     this.CreatedDate = DateTime.Now;
 
@@ -72,7 +72,7 @@ namespace Epiworx.Business
         }
 
         [Csla.Transactional(Csla.TransactionalTypes.TransactionScope)]
-        protected void Child_Update(FeedData parent)
+        protected void Child_Update(Feed parent)
         {
             using (var dalManager = DataFactoryManager.GetManager())
             {

@@ -6,9 +6,10 @@
         }
         <h1>
             Epiworx</h1>
+        @if (Request.IsAuthenticated)
+        {
+            @Html.Partial("_LayoutHeaderMenu")
+        }
     </div>
+    <div class="clear"></div>
 </div>
-@if (Request.IsAuthenticated)
-{
-    @Html.Partial("_LayoutHeaderMenu")
-}

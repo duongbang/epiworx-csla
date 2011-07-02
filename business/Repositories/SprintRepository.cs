@@ -12,11 +12,15 @@ namespace Epiworx.Business
     {
         public static Sprint SprintFetch(int sprintId)
         {
-            return Sprint.FetchSprint(
+            var result = Sprint.FetchSprint(
                 new SprintDataCriteria
                 {
                     SprintId = sprintId
                 });
+
+            result.Auditor = new SprintAuditor(result.Clone());
+
+            return result;
         }
 
         public static SprintInfoList SprintFetchInfoList(int projectId)
@@ -71,6 +75,11 @@ namespace Epiworx.Business
 
         public static Sprint SprintUpdate(Sprint sprint)
         {
+            if (!sprint.IsDirty)
+            {
+                return sprint;
+            }
+
             sprint = sprint.Save();
 
             SourceRepository.SourceUpdate(sprint.SprintId, SourceType.Sprint, sprint.Name);

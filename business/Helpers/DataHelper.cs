@@ -24,23 +24,6 @@ namespace Epiworx.Business.Helpers
             }
         }
 
-        public static string FetchSprintName(int sprintId)
-        {
-            if (sprintId == 0)
-            {
-                return string.Empty;
-            }
-
-            try
-            {
-                return SprintRepository.SprintFetch(sprintId).Name;
-            }
-            catch (Exception)
-            {
-                return "Unknown";
-            }
-        }
-
         public static string FetchRoleName(int roleId)
         {
             switch ((Role)roleId)
@@ -84,6 +67,40 @@ namespace Epiworx.Business.Helpers
                     return "Story";
                 default:
                     throw new NotImplementedException();
+            }
+        }
+
+        public static string FetchSprintName(int sprintId)
+        {
+            if (sprintId == 0)
+            {
+                return string.Empty;
+            }
+
+            try
+            {
+                return SprintRepository.SprintFetch(sprintId).Name;
+            }
+            catch (Exception)
+            {
+                return "Unknown";
+            }
+        }
+
+        public static string FetchUserName(int userId)
+        {
+            if (userId == 0)
+            {
+                return string.Empty;
+            }
+
+            try
+            {
+                return UserRepository.UserFetch(userId).Name;
+            }
+            catch (Exception)
+            {
+                return "Unknown";
             }
         }
     }

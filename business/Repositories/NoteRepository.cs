@@ -80,6 +80,11 @@ namespace Epiworx.Business
 
         public static Note NoteUpdate(Note note)
         {
+            if (!note.IsDirty)
+            {
+                return note;
+            }
+
             note = note.Save();
 
             SourceRepository.SourceUpdate(note.NoteId, SourceType.Note, note.Body);

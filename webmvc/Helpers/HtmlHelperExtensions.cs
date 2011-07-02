@@ -5,12 +5,15 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml;
 using Epiworx.Business;
 using Epiworx.Core;
 using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Helpers
 {
+    using System.IO;
+
     public static class HtmlHelperExtensions
     {
         private const string GravatarUri = "http://www.gravatar.com/avatar/{0}?s={1}&d=identicon&r={2}";
@@ -66,6 +69,67 @@ namespace Epiworx.WebMvc.Helpers
             }
 
             return hash.ToString();
+        }
+
+        public static MvcHtmlString Clip(this HtmlHelper htmlHelper, string value, int maximumLength)
+        {
+            if (value.Length > maximumLength)
+            {
+                return new MvcHtmlString(value.Substring(0, maximumLength) + "...");
+            }
+
+            return new MvcHtmlString(value);
+        }
+
+        public static MvcHtmlString Clip(this HtmlHelper htmlHelper, string value, int maximumLength, string defaultValue)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                value = defaultValue;
+            }
+
+            if (value.Length > maximumLength)
+            {
+                return new MvcHtmlString(value.Substring(0, maximumLength) + "...");
+            }
+
+            return new MvcHtmlString(value);
+        }
+
+        public static MvcHtmlString ToChanges(this HtmlHelper htmlHelper, string changes)
+        {
+            if (string.IsNullOrEmpty(changes))
+            {
+                return new MvcHtmlString(string.Empty);
+            }
+
+            var stringReader = new StringReader(changes);
+            var xmlReader = new XmlTextReader(stringReader);
+
+            var sb = new StringBuilder();
+
+            sb.Append("<ul>");
+
+            while (xmlReader.Read())
+            {
+                switch (xmlReader.Name)
+                {
+                    case "Name":
+                        sb.Append("<li><span>");
+                        sb.Append(xmlReader.ReadString());
+                        sb.Append("</span>");
+                        break;
+                    case "NewValue":
+                        sb.Append("&nbsp;&rarr;&nbsp;");
+                        sb.Append(xmlReader.ReadString());
+                        sb.Append("</li>");
+                        break;
+                }
+            }
+
+            sb.Append("</ul>");
+
+            return new MvcHtmlString(sb.ToString());
         }
 
         public static MvcHtmlString ToDefaultValue(this HtmlHelper htmlHelper, string value, string defaultValue)

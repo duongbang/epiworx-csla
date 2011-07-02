@@ -30,12 +30,12 @@ namespace Epiworx.Business
             }
         }
 
-        public static ProjectUser ProjectUserFetch(int projectUserMemberId)
+        public static ProjectUser ProjectUserFetch(int projectUserId)
         {
             return ProjectUser.FetchProjectUser(
                 new ProjectUserMemberDataCriteria
                 {
-                    ProjectUserMemberId = projectUserMemberId
+                    ProjectUserMemberId = projectUserId
                 });
         }
 
@@ -65,89 +65,98 @@ namespace Epiworx.Business
             return ProjectUserInfoList.FetchProjectUserInfoList(criteria);
         }
 
-        public static ProjectUser ProjectUserSave(ProjectUser projectUserMember)
+        public static ProjectUser ProjectUserSave(ProjectUser projectUser)
         {
-            if (!projectUserMember.IsValid)
+            if (!projectUser.IsValid)
             {
-                return projectUserMember;
+                return projectUser;
             }
 
-            ProjectUserRepository.AuthorizeProjectUser(projectUserMember.ProjectId);
+            ProjectUserRepository.AuthorizeProjectUser(projectUser.ProjectId);
 
             ProjectUser result;
 
-            if (projectUserMember.IsNew)
+            if (projectUser.IsNew)
             {
-                result = ProjectUserRepository.ProjectUserInsert(projectUserMember);
+                result = ProjectUserRepository.ProjectUserInsert(projectUser);
             }
             else
             {
-                result = ProjectUserRepository.ProjectUserUpdate(projectUserMember);
+                result = ProjectUserRepository.ProjectUserUpdate(projectUser);
             }
 
             return result;
         }
 
-        public static ProjectUser ProjectUserInsert(ProjectUser projectUserMember)
+        public static ProjectUser ProjectUserInsert(ProjectUser projectUser)
         {
-            projectUserMember = projectUserMember.Save();
+            projectUser = projectUser.Save();
 
-            FeedRepository.FeedAdd(FeedAction.Created, projectUserMember);
+            SourceRepository.SourceAdd(projectUser.ProjectUserMemberId, SourceType.ProjectUser, string.Empty);
 
-            return projectUserMember;
+            FeedRepository.FeedAdd(FeedAction.Created, projectUser);
+
+            return projectUser;
         }
 
-        public static ProjectUser ProjectUserUpdate(ProjectUser projectUserMember)
+        public static ProjectUser ProjectUserUpdate(ProjectUser projectUser)
         {
-            projectUserMember = projectUserMember.Save();
+            if (!projectUser.IsDirty)
+            {
+                return projectUser;
+            }
 
-            FeedRepository.FeedAdd(FeedAction.Edited, projectUserMember);
+            projectUser = projectUser.Save();
 
-            return projectUserMember;
+            SourceRepository.SourceUpdate(projectUser.ProjectUserMemberId, SourceType.ProjectUser, string.Empty);
+
+            FeedRepository.FeedAdd(FeedAction.Edited, projectUser);
+
+            return projectUser;
         }
 
         public static ProjectUser ProjectUserAdd(int projectId, int userId, Role role)
         {
-            var projectUserMember = ProjectUser.NewProjectUser(projectId, userId);
+            var projectUser = ProjectUser.NewProjectUser(projectId, userId);
 
-            projectUserMember.RoleId = (int)role;
+            projectUser.RoleId = (int)role;
 
-            projectUserMember = ProjectUserRepository.ProjectUserSave(projectUserMember);
+            projectUser = ProjectUserRepository.ProjectUserSave(projectUser);
 
-            return projectUserMember;
+            return projectUser;
         }
 
         internal static ProjectUser ProjectUserAdd(int projectId, int userId, Role role, bool ignoreAuthorization)
         {
-            var projectUserMember = ProjectUser.NewProjectUser(projectId, userId);
+            var projectUser = ProjectUser.NewProjectUser(projectId, userId);
 
-            projectUserMember.RoleId = (int)role;
+            projectUser.RoleId = (int)role;
 
             if (ignoreAuthorization)
             {
-                projectUserMember = ProjectUserRepository.ProjectUserInsert(projectUserMember);
+                projectUser = ProjectUserRepository.ProjectUserInsert(projectUser);
             }
             else
             {
-                projectUserMember = ProjectUserRepository.ProjectUserSave(projectUserMember);
+                projectUser = ProjectUserRepository.ProjectUserSave(projectUser);
             }
 
-            return projectUserMember;
+            return projectUser;
         }
 
         public static ProjectUser ProjectUserNew(int projectId, int userId)
         {
-            var projectUserMember = ProjectUser.NewProjectUser(projectId, userId);
+            var projectUser = ProjectUser.NewProjectUser(projectId, userId);
 
-            return projectUserMember;
+            return projectUser;
         }
 
-        public static bool ProjectUserDelete(ProjectUser projectUserMember)
+        public static bool ProjectUserDelete(ProjectUser projectUser)
         {
-            ProjectUserRepository.AuthorizeProjectUser(projectUserMember.ProjectId);
+            ProjectUserRepository.AuthorizeProjectUser(projectUser.ProjectId);
 
             if (ProjectUserRepository.ProjectUserFetch(
-                projectUserMember.ProjectId, projectUserMember.UserId).RoleId == (int)Role.Owner)
+                projectUser.ProjectId, projectUser.UserId).RoleId == (int)Role.Owner)
             {
                 throw new NotSupportedException("You cannot delete the owner of a project");
             }
@@ -155,10 +164,10 @@ namespace Epiworx.Business
             ProjectUser.DeleteProjectUser(
                 new ProjectUserMemberDataCriteria
                 {
-                    ProjectUserMemberId = projectUserMember.ProjectUserMemberId
+                    ProjectUserMemberId = projectUser.ProjectUserMemberId
                 });
 
-            FeedRepository.FeedAdd(FeedAction.Deleted, projectUserMember);
+            FeedRepository.FeedAdd(FeedAction.Deleted, projectUser);
 
             return true;
         }

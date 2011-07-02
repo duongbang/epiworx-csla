@@ -110,7 +110,7 @@ namespace Epiworx.Data.EntityFramework
 
                 ctx.ObjectContext.SaveChanges();
 
-                data.SourceId = feedSourceMember.SourceId;
+                data.FeedSourceMemberId = feedSourceMember.FeedSourceMemberId;
 
                 return data;
             }

@@ -1,0 +1,13 @@
+DELETE FROM Feed WHERE SourceId NOT IN (SELECT s.SourceId FROM Source s WHERE s.SourceTypeId != Feed.SourceTypeId)
+DELETE FROM FeedSourceMember WHERE FeedId NOT IN (SELECT FeedId FROM Feed)
+
+DELETE FROM Source WHERE SourceTypeId = 1 AND SourceId NOT IN (SELECT UserId FROM [User])
+DELETE FROM Source WHERE SourceTypeId = 3 AND SourceId NOT IN (SELECT StatusId FROM Status)
+DELETE FROM Source WHERE SourceTypeId = 4 AND SourceId NOT IN (SELECT ProjectId FROM Project)
+DELETE FROM Source WHERE SourceTypeId = 5 AND SourceId NOT IN (SELECT ProjectUserMemberId FROM ProjectUserMember)
+DELETE FROM Source WHERE SourceTypeId = 6 AND SourceId NOT IN (SELECT SprintId FROM Sprint)
+DELETE FROM Source WHERE SourceTypeId = 7 AND SourceId NOT IN (SELECT StoryId FROM Story)
+DELETE FROM Source WHERE SourceTypeId = 8 AND SourceId NOT IN (SELECT HourId FROM Hour)
+DELETE FROM Source WHERE SourceTypeId = 9 AND SourceId NOT IN (SELECT NoteId FROM Note)
+DELETE FROM Source WHERE SourceTypeId = 10 AND SourceId NOT IN (SELECT AttachmentId FROM Attachment)
+DELETE FROM Source WHERE SourceTypeId = 11 AND SourceId NOT IN (SELECT FilterId FROM Filter)

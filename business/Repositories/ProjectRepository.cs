@@ -18,11 +18,15 @@ namespace Epiworx.Business
         {
             ProjectUserRepository.AuthorizeProjectUser(projectId);
 
-            return Project.FetchProject(
+            var result = Project.FetchProject(
                 new ProjectDataCriteria
                 {
                     ProjectId = projectId
                 });
+
+            result.Auditor = new ProjectAuditor(result.Clone());
+
+            return result;
         }
 
         public static ProjectInfoList ProjectFetchInfoList()
@@ -64,18 +68,23 @@ namespace Epiworx.Business
         {
             project = project.Save();
 
-            ProjectUserRepository.ProjectUserAdd(
-                project.ProjectId, ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId, Role.Owner, true);
-
             SourceRepository.SourceAdd(project.ProjectId, SourceType.Project, project.Name);
 
             FeedRepository.FeedAdd(FeedAction.Created, project);
+
+            ProjectUserRepository.ProjectUserAdd(
+                project.ProjectId, ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId, Role.Owner, true);
 
             return project;
         }
 
         public static Project ProjectUpdate(Project project)
         {
+            if (!project.IsDirty)
+            {
+                return project;
+            }
+
             ProjectUserRepository.AuthorizeProjectUser(project.ProjectId);
 
             project = project.Save();

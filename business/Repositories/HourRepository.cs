@@ -12,11 +12,15 @@ namespace Epiworx.Business
     {
         public static Hour HourFetch(int hourId)
         {
-            return Hour.FetchHour(
+            var result = Hour.FetchHour(
                 new HourDataCriteria
                 {
                     HourId = hourId
                 });
+
+            result.Auditor = new HourAuditor(result.Clone());
+
+            return result;
         }
 
         public static HourInfoList HourFetchInfoList()
@@ -100,7 +104,7 @@ namespace Epiworx.Business
                 return hour;
             }
 
-            Hour result;
+            Hour result = hour;
 
             if (hour.IsNew)
             {
@@ -127,6 +131,11 @@ namespace Epiworx.Business
 
         public static Hour HourUpdate(Hour hour)
         {
+            if (!hour.IsDirty)
+            {
+                return hour;
+            }
+
             hour = hour.Save();
 
             SourceRepository.SourceUpdate(hour.HourId, SourceType.Hour, hour.Date.ToShortDateString());

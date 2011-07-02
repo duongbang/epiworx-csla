@@ -53,7 +53,7 @@ namespace Epiworx.Business
 
             if (action == FeedAction.Edited)
             {
-                feed.Description = "I really want to show edit fields here, somebody please help!";
+                feed.Description = hour.Auditor.Audit(hour);
             }
             else
             {
@@ -88,6 +88,8 @@ namespace Epiworx.Business
                     break;
             }
 
+            feed.Description = note.Body;
+
             feed.Save();
         }
 
@@ -97,7 +99,7 @@ namespace Epiworx.Business
 
             if (action == FeedAction.Edited)
             {
-                feed.Description = "I really want to show edit fields here, somebody please help!";
+                feed.Description = project.Auditor.Audit(project);
             }
             else
             {
@@ -112,6 +114,7 @@ namespace Epiworx.Business
             var feed = FeedRepository.FeedNew(action, SourceType.ProjectUser, projectUser.ProjectUserMemberId);
 
             feed.Sources.Add(SourceType.Project, projectUser.ProjectId);
+            feed.Sources.Add(SourceType.User, projectUser.UserId);
 
             feed.Save();
         }
@@ -122,7 +125,7 @@ namespace Epiworx.Business
 
             if (action == FeedAction.Edited)
             {
-                feed.Description = "I really want to show edit fields here, somebody please help!";
+                feed.Description = sprint.Auditor.Audit(sprint);
             }
             else
             {
@@ -138,6 +141,15 @@ namespace Epiworx.Business
         {
             var feed = FeedRepository.FeedNew(action, SourceType.Status, status.StatusId);
 
+            if (action == FeedAction.Edited)
+            {
+                feed.Description = status.Auditor.Audit(status);
+            }
+            else
+            {
+                feed.Description = status.Description;
+            }
+
             feed.Sources.Add(SourceType.Project, status.ProjectId);
 
             feed.Save();
@@ -149,7 +161,7 @@ namespace Epiworx.Business
 
             if (action == FeedAction.Edited)
             {
-                feed.Description = "I really want to show edit fields here, somebody please help!";
+                feed.Description = story.Auditor.Audit(story);
             }
             else
             {

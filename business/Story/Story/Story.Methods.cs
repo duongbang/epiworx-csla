@@ -30,15 +30,35 @@ namespace Epiworx.Business
 
             switch (property.Name)
             {
+                case "AssignedTo":
+                    this.OnAssignedToChanged();
+                    break;
                 case "ProjectId":
                     this.OnProjectIdChanged();
                     break;
                 case "SprintId":
                     this.OnSprintIdChanged();
                     break;
+                case "StatusId":
+                    this.OnStatusIdChanged();
+                    break;
                 default:
                     break;
             }
+        }
+
+        private void OnAssignedToChanged()
+        {
+            this.AssignedToName = DataHelper.FetchUserName(this.AssignedTo);
+
+            if (this.AssignedTo == 0)
+            {
+                this.AssignedDate = DateTime.MaxValue.Date;
+
+                return;
+            }
+
+            this.AssignedDate = DateTime.Now;
         }
 
         private void OnProjectIdChanged()
@@ -49,6 +69,38 @@ namespace Epiworx.Business
         private void OnSprintIdChanged()
         {
             this.SprintName = DataHelper.FetchSprintName(this.SprintId);
+        }
+
+        private void OnStatusIdChanged()
+        {
+            if (this.StatusId == 0)
+            {
+                this.IsCompleted = false;
+                this.StatusName = string.Empty;
+                this.StartDate = DateTime.MaxValue.Date;
+                this.CompletedDate = DateTime.MaxValue.Date;
+
+                return;
+            }
+
+            var status = Status.FetchStatus(new StatusDataCriteria { StatusId = this.StatusId });
+
+            this.StatusName = status.Name;
+
+            if (status.IsStarted)
+            {
+                this.CompletedDate = DateTime.MaxValue.Date;
+                this.StartDate = DateTime.Now.Date;
+            }
+            else if (status.IsCompleted)
+            {
+                this.CompletedDate = DateTime.MaxValue.Date;
+            }
+            else
+            {
+                this.StartDate = DateTime.MaxValue.Date;
+                this.CompletedDate = DateTime.MaxValue.Date;
+            }
         }
 
         internal static Story NewStory()

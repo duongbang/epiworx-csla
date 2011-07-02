@@ -59,6 +59,11 @@ namespace Epiworx.Business
 
         private static Source SourceUpdate(Source source)
         {
+            if (!source.IsDirty)
+            {
+                return source;
+            }
+
             source = source.Save();
 
             return source;

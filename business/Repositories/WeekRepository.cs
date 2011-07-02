@@ -108,6 +108,11 @@ namespace Epiworx.Business
 
         public static Week WeekUpdate(Week week)
         {
+            if (!week.IsDirty)
+            {
+                return week;
+            }
+
             week = week.Save();
 
             return week;

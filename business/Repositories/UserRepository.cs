@@ -81,6 +81,11 @@ namespace Epiworx.Business
 
         private static User UserUpdate(User user)
         {
+            if (!user.IsDirty)
+            {
+                return user;
+            }
+
             user = user.Save();
 
             SourceRepository.SourceUpdate(user.UserId, SourceType.User, user.Name);

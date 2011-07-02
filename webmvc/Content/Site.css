@@ -43,6 +43,17 @@
 
 .collaborators
 {
+    margin-top: 10px;
+}
+
+.collaborators li
+{
+    margin-bottom: 10px;
+}
+
+.collaborators a
+{
+    margin-left: 5px;
 }
 
 .collaborators span
@@ -145,6 +156,23 @@
 {
     display: block;
     padding-bottom: 5px;
+}
+
+.feed.edited ul
+{
+    padding: 0px 0px 0px 60px;
+}
+
+.feed.edited li
+{
+    font-weight: normal;
+    line-height: 125%;
+    color: #808080;
+}
+
+.feed.edited li span
+{
+    font-weight: bold;
 }
 
 .filter
@@ -439,12 +467,23 @@ ul.stories .date
 
 #header
 {
-    padding: 20px 20px 20px 20px;
+    padding: 10px 20px 10px 20px;
+    background-color: #272727;
+    color: #FFF;
+    margin-bottom: 20px;
+ 
+}
+
+#header a
+{
+    color: #FFF;
 }
 
 #header h1
 {
-    font-size: 16px;
+    font-size: 18px;
+    margin-top: -1px;
+    float: left;
     text-transform: lowercase;
 }
 
@@ -456,11 +495,13 @@ ul.stories .date
 #header-profile li
 {
     display: inline;
+    margin-left: 10px;
 }
 
 #header-menu
 {
-    padding: 0px 20px 20px 20px;
+    float: left;
+    margin: 0px 0px 0px 20px;
 }
 
 #header-menu li
@@ -472,7 +513,6 @@ ul.stories .date
 {
     float: left;
     display: block;
-    font-size: 24px;
     margin-right: 20px;
 }
 

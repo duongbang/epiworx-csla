@@ -56,6 +56,11 @@ namespace Epiworx.Business
 
         public static Filter FilterUpdate(Filter filter)
         {
+            if (!filter.IsDirty)
+            {
+                return filter;
+            }
+
             filter = filter.Save();
 
             SourceRepository.SourceUpdate(filter.FilterId, SourceType.Filter, filter.Name);

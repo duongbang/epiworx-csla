@@ -7,7 +7,7 @@
     <input type="text" id="Name" name="Name" value="@Model.Project.Name" class="big" />
     <label for="Description">
         Description</label>
-    <input type="text" id="Description" name="Description" value="@Model.Project.Description" />
+    <textarea id="Description" name="Description">@Model.Project.Description</textarea>
     <label for="IsActive">
         <input type="checkbox" id="IsActive" name="IsActive" @Html.ToChecked(Model.Project.IsActive)/>This
         project is active</label>

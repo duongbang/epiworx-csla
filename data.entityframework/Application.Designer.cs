@@ -56,6 +56,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_FeedSourceMember_Feed", "Feed", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.Feed), "FeedSourceMember", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.FeedSourceMember), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Week_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Week", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Week), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Week_UserModifiedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Week", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Week), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Source_SourceType", "SourceType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.SourceType), "Source", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Source), true)]
 
 #endregion
 
@@ -1501,44 +1502,6 @@ namespace Epiworx.Data.EntityFramework
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_FeedSourceMember_UserCreatedBy", "User", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_FeedSourceMember_Feed", "Feed")]
-        public Feed Feed
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Feed>("ApplicationModel.FK_FeedSourceMember_Feed", "Feed").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Feed>("ApplicationModel.FK_FeedSourceMember_Feed", "Feed").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Feed> FeedReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Feed>("ApplicationModel.FK_FeedSourceMember_Feed", "Feed");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Feed>("ApplicationModel.FK_FeedSourceMember_Feed", "Feed", value);
                 }
             }
         }
@@ -4005,6 +3968,44 @@ namespace Epiworx.Data.EntityFramework
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Source_SourceType", "SourceType")]
+        public SourceType SourceType
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SourceType>("ApplicationModel.FK_Source_SourceType", "SourceType").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SourceType>("ApplicationModel.FK_Source_SourceType", "SourceType").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SourceType> SourceTypeReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SourceType>("ApplicationModel.FK_Source_SourceType", "SourceType");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SourceType>("ApplicationModel.FK_Source_SourceType", "SourceType", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -4114,6 +4115,31 @@ namespace Epiworx.Data.EntityFramework
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Source_SourceType", "Source")]
+        public EntityCollection<Source> Sources
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Source>("ApplicationModel.FK_Source_SourceType", "Source");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Source>("ApplicationModel.FK_Source_SourceType", "Source", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>

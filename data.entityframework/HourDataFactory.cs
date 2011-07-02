@@ -136,6 +136,7 @@ namespace Epiworx.Data.EntityFramework
             DataMapper.Map(hour, hourData);
 
             hourData.Project = new ProjectData();
+            hourData.ProjectId = hour.Story.ProjectId;
             DataMapper.Map(hour.Story.Project, hourData.Project);
 
             hourData.Sprint = new SprintData();

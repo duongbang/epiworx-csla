@@ -71,16 +71,17 @@ namespace Epiworx.Business
         {
             attachment = attachment.Save();
 
-            SourceRepository.SourceAdd(attachment.AttachmentId, SourceType.Attachment, attachment.Name);
-
             return attachment;
         }
 
         public static Attachment AttachmentUpdate(Attachment attachment)
         {
-            attachment = attachment.Save();
+            if (!attachment.IsDirty)
+            {
+                return attachment;
+            }
 
-            SourceRepository.SourceUpdate(attachment.AttachmentId, SourceType.Attachment, attachment.Name);
+            attachment = attachment.Save();
 
             return attachment;
         }
@@ -102,8 +103,6 @@ namespace Epiworx.Business
                 {
                     AttachmentId = attachment.AttachmentId
                 });
-
-            SourceRepository.SourceDelete(attachment.AttachmentId, SourceType.Attachment);
 
             return true;
         }

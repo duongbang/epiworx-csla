@@ -7,21 +7,43 @@
 <div class="feeds">
     @foreach (var feed in Model.Feeds)
     {
-        <div class="feed">
+        <div class="feed @feed.Action.ToLower()">
             <h1>
                 <a href="@Url.Action("Details", "User", new { id = feed.CreatedBy })" class="user">@feed.CreatedByName</a>
-                <strong class="action">@feed.Action</strong> <span class="type">@feed.SourceTypeName</span>
-                <a href="@Url.Action("Details", feed.SourceTypeName, new { id = feed.SourceId })" class="source">@feed.SourceName</a>
+                @if (feed.SourceTypeName == "Note")
+                {
+                    <strong class="action">@feed.Action</strong> <span class="type">a @feed.SourceTypeName</span>
+                }
+                else if (feed.SourceTypeName == "ProjectUser")
+                {
+                    <strong class="action">@feed.Action</strong> <span class="type">a project user</span>
+                }
+                else
+                { 
+                    <strong class="action">@feed.Action</strong> <span class="type">@feed.SourceTypeName</span>
+                    <a href="@Url.Action("Details", feed.SourceTypeName, new { id = feed.SourceId })" class="source" title="@feed.SourceName">@Html.Clip(feed.SourceName, 30)</a>
+                }
                 @foreach (var source in feed.Sources)
                 {
                     <span class="type">for the @source.SourceTypeName</span>
-                    <a href="@Url.Action("Details", source.SourceTypeName, new { id = source.SourceId })" class="source">@source.SourceName</a>
+                    <a href="@Url.Action("Details", source.SourceTypeName, new { id = source.SourceId })" class="source" title="@source.SourceName">@Html.Clip(source.SourceName, 30)</a>
                 }
                 <span class="date">@Html.ToRelativeDate(feed.CreatedDate)</span>
             </h1>
             @Html.Gravatar(feed.CreatedByEmail, feed.CreatedByName)
-            <p>
-                <strong>@feed.SourceTypeName's description</strong>@Html.ToDefaultValue(feed.Description, "No description available")</p>
+            @if (feed.SourceTypeName != "ProjectUser")
+            { 
+                <p>
+                    @if (feed.Action == "Edited")
+                    {
+                        <strong>@feed.SourceTypeName's changes</strong>@Html.ToChanges(feed.Description)
+                    }
+                    else
+                    {
+                        <strong>@feed.SourceTypeName's description</strong><span title="@feed.Description">@Html.Clip(feed.Description, 150, "No description available")</span>
+                    }
+                </p>
+            }
         </div>
     }
 </div>

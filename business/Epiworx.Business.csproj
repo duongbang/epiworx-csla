@@ -95,8 +95,11 @@
     <Compile Include="Filter\Filter\Filter.Properties.cs" />
     <Compile Include="Filter\Filter\Filter.Rules.cs" />
     <Compile Include="Filter\IFilter.cs" />
+    <Compile Include="Helpers\AuditorHelper.cs" />
+    <Compile Include="Helpers\IAuditable.cs" />
     <Compile Include="Helpers\FindResult.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
+    <Compile Include="Helpers\IAuditor.cs" />
     <Compile Include="Hour\HourInfoList\HourInfoList.cs" />
     <Compile Include="Hour\HourInfoList\HourInfoList.Data.cs" />
     <Compile Include="Hour\HourInfoList\HourInfoList.Methods.cs" />
@@ -109,7 +112,10 @@
     <Compile Include="Hour\Hour\Hour.Methods.cs" />
     <Compile Include="Hour\Hour\Hour.Properties.cs" />
     <Compile Include="Hour\Hour\Hour.Rules.cs" />
+    <Compile Include="Hour\Hour\Hour.IAuditable.cs" />
+    <Compile Include="Hour\Hour\Hour.ISource.cs" />
     <Compile Include="Hour\IHour.cs" />
+    <Compile Include="Hour\HourAuditor.cs" />
     <Compile Include="Note\INote.cs" />
     <Compile Include="Note\NoteInfoList\NoteInfoList.cs" />
     <Compile Include="Note\NoteInfoList\NoteInfoList.Data.cs" />
@@ -138,6 +144,7 @@
     <Compile Include="ProjectUser\ProjectUser\ProjectUser.Rules.cs" />
     <Compile Include="ProjectUser\ProjectUserDuplicateNameCheck.cs" />
     <Compile Include="Project\IProject.cs" />
+    <Compile Include="Project\ProjectAuditor.cs" />
     <Compile Include="Project\ProjectInfoList\ProjectInfoList.cs" />
     <Compile Include="Project\ProjectInfoList\ProjectInfoList.Data.cs" />
     <Compile Include="Project\ProjectInfoList\ProjectInfoList.Methods.cs" />
@@ -145,6 +152,7 @@
     <Compile Include="Project\ProjectInfo\ProjectInfo.cs" />
     <Compile Include="Project\ProjectInfo\ProjectInfo.Data.cs" />
     <Compile Include="Project\ProjectInfo\ProjectInfo.Properties.cs" />
+    <Compile Include="Project\Project\Project.IAuditable.cs" />
     <Compile Include="Project\Project\Project.cs" />
     <Compile Include="Project\Project\Project.Data.cs" />
     <Compile Include="Project\Project\Project.ISource.cs" />
@@ -168,12 +176,14 @@
     <Compile Include="Role\Role.cs" />
     <Compile Include="SourceType\SourceType.cs" />
     <Compile Include="Source\ISource.cs" />
+    <Compile Include="Story\Story\Story.IAuditable.cs" />
     <Compile Include="Source\Source\Source.cs" />
     <Compile Include="Source\Source\Source.Data.cs" />
     <Compile Include="Source\Source\Source.Methods.cs" />
     <Compile Include="Source\Source\Source.Properties.cs" />
     <Compile Include="Source\Source\Source.Rules.cs" />
     <Compile Include="Sprint\ISprint.cs" />
+    <Compile Include="Sprint\SprintAuditor.cs" />
     <Compile Include="Sprint\SprintInfoList\SprintInfoList.cs" />
     <Compile Include="Sprint\SprintInfoList\SprintInfoList.Data.cs" />
     <Compile Include="Sprint\SprintInfoList\SprintInfoList.Methods.cs" />
@@ -181,12 +191,14 @@
     <Compile Include="Sprint\SprintInfo\SprintInfo.cs" />
     <Compile Include="Sprint\SprintInfo\SprintInfo.Data.cs" />
     <Compile Include="Sprint\SprintInfo\SprintInfo.Properties.cs" />
+    <Compile Include="Sprint\Sprint\Sprint.IAuditable.cs" />
     <Compile Include="Sprint\Sprint\Sprint.cs" />
     <Compile Include="Sprint\Sprint\Sprint.Data.cs" />
     <Compile Include="Sprint\Sprint\Sprint.Methods.cs" />
     <Compile Include="Sprint\Sprint\Sprint.Properties.cs" />
     <Compile Include="Sprint\Sprint\Sprint.Rules.cs" />
     <Compile Include="Status\IStatus.cs" />
+    <Compile Include="Status\StatusAuditor.cs" />
     <Compile Include="Status\StatusInfoList\StatusInfoList.cs" />
     <Compile Include="Status\StatusInfoList\StatusInfoList.Data.cs" />
     <Compile Include="Status\StatusInfoList\StatusInfoList.Methods.cs" />
@@ -194,6 +206,7 @@
     <Compile Include="Status\StatusInfo\StatusInfo.cs" />
     <Compile Include="Status\StatusInfo\StatusInfo.Data.cs" />
     <Compile Include="Status\StatusInfo\StatusInfo.Properties.cs" />
+    <Compile Include="Status\Status\Status.IAuditable.cs" />
     <Compile Include="Status\Status\Status.cs" />
     <Compile Include="Status\Status\Status.Data.cs" />
     <Compile Include="Status\Status\Status.Methods.cs" />
@@ -201,6 +214,7 @@
     <Compile Include="Status\Status\Status.Rules.cs" />
     <Compile Include="Status\StatusDuplicateNameCheck.cs" />
     <Compile Include="Story\IStory.cs" />
+    <Compile Include="Story\StoryAuditor.cs" />
     <Compile Include="Story\StoryInfoList\StoryInfoList.cs" />
     <Compile Include="Story\StoryInfoList\StoryInfoList.Data.cs" />
     <Compile Include="Story\StoryInfoList\StoryInfoList.Methods.cs" />
@@ -208,6 +222,7 @@
     <Compile Include="Story\StoryInfo\StoryInfo.cs" />
     <Compile Include="Story\StoryInfo\StoryInfo.Data.cs" />
     <Compile Include="Story\StoryInfo\StoryInfo.Properties.cs" />
+    <Compile Include="Story\Story\Story.ISource.cs" />
     <Compile Include="Story\Story\Story.cs" />
     <Compile Include="Story\Story\Story.Data.cs" />
     <Compile Include="Story\Story\Story.Methods.cs" />
