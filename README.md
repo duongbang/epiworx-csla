@@ -4,6 +4,8 @@ This is a rewrite of a previous version which can be found at [https://github.co
 
 I can be reached at [mattruma@gmail.com][2] or on twitter at [http://www.twitter.com/mattruma][3].
 
+This is a full feature application based on Rockford Lhotka's CSLA framework ... so if you are looking for example of any implement of the CSLA framework, this project would be a good start.
+
 Thanks and looking forward to seeing other developers contributions soon!
 
   [1]: http://www.epitecgroup.com
