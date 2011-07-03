@@ -33,6 +33,10 @@ namespace Epiworx.WebMvc.Controllers
 
             model.Projects = projects;
 
+            var stories = StoryRepository.StoryFetchInfoList(projects.ToArray(), false);
+
+            model.Stories = stories;
+
             var notes = NoteRepository.NoteFetchInfoList(
                 projects.Select(row => row.ProjectId).Distinct().ToArray(), SourceType.Project);
 
@@ -53,7 +57,7 @@ namespace Epiworx.WebMvc.Controllers
                 model.Notes.Select(row => row.NoteId).Distinct().ToArray(), SourceType.Note);
             model.Sprints = SprintRepository.SprintFetchInfoList(id);
             model.Statuses = StatusRepository.StatusFetchInfoList(id);
-            model.Stories = StoryRepository.StoryFetchInfoList(project);
+            model.Stories = StoryRepository.StoryFetchInfoList(project, false);
             model.Users = ProjectUserRepository.ProjectUserFetchInfoList(id);
             model.Actions.Add("Edit this project", Url.Action("Edit", new { id }), "primary");
             model.Actions.Add("Add a story", Url.Action("Create", "Story", new { projectId = id }));

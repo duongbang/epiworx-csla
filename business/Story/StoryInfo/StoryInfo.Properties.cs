@@ -95,6 +95,14 @@ namespace Epiworx.Business
             set { this.LoadProperty(IsCompletedProperty, value); }
         }
 
+        private static Csla.PropertyInfo<bool> IsOpenedProperty =
+            RegisterProperty<bool>(row => row.IsOpened, "IsOpened");
+        public bool IsOpened
+        {
+            get { return this.GetProperty(IsOpenedProperty); }
+            set { this.LoadProperty(IsOpenedProperty, value); }
+        }
+
         private static Csla.PropertyInfo<int> ProjectIdProperty =
             RegisterProperty<int>(row => row.ProjectId, "ProjectId");
         public int ProjectId

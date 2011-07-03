@@ -17,6 +17,7 @@ namespace Epiworx.Business
         DateTime EstimatedCompletedDate { get; }
         decimal EstimatedDuration { get; }
         bool IsArchived { get; }
+        bool IsOpened { get; }
         bool IsCompleted { get; }
         int ProjectId { get; }
         string ProjectName { get; }

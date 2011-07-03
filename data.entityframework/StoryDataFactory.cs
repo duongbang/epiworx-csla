@@ -151,6 +151,8 @@ namespace Epiworx.Data.EntityFramework
             }
 
             storyData.Status = new StatusData();
+            storyData.IsOpened = story.Status.IsStarted;
+            storyData.IsCompleted = story.Status.IsCompleted;
             DataMapper.Map(story.Status, storyData.Status);
 
             storyData.CreatedByUser = new UserData();
@@ -245,7 +247,12 @@ namespace Epiworx.Data.EntityFramework
 
             if (criteria.IsCompleted != null)
             {
-                query = query.Where(row => row.IsCompleted == criteria.IsCompleted);
+                query = query.Where(row => row.Status.IsCompleted == criteria.IsCompleted);
+            }
+
+            if (criteria.IsOpened != null)
+            {
+                query = query.Where(row => row.Status.IsStarted == criteria.IsOpened);
             }
 
             if (criteria.ProjectId != null)

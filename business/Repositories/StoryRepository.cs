@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Epiworx.Business.Helpers;
 using Epiworx.Core;
 using Epiworx.Data;
 
@@ -28,7 +29,7 @@ namespace Epiworx.Business
             return StoryRepository.StoryFetchInfoList(new StoryDataCriteria());
         }
 
-        public static StoryInfoList StoryFetchInfoList(IProject project)
+        public static StoryInfoList StoryFetchInfoList(IProject project, bool? isArchived)
         {
             ProjectUserRepository.AuthorizeProjectUser(project.ProjectId);
 
@@ -36,7 +37,21 @@ namespace Epiworx.Business
                 new StoryDataCriteria
                 {
                     ProjectId = new[] { project.ProjectId },
-                    IsArchived = false
+                    IsArchived = isArchived
+                });
+        }
+
+        public static StoryInfoList StoryFetchInfoList(IProject[] projects, bool? isArchived)
+        {
+            var projectIds = projects.Select(row => row.ProjectId).ToArray();
+
+            ProjectUserRepository.AuthorizeProjectUser(projectIds);
+
+            return StoryInfoList.FetchStoryInfoList(
+                new StoryDataCriteria
+                {
+                    ProjectId = projectIds,
+                    IsArchived = isArchived
                 });
         }
 

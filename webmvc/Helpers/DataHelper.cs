@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using Epiworx.Business;
 using Epiworx.Data;
 
 namespace Epiworx.WebMvc.Helpers
@@ -57,12 +58,12 @@ namespace Epiworx.WebMvc.Helpers
                 return null;
             }
 
-            if (value == "false")
+            if (value.ToLower() == "false")
             {
                 return false;
             }
 
-            if (value == "true")
+            if (value.ToLower() == "true")
             {
                 return true;
             }

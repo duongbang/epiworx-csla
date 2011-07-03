@@ -10,6 +10,7 @@ namespace Epiworx.WebMvc.Models
     {
         public IEnumerable<ProjectInfo> Projects { get; set; }
         public IEnumerable<NoteInfo> Notes { get; set; }
+        public IEnumerable<StoryInfo> Stories { get; set; }
 
         public ProjectListModel()
         {

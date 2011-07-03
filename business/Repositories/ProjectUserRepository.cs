@@ -20,6 +20,14 @@ namespace Epiworx.Business
             ProjectUserRepository.AuthorizeProjectUser(projectId, userId);
         }
 
+        public static void AuthorizeProjectUser(int[] projectIds)
+        {
+            var userId =
+                ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
+
+            ProjectUserRepository.AuthorizeProjectUser(projectIds, userId);
+        }
+
         public static void AuthorizeProjectUser(int projectId, int userId)
         {
             var projects = ProjectRepository.ProjectFetchInfoList();
@@ -27,6 +35,19 @@ namespace Epiworx.Business
             if (!projects.Any(project => project.ProjectId == projectId))
             {
                 throw new SecurityException("You are not a member of this project.");
+            }
+        }
+
+        public static void AuthorizeProjectUser(int[] projectIds, int userId)
+        {
+            var projects = ProjectRepository.ProjectFetchInfoList();
+
+            foreach (var projectId in projectIds)
+            {
+                if (!projects.Any(project => project.ProjectId == projectId))
+                {
+                    throw new SecurityException("You are not a member of this project.");
+                }
             }
         }
 

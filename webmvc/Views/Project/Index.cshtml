@@ -19,6 +19,17 @@
             <th>
                 Status
             </th>
+            <th class="number">
+                Pending<br />
+                Stories
+            </th>
+            <th class="number">
+                Open<br />
+                Stories
+            </th>
+            <th class="number">
+                Duration
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -48,6 +59,15 @@
                         </div>
                         }
                     }
+                </td>
+                <td class="number"><a href="@Url.Action("List", "Story", new { projectId = project.ProjectId, isOpened = "False", isArchived = "False"})">@Model.Stories.Count(row => row.ProjectId == project.ProjectId
+                    && !row.IsOpened)</a>
+                </td>
+                <td class="number"><a href="@Url.Action("List", "Story", new { projectId = project.ProjectId, isOpened = "True", isArchived = "False"})">@Model.Stories.Count(row => row.ProjectId == project.ProjectId
+                    && row.IsOpened)</a>
+                </td>
+                <td class="number">@Model.Stories.Where(row => row.ProjectId == project.ProjectId
+                    && row.IsOpened).Sum(row => row.Duration)
                 </td>
             </tr>
         }

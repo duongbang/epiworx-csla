@@ -90,7 +90,10 @@ namespace Epiworx.Business
             if (status.IsStarted)
             {
                 this.CompletedDate = DateTime.MaxValue.Date;
-                this.StartDate = DateTime.Now.Date;
+                if (this.StartDate == DateTime.MaxValue.Date)
+                {
+                    this.StartDate = DateTime.Now.Date;
+                }
             }
             else if (status.IsCompleted)
             {

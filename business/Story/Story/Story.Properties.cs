@@ -96,7 +96,15 @@ namespace Epiworx.Business
         public bool IsCompleted
         {
             get { return this.GetProperty(IsCompletedProperty); }
-            set { this.SetProperty(IsCompletedProperty, value); }
+            internal set { this.SetProperty(IsCompletedProperty, value); }
+        }
+
+        private static Csla.PropertyInfo<bool> IsOpenedProperty =
+            RegisterProperty<bool>(row => row.IsOpened, "IsOpened");
+        public bool IsOpened
+        {
+            get { return this.GetProperty(IsOpenedProperty); }
+            internal set { this.SetProperty(IsOpenedProperty, value); }
         }
 
         private static Csla.PropertyInfo<int> ProjectIdProperty =

@@ -55,6 +55,7 @@ namespace Epiworx.Business
             this.EstimatedDuration = data.EstimatedDuration;
             this.IsArchived = data.IsArchived;
             this.IsCompleted = data.IsCompleted;
+            this.IsOpened = data.IsOpened;
             this.ProjectId = data.ProjectId;
             this.ProjectName = data.Project.Name;
             this.SprintId = data.SprintId;
