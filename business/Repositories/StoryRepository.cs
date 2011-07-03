@@ -115,6 +115,16 @@ namespace Epiworx.Business
             return story;
         }
 
+        public static void StoryUpdateDuration(int storyId)
+        {
+            var story = StoryRepository.StoryFetch(storyId);
+            var hour = HourRepository.HourFetchInfoList(story);
+
+            story.Duration = hour.Sum(row => row.Duration);
+
+            StoryRepository.StoryUpdate(story);
+        }
+
         public static Story StoryNew()
         {
             var story = Story.NewStory();

@@ -104,7 +104,7 @@ namespace Epiworx.Business
                 return hour;
             }
 
-            Hour result = hour;
+            Hour result;
 
             if (hour.IsNew)
             {
@@ -114,6 +114,8 @@ namespace Epiworx.Business
             {
                 result = HourRepository.HourUpdate(hour);
             }
+
+            StoryRepository.StoryUpdateDuration(hour.StoryId);
 
             return result;
         }
@@ -159,6 +161,8 @@ namespace Epiworx.Business
                 {
                     HourId = hour.HourId
                 });
+
+            StoryRepository.StoryUpdateDuration(hour.StoryId);
 
             FeedRepository.FeedAdd(FeedAction.Deleted, hour);
 
