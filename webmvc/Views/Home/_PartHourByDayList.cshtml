@@ -1,8 +1,11 @@
 ﻿@model Epiworx.WebMvc.Models.HomeIndexModel
 <div class="part">
     <div class="wrapper">
-        <h3>
-            Your Hours for The Week</h3>
+        <div class="hgroup">
+            <img src="@Url.Content("~/Content/calendar.png")" />
+            <h3>
+                Your Hours this Week</h3>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -18,10 +21,11 @@
                 @foreach (var hourSummaryByDate in Model.HoursForCurrentWeek)
                 { 
                     <tr>
-                        <td>@hourSummaryByDate.StartDate.ToString("ddd d")</td>
-                             <td class="number">@Html.ActionLink(hourSummaryByDate.Duration.ToString("F2"), "Index", "Hour", new { userId = Model.User.UserId, dateFrom = hourSummaryByDate.StartDate.ToShortDateString(), dateTo = hourSummaryByDate.EndDate.ToShortDateString() }, null)
+                        <td>@hourSummaryByDate.StartDate.ToString("ddd d")
                         </td>
-               </tr>
+                        <td class="number">@Html.ActionLink(hourSummaryByDate.Duration.ToString("F2"), "Index", "Hour", new { userId = Model.User.UserId, dateFrom = hourSummaryByDate.StartDate.ToShortDateString(), dateTo = hourSummaryByDate.EndDate.ToShortDateString() }, null)
+                        </td>
+                    </tr>
                 }
             </tbody>
             <tfoot>

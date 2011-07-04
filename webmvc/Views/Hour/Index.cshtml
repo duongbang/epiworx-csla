@@ -1,6 +1,7 @@
 ﻿@model Epiworx.WebMvc.Models.HourIndexModel
 @using Epiworx.WebMvc.Helpers
 <div class="hgroup">
+    <img src="@Url.Content("~/Content/hour.png")" alt="Hour"/>
     <h2>
         Hours</h2>
 </div>
@@ -47,9 +48,9 @@
                 </td>
                 <td class="number">
                     @{ 
-            var duration = Model.Hours.Where(row => row.Date >= week.StartDate && row.Date <= week.EndDate).Sum(row => row.Duration);
-            var userId = Model.UserId;
-            var date = string.Format("{0:d},{1:d}", week.StartDate, week.EndDate);
+                    var duration = Model.Hours.Where(row => row.Date >= week.StartDate && row.Date <= week.EndDate).Sum(row => row.Duration);
+                    var userId = Model.UserId;
+                    var date = string.Format("{0:d},{1:d}", week.StartDate, week.EndDate);
                     }
                     @Html.ActionLink(duration.ToString("F2"), "List", "Hour", new { userId, date }, null)
                 </td>

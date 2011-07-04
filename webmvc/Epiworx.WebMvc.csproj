@@ -130,7 +130,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\add-small.png" />
+    <Content Include="Content\accept.png" />
+    <Content Include="Content\add.png" />
+    <Content Include="Content\attachment.png" />
+    <Content Include="Content\calendar.png" />
+    <Content Include="Content\delete.png" />
+    <Content Include="Content\edit.png" />
+    <Content Include="Content\project.png" />
+    <Content Include="Content\search.png" />
+    <Content Include="Content\sprint.png" />
+    <Content Include="Content\story.png" />
+    <Content Include="Content\hour.png" />
+    <Content Include="Content\comment.png" />
     <Content Include="Content\find.png" />
+    <Content Include="Content\note.png" />
+    <Content Include="Content\status.png" />
+    <Content Include="Content\rss.png" />
     <Content Include="Content\site.jquery.css" />
     <Content Include="Content\reset.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -160,6 +176,8 @@
     <Content Include="Content\themes\base\jquery.ui.slider.css" />
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\user.png" />
+    <Content Include="Content\delete-small.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
     <Content Include="Scripts\epiworx.form.js" />

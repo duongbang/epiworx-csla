@@ -9,7 +9,6 @@ using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Controllers
 {
-
     [Authorize]
     public class UserController : Controller
     {
@@ -30,9 +29,13 @@ namespace Epiworx.WebMvc.Controllers
             return this.View(model);
         }
 
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            return this.View();
+            var model = new UserFormModel();
+
+            model.User = UserRepository.UserFetch(id);
+
+            return this.View(model);
         }
 
         public ActionResult Create()

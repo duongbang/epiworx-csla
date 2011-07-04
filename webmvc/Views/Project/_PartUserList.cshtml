@@ -1,8 +1,11 @@
 ﻿@model Epiworx.WebMvc.Models.ProjectFormModel
 <div class="part">
     <div class="wrapper">
-        <h3>
-            Collaborators</h3>
+        <div class="hgroup">
+            <img src="@Url.Content("~/Content/user.png")" alt="User"/>
+            <h3>
+                Collaborators</h3>
+        </div>
         <ul class="collaborators">
             @foreach (var user in Model.Users)
             {

@@ -1,8 +1,9 @@
 ﻿@model Epiworx.WebMvc.Models.HourFormModel
 @using Epiworx.WebMvc.Helpers
 <div class="hgroup">
+    <img src="@Url.Content("~/Content/hour.png")" alt="Hour"/>
     <h2>
-        New Hour</h2>
+        Edit Hour</h2>
 </div>
 @Html.ValidationSummary(false, "Oh snap! Looks like we ran into some trouble. Please correct the errors and try again.")
 @using (Html.BeginForm(new { id = Model.Hour.HourId }))

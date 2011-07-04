@@ -1,6 +1,7 @@
 ﻿@model Epiworx.WebMvc.Models.ProjectUserFormModel
 @using Epiworx.WebMvc.Helpers
 <div class="hgroup">
+    <img src="@Url.Content("~/Content/user.png")" alt="User"/>
     <h2>
         Add Collaborators</h2>
 </div>
@@ -13,12 +14,14 @@
         <ul class="collaborators">
             @foreach (var user in Model.Users)
             { 
-                <li>@user.Name@if (!Model.ProjectUsers.Any(row => row.UserId == user.UserId)) {<text><a href="@Url.Action("Details", "Project", new { id = @Model.ProjectUser.ProjectId })" data-user-id="@user.UserId">Add</a></text>} else {<text><span>@Model.ProjectUsers.Single(row => row.UserId == user.UserId).RoleName</span></text>}</li>
+                <li>@user.Name@if (!Model.ProjectUsers.Any(row => row.UserId == user.UserId))
+                              {<text><a href="@Url.Action("Details", "Project", new { id = @Model.ProjectUser.ProjectId })" data-user-id="@user.UserId">Add</a></text>}
+                              else
+                              {<text><span>@Model.ProjectUsers.Single(row => row.UserId == user.UserId).RoleName</span></text>}</li>
             }
         </ul>
     </fieldset>
 }
-
 <script type="text/javascript">
 
     $(".collaborators li a").click(function (e) {

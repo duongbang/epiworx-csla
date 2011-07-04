@@ -3,13 +3,15 @@
 <script src="@Url.Content("~/Scripts/jquery.sparkline.min.js")" type="text/javascript"></script>
 <div class="part">
     <div class="wrapper">
-        <h3>
-            Your Hour Goals</h3>
+        <div class="hgroup">
+            <img src="@Url.Content("~/Content/hour.png")" />
+            <h3>
+                Your Hour Goals</h3>
+        </div>
         <ul>
             @foreach (var summary in Model.HourSummaries)
             { 
-                <li class="bullet-graph">
-                    <a href="">@summary.Percentage%</a>
+                <li class="bullet-graph"><a href="">@summary.Percentage%</a>
                     <h4>@summary.Name</h4>
                     <span class="graph">@summary.Value,@summary.HighValue,@summary.HighValue,@summary.NormalValue,@summary.LowValue</span>
                 </li>

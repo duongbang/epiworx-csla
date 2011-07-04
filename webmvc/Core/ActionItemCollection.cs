@@ -37,6 +37,17 @@ namespace Epiworx.WebMvc
             item.NavigateUrl = navigateUrl;
             item.ImageUrl = imageUrl;
 
+            if (name.ToLower().StartsWith("edit"))
+            {
+                item.CssClass += " edit";
+            }
+            else if (name.ToLower().StartsWith("add"))
+            {
+                item.CssClass += " add";
+            }
+
+            item.CssClass = item.CssClass.Trim();
+
             this.Add(item);
 
             return item;

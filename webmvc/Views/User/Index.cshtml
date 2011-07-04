@@ -1,24 +1,60 @@
 ﻿@model Epiworx.WebMvc.Models.UserListModel
 @using Epiworx.WebMvc.Helpers
 <div class="hgroup">
+    <img src="@Url.Content("~/Content/user.png")" />
     <h2>
         Users</h2>
 </div>
-<table>
+<ul class="filter">
+    <li><strong>Filters</strong></li>
+    <li class="selected"><a href="" data-filter="Active">Active</a></li>
+    <li><a href="" data-filter="Inactive">Inactive</a></li>
+    <li><a href="" data-filter="Archived">Archived</a></li>
+</ul>
+<table class="users">
     <thead>
         <tr>
-            <th class="first last">
+            <th style="width: 300px;">
                 Name
+            </th>
+            <th>
+                Email
             </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var user in Model.Users)
         { 
-            <tr>
-                <td class="first last">@Html.ActionLink(user.Name, "Details", new { id = user.UserId })
+            <tr data-active="@user.IsActive" data-archived="@user.IsArchived">
+                <td>@Html.ActionLink(user.Name, "Details", new { id = user.UserId })
+                </td>
+                <td>
+                    <a href="mailto:@user.Email">@user.Email</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+<script type="text/javascript">
+
+    $("table.users tr[data-active='False']").hide();
+
+    $(".filter a").click(function (e) {
+        e.preventDefault();
+        $(".filter li").removeClass("selected");
+        $(this).parent("li").addClass("selected");
+        $("table.users tr").hide();
+        switch ($(this).data("filter")) {
+            case "Active":
+                $("table.users tr[data-active='True']").show();
+                break;
+            case "Inactive":
+                $("table.users tr[data-active='False'][data-archived='False']").show();
+                break;
+            case "Archived":
+                $("table.users tr[data-archived='True']").show();
+                break;
+        }
+    });
+
+</script>

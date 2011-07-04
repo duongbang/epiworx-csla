@@ -1,8 +1,11 @@
 ﻿@model Epiworx.WebMvc.Models.SprintFormModel
 <div class="part">
     <div class="wrapper">
-        <h3>
-            Statuses</h3>
+        <div class="hgroup">
+            <img src="@Url.Content("~/Content/status.png")" alt="Status"/>
+            <h3>
+                Statuses</h3>
+        </div>
         <ul>
             @foreach (var status in Model.Statuses)
             {

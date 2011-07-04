@@ -1,8 +1,9 @@
 ﻿@model Epiworx.WebMvc.Models.StatusFormModel
 @using Epiworx.WebMvc.Helpers
 <div class="hgroup">
+    <img src="@Url.Content("~/Content/status.png")" alt="Status"/>
     <h2>
-        New Status</h2>
+        Edit Status</h2>
 </div>
 @Html.ValidationSummary(false, "Oh snap! Looks like we ran into some trouble. Please correct the errors and try again.")
 @using (Html.BeginForm(new { id = Model.Status.StatusId }))

@@ -2,6 +2,7 @@
 @using Epiworx.WebMvc.Helpers
 <div id="find">
     <div class="hgroup">
+        <img src="@Url.Content("~/Content/search.png")" alt="Search"/>
         <h2>
             Search across all projects, stories and users</h2>
     </div>
@@ -22,9 +23,8 @@
         <div class="scope">
             <p>
                 Show <a href="" data-scope="all">All Matches</a> or filter by <a href="" data-scope="hours">
-                    Hours</a>, <a href="" data-scope="projects">
-                    Projects</a>, <a href="" data-scope="stories">Stories</a> and <a href="" data-scope="users">
-                        Users</a></p>
+                    Hours</a>, <a href="" data-scope="projects">Projects</a>, <a href="" data-scope="stories">
+                        Stories</a> and <a href="" data-scope="users">Users</a></p>
         </div>
     }
     @if (!string.IsNullOrEmpty(Model.FindText) && Model.FindResults.Count() == 0)
