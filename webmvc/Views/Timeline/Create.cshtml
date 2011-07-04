@@ -1,0 +1,12 @@
+﻿@model Epiworx.WebMvc.Models.TimelineFormModel
+@using Epiworx.WebMvc.Helpers
+<div class="hgroup">
+    <h2>
+        New Timeline</h2>
+</div>
+@Html.ValidationSummary(false, "Oh snap! Looks like we ran into some trouble. Please correct the errors and try again.")
+@using (Html.BeginForm(new { sourceId = Model.Timeline.SourceId, sourceTypeId = Model.Timeline.SourceTypeId }))
+{
+    @Html.Partial("_TimelineForm")
+    @Html.Partial("_TimelineFormCommands")
+}

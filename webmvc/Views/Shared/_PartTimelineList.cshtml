@@ -1,0 +1,32 @@
+﻿@model Epiworx.WebMvc.Models.TimelineListModel
+<div class="part timeline">
+    <div class="wrapper">
+        <div class="hgroup">
+            <h3>
+                What's going on?</h3>
+        </div>
+        @using (Html.BeginForm("Create", "Timeline", new { sourceId = Model.SourceId, sourceTypeId = Model.SourceTypeId }))
+        {
+            <textarea id="Body" name="Body"></textarea>
+            <a href="@Url.Action("List", "Timeline", new { sourceId = Model.SourceId, sourceTypeId = Model.SourceTypeId })" class="more">
+                View all timelines &rarr;</a>
+            <button>
+                Update</button>
+        }
+        @if (Model.Timelines.Count() != 0)
+        { 
+            <ul>
+                @foreach (var timeline in Model.Timelines
+            .OrderByDescending(row => row.CreatedDate)
+            .Take(5))
+                {
+                    <li>
+                        @Html.ActionLink("Edit", "Edit", "Timeline", new { id = timeline.TimelineId }, new { @class = "action" })
+                        <p>@timeline.Body
+                            <span class="date">by <em>@timeline.CreatedByName</em> @timeline.CreatedDate.ToString("MMMM d, yyyy")</span></p>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>

@@ -17,6 +17,7 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<HourSummaryByDate> HoursForTrailingWeeks { get; set; }
         public IEnumerable<HourSummary> HourSummaries { get; set; }
         public FeedListModel FeedListModel { get; set; }
+        public TimelineListModel TimelineListModel { get; set; }
 
         public HomeIndexModel()
         {
@@ -25,6 +26,7 @@ namespace Epiworx.WebMvc.Models
             this.HoursForTrailingWeeks = new List<HourSummaryByDate>();
             this.HourSummaries = new List<HourSummary>();
             this.FeedListModel = new FeedListModel();
+            this.TimelineListModel = new TimelineListModel();
         }
     }
 }

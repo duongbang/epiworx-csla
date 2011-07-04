@@ -23,11 +23,23 @@ namespace Epiworx.WebMvc.Controllers
             model.StartDate = DateTime.Now.AddDays(-48).ToStartOfWeek().Date;
             model.EndDate = DateTime.Now.ToEndOfWeek().Date;
             model.Hours = HourRepository.HourFetchInfoList(user, model.StartDate, model.EndDate);
-            model.FeedListModel = new FeedListModel { Feeds = FeedRepository.FeedFetchInfoList(20) };
+            model.FeedListModel = new FeedListModel
+                {
+                    Feeds = FeedRepository.FeedFetchInfoList(20)
+                };
+            model.TimelineListModel = new TimelineListModel
+                {
+                    Timelines = TimelineRepository.TimelineFetchInfoList(model.User),
+                    SourceId = model.User.SourceId,
+                    SourceTypeId = (int)model.User.SourceType
+                };
             model.HoursForCurrentWeek = this.FetchHoursForWeek(
-                DateTime.Now.ToStartOfWeek(), model.Hours);
+                DateTime.Now.ToStartOfWeek(),
+                model.Hours);
             model.HoursForTrailingWeeks = this.FetchHoursForTrailingWeeks(
-                model.StartDate, model.EndDate, model.Hours);
+                model.StartDate,
+                model.EndDate,
+                model.Hours);
 
             var weeks = WeekRepository.WeekFetchInfoList(
                 DateTime.Now.Year);

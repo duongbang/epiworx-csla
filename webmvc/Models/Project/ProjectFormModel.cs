@@ -15,6 +15,8 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<StoryInfo> Stories { get; set; }
         public IEnumerable<NoteInfo> Notes { get; set; }
         public IEnumerable<AttachmentInfo> Attachments { get; set; }
+        public FeedListModel FeedListModel { get; set; }
+        public TimelineListModel TimelineListModel { get; set; }
 
         public ProjectFormModel()
         {

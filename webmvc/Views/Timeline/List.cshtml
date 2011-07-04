@@ -1,0 +1,20 @@
+﻿@model Epiworx.WebMvc.Models.TimelineListModel
+@using Epiworx.WebMvc.Helpers
+<div class="hgroup">
+    <h2>
+        Timelines</h2>
+</div>
+<ul class="timelines">
+    @foreach (var timeline in Model.Timelines)
+    { 
+        <li>
+            @Html.ActionLink("Edit", "Edit", "Timeline", new { id = timeline.TimelineId }, new { @class = "action" })
+            <p>@timeline.Body
+                <span class="date">by <em>@timeline.CreatedByName</em> @timeline.CreatedDate.ToString("MMMM d, yyyy")</span></p>
+        </li>
+    }
+</ul>
+@section SideBar
+{
+    @Html.Partial("_PartActionItemList")
+}

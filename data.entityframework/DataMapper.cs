@@ -319,6 +319,32 @@ namespace Epiworx.Data.EntityFramework
             destination.CreatedDate = source.CreatedDate;
         }
 
+        internal static void Map(Timeline source, TimelineData destination)
+        {
+            destination.TimelineId = source.TimelineId;
+            destination.Body = source.Body;
+            destination.IsArchived = source.IsArchived;
+            destination.SourceId = source.SourceId;
+            destination.SourceTypeId = source.SourceTypeId;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+            destination.ModifiedBy = source.ModifiedBy;
+            destination.ModifiedDate = source.ModifiedDate;
+        }
+
+        internal static void Map(TimelineData source, Timeline destination)
+        {
+            destination.TimelineId = source.TimelineId;
+            destination.Body = source.Body;
+            destination.IsArchived = source.IsArchived;
+            destination.SourceId = source.SourceId;
+            destination.SourceTypeId = source.SourceTypeId;
+            destination.CreatedBy = source.CreatedBy;
+            destination.CreatedDate = source.CreatedDate;
+            destination.ModifiedBy = source.ModifiedBy;
+            destination.ModifiedDate = source.ModifiedDate;
+        }
+
         internal static void Map(User source, UserData destination)
         {
             destination.UserId = source.UserId;

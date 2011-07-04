@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="AttachmentDataFactory.cs" />
     <Compile Include="BusinessIdentityDataFactory.cs" />
+    <Compile Include="TimelineDataFactory.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DataFactoryManager.cs" />
     <Compile Include="DataMapper.cs" />

@@ -57,6 +57,9 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Week_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Week", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Week), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Week_UserModifiedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Week", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Week), true)]
 [assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Source_SourceType", "SourceType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.SourceType), "Source", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Source), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Timeline_Source", "Source", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.Source), "Timeline", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Timeline), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Timeline_UserCreatedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Timeline", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Timeline), true)]
+[assembly: EdmRelationshipAttribute("ApplicationModel", "FK_Timeline_UserModifiedBy", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Epiworx.Data.EntityFramework.User), "Timeline", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Epiworx.Data.EntityFramework.Timeline), true)]
 
 #endregion
 
@@ -363,6 +366,22 @@ namespace Epiworx.Data.EntityFramework
             }
         }
         private ObjectSet<Week> _Weeks;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Timeline> Timelines
+        {
+            get
+            {
+                if ((_Timelines == null))
+                {
+                    _Timelines = base.CreateObjectSet<Timeline>("Timelines");
+                }
+                return _Timelines;
+            }
+        }
+        private ObjectSet<Timeline> _Timelines;
 
         #endregion
         #region AddTo Methods
@@ -493,6 +512,14 @@ namespace Epiworx.Data.EntityFramework
         public void AddToWeeks(Week week)
         {
             base.AddObject("Weeks", week);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Timelines EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToTimelines(Timeline timeline)
+        {
+            base.AddObject("Timelines", timeline);
         }
 
         #endregion
@@ -4006,6 +4033,28 @@ namespace Epiworx.Data.EntityFramework
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Timeline_Source", "Timeline")]
+        public EntityCollection<Timeline> Timelines
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Timeline>("ApplicationModel.FK_Timeline_Source", "Timeline");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Timeline>("ApplicationModel.FK_Timeline_Source", "Timeline", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -5949,6 +5998,386 @@ namespace Epiworx.Data.EntityFramework
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Hour>("ApplicationModel.FK_Hour_Story", "Hour", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ApplicationModel", Name="Timeline")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Timeline : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Timeline object.
+        /// </summary>
+        /// <param name="timelineId">Initial value of the TimelineId property.</param>
+        /// <param name="body">Initial value of the Body property.</param>
+        /// <param name="isArchived">Initial value of the IsArchived property.</param>
+        /// <param name="sourceId">Initial value of the SourceId property.</param>
+        /// <param name="sourceTypeId">Initial value of the SourceTypeId property.</param>
+        /// <param name="createdBy">Initial value of the CreatedBy property.</param>
+        /// <param name="createdDate">Initial value of the CreatedDate property.</param>
+        /// <param name="modifiedBy">Initial value of the ModifiedBy property.</param>
+        /// <param name="modifiedDate">Initial value of the ModifiedDate property.</param>
+        public static Timeline CreateTimeline(global::System.Int32 timelineId, global::System.String body, global::System.Boolean isArchived, global::System.Int32 sourceId, global::System.Int32 sourceTypeId, global::System.Int32 createdBy, global::System.DateTime createdDate, global::System.Int32 modifiedBy, global::System.DateTime modifiedDate)
+        {
+            Timeline timeline = new Timeline();
+            timeline.TimelineId = timelineId;
+            timeline.Body = body;
+            timeline.IsArchived = isArchived;
+            timeline.SourceId = sourceId;
+            timeline.SourceTypeId = sourceTypeId;
+            timeline.CreatedBy = createdBy;
+            timeline.CreatedDate = createdDate;
+            timeline.ModifiedBy = modifiedBy;
+            timeline.ModifiedDate = modifiedDate;
+            return timeline;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TimelineId
+        {
+            get
+            {
+                return _TimelineId;
+            }
+            set
+            {
+                if (_TimelineId != value)
+                {
+                    OnTimelineIdChanging(value);
+                    ReportPropertyChanging("TimelineId");
+                    _TimelineId = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("TimelineId");
+                    OnTimelineIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _TimelineId;
+        partial void OnTimelineIdChanging(global::System.Int32 value);
+        partial void OnTimelineIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Body
+        {
+            get
+            {
+                return _Body;
+            }
+            set
+            {
+                OnBodyChanging(value);
+                ReportPropertyChanging("Body");
+                _Body = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Body");
+                OnBodyChanged();
+            }
+        }
+        private global::System.String _Body;
+        partial void OnBodyChanging(global::System.String value);
+        partial void OnBodyChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IsArchived
+        {
+            get
+            {
+                return _IsArchived;
+            }
+            set
+            {
+                OnIsArchivedChanging(value);
+                ReportPropertyChanging("IsArchived");
+                _IsArchived = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsArchived");
+                OnIsArchivedChanged();
+            }
+        }
+        private global::System.Boolean _IsArchived;
+        partial void OnIsArchivedChanging(global::System.Boolean value);
+        partial void OnIsArchivedChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SourceId
+        {
+            get
+            {
+                return _SourceId;
+            }
+            set
+            {
+                OnSourceIdChanging(value);
+                ReportPropertyChanging("SourceId");
+                _SourceId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SourceId");
+                OnSourceIdChanged();
+            }
+        }
+        private global::System.Int32 _SourceId;
+        partial void OnSourceIdChanging(global::System.Int32 value);
+        partial void OnSourceIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 SourceTypeId
+        {
+            get
+            {
+                return _SourceTypeId;
+            }
+            set
+            {
+                OnSourceTypeIdChanging(value);
+                ReportPropertyChanging("SourceTypeId");
+                _SourceTypeId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("SourceTypeId");
+                OnSourceTypeIdChanged();
+            }
+        }
+        private global::System.Int32 _SourceTypeId;
+        partial void OnSourceTypeIdChanging(global::System.Int32 value);
+        partial void OnSourceTypeIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CreatedBy
+        {
+            get
+            {
+                return _CreatedBy;
+            }
+            set
+            {
+                OnCreatedByChanging(value);
+                ReportPropertyChanging("CreatedBy");
+                _CreatedBy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedBy");
+                OnCreatedByChanged();
+            }
+        }
+        private global::System.Int32 _CreatedBy;
+        partial void OnCreatedByChanging(global::System.Int32 value);
+        partial void OnCreatedByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreatedDate
+        {
+            get
+            {
+                return _CreatedDate;
+            }
+            set
+            {
+                OnCreatedDateChanging(value);
+                ReportPropertyChanging("CreatedDate");
+                _CreatedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedDate");
+                OnCreatedDateChanged();
+            }
+        }
+        private global::System.DateTime _CreatedDate;
+        partial void OnCreatedDateChanging(global::System.DateTime value);
+        partial void OnCreatedDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ModifiedBy
+        {
+            get
+            {
+                return _ModifiedBy;
+            }
+            set
+            {
+                OnModifiedByChanging(value);
+                ReportPropertyChanging("ModifiedBy");
+                _ModifiedBy = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModifiedBy");
+                OnModifiedByChanged();
+            }
+        }
+        private global::System.Int32 _ModifiedBy;
+        partial void OnModifiedByChanging(global::System.Int32 value);
+        partial void OnModifiedByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime ModifiedDate
+        {
+            get
+            {
+                return _ModifiedDate;
+            }
+            set
+            {
+                OnModifiedDateChanging(value);
+                ReportPropertyChanging("ModifiedDate");
+                _ModifiedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModifiedDate");
+                OnModifiedDateChanged();
+            }
+        }
+        private global::System.DateTime _ModifiedDate;
+        partial void OnModifiedDateChanging(global::System.DateTime value);
+        partial void OnModifiedDateChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Timeline_Source", "Source")]
+        public Source Source
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Source>("ApplicationModel.FK_Timeline_Source", "Source").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Source>("ApplicationModel.FK_Timeline_Source", "Source").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Source> SourceReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Source>("ApplicationModel.FK_Timeline_Source", "Source");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Source>("ApplicationModel.FK_Timeline_Source", "Source", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Timeline_UserCreatedBy", "User")]
+        public User CreatedByUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Timeline_UserCreatedBy", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Timeline_UserCreatedBy", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> CreatedByUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Timeline_UserCreatedBy", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_Timeline_UserCreatedBy", "User", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationModel", "FK_Timeline_UserModifiedBy", "User")]
+        public User ModifiedByUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Timeline_UserModifiedBy", "User").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Timeline_UserModifiedBy", "User").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<User> ModifiedByUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("ApplicationModel.FK_Timeline_UserModifiedBy", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("ApplicationModel.FK_Timeline_UserModifiedBy", "User", value);
                 }
             }
         }

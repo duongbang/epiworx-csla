@@ -6,14 +6,10 @@ using Epiworx.Business;
 
 namespace Epiworx.WebMvc.Models
 {
-    public class ProjectListModel : ModelBase
+    public class TimelineListModel : ModelBase
     {
-        public IEnumerable<ProjectInfo> Projects { get; set; }
+        public int SourceId { get; set; }
+        public int SourceTypeId { get; set; }
         public IEnumerable<TimelineInfo> Timelines { get; set; }
-        public IEnumerable<StoryInfo> Stories { get; set; }
-
-        public ProjectListModel()
-        {
-        }
     }
 }

@@ -1,0 +1,13 @@
+﻿@model Epiworx.WebMvc.Models.TimelineFormModel
+@using Epiworx.WebMvc.Helpers
+<ul class="commands">
+    <li>
+        <button>
+            Save Changes</button></li>
+    <li><span>or</span></li>
+    @if (!Model.Timeline.IsNew)
+    { 
+        <li>@Html.ActionLink("Delete", "Delete", new { id = Model.Timeline.TimelineId })</li>
+    }
+    <li><a href="@Url.Action("Details", Model.Timeline.SourceTypeName, new { id = Model.Timeline.SourceId })">Back</a></li>
+</ul>

@@ -37,10 +37,11 @@ namespace Epiworx.WebMvc.Controllers
 
             model.Stories = stories;
 
-            var notes = NoteRepository.NoteFetchInfoList(
+            var timelines = TimelineRepository.TimelineFetchInfoList(
                 projects.Select(row => row.ProjectId).Distinct().ToArray(), SourceType.Project);
 
-            model.Notes = notes;
+            model.Timelines = timelines;
+            model.Actions.Add("Add a project", Url.Action("Create"), "primary");
 
             return this.View(model);
         }
@@ -59,6 +60,12 @@ namespace Epiworx.WebMvc.Controllers
             model.Statuses = StatusRepository.StatusFetchInfoList(id);
             model.Stories = StoryRepository.StoryFetchInfoList(project, false);
             model.Users = ProjectUserRepository.ProjectUserFetchInfoList(id);
+            model.TimelineListModel = new TimelineListModel
+            {
+                Timelines = TimelineRepository.TimelineFetchInfoList(project),
+                SourceId = project.SourceId,
+                SourceTypeId = (int)project.SourceType
+            };
             model.Actions.Add("Edit this project", Url.Action("Edit", new { id }), "primary");
             model.Actions.Add("Add a story", Url.Action("Create", "Story", new { projectId = id }));
             model.Actions.Add("Add a sprint", Url.Action("Create", "Sprint", new { projectId = id }));

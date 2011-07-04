@@ -40,30 +40,32 @@
                     <div class="clip" title="@project.Description">@project.Description</div>
                 </td>
                 <td>
-                    @if (Model.Notes.Count() != 0)
+                    @if (Model.Timelines.Count() != 0)
                     {
-                        var notes = Model.Notes
-                            .Where(note => note.SourceId == project.ProjectId)
-                            .OrderByDescending(note => note.CreatedDate);
+                        var timelines = Model.Timelines
+                            .Where(timeline => timeline.SourceId == project.ProjectId)
+                            .OrderByDescending(timeline => timeline.CreatedDate);
 
-                        if (notes.Count() != 0)
+                        if (timelines.Count() != 0)
                         {
-                            var note = notes.First();
+                            var timeline = timelines.First();
                         <div class="note">
-                            <p title="@note.Body">
-                                @note.Body
+                            <p title="@timeline.Body">
+                                @timeline.Body
                             </p>
-                            @Html.Gravatar(note.CreatedByEmail, note.CreatedByName)
+                            @Html.Gravatar(timeline.CreatedByEmail, timeline.CreatedByName)
                             <strong class="user">
-                                @note.CreatedByName</strong><span class="date">@Html.ToRelativeDate(note.CreatedDate)</span>
+                                @timeline.CreatedByName</strong><span class="date">@Html.ToRelativeDate(timeline.CreatedDate)</span>
                         </div>
                         }
                     }
                 </td>
-                <td class="number"><a href="@Url.Action("List", "Story", new { projectId = project.ProjectId, isOpened = "False", isArchived = "False"})">@Model.Stories.Count(row => row.ProjectId == project.ProjectId
+                <td class="number">
+                    <a href="@Url.Action("List", "Story", new { projectId = project.ProjectId, isOpened = "False", isArchived = "False" })">@Model.Stories.Count(row => row.ProjectId == project.ProjectId
                     && !row.IsOpened)</a>
                 </td>
-                <td class="number"><a href="@Url.Action("List", "Story", new { projectId = project.ProjectId, isOpened = "True", isArchived = "False"})">@Model.Stories.Count(row => row.ProjectId == project.ProjectId
+                <td class="number">
+                    <a href="@Url.Action("List", "Story", new { projectId = project.ProjectId, isOpened = "True", isArchived = "False" })">@Model.Stories.Count(row => row.ProjectId == project.ProjectId
                     && row.IsOpened)</a>
                 </td>
                 <td class="number">@Model.Stories.Where(row => row.ProjectId == project.ProjectId
@@ -73,6 +75,10 @@
         }
     </tbody>
 </table>
+@section SideBar
+{
+    @Html.Partial("_PartActionItemList")
+}
 <script type="text/javascript">
 
     $("table.projects tr[data-active='False']").hide();

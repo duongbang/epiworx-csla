@@ -25,6 +25,7 @@ namespace Epiworx.Data.Mock
         public static List<SprintData> Sprints { get; private set; }
         public static List<StatusData> Statuses { get; private set; }
         public static List<StoryData> Stories { get; private set; }
+        public static List<TimelineData> Timelines { get; private set; }
         public static List<UserData> Users { get; private set; }
         public static List<WeekData> Weeks { get; private set; }
 
@@ -55,6 +56,8 @@ namespace Epiworx.Data.Mock
             Statuses = new List<StatusData>();
 
             Stories = new List<StoryData>();
+
+            Timelines = new List<TimelineData>();
 
             Users =
                     new List<UserData>

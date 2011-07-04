@@ -322,6 +322,79 @@
     display: inline;
 }
 
+.part.timeline
+{
+}
+
+.part.timeline textarea
+{
+    width: 290px;
+}
+
+.part.timeline ul
+{
+    margin-top: 10px;
+}
+
+.part.timeline .date
+{
+    display: block;
+    font-size: 14px;
+    margin-top: 5px;
+    color: #808080;
+}
+
+.part.timeline a
+{
+    float: right;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.part.timeline a.more
+{
+    margin-top: 12px;
+}
+
+.part.timeline em
+{
+    font-style: normal;
+    color: #000000;
+    font-weight: bold;
+}
+
+.timelines
+{
+    font-size: 18px;
+}
+
+.timelines .date
+{
+    display: block;
+    font-size: 14px;
+    margin-top: 5px;
+    color: #808080;
+}
+
+.timelines a
+{
+    float: right;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.timelines em
+{
+    font-style: normal;
+    color: #000000;
+    font-weight: bold;
+}
+
+.timelines li
+{
+    margin-bottom: 10px;
+}
+
 ul.stories
 {
     font-size: 18px;

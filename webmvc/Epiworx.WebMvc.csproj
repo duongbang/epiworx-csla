@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\TimelineController.cs" />
     <Compile Include="Controllers\WeekController.cs" />
     <Compile Include="Controllers\NoteAttachmentController.cs" />
     <Compile Include="Controllers\FeedController.cs" />
@@ -99,6 +100,8 @@
     <Compile Include="Models\Account\AccountRegisterSuccessModel.cs" />
     <Compile Include="Models\Attachment\AttachmentFormModel.cs" />
     <Compile Include="Models\Attachment\AttachmentListModel.cs" />
+    <Compile Include="Models\Timeline\TimelineFormModel.cs" />
+    <Compile Include="Models\Timeline\TimelineListModel.cs" />
     <Compile Include="Models\Hour\HourIndexModel.cs" />
     <Compile Include="Models\HourSummary.cs" />
     <Compile Include="Models\Story\StoryIndexModel.cs" />
@@ -175,6 +178,12 @@
     <Content Include="Views\Hour\_PartYearList.cshtml" />
     <Content Include="Views\Story\List.cshtml" />
     <Content Include="Views\Story\_PartFilterList.cshtml" />
+    <Content Include="Views\Timeline\_TimelineForm.cshtml" />
+    <Content Include="Views\Timeline\_TimelineFormCommands.cshtml" />
+    <Content Include="Views\Timeline\Create.cshtml" />
+    <Content Include="Views\Timeline\Edit.cshtml" />
+    <Content Include="Views\Shared\_PartTimelineList.cshtml" />
+    <Content Include="Views\Timeline\List.cshtml" />
     <None Include="Web.config" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />

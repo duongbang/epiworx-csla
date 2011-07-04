@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AttachmentDataFactory.cs" />
     <Compile Include="BusinessIdentityDataFactory.cs" />
+    <Compile Include="TimelineDataFactory.cs" />
     <Compile Include="HourDataFactory.cs" />
     <Compile Include="FeedDataFactory.cs" />
     <Compile Include="FeedSourceMemberDataFactory.cs" />
