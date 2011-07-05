@@ -25,7 +25,7 @@
 
 .clip
 {
-    height: 16px;
+    height: 14px;
     overflow: hidden;
     margin-right: 20px;
 }
@@ -115,14 +115,14 @@
 
 .feed:last-child
 {
-    border: none;    
+    border: none;
     margin-bottom: 0px;
 }
 
 .feed h1
 {
     font-size: 16px;
-    margin-bottom: 5px;    
+    margin-bottom: 5px;
 }
 
 .feed .action
@@ -286,25 +286,22 @@
 }
 
 .part .filter.block li
-{ 
+{
     display: block;
 }
 
 .primary
 {
-    font-size: 200%;
+    font-size: 150%;
     background-repeat: no-repeat;
-    padding-left: 37px;
 }
 
 .primary.add
 {
-    background-image: url('add.png');
 }
 
 .primary.edit
 {
-    background-image: url('edit.png');
 }
 
 .attachments
@@ -619,7 +616,6 @@ ul.stories .date
     background-color: #272727;
     color: #FFF;
     margin-bottom: 20px;
- 
 }
 
 #header a
@@ -742,7 +738,7 @@ a:hover
 body
 {
     font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman' , Times, serif;
     background-color: #F3F3F3;
 }
 
@@ -771,7 +767,7 @@ h3
 input, button
 {
     font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman' , Times, serif;
 }
 
 input[type="text"], input[type="password"]
@@ -796,7 +792,7 @@ select
     padding: 5px;
     width: 312px;
     font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman' , Times, serif;
     margin-bottom: 10px;
 }
 
@@ -812,7 +808,7 @@ textarea
     width: 300px;
     margin-bottom: 10px;
     font-size: 14px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Times New Roman' , Times, serif;
 }
 
 fieldset
