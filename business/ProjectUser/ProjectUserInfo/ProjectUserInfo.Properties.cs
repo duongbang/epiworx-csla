@@ -53,6 +53,14 @@ namespace Epiworx.Business
             set { this.LoadProperty(UserIdProperty, value); }
         }
 
+        private static Csla.PropertyInfo<string> UserEmailProperty =
+            RegisterProperty<string>(row => row.UserEmail, "UserEmail");
+        public string UserEmail
+        {
+            get { return this.GetProperty(UserEmailProperty); }
+            set { this.LoadProperty(UserEmailProperty, value); }
+        }
+
         private static Csla.PropertyInfo<string> UserNameProperty =
             RegisterProperty<string>(row => row.UserName, "UserName");
         public string UserName

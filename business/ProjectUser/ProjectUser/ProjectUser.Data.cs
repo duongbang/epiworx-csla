@@ -47,6 +47,7 @@ namespace Epiworx.Business
             this.ProjectName = data.Project.Name;
             this.RoleId = data.RoleId;
             this.UserId = data.UserId;
+            this.UserEmail = data.User.Email;
             this.UserName = data.User.Name;
             this.CreatedBy = data.CreatedBy;
             this.CreatedByName = data.CreatedByUser.Name;

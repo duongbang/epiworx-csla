@@ -16,6 +16,7 @@ namespace Epiworx.Business
             this.RoleId = data.RoleId;
             this.UserId = data.UserId;
             this.UserName = data.User.Name;
+            this.UserEmail = data.User.Email;
             this.CreatedBy = data.CreatedBy;
             this.CreatedByName = data.CreatedByUser.Name;
             this.CreatedDate = data.CreatedDate;

@@ -5,8 +5,8 @@
 @section SideBar
 {
     @Html.Partial("_PartTimelineList", Model.TimelineListModel)
-    @Html.Partial("_PartHourSummaryList")
-    @Html.Partial("_PartHourByDayList")
-    @Html.Partial("_PartProjectList")
-    @Html.Partial("_PartHourByWeekList")
+    @Html.Partial("_PartHourSummaryList", Model.HourSummaryListModel)
+    @Html.Partial("_PartHourByDayList", Model.CurrentWeekHourSummaryByDateListModel)
+    @Html.Partial("_PartProjectList", Model.ProjectListModel)
+    @Html.Partial("_PartHourByWeekList", Model.TrailingWeeksHourSummaryByDateListModel)
 }

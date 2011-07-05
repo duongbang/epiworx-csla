@@ -1,11 +1,10 @@
-﻿@model Epiworx.WebMvc.Models.HomeIndexModel
-@using Epiworx.WebMvc.Helpers
+﻿@model Epiworx.WebMvc.Models.HourSummaryByDateListModel
 <div class="part">
     <div class="wrapper">
         <div class="hgroup">
             <img src="@Url.Content("~/Content/calendar.png")" />
             <h3>
-                Your Hours for Last 8 Weeks</h3>
+                Hours this Week</h3>
         </div>
         <table>
             <thead>
@@ -19,12 +18,12 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var hourSummaryByDate in Model.HoursForTrailingWeeks)
+                @foreach (var hour in Model.Hours)
                 { 
                     <tr>
-                        <td>@hourSummaryByDate.StartDate.ToString("MMM d")
+                        <td>@hour.StartDate.ToString("ddd d")
                         </td>
-                        <td class="number">@Html.ActionLink(hourSummaryByDate.Duration.ToString("F2"), "Index", "Hour", new { userId = Model.User.UserId, dateFrom = hourSummaryByDate.StartDate.ToShortDateString(), dateTo = hourSummaryByDate.EndDate.ToShortDateString() }, null)
+                        <td class="number">@Html.ActionLink(hour.Duration.ToString("F2"), "Index", "Hour", new { userId = Model.User.UserId, dateFrom = hour.StartDate.ToShortDateString(), dateTo = hour.EndDate.ToShortDateString() }, null)
                         </td>
                     </tr>
                 }
@@ -34,7 +33,7 @@
                     <td>
                         Total
                     </td>
-                    <td class="number">@Model.HoursForTrailingWeeks.Sum(hourSummaryByDate => hourSummaryByDate.Duration).ToString("F2")
+                    <td class="number">@Model.Hours.Sum(hour => hour.Duration).ToString("F2")
                     </td>
                 </tr>
             </tfoot>

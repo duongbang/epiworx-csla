@@ -51,6 +51,14 @@
     margin-bottom: 10px;
 }
 
+.collaborators li img
+{
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin-right: 5px;
+}
+
 .collaborators a
 {
     margin-left: 5px;
@@ -103,6 +111,12 @@
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: #E8E8E8;
+}
+
+.feed:last-child
+{
+    border: none;    
+    margin-bottom: 0px;
 }
 
 .feed h1
@@ -327,7 +341,12 @@
 
 .notes li
 {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.notes li:last-child
+{
+    margin-bottom: 0px;
 }
 
 .notes .attachments a
@@ -383,6 +402,11 @@
     font-weight: bold;
 }
 
+.section
+{
+    margin-bottom: 20px;
+}
+
 .timelines
 {
     font-size: 18px;
@@ -418,6 +442,17 @@
 ul.stories
 {
     font-size: 18px;
+    margin-bottom: 20px;
+}
+
+ul.stories:last-child
+{
+    margin-bottom: 0px;
+}
+
+ul.stories .clip
+{
+    height: 20px;
 }
 
 ul.stories em
@@ -427,9 +462,29 @@ ul.stories em
     font-weight: bold;
 }
 
+ul.stories h3
+{
+    font-size: 150%;
+    display: block;
+    background-color: #C0C0C0;
+}
+
+ul.stories img
+{
+    height: 16px;
+    width: 16px;
+    float: left;
+    margin-right: 5px;
+}
+
 ul.stories li
 {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+ul.stories li:last-child
+{
+    margin-bottom: 0px;
 }
 
 ul.stories li a
@@ -652,7 +707,10 @@ ul.stories .date
 
 #content
 {
-    margin-right: 340px;
+    margin-right: 320px;
+    background-color: #FFF;
+    padding: 20px;
+    border: solid 1px #E6E6E6;
 }
 
 #aside
@@ -685,6 +743,7 @@ body
 {
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #F3F3F3;
 }
 
 button

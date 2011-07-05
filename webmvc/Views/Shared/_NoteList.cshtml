@@ -1,32 +1,33 @@
 ﻿@model Epiworx.WebMvc.Models.NoteListModel
-<div class="hgroup">
-    <img src="@Url.Content("~/Content/note.png")" alt="Note"/>
-    <h2>
-        Notes</h2>
+<div class="section">
+    <div class="hgroup">
+        <img src="@Url.Content("~/Content/note.png")" alt="Note"/>
+        <h2>
+            Notes</h2>
+    </div>
+    @if (Model.Notes.Count() == 0)
+    { 
+        <p class="no-records">
+            No notes have been created.</p>
+    }
+    else
+    { 
+        <ul class="notes">
+            @foreach (var note in Model.Notes.OrderByDescending(row => row.CreatedDate))
+            {
+                <li class="note">
+                    @Html.ActionLink("Edit this note", "Edit", "Note", new { id = note.NoteId }, null)
+                    @Html.ActionLink("Add an attachment", "Create", "NoteAttachment", new { noteId = note.NoteId }, null)
+                    <p>@note.Body
+                        <span class="date">by <em>@note.CreatedByName</em> @note.CreatedDate.ToString("MMMM d, yyyy")</span></p>
+                    <ul class="attachments">
+                        @foreach (var attachment in Model.Attachments.Where(row => row.SourceId == note.NoteId))
+                        {
+                            <li>@Html.ActionLink(attachment.Name, "Details", "NoteAttachment", new { id = attachment.AttachmentId }, null)@Html.ActionLink("Edit", "Edit", "NoteAttachment", new { id = attachment.AttachmentId }, new { @class = "action" })</li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ul>
+    }
 </div>
-@if (Model.Notes.Count() == 0)
-{ 
-    <p class="no-records">
-        No notes have been created.</p>
-}
-else
-{ 
-    <ul class="notes">
-        @foreach (var note in Model.Notes.OrderByDescending(row => row.CreatedDate))
-        {
-            <li class="note">
-                @Html.ActionLink("Edit this note", "Edit", "Note", new { id = note.NoteId }, null)
-                <p>@note.Body
-                    <span class="date">by <em>@note.CreatedByName</em> @note.CreatedDate.ToString("MMMM d, yyyy")</span></p>
-                <ul class="attachments">
-                    @foreach (var attachment in Model.Attachments.Where(row => row.SourceId == note.NoteId))
-                    {
-                        <li>@Html.ActionLink(attachment.Name, "Details", "NoteAttachment", new { id = attachment.AttachmentId }, null)@Html.ActionLink("Edit", "Edit", "NoteAttachment", new { id = attachment.AttachmentId }, new { @class = "action" })</li>
-                    }
-                    <li>@Html.ActionLink("Add an attachment", "Create", "NoteAttachment", new { noteId = note.NoteId }, null)
-                    </li>
-                </ul>
-            </li>
-        }
-    </ul>
-}

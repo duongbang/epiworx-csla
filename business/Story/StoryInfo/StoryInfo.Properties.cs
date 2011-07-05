@@ -23,6 +23,14 @@ namespace Epiworx.Business
             set { this.LoadProperty(AssignedToProperty, value); }
         }
 
+        private static Csla.PropertyInfo<string> AssignedToEmailProperty =
+            RegisterProperty<string>(row => row.AssignedToEmail, "AssignedToEmail");
+        public string AssignedToEmail
+        {
+            get { return this.GetProperty(AssignedToEmailProperty); }
+            set { this.LoadProperty(AssignedToEmailProperty, value); }
+        }
+
         private static Csla.PropertyInfo<string> AssignedToNameProperty =
             RegisterProperty<string>(row => row.AssignedToName, "AssignedToName");
         public string AssignedToName

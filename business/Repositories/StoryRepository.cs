@@ -29,6 +29,15 @@ namespace Epiworx.Business
             return StoryRepository.StoryFetchInfoList(new StoryDataCriteria());
         }
 
+        public static StoryInfoList StoryFetchInfoList(IUser assignedTo, bool? isArchived)
+        {
+            return StoryRepository.StoryFetchInfoList(new StoryDataCriteria
+                {
+                    AssignedTo = assignedTo.UserId,
+                    IsArchived = isArchived
+                });
+        }
+
         public static StoryInfoList StoryFetchInfoList(IProject project, bool? isArchived)
         {
             ProjectUserRepository.AuthorizeProjectUser(project.ProjectId);

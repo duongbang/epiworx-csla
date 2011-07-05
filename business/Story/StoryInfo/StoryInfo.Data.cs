@@ -12,6 +12,7 @@ namespace Epiworx.Business
         {
             this.StoryId = data.StoryId;
             this.AssignedTo = data.AssignedTo;
+            this.AssignedToEmail = data.AssignedToUser.Email;
             this.AssignedToName = data.AssignedToUser.Name;
             this.AssignedDate = data.AssignedDate;
             this.CompletedDate = data.CompletedDate;

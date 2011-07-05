@@ -34,6 +34,15 @@ namespace Epiworx.Business
             return ProjectRepository.ProjectFetchInfoList(new ProjectDataCriteria());
         }
 
+        public static ProjectInfoList ProjectFetchInfoList(IUser user)
+        {
+            return ProjectInfoList.FetchProjectInfoList(
+                new ProjectDataCriteria
+                    {
+                        UserId = user.UserId
+                    });
+        }
+
         public static ProjectInfoList ProjectFetchInfoList(ProjectDataCriteria criteria)
         {
             // this will ensure that users can only view projects that they are assigned to

@@ -13,6 +13,7 @@ namespace Epiworx.Business
         int RoleId { get; }
         int UserId { get; }
         string UserName { get; }
+        string UserEmail { get; }
         int CreatedBy { get; }
         DateTime CreatedDate { get; }
         int ModifiedBy { get; }

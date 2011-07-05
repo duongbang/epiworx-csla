@@ -1,25 +1,31 @@
 ﻿@model Epiworx.WebMvc.Models.StoryListModel
-<div class="hgroup">
-    <img src="@Url.Content("~/Content/story.png")" alt="Story"/>
-    <h2>
-        Stories</h2>
-</div>
-@foreach (var status in Model.Statuses)
-{
-    if (Model.Stories.Any(row => row.StatusId == status.StatusId))
+@using Epiworx.WebMvc.Helpers
+<div class="section">
+    <div class="hgroup">
+        <img src="@Url.Content("~/Content/story.png")" alt="Story"/>
+        <h2>
+            Stories</h2>
+    </div>
+    @foreach (var statusName in Model.Stories.Select(row => row.StatusName).Distinct())
     {
-    <h3>@status.Name</h3>
-    <ul class="stories">
-        @foreach (var story in Model.Stories.Where(row => row.StatusId == status.StatusId))
+        if (Model.Stories.Any(row => row.StatusName == statusName))
         {
-            <li>
-                <strong>@story.StoryId</strong>
-                <p>
-                    <span class="assignment">@story.AssignedToName</span>
-                    <div class="clip"><a href="@Url.Action("Details", "Story", new { id = story.StoryId})" title="@story.Description">@story.Description</a></div>
-                    <span class="date">by <em>@story.CreatedByName</em> @story.CreatedDate.ToString("MMMM d, yyyy")</span></p>
-            </li> 
+        <h3>@statusName</h3>
+        <ul class="stories">
+            @foreach (var story in Model.Stories.Where(row => row.StatusName == statusName))
+            {
+                <li><strong>@story.StoryId</strong>
+                    <p>
+                        @if (story.AssignedTo != 0)
+                        { 
+                            <span class="assignment">@Html.Gravatar(story.AssignedToEmail, story.AssignedToName)@story.AssignedToName</span>
+                        }
+                        <div class="clip">
+                            <a href="@Url.Action("Details", "Story", new { id = story.StoryId })" title="@story.Description">@story.Description</a></div>
+                        <span class="date">by <em>@story.CreatedByName</em> @story.CreatedDate.ToString("MMMM d, yyyy")</span></p>
+                </li> 
+            }
+        </ul>
         }
-    </ul>
     }
-}
+</div>

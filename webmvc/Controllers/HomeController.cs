@@ -19,27 +19,43 @@ namespace Epiworx.WebMvc.Controllers
             var user = UserRepository.UserFetch();
 
             model.User = user;
-            model.Projects = ProjectRepository.ProjectFetchInfoList();
             model.StartDate = DateTime.Now.AddDays(-48).ToStartOfWeek().Date;
             model.EndDate = DateTime.Now.ToEndOfWeek().Date;
             model.Hours = HourRepository.HourFetchInfoList(user, model.StartDate, model.EndDate);
-            model.FeedListModel = new FeedListModel
-                {
-                    Feeds = FeedRepository.FeedFetchInfoList(20)
-                };
-            model.TimelineListModel = new TimelineListModel
-                {
-                    Timelines = TimelineRepository.TimelineFetchInfoList(model.User),
-                    SourceId = model.User.SourceId,
-                    SourceTypeId = (int)model.User.SourceType
-                };
-            model.HoursForCurrentWeek = this.FetchHoursForWeek(
-                DateTime.Now.ToStartOfWeek(),
-                model.Hours);
-            model.HoursForTrailingWeeks = this.FetchHoursForTrailingWeeks(
-                model.StartDate,
-                model.EndDate,
-                model.Hours);
+            model.ProjectListModel =
+                new ProjectListModel
+                    {
+                        Projects = ProjectRepository.ProjectFetchInfoList()
+                    };
+            model.FeedListModel =
+                new FeedListModel
+                    {
+                        Feeds = FeedRepository.FeedFetchInfoList(20)
+                    };
+            model.TimelineListModel =
+                new TimelineListModel
+                    {
+                        Timelines = TimelineRepository.TimelineFetchInfoList(model.User),
+                        SourceId = model.User.SourceId,
+                        SourceTypeId = (int)model.User.SourceType
+                    };
+            model.CurrentWeekHourSummaryByDateListModel =
+                new HourSummaryByDateListModel
+                    {
+                        User = user,
+                        Hours = this.FetchHoursForWeek(
+                            DateTime.Now.ToStartOfWeek(),
+                            model.Hours)
+                    };
+            model.TrailingWeeksHourSummaryByDateListModel =
+                new HourSummaryByDateListModel
+                    {
+                        User = user,
+                        Hours = this.FetchHoursForTrailingWeeks(
+                            model.StartDate,
+                            model.EndDate,
+                            model.Hours)
+                    };
 
             var weeks = WeekRepository.WeekFetchInfoList(
                 DateTime.Now.Year);
@@ -54,7 +70,12 @@ namespace Epiworx.WebMvc.Controllers
             hourSummaries.Add(new HourSummary { Name = "Period", Value = (double)hours.Where(row => row.Date >= currentPeriodStartDate.Date && row.Date <= currentPeriodEndDate.Date).Sum(row => row.Duration), NormalValue = 100 });
             hourSummaries.Add(new HourSummary { Name = "Year", Value = (double)hours.Sum(row => row.Duration), NormalValue = 1250 });
 
-            model.HourSummaries = hourSummaries;
+            model.HourSummaryListModel =
+                new HourSummaryListModel
+                    {
+                        User = user,
+                        Hours = hourSummaries
+                    };
 
             return View(model);
         }

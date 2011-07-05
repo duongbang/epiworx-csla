@@ -9,6 +9,7 @@ namespace Epiworx.Business
     {
         int StoryId { get; }
         int AssignedTo { get; }
+        string AssignedToEmail { get; }
         string AssignedToName { get; }
         DateTime AssignedDate { get; }
         DateTime CompletedDate { get; }

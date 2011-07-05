@@ -11,20 +11,18 @@ namespace Epiworx.WebMvc.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public User User { get; set; }
-        public IEnumerable<ProjectInfo> Projects { get; set; }
         public IEnumerable<HourInfo> Hours { get; set; }
-        public IEnumerable<HourSummaryByDate> HoursForCurrentWeek { get; set; }
-        public IEnumerable<HourSummaryByDate> HoursForTrailingWeeks { get; set; }
-        public IEnumerable<HourSummary> HourSummaries { get; set; }
+        public HourSummaryByDateListModel CurrentWeekHourSummaryByDateListModel { get; set; }
+        public HourSummaryByDateListModel TrailingWeeksHourSummaryByDateListModel { get; set; }
+        public HourSummaryListModel HourSummaryListModel { get; set; }
+        public ProjectListModel ProjectListModel { get; set; }
         public FeedListModel FeedListModel { get; set; }
         public TimelineListModel TimelineListModel { get; set; }
 
         public HomeIndexModel()
         {
             this.Title = "Dashboard";
-            this.HoursForCurrentWeek = new List<HourSummaryByDate>();
-            this.HoursForTrailingWeeks = new List<HourSummaryByDate>();
-            this.HourSummaries = new List<HourSummary>();
+            this.ProjectListModel = new ProjectListModel();
             this.FeedListModel = new FeedListModel();
             this.TimelineListModel = new TimelineListModel();
         }

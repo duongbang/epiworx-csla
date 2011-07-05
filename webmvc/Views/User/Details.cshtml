@@ -1,7 +1,29 @@
 ﻿@model Epiworx.WebMvc.Models.UserFormModel
-
-@{
-    ViewBag.Title = "Details";
+@using Epiworx.WebMvc.Helpers
+@using Epiworx.WebMvc.Models
+<div class="hgroup">
+    <img src="@Url.Content("~/Content/user.png")" alt="User" />
+    <h2>
+        @Model.User.Name</h2>
+</div>
+<fieldset>
+    <legend>User</legend>
+    <p>
+        <label>
+            Name</label>
+        <span class="big">@Model.User.FullName</span></p>
+    <p>
+        <label>
+            Email</label>
+        <span>@Model.User.Email</span></p>
+</fieldset>
+@Html.Partial("_StoryList", new StoryListModel { Stories = Model.Stories })
+@section SideBar
+{
+    @Html.Partial("_PartTimelineList", Model.TimelineListModel)
+    @Html.Partial("_PartHourSummaryList", Model.HourSummaryListModel)
+    @Html.Partial("_PartHourByDayList", Model.CurrentWeekHourSummaryByDateListModel)
+    @Html.Partial("_PartProjectList", Model.ProjectListModel)
+    @Html.Partial("_PartHourByWeekList", Model.TrailingWeeksHourSummaryByDateListModel)
+    @Html.Partial("_PartProjectList", Model.ProjectListModel)
 }
-
-<h2>Details</h2>
