@@ -25,7 +25,8 @@
 
 .clip
 {
-    height: 14px;
+    height: 16px;
+	line-height: 100%;
     overflow: hidden;
     margin-right: 20px;
 }

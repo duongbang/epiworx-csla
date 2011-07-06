@@ -21,7 +21,7 @@ namespace Epiworx.Business
             xmlWriter.WriteStartDocument();
             xmlWriter.WriteStartElement("Changes");
 
-            xmlWriter = AuditorHelper.Audit(xmlWriter, "AssignedToName", this.Object.Description, obj.Description);
+            xmlWriter = AuditorHelper.Audit(xmlWriter, "AssignedToName", this.Object.AssignedToName, obj.AssignedToName);
             xmlWriter = AuditorHelper.Audit(xmlWriter, "AssignedDate", this.Object.AssignedDate, obj.AssignedDate);
             xmlWriter = AuditorHelper.Audit(xmlWriter, "CompletedDate", this.Object.CompletedDate, obj.CompletedDate);
             xmlWriter = AuditorHelper.Audit(xmlWriter, "Description", this.Object.Description, obj.Description);
