@@ -17,7 +17,12 @@ namespace Epiworx.Business
                 this.CompletedDate = DateTime.MaxValue.Date;
                 this.IsActive = true;
                 this.EstimatedCompletedDate = DateTime.MaxValue.Date;
-                this.ProjectId = criteria.ProjectId ?? 0;
+
+                if (criteria.ProjectId != null)
+                {
+                    this.ProjectId = criteria.ProjectId[0];
+                }
+
                 this.ModifiedDate = DateTime.Now;
                 this.CreatedDate = DateTime.Now;
             }

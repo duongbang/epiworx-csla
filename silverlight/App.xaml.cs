@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.IsolatedStorage;
+
 using System.Linq;
 using System.Net;
 using System.Windows;
@@ -9,12 +11,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using Epiworx.Silverlight.Models;
 
 namespace Epiworx.Silverlight
 {
     public partial class App : Application
     {
-
         public App()
         {
             this.Startup += this.Application_Startup;
@@ -26,12 +28,27 @@ namespace Epiworx.Silverlight
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            this.RootVisual = new MainPage();
+            var model = new MainModel();
+
+            if (e.InitParams.Count != 0)
+            {
+                model.ServiceUri = e.InitParams["uri"];
+            }
+
+            if (IsolatedStorageSettings.ApplicationSettings.Contains("UserName")
+                && IsolatedStorageSettings.ApplicationSettings.Contains("Password"))
+            {
+                model.UserName = IsolatedStorageSettings.ApplicationSettings["UserName"].ToString();
+                model.Password = IsolatedStorageSettings.ApplicationSettings["Password"].ToString();
+
+                model.SignIn();
+            }
+
+            this.RootVisual = new MainPage { Model = model };
         }
 
         private void Application_Exit(object sender, EventArgs e)
         {
-
         }
 
         private void Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)

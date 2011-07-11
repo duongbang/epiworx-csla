@@ -31,7 +31,7 @@
     <p>
         <label>
             Duration</label>
-        <span>@Model.Sprint.Duration</span></p>
+        <span><a href="@Url.Action("List", "Hour", new { sprintId = Model.Sprint.SprintId })">@Model.Sprint.Duration</a></span></p>
 </fieldset>
 @Html.Partial("_StoryList", new StoryListModel { Stories = Model.Stories, Statuses = Model.Statuses })
 @Html.Partial("_NoteList", new NoteListModel { Notes = Model.Notes, Attachments = Model.Attachments })

@@ -205,6 +205,9 @@
     <Content Include="Views\Shared\_PartTimelineList.cshtml" />
     <Content Include="Views\Timeline\List.cshtml" />
     <Content Include="Views\Shared\_PartProjectList.cshtml" />
+    <Content Include="Views\Hour\_PartUserList.cshtml" />
+    <Content Include="Views\Project\_PartSprintByProjectList.cshtml" />
+    <Content Include="Views\Hour\_PartPeriodList.cshtml" />
     <None Include="Web.config" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -291,6 +294,7 @@
   <ItemGroup>
     <Folder Include="App_Browsers\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Dashboard\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_PartFeedList.cshtml" />

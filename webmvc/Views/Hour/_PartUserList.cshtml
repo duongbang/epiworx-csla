@@ -1,0 +1,14 @@
+﻿@model Epiworx.WebMvc.Models.HourIndexModel
+@using Epiworx.WebMvc.Helpers
+<div class="part">
+    <div class="wrapper">
+        <h3>
+            Users</h3>
+        <ul>
+            @foreach (var user in Model.Users)
+            {
+                <li@if (Model.UserId == user.UserId) {<text> class="selected"</text>}>@Html.Gravatar(user.Email, user.Name, "avatar")@Html.ActionLink(user.Name, "Index", "Hour", new { year = Model.Year, userId = user.UserId }, null)</li>
+            }
+        </ul>
+    </div>
+</div>

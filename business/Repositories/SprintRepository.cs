@@ -23,15 +23,29 @@ namespace Epiworx.Business
             return result;
         }
 
-        public static SprintInfoList SprintFetchInfoList(int projectId)
+        public static SprintInfoList SprintFetchInfoList(IProject project)
         {
-            ProjectUserRepository.AuthorizeProjectUser(projectId);
+            ProjectUserRepository.AuthorizeProjectUser(project.ProjectId);
 
             return SprintInfoList.FetchSprintInfoList(
                 new SprintDataCriteria
                     {
-                        ProjectId = projectId
+                        ProjectId = new[] { project.ProjectId }
                     });
+        }
+
+        public static SprintInfoList SprintFetchInfoList(IProject[] projects, bool? isArchived)
+        {
+            var projectIds = projects.Select(row => row.ProjectId).ToArray();
+
+            ProjectUserRepository.AuthorizeProjectUser(projectIds);
+
+            return SprintInfoList.FetchSprintInfoList(
+                new SprintDataCriteria
+                {
+                    ProjectId = projectIds,
+                    IsArchived = isArchived
+                });
         }
 
         public static SprintInfoList SprintFetchInfoList(SprintDataCriteria criteria)

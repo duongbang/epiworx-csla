@@ -1,0 +1,26 @@
+﻿@model Epiworx.WebMvc.Models.ProjectListModel
+<div class="part">
+    <div class="wrapper">
+        <div class="hgroup">
+            <img src="@Url.Content("~/Content/sprint.png")" alt="Sprint"/>
+            <h3>
+                Active Sprints</h3>
+        </div>
+        <ul>
+            @foreach (var project in Model.Sprints
+                .Select(row => new { row.ProjectId, row.ProjectName })
+                .OrderBy(row => row.ProjectName)
+                .Distinct())
+            {
+                <li><h4>@project.ProjectName</h4>
+                    <ul>
+                        @foreach (var sprint in Model.Sprints.Where(row => row.ProjectId == project.ProjectId))
+                        {
+                            <li>@Html.ActionLink(sprint.Name, "Details", "Sprint", new { id = sprint.SprintId }, null)</li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

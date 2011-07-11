@@ -6,7 +6,7 @@
         <ul>
             @foreach (var year in Model.Years)
             {
-                <li>@Html.ActionLink(year.ToString(), "Index", "Hour", new { year }, null)</li>
+                <li@if (Model.Year == year) {<text> class="selected"</text>}>@Html.ActionLink(year.ToString(), "Index", "Hour", new { year }, null)</li>
             }
         </ul>
     </div>

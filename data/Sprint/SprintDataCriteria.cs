@@ -16,7 +16,7 @@ namespace Epiworx.Data
         public DateRangeCriteria EstimatedCompletedDate { get; set; }
         public decimal? EstimatedDuration { get; set; }
         public string Name { get; set; }
-        public int? ProjectId { get; set; }
+        public int[] ProjectId { get; set; }
         public int? CreatedBy { get; set; }
         public DateRangeCriteria CreatedDate { get; set; }
         public int? ModifiedBy { get; set; }

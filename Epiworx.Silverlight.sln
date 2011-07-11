@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EE9A806-0BD2-4711-AC90-5DC28EDA0AED}"
+	ProjectSection(SolutionItems) = preProject
+		Epiworx.vsmdi = Epiworx.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx.Silverlight", "silverlight\Epiworx.Silverlight.csproj", "{C202615B-A04E-4FA1-815E-EFBFE3AA21B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx.Silverlight.WebMvc", "silverlightwebmvc\Epiworx.Silverlight.WebMvc.csproj", "{ABEF664E-25CC-4147-A4BA-2A2ACCB8F760}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Epiworx.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C202615B-A04E-4FA1-815E-EFBFE3AA21B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C202615B-A04E-4FA1-815E-EFBFE3AA21B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C202615B-A04E-4FA1-815E-EFBFE3AA21B3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C202615B-A04E-4FA1-815E-EFBFE3AA21B3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C202615B-A04E-4FA1-815E-EFBFE3AA21B3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C202615B-A04E-4FA1-815E-EFBFE3AA21B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C202615B-A04E-4FA1-815E-EFBFE3AA21B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C202615B-A04E-4FA1-815E-EFBFE3AA21B3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C202615B-A04E-4FA1-815E-EFBFE3AA21B3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C202615B-A04E-4FA1-815E-EFBFE3AA21B3}.Release|x86.ActiveCfg = Release|Any CPU
+		{ABEF664E-25CC-4147-A4BA-2A2ACCB8F760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABEF664E-25CC-4147-A4BA-2A2ACCB8F760}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABEF664E-25CC-4147-A4BA-2A2ACCB8F760}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{ABEF664E-25CC-4147-A4BA-2A2ACCB8F760}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{ABEF664E-25CC-4147-A4BA-2A2ACCB8F760}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ABEF664E-25CC-4147-A4BA-2A2ACCB8F760}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABEF664E-25CC-4147-A4BA-2A2ACCB8F760}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABEF664E-25CC-4147-A4BA-2A2ACCB8F760}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{ABEF664E-25CC-4147-A4BA-2A2ACCB8F760}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{ABEF664E-25CC-4147-A4BA-2A2ACCB8F760}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -11,9 +11,11 @@ namespace Epiworx.WebMvc.Models
         public IEnumerable<ProjectInfo> Projects { get; set; }
         public IEnumerable<TimelineInfo> Timelines { get; set; }
         public IEnumerable<StoryInfo> Stories { get; set; }
+        public IEnumerable<SprintInfo> Sprints { get; set; }
 
         public ProjectListModel()
         {
+            this.Title = "Projects";
         }
     }
 }

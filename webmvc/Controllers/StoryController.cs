@@ -90,13 +90,14 @@ namespace Epiworx.WebMvc.Controllers
         {
             var model = new StoryFormModel();
             var story = StoryRepository.StoryNew();
+            var project = ProjectRepository.ProjectFetch(projectId);
 
             story.ProjectId = projectId;
             story.SprintId = sprintId ?? 0;
 
             model.Title = "Story Create";
             model.Story = story;
-            model.Sprints = SprintRepository.SprintFetchInfoList(story.ProjectId);
+            model.Sprints = SprintRepository.SprintFetchInfoList(project);
             model.Statuses = StatusRepository.StatusFetchInfoList(story.ProjectId);
             model.Users = ProjectUserRepository.ProjectUserFetchInfoList(story.ProjectId);
 
@@ -108,6 +109,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var model = new StoryFormModel();
             var story = StoryRepository.StoryNew();
+            var project = ProjectRepository.ProjectFetch(projectId);
 
             story.ProjectId = projectId;
             story.SprintId = sprintId ?? 0;
@@ -123,7 +125,7 @@ namespace Epiworx.WebMvc.Controllers
 
             model.Title = "Story Create";
             model.Story = story;
-            model.Sprints = SprintRepository.SprintFetchInfoList(story.ProjectId);
+            model.Sprints = SprintRepository.SprintFetchInfoList(project);
             model.Statuses = StatusRepository.StatusFetchInfoList(story.ProjectId);
             model.Users = ProjectUserRepository.ProjectUserFetchInfoList(story.ProjectId);
 
@@ -136,10 +138,11 @@ namespace Epiworx.WebMvc.Controllers
         {
             var model = new StoryFormModel();
             var story = StoryRepository.StoryFetch(id);
+            var project = ProjectRepository.ProjectFetch(story.ProjectId);
 
             model.Title = "Story Edit";
             model.Story = story;
-            model.Sprints = SprintRepository.SprintFetchInfoList(story.ProjectId);
+            model.Sprints = SprintRepository.SprintFetchInfoList(project);
             model.Statuses = StatusRepository.StatusFetchInfoList(story.ProjectId);
             model.Users = ProjectUserRepository.ProjectUserFetchInfoList(story.ProjectId);
 
@@ -151,6 +154,7 @@ namespace Epiworx.WebMvc.Controllers
         {
             var model = new StoryFormModel();
             var story = StoryRepository.StoryFetch(id);
+            var project = ProjectRepository.ProjectFetch(story.ProjectId);
 
             this.Map(collection, story);
 
@@ -163,7 +167,7 @@ namespace Epiworx.WebMvc.Controllers
 
             model.Title = "Story Edit";
             model.Story = story;
-            model.Sprints = SprintRepository.SprintFetchInfoList(story.ProjectId);
+            model.Sprints = SprintRepository.SprintFetchInfoList(project);
             model.Statuses = StatusRepository.StatusFetchInfoList(story.ProjectId);
             model.Users = ProjectUserRepository.ProjectUserFetchInfoList(story.ProjectId);
 

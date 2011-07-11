@@ -1,0 +1,27 @@
+﻿@model Epiworx.WebMvc.Models.HourIndexModel
+<div class="part">
+    <div class="wrapper">
+        <h3>
+            Periods</h3>
+        <ul class="period-summaries">
+            @foreach (var period in Model.Weeks
+                .Where(row => row.StartDate <= DateTime.Now.Date)
+                .OrderByDescending(row => row.Period)
+                .Select(row => row.Period)
+                .Distinct())
+            {
+                <li>
+                    @{
+                        var startDate = Model.Weeks.Where(row => row.Period == period).Min(row => row.StartDate);
+                        var endDate = Model.Weeks.Where(row => row.Period == period).Max(row => row.EndDate);
+                        var duration = Model.Hours.Where(row => row.Date >= startDate && row.Date <= endDate).Sum(row => row.Duration);
+                        var userId = Model.UserId;
+                        var date = string.Format("{0:d},{1:d}", startDate, endDate);
+                    }
+                    @Html.ActionLink(duration.ToString("F2"), "List", "Hour", new { userId, date }, new { @class = "total"})
+                    <strong>@period</strong><span>@startDate.ToShortDateString()<br/> @endDate.ToShortDateString()</span>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

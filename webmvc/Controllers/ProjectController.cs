@@ -21,14 +21,15 @@ namespace Epiworx.WebMvc.Controllers
             string projectName)
         {
             var model = new ProjectListModel();
-            var criteria = new ProjectDataCriteria
-            {
-                CreatedDate = CriteriaHelper.ToDateRangeCriteria(createdDate),
-                IsActive = CriteriaHelper.ToBoolean(isActive),
-                IsArchived = CriteriaHelper.ToBoolean(isArchived),
-                Name = projectName,
-                ModifiedDate = CriteriaHelper.ToDateRangeCriteria(modifiedDate)
-            };
+            var criteria =
+                new ProjectDataCriteria
+                    {
+                        CreatedDate = CriteriaHelper.ToDateRangeCriteria(createdDate),
+                        IsActive = CriteriaHelper.ToBoolean(isActive),
+                        IsArchived = CriteriaHelper.ToBoolean(isArchived),
+                        Name = projectName,
+                        ModifiedDate = CriteriaHelper.ToDateRangeCriteria(modifiedDate)
+                    };
             var projects = ProjectRepository.ProjectFetchInfoList(criteria);
 
             model.Projects = projects;
@@ -41,6 +42,11 @@ namespace Epiworx.WebMvc.Controllers
                 projects.Select(row => row.ProjectId).Distinct().ToArray(), SourceType.Project);
 
             model.Timelines = timelines;
+
+            var sprints = SprintRepository.SprintFetchInfoList(projects.ToArray(), false);
+
+            model.Sprints = sprints;
+
             model.Actions.Add("Add a project", Url.Action("Create"), "primary");
 
             return this.View(model);
@@ -56,7 +62,7 @@ namespace Epiworx.WebMvc.Controllers
             model.Notes = NoteRepository.NoteFetchInfoList(id, SourceType.Project);
             model.Attachments = AttachmentRepository.AttachmentFetchInfoList(
                 model.Notes.Select(row => row.NoteId).Distinct().ToArray(), SourceType.Note);
-            model.Sprints = SprintRepository.SprintFetchInfoList(id);
+            model.Sprints = SprintRepository.SprintFetchInfoList(project);
             model.Statuses = StatusRepository.StatusFetchInfoList(id);
             model.Stories = StoryRepository.StoryFetchInfoList(project, false);
             model.Users = ProjectUserRepository.ProjectUserFetchInfoList(id);

@@ -15,7 +15,7 @@ namespace Epiworx.WebMvc.Controllers
     [Authorize]
     public class HourController : Controller
     {
-        public ActionResult Index(int? year)
+        public ActionResult Index(int? year, int? userId)
         {
             var model = new HourIndexModel();
 
@@ -27,19 +27,30 @@ namespace Epiworx.WebMvc.Controllers
                 .Where(row => row.Year == DateTime.Now.Year || row.Year == year)
                 .Max(row => row.StartDate);
 
-            model.UserId = ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
+            model.UserId = userId ?? ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
 
-            var criteria = new HourDataCriteria
-            {
-                Date = CriteriaHelper.ToDateRangeCriteria(startDate, endDate),
-                UserId = model.UserId
-            };
+            var criteria =
+                new HourDataCriteria
+                    {
+                        Date = CriteriaHelper.ToDateRangeCriteria(startDate, endDate),
+                        UserId = model.UserId
+                    };
 
             var hours = HourRepository.HourFetchInfoList(criteria);
 
             model.Hours = hours;
             model.Weeks = weeks.Where(row => row.Year == DateTime.Now.Year || row.Year == year);
+            model.Year = year ?? DateTime.Now.Year;
             model.Years = weeks.Select(row => row.Year).Distinct();
+
+            var users = UserRepository.UserFetchInfoList(
+                new UserDataCriteria
+                    {
+                        IsActive = true,
+                        IsArchived = false
+                    });
+
+            model.Users = users;
 
             return this.View(model);
         }
@@ -51,23 +62,27 @@ namespace Epiworx.WebMvc.Controllers
             string modifiedDate,
             int? projectId,
             string projectName,
+            int? sprintId,
+            string sprintName,
             int? storyId,
             int? userId,
             string userName)
         {
             var model = new HourListModel();
-            var criteria = new HourDataCriteria
-                {
-                    CreatedDate = CriteriaHelper.ToDateRangeCriteria(createdDate),
-                    Date = CriteriaHelper.ToDateRangeCriteria(date),
-                    IsArchived = CriteriaHelper.ToBoolean(isArchived),
-                    ModifiedDate = CriteriaHelper.ToDateRangeCriteria(modifiedDate),
-                    ProjectId = CriteriaHelper.ToArray(projectId),
-                    ProjectName = projectName,
-                    StoryId = storyId,
-                    UserId = userId,
-                    UserName = userName
-                };
+            var criteria =
+                new HourDataCriteria
+                    {
+                        CreatedDate = CriteriaHelper.ToDateRangeCriteria(createdDate),
+                        Date = CriteriaHelper.ToDateRangeCriteria(date),
+                        IsArchived = CriteriaHelper.ToBoolean(isArchived),
+                        ModifiedDate = CriteriaHelper.ToDateRangeCriteria(modifiedDate),
+                        ProjectId = CriteriaHelper.ToArray(projectId),
+                        ProjectName = projectName,
+                        SprintId = sprintId,
+                        StoryId = storyId,
+                        UserId = userId,
+                        UserName = userName
+                    };
             var hours = HourRepository.HourFetchInfoList(criteria);
 
             model.Hours = hours;

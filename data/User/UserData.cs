@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Epiworx.Data
 {
-    using System.ComponentModel;
-
     [Serializable]
     public class UserData
     {
