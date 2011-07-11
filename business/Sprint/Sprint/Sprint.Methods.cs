@@ -48,7 +48,7 @@ namespace Epiworx.Business
             return Csla.DataPortal.Create<Sprint>(
                 new SprintDataCriteria
                 {
-                    ProjectId = projectId
+                    ProjectId = new[] { projectId }
                 });
         }
 

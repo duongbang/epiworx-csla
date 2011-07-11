@@ -1,0 +1,13 @@
+﻿@model Epiworx.WebMvc.Models.HourIndexModel
+<div class="part">
+    <div class="wrapper">
+        <h3>
+            Users</h3>
+        <ul>
+            @foreach (var user in Model.Users)
+            {
+                <li>@Html.ActionLink(user.Name, "Index", "Hour", new { year = Model.Year, userId = user.UserId }, null)</li>
+            }
+        </ul>
+    </div>
+</div>

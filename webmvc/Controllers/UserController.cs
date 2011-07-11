@@ -19,14 +19,31 @@ namespace Epiworx.WebMvc.Controllers
             string userName)
         {
             var model = new UserListModel();
-            var criteria = new UserDataCriteria
-                {
-                    UserId = userId,
-                    Name = userName
-                };
+            var criteria =
+                new UserDataCriteria
+                    {
+                        UserId = userId,
+                        Name = userName
+                    };
             var users = UserRepository.UserFetchInfoList(criteria);
 
             model.Users = users;
+
+            var projects = ProjectRepository.ProjectFetchInfoList(
+                new ProjectDataCriteria
+                    {
+                        IsActive = true,
+                        IsArchived = false
+                    });
+
+            var stories = StoryRepository.StoryFetchInfoList(projects.ToArray(), false);
+
+            model.Stories = stories;
+
+            var timelines = TimelineRepository.TimelineFetchInfoList(
+                users.Select(row => row.UserId).Distinct().ToArray(), SourceType.User);
+
+            model.Timelines = timelines;
 
             return this.View(model);
         }

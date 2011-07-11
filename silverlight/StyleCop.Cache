@@ -3,55 +3,136 @@
   <project key="1394938098">
     <configuration>DEBUG;TRACE;SILVERLIGHT</configuration>
   </project>
+  <sourcecode name="UserData.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/08/2011 11:09:21</timestamp>
+      <milliseconds>319</milliseconds>
+    </settings>
+    <timestamp>07/08/2011 10:52:19</timestamp>
+    <milliseconds>486</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectData.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/08/2011 11:09:21</timestamp>
+      <milliseconds>319</milliseconds>
+    </settings>
+    <timestamp>07/08/2011 10:53:08</timestamp>
+    <milliseconds>920</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TimelineData.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/08/2011 11:09:21</timestamp>
+      <milliseconds>319</milliseconds>
+    </settings>
+    <timestamp>07/08/2011 10:52:21</timestamp>
+    <milliseconds>268</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TokenData.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/08/2011 11:09:21</timestamp>
+      <milliseconds>319</milliseconds>
+    </settings>
+    <timestamp>07/08/2011 10:08:52</timestamp>
+    <milliseconds>816</milliseconds>
+    <violations>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="OpeningCurlyBracketsMustNotBeFollowedByBlankLine" ruleCheckId="SA1505">
+        <context>An opening curly bracket must not be followed by a blank line.</context>
+        <line>6</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
   <sourcecode name="AssemblyInfo.cs" parser="StyleCop.CSharp.CsParser">
     <settings>
-      <timestamp>06/17/2011 08:25:23</timestamp>
-      <milliseconds>981</milliseconds>
+      <timestamp>07/08/2011 11:09:21</timestamp>
+      <milliseconds>319</milliseconds>
     </settings>
     <timestamp>05/29/2011 08:35:55</timestamp>
     <milliseconds>130</milliseconds>
     <violations />
   </sourcecode>
-  <sourcecode name="MainPage.xaml.cs" parser="StyleCop.CSharp.CsParser">
+  <sourcecode name="CookieHelper.cs" parser="StyleCop.CSharp.CsParser">
     <settings>
-      <timestamp>06/17/2011 08:25:23</timestamp>
-      <milliseconds>981</milliseconds>
+      <timestamp>07/08/2011 11:09:21</timestamp>
+      <milliseconds>319</milliseconds>
     </settings>
-    <timestamp>05/29/2011 08:35:55</timestamp>
-    <milliseconds>220</milliseconds>
+    <timestamp>07/08/2011 11:06:56</timestamp>
+    <milliseconds>620</milliseconds>
+    <violations>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketMustBeFollowedByBlankLine" ruleCheckId="SA1513">
+        <context>Statements or elements wrapped in curly brackets must be followed by a blank line.</context>
+        <line>49</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="StatementMustNotUseUnnecessaryParenthesis" ruleCheckId="SA1119">
+        <context>The line contains unnecessary parenthesis.</context>
+        <line>47</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="UserListUserControl.xaml.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/08/2011 11:09:21</timestamp>
+      <milliseconds>319</milliseconds>
+    </settings>
+    <timestamp>07/08/2011 07:54:35</timestamp>
+    <milliseconds>883</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ProjectListUserControl.xaml.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/08/2011 11:09:21</timestamp>
+      <milliseconds>319</milliseconds>
+    </settings>
+    <timestamp>07/08/2011 07:54:20</timestamp>
+    <milliseconds>922</milliseconds>
     <violations />
   </sourcecode>
   <sourcecode name="App.xaml.cs" parser="StyleCop.CSharp.CsParser">
     <settings>
-      <timestamp>06/17/2011 08:25:23</timestamp>
-      <milliseconds>981</milliseconds>
+      <timestamp>07/08/2011 11:09:21</timestamp>
+      <milliseconds>319</milliseconds>
     </settings>
-    <timestamp>05/29/2011 08:35:55</timestamp>
-    <milliseconds>214</milliseconds>
+    <timestamp>07/08/2011 11:08:44</timestamp>
+    <milliseconds>941</milliseconds>
     <violations>
       <violation namespace="StyleCop.CSharp.LayoutRules" rule="OpeningCurlyBracketsMustNotBeFollowedByBlankLine" ruleCheckId="SA1505">
         <context>An opening curly bracket must not be followed by a blank line.</context>
-        <line>16</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="OpeningCurlyBracketsMustNotBeFollowedByBlankLine" ruleCheckId="SA1505">
-        <context>An opening curly bracket must not be followed by a blank line.</context>
-        <line>33</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketsMustNotBePrecededByBlankLine" ruleCheckId="SA1508">
-        <context>A closing curly bracket must not be preceded by a blank line.</context>
-        <line>35</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="OpeningCurlyBracketsMustNotBeFollowedByBlankLine" ruleCheckId="SA1505">
-        <context>An opening curly bracket must not be followed by a blank line.</context>
-        <line>43</line>
+        <line>48</line>
         <warning>False</warning>
       </violation>
       <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
         <context>The call to ReportErrorToDOM must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
-        <line>50</line>
+        <line>55</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="MainPage.xaml.cs" parser="StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>07/08/2011 11:09:21</timestamp>
+      <milliseconds>319</milliseconds>
+    </settings>
+    <timestamp>07/08/2011 11:02:59</timestamp>
+    <milliseconds>766</milliseconds>
+    <violations>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="PrefixLocalCallsWithThis" ruleCheckId="SA1101">
+        <context>The call to OnSignInCompleted must begin with the 'this.' prefix to indicate that the item is a member of the class.</context>
+        <line>40</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="OpeningCurlyBracketsMustNotBeFollowedByBlankLine" ruleCheckId="SA1505">
+        <context>An opening curly bracket must not be followed by a blank line.</context>
+        <line>69</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="ClosingCurlyBracketsMustNotBePrecededByBlankLine" ruleCheckId="SA1508">
+        <context>A closing curly bracket must not be preceded by a blank line.</context>
+        <line>71</line>
         <warning>False</warning>
       </violation>
     </violations>

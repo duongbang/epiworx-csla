@@ -75,10 +75,26 @@
             </tr>
         }
     </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">
+                Total
+            </td>
+            <td class="number">
+                <a href="@Url.Action("List", "Story", new { isOpened = "False", isArchived = "False" })">@Model.Stories.Count(row => !row.IsOpened)</a>
+            </td>
+            <td class="number">
+                <a href="@Url.Action("List", "Story", new { isOpened = "True", isArchived = "False" })">@Model.Stories.Count(row => row.IsOpened)</a>
+            </td>
+            <td class="number">@Model.Stories.Where(row => row.IsOpened).Sum(row => row.Duration)
+            </td>
+        </tr>
+    </tfoot>
 </table>
 @section SideBar
 {
     @Html.Partial("_PartActionItemList")
+    @Html.Partial("_PartSprintByProjectList")
 }
 <script type="text/javascript">
 

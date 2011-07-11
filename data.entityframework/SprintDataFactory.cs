@@ -225,7 +225,7 @@ namespace Epiworx.Data.EntityFramework
 
             if (criteria.ProjectId != null)
             {
-                query = query.Where(row => row.ProjectId == criteria.ProjectId);
+                query = query.Where(row => criteria.ProjectId.Contains(row.ProjectId));
             }
 
             if (criteria.CreatedBy != null)

@@ -14,6 +14,7 @@ namespace Epiworx.WebMvc.Models
         public int UserId { get; set; }
         public IEnumerable<HourInfo> Hours { get; set; }
         public IEnumerable<WeekInfo> Weeks { get; set; }
+        public IEnumerable<UserInfo> Users { get; set; }
         public IEnumerable<int> Years { get; set; }
 
         public HourIndexModel()
