@@ -12,7 +12,7 @@
         {
         <h3>@statusName</h3>
         <ul class="stories">
-            @foreach (var story in Model.Stories.Where(row => row.StatusName == statusName))
+            @foreach (var story in Model.Stories.Where(row => row.StatusName == statusName).OrderBy(row => row.EstimatedCompletedDate))
             {
                 <li><strong>@story.StoryId</strong>
                     <p>
@@ -22,7 +22,7 @@
                         }
                         <div class="clip">
                             <a href="@Url.Action("Details", "Story", new { id = story.StoryId })" title="@story.Description">@story.Description</a></div>
-                        <span class="date">by <em>@story.CreatedByName</em> @story.CreatedDate.ToString("MMMM d, yyyy")</span></p>
+                        <span class="date">by <em>@story.CreatedByName</em> @story.EstimatedCompletedDate.ToString("MMMM d, yyyy")</span></p>
                 </li> 
             }
         </ul>
