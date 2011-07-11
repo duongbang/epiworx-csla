@@ -62,23 +62,27 @@ namespace Epiworx.WebMvc.Controllers
             string modifiedDate,
             int? projectId,
             string projectName,
+            int? sprintId,
+            string sprintName,
             int? storyId,
             int? userId,
             string userName)
         {
             var model = new HourListModel();
-            var criteria = new HourDataCriteria
-                {
-                    CreatedDate = CriteriaHelper.ToDateRangeCriteria(createdDate),
-                    Date = CriteriaHelper.ToDateRangeCriteria(date),
-                    IsArchived = CriteriaHelper.ToBoolean(isArchived),
-                    ModifiedDate = CriteriaHelper.ToDateRangeCriteria(modifiedDate),
-                    ProjectId = CriteriaHelper.ToArray(projectId),
-                    ProjectName = projectName,
-                    StoryId = storyId,
-                    UserId = userId,
-                    UserName = userName
-                };
+            var criteria =
+                new HourDataCriteria
+                    {
+                        CreatedDate = CriteriaHelper.ToDateRangeCriteria(createdDate),
+                        Date = CriteriaHelper.ToDateRangeCriteria(date),
+                        IsArchived = CriteriaHelper.ToBoolean(isArchived),
+                        ModifiedDate = CriteriaHelper.ToDateRangeCriteria(modifiedDate),
+                        ProjectId = CriteriaHelper.ToArray(projectId),
+                        ProjectName = projectName,
+                        SprintId = sprintId,
+                        StoryId = storyId,
+                        UserId = userId,
+                        UserName = userName
+                    };
             var hours = HourRepository.HourFetchInfoList(criteria);
 
             model.Hours = hours;
