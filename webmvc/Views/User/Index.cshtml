@@ -21,11 +21,15 @@
                 Status
             </th>
             <th class="number">
-                Pending<br />
+                Ready<br />
                 Stories
             </th>
             <th class="number">
                 Open<br />
+                Stories
+            </th>
+            <th class="number">
+                Completed<br />
                 Stories
             </th>
             <th class="number">
@@ -37,7 +41,11 @@
         @foreach (var user in Model.Users)
         { 
             <tr data-active="@user.IsActive" data-archived="@user.IsArchived">
-                <td>@Html.ActionLink(user.Name, "Details", new { id = user.UserId })
+                <td>
+                    <div class="user">@Html.Gravatar(user.Email, user.Name, "avatar")
+                        <strong>@Html.ActionLink(user.Name, "Details", new { id = user.UserId })</strong>
+                        <a href="mailto:@user.Email" class="email">@user.Email</a>
+                    </div>
                 </td>
                 <td>
                     @if (Model.Timelines.Count() != 0)
@@ -61,15 +69,18 @@
                     }
                 </td>
                 <td class="number">
-                    <a href="@Url.Action("List", "Story", new { userId = user.UserId, isOpened = "False", isArchived = "False" })">@Model.Stories.Count(row => row.AssignedTo == user.UserId
-                    && !row.IsOpened)</a>
+                    <a href="@Url.Action("List", "Story", new { userId = user.UserId, isOpened = "False", isCompleted = "False", isArchived = "False" })">@Model.Stories.Count(row => row.AssignedTo == user.UserId
+                    && !row.IsOpened && !row.IsCompleted)</a>
                 </td>
                 <td class="number">
                     <a href="@Url.Action("List", "Story", new { userId = user.UserId, isOpened = "True", isArchived = "False" })">@Model.Stories.Count(row => row.AssignedTo == user.UserId
                     && row.IsOpened)</a>
                 </td>
-                <td class="number">@Model.Stories.Where(row => row.AssignedTo == user.UserId
-                    && row.IsOpened).Sum(row => row.Duration)
+                <td class="number">
+                    <a href="@Url.Action("List", "Story", new { userId = user.UserId, isCompleted = "True", isArchived = "False" })">@Model.Stories.Count(row => row.AssignedTo == user.UserId
+                    && row.IsCompleted)</a>
+                </td>
+                <td class="number">@Model.Stories.Where(row => row.AssignedTo == user.UserId).Sum(row => row.Duration)
                 </td>
             </tr>
         }
@@ -80,12 +91,15 @@
                 Total
             </td>
             <td class="number">
-                <a href="@Url.Action("List", "Story", new { isOpened = "False", isArchived = "False" })">@Model.Stories.Count(row => !row.IsOpened)</a>
+                <a href="@Url.Action("List", "Story", new { isOpened = "False", isCompleted = "False", isArchived = "False" })">@Model.Stories.Count(row => !row.IsOpened && !row.IsCompleted)</a>
             </td>
             <td class="number">
                 <a href="@Url.Action("List", "Story", new { isOpened = "True", isArchived = "False" })">@Model.Stories.Count(row => row.IsOpened)</a>
             </td>
-            <td class="number">@Model.Stories.Where(row => row.IsOpened).Sum(row => row.Duration)
+            <td class="number">
+                <a href="@Url.Action("List", "Story", new { isCompleted = "True", isArchived = "False" })">@Model.Stories.Count(row => row.IsCompleted)</a>
+            </td>
+            <td class="number">@Model.Stories.Sum(row => row.Duration)
             </td>
         </tr>
     </tfoot>
@@ -98,16 +112,16 @@
         e.preventDefault();
         $(".filter li").removeClass("selected");
         $(this).parent("li").addClass("selected");
-        $("table.users tr").hide();
+        $("table.users tbody tr").hide();
         switch ($(this).data("filter")) {
             case "Active":
-                $("table.users tr[data-active='True']").show();
+                $("table.users tbody tr[data-active='True']").show();
                 break;
             case "Inactive":
-                $("table.users tr[data-active='False'][data-archived='False']").show();
+                $("table.users tbody tr[data-active='False'][data-archived='False']").show();
                 break;
             case "Archived":
-                $("table.users tr[data-archived='True']").show();
+                $("table.users tbody tr[data-archived='True']").show();
                 break;
         }
     });

@@ -29,6 +29,15 @@ namespace Epiworx.WebMvc.Helpers
         public static MvcHtmlString Gravatar(
             this HtmlHelper htmlHelper,
             string email,
+            string title,
+            string cssClass)
+        {
+            return htmlHelper.Gravatar(email, 60, "PG", title, title, cssClass);
+        }
+
+        public static MvcHtmlString Gravatar(
+            this HtmlHelper htmlHelper,
+            string email,
             int size,
             string rating,
             string alt,

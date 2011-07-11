@@ -21,11 +21,15 @@
                 Status
             </th>
             <th class="number">
-                Pending<br />
+                Ready<br />
                 Stories
             </th>
             <th class="number">
                 Open<br />
+                Stories
+            </th>
+            <th class="number">
+                Completed<br />
                 Stories
             </th>
             <th class="number">
@@ -62,15 +66,15 @@
                     }
                 </td>
                 <td class="number">
-                    <a href="@Url.Action("List", "Story", new { projectId = project.ProjectId, isOpened = "False", isArchived = "False" })">@Model.Stories.Count(row => row.ProjectId == project.ProjectId
-                    && !row.IsOpened)</a>
+                    <a href="@Url.Action("List", "Story", new { projectId = project.ProjectId, isOpened = "False", isCompleted = "False", isArchived = "False" })">@Model.Stories.Count(row => row.ProjectId == project.ProjectId && !row.IsOpened && !row.IsCompleted)</a>
                 </td>
                 <td class="number">
-                    <a href="@Url.Action("List", "Story", new { projectId = project.ProjectId, isOpened = "True", isArchived = "False" })">@Model.Stories.Count(row => row.ProjectId == project.ProjectId
-                    && row.IsOpened)</a>
+                    <a href="@Url.Action("List", "Story", new { projectId = project.ProjectId, isOpened = "True", isArchived = "False" })">@Model.Stories.Count(row => row.ProjectId == project.ProjectId && row.IsOpened)</a>
                 </td>
-                <td class="number">@Model.Stories.Where(row => row.ProjectId == project.ProjectId
-                    && row.IsOpened).Sum(row => row.Duration)
+                <td class="number">
+                    <a href="@Url.Action("List", "Story", new { projectId = project.ProjectId, isCompleted = "True", isArchived = "False" })">@Model.Stories.Count(row => row.ProjectId == project.ProjectId && row.IsCompleted)</a>
+                </td>
+                <td class="number">@Model.Stories.Where(row => row.ProjectId == project.ProjectId).Sum(row => row.Duration)
                 </td>
             </tr>
         }
@@ -81,12 +85,15 @@
                 Total
             </td>
             <td class="number">
-                <a href="@Url.Action("List", "Story", new { isOpened = "False", isArchived = "False" })">@Model.Stories.Count(row => !row.IsOpened)</a>
+                <a href="@Url.Action("List", "Story", new { isOpened = "False", isCompleted = "False", isArchived = "False" })">@Model.Stories.Count(row => !row.IsOpened && !row.IsCompleted)</a>
             </td>
             <td class="number">
                 <a href="@Url.Action("List", "Story", new { isOpened = "True", isArchived = "False" })">@Model.Stories.Count(row => row.IsOpened)</a>
             </td>
-            <td class="number">@Model.Stories.Where(row => row.IsOpened).Sum(row => row.Duration)
+            <td class="number">
+                <a href="@Url.Action("List", "Story", new { isCompleted = "True", isArchived = "False" })">@Model.Stories.Count(row => row.IsCompleted)</a>
+            </td>
+            <td class="number">@Model.Stories.Sum(row => row.Duration)
             </td>
         </tr>
     </tfoot>
@@ -104,16 +111,16 @@
         e.preventDefault();
         $(".filter li").removeClass("selected");
         $(this).parent("li").addClass("selected");
-        $("table.projects tr").hide();
+        $("table.projects tbody tr").hide();
         switch ($(this).data("filter")) {
             case "Active":
-                $("table.projects tr[data-active='True']").show();
+                $("table.projects tbody tr[data-active='True']").show();
                 break;
             case "Inactive":
-                $("table.projects tr[data-active='False'][data-archived='False']").show();
+                $("table.projects tbody tr[data-active='False'][data-archived='False']").show();
                 break;
             case "Archived":
-                $("table.projects tr[data-archived='True']").show();
+                $("table.projects tbody tr[data-archived='True']").show();
                 break;
         }
     });

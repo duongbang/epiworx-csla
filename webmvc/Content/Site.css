@@ -26,7 +26,7 @@
 .clip
 {
     height: 16px;
-	line-height: 100%;
+    line-height: 100%;
     overflow: hidden;
     margin-right: 20px;
 }
@@ -277,8 +277,51 @@
     margin-bottom: 10px;
 }
 
+.part li.selected
+{
+    color: #000;
+    font-weight: bold;
+}
+
+.part li.selected a
+{
+    color: #000;
+}
+
+.part li .avatar
+{
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
 .part li .action
 {
+}
+
+.part .period-summaries
+{
+}
+
+.part .period-summaries a
+{
+    float: right;
+    font-size: 24px;
+    margin-top: 2px;
+}
+
+.part .period-summaries span
+{
+    color: #808080;
+}
+
+.part .period-summaries strong
+{
+    float: left;
+    font-size: 24px;
+    width: 24px;
+    margin-top: 2px;
 }
 
 .part .filter.block
@@ -872,6 +915,12 @@ th.number, td.number
     text-align: right;
 }
 
+table.projects td.number, table.users td.number
+{
+    font-size: 20px;
+    vertical-align: middle;
+}
+
 td a
 {
     font-weight: bold;
@@ -907,6 +956,30 @@ td .note strong
 td .note span
 {
     color: #808080;
+}
+
+td .user
+{
+}
+
+td .user img
+{
+    float: left;
+    margin-right: 5px;
+    height: 48px;
+    width: 48px;
+}
+
+td .user strong
+{
+    font-size: 24px;
+    display: block;
+    padding-bottom: 5px;
+}
+
+td .user .email
+{
+    font-weight: normal;
 }
 
 tfoot

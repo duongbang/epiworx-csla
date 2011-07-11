@@ -207,6 +207,7 @@
     <Content Include="Views\Shared\_PartProjectList.cshtml" />
     <Content Include="Views\Hour\_PartUserList.cshtml" />
     <Content Include="Views\Project\_PartSprintByProjectList.cshtml" />
+    <Content Include="Views\Hour\_PartPeriodList.cshtml" />
     <None Include="Web.config" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
