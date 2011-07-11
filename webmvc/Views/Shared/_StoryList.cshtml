@@ -22,7 +22,7 @@
                         }
                         <div class="clip">
                             <a href="@Url.Action("Details", "Story", new { id = story.StoryId })" title="@story.Description">@story.Description</a></div>
-                        <span class="date">by <em>@story.CreatedByName</em> @story.EstimatedCompletedDate.ToString("MMMM d, yyyy")</span></p>
+                        <span class="date">by <em>@story.CreatedByName</em> | Due on: @story.EstimatedCompletedDate.ToString("MMMM d, yyyy") | Est. Hour: @story.EstimatedDuration</span></p>
                 </li> 
             }
         </ul>
