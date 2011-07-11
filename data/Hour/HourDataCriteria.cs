@@ -29,7 +29,7 @@ namespace Epiworx.Data
 
         public HourDataCriteria()
         {
-            this.SortBy = null;
+            this.SortBy = "Date";
             this.SortOrder = ListSortDirection.Ascending;
         }
     }

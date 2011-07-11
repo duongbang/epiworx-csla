@@ -66,9 +66,27 @@ namespace Epiworx.WebMvc.Controllers
                 user, weeks.Min(row => row.StartDate), weeks.Max(row => row.EndDate));
             var hourSummaries = new List<HourSummary>();
 
-            hourSummaries.Add(new HourSummary { Name = "Week", Value = (double)hours.Where(row => row.Date >= currentWeek.StartDate.Date && row.Date <= currentWeek.EndDate.Date).Sum(row => row.Duration), NormalValue = 25 });
-            hourSummaries.Add(new HourSummary { Name = "Period", Value = (double)hours.Where(row => row.Date >= currentPeriodStartDate.Date && row.Date <= currentPeriodEndDate.Date).Sum(row => row.Duration), NormalValue = 100 });
-            hourSummaries.Add(new HourSummary { Name = "Year", Value = (double)hours.Sum(row => row.Duration), NormalValue = 1250 });
+            hourSummaries.Add(
+                new HourSummary
+                    {
+                        Name = "Week",
+                        Value = (double)hours.Where(row => row.Date >= currentWeek.StartDate.Date && row.Date <= currentWeek.EndDate.Date).Sum(row => row.Duration),
+                        NormalValue = 25
+                    });
+            hourSummaries.Add(
+                new HourSummary
+                    {
+                        Name = "Period",
+                        Value = (double)hours.Where(row => row.Date >= currentPeriodStartDate.Date && row.Date <= currentPeriodEndDate.Date).Sum(row => row.Duration),
+                        NormalValue = 100
+                    });
+            hourSummaries.Add(
+                new HourSummary
+                    {
+                        Name = "Year",
+                        Value = (double)hours.Sum(row => row.Duration),
+                        NormalValue = 1250
+                    });
 
             model.HourSummaryListModel =
                 new HourSummaryListModel

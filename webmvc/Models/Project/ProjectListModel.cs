@@ -15,6 +15,7 @@ namespace Epiworx.WebMvc.Models
 
         public ProjectListModel()
         {
+            this.Title = "Projects";
         }
     }
 }

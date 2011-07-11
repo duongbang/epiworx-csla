@@ -19,6 +19,7 @@ namespace Epiworx.WebMvc.Models
 
         public HourIndexModel()
         {
+            this.Title = "Hours";
         }
     }
 }

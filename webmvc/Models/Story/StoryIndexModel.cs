@@ -12,6 +12,7 @@ namespace Epiworx.WebMvc.Models
 
         public StoryIndexModel()
         {
+            this.Title = "Stories";
         }
     }
 }

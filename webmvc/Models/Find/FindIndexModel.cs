@@ -16,7 +16,7 @@ namespace Epiworx.WebMvc.Models
 
         public FindIndexModel()
         {
-            this.Title = "Advanced Find";
+            this.Title = "Search";
             this.ShowScope = false;
             this.FindResults = new List<FindResult>();
         }

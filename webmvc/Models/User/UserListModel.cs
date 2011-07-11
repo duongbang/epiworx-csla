@@ -14,6 +14,7 @@ namespace Epiworx.WebMvc.Models
 
         public UserListModel()
         {
+            this.Title = "Users";
         }
     }
 }
