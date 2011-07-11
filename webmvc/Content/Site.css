@@ -909,6 +909,12 @@ th
     border-bottom-width: 3px;
 }
 
+td input[type="checkbox"]
+{
+    float: left;
+    margin-top: -2px;
+}
+
 th.number, td.number
 {
     width: 100px;
