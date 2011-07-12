@@ -421,7 +421,6 @@
 {
     display: block;
     font-size: 14px;
-    margin-top: 5px;
     color: #808080;
 }
 
@@ -442,6 +441,11 @@
     font-style: normal;
     color: #000000;
     font-weight: bold;
+}
+
+.part.timeline li 
+{
+    line-height: 150%;    
 }
 
 .section
@@ -783,7 +787,7 @@ a:hover
 body
 {
     font-size: 14px;
-    font-family: 'Times New Roman' , Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: #F3F3F3;
 }
 
@@ -812,7 +816,7 @@ h3
 input, button
 {
     font-size: 14px;
-    font-family: 'Times New Roman' , Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 input[type="text"], input[type="password"]
@@ -837,7 +841,7 @@ select
     padding: 5px;
     width: 312px;
     font-size: 14px;
-    font-family: 'Times New Roman' , Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 10px;
 }
 
@@ -853,7 +857,7 @@ textarea
     width: 300px;
     margin-bottom: 10px;
     font-size: 14px;
-    font-family: 'Times New Roman' , Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 fieldset

@@ -20,11 +20,12 @@
             </thead>
             <tbody>
                 @foreach (var hour in Model.Hours)
-                { 
+                {
+                    var date = string.Format("{0:d},{1:d}", hour.StartDate, hour.EndDate);
                     <tr>
                         <td>@hour.StartDate.ToString("MMM d")
                         </td>
-                        <td class="number">@Html.ActionLink(hour.Duration.ToString("F2"), "Index", "Hour", new { userId = Model.User.UserId, dateFrom = hour.StartDate.ToShortDateString(), dateTo = hour.EndDate.ToShortDateString() }, null)
+                        <td class="number">@Html.ActionLink(hour.Duration.ToString("F2"), "List", "Hour", new { userId = Model.User.UserId, date}, null)
                         </td>
                     </tr>
                 }

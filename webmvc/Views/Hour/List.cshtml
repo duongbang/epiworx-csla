@@ -17,7 +17,7 @@
             <th style="width: 100px">
                 User
             </th>
-            <th style="width: 200px">
+            <th style="width: 300px">
                 Project
             </th>
             <th>
@@ -32,7 +32,7 @@
         @foreach (var hour in Model.Hours)
         { 
             <tr>
-                <td class="first">
+                <td>
                     @Html.ActionLink(hour.Date.ToShortDateString(), "Edit", new { id = hour.HourId })
                 </td>
                 <td>
@@ -40,7 +40,8 @@
                 </td>
                 <td>@hour.UserName
                 </td>
-                <td>@hour.ProjectName
+                <td>
+                    @Html.ActionLink(hour.ProjectName, "Details", "Project", new { id = hour.ProjectId })
                 </td>
                 <td>@hour.Notes
                 </td>
