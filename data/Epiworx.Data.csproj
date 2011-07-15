@@ -50,12 +50,6 @@
     <Compile Include="BusinessIdentity\BusinessIdentityData.cs" />
     <Compile Include="BusinessIdentity\BusinessIdentityDataCriteria.cs" />
     <Compile Include="BusinessIdentity\IBusinessIdentityDataFactory.cs" />
-    <Compile Include="OrganizationUserMember\IOrganizationUserMemberDataFactory.cs" />
-    <Compile Include="OrganizationUserMember\OrganizationUserMemberData.cs" />
-    <Compile Include="OrganizationUserMember\OrganizationUserMemberDataCriteria.cs" />
-    <Compile Include="Organization\IOrganizationDataFactory.cs" />
-    <Compile Include="Organization\OrganizationData.cs" />
-    <Compile Include="Organization\OrganizationDataCriteria.cs" />
     <Compile Include="Timeline\ITimelineDataFactory.cs" />
     <Compile Include="Timeline\TimelineData.cs" />
     <Compile Include="Timeline\TimelineDataCriteria.cs" />
@@ -118,9 +112,6 @@
     <Compile Include="User\IUserDataFactory.cs" />
     <Compile Include="User\UserData.cs" />
     <Compile Include="User\UserDataCriteria.cs" />
-    <Compile Include="Week\IWeekDataFactory.cs" />
-    <Compile Include="Week\WeekData.cs" />
-    <Compile Include="Week\WeekDataCriteria.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\core\Epiworx.Core.csproj">

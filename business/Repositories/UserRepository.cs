@@ -44,14 +44,12 @@ namespace Epiworx.Business
                 new UserDataCriteria());
         }
 
-        public static UserInfoList UserFetchInfoList(int organizationId)
+        public static UserInfoList UserFetchInfoList(IEnumerable<IProject> projects)
         {
-            OrganizationUserRepository.AuthorizeOrganizationUser(organizationId);
-
             return UserRepository.UserFetchInfoList(
                 new UserDataCriteria
                     {
-                        OrganizationId = organizationId
+                        ProjectId = projects.Select(row => row.ProjectId).ToArray()
                     });
         }
 

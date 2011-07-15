@@ -16,9 +16,6 @@
             <th style="width: 100px">
                 User
             </th>
-            <th style="width: 300px">
-                Project
-            </th>
             <th>
                 Notes
             </th>
@@ -28,8 +25,33 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var hour in Model.Hours)
-        { 
+        @{
+            var currentProjectId = 0;
+            var currentProjectName = string.Empty;
+        }
+        @foreach (var hour in Model.Hours
+            .OrderBy(hour => hour.ProjectName)
+            .ThenBy(hour => hour.StoryId))
+        {
+            if (currentProjectId != hour.ProjectId)
+            {
+                if (currentProjectId != 0)
+                {
+            <tr class="group-footer">
+                <td colspan="4">
+                    Total
+                </td>
+                <td class="number">@Model.Hours.Where(row => row.ProjectId == currentProjectId).Sum(row => row.Duration).ToString("N2")
+                </td>
+            </tr>
+                }
+            <tr class="group-header">
+                <td colspan="5">@Html.ActionLink(hour.ProjectName, "Details", "Project", new { id = hour.ProjectId }, null)
+                </td>
+            </tr>
+                currentProjectId = hour.ProjectId;
+                currentProjectName = hour.ProjectName;
+            }
             <tr>
                 <td>
                     @Html.ActionLink(hour.Date.ToShortDateString(), "Edit", new { id = hour.HourId })
@@ -39,19 +61,23 @@
                 </td>
                 <td>@hour.UserName
                 </td>
-                <td>
-                    @Html.ActionLink(hour.ProjectName, "Details", "Project", new { id = hour.ProjectId })
-                </td>
-                <td>@hour.Notes
+                 <td>@hour.Notes
                 </td>
                 <td class="number">@hour.Duration.ToString("F2")
                 </td>
             </tr>
         }
+        <tr class="group-footer">
+            <td colspan="4">
+                Total
+            </td>
+            <td class="number">@Model.Hours.Where(row => row.ProjectId == currentProjectId).Sum(row => row.Duration).ToString("N2")
+            </td>
+        </tr>
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="5">
+            <td colspan="4">
                 Total
             </td>
             <td class="number">

@@ -19,8 +19,8 @@ namespace Epiworx.WebMvc.Controllers
             var user = UserRepository.UserFetch();
 
             model.User = user;
-            model.StartDate = DateTime.Now.AddDays(-48).ToStartOfWeek().Date;
-            model.EndDate = DateTime.Now.ToEndOfWeek().Date;
+            model.StartDate = DateTime.Now.AddDays(-48).ToStartOfWeek(Settings.StartDayOfWeek).Date;
+            model.EndDate = DateTime.Now.ToStartOfWeek(Settings.StartDayOfWeek).Date.AddDays(6);
             model.Hours = HourRepository.HourFetchInfoList(user, model.StartDate, model.EndDate);
             model.ProjectListModel =
                 new ProjectListModel
@@ -44,7 +44,7 @@ namespace Epiworx.WebMvc.Controllers
                     {
                         User = user,
                         Hours = this.FetchHoursForWeek(
-                            DateTime.Now.ToStartOfWeek(),
+                            DateTime.Now.ToStartOfWeek(Settings.StartDayOfWeek),
                             model.Hours)
                     };
             model.TrailingWeeksHourSummaryByDateListModel =
@@ -57,11 +57,9 @@ namespace Epiworx.WebMvc.Controllers
                             model.Hours)
                     };
 
-            var weeks = WeekRepository.WeekFetchInfoList(
-                DateTime.Now.Year);
-            var currentWeek = weeks.First(row => DateTime.Now.Date >= row.StartDate && DateTime.Now.Date <= row.EndDate);
-            var currentPeriodStartDate = weeks.Where(row => row.Period == currentWeek.Period).Min(row => row.StartDate);
-            var currentPeriodEndDate = weeks.Where(row => row.Period == currentWeek.Period).Max(row => row.EndDate);
+
+            var weeks = WeekCollection.GetWeeks(DateTime.Now.Year);
+
             var hours = HourRepository.HourFetchInfoList(
                 user, weeks.Min(row => row.StartDate), weeks.Max(row => row.EndDate));
             var hourSummaries = new List<HourSummary>();
@@ -70,15 +68,8 @@ namespace Epiworx.WebMvc.Controllers
                 new HourSummary
                     {
                         Name = "Week",
-                        Value = (double)hours.Where(row => row.Date >= currentWeek.StartDate.Date && row.Date <= currentWeek.EndDate.Date).Sum(row => row.Duration),
+                        Value = (double)hours.Where(row => row.Date >= weeks.StartDate.Date && row.Date <= weeks.EndDate.AddDays(6)).Sum(row => row.Duration),
                         NormalValue = 25
-                    });
-            hourSummaries.Add(
-                new HourSummary
-                    {
-                        Name = "Period",
-                        Value = (double)hours.Where(row => row.Date >= currentPeriodStartDate.Date && row.Date <= currentPeriodEndDate.Date).Sum(row => row.Duration),
-                        NormalValue = 100
                     });
             hourSummaries.Add(
                 new HourSummary
@@ -105,7 +96,7 @@ namespace Epiworx.WebMvc.Controllers
 
             var currentDate = startDate;
 
-            while (currentDate <= startDate.ToEndOfWeek())
+            while (currentDate <= startDate.AddDays(6))
             {
                 result.Add(
                     new HourSummaryByDate
@@ -117,7 +108,7 @@ namespace Epiworx.WebMvc.Controllers
                 currentDate = currentDate.AddDays(1);
             }
 
-            return result;
+            return result.OrderBy(row => row.StartDate);
         }
 
         private IEnumerable<HourSummaryByDate> FetchHoursForTrailingWeeks(
@@ -139,7 +130,7 @@ namespace Epiworx.WebMvc.Controllers
                 currentDate = currentDate.AddDays(-7);
             }
 
-            return result;
+            return result.OrderByDescending(row => row.StartDate);
         }
     }
 }

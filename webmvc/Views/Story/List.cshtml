@@ -4,14 +4,14 @@
     <h2>
         Stories</h2>
 </div>
-<table>
+<table class="stories">
     <thead>
         <tr>
             <th style="width: 60px">
                 No.
             </th>
-            <th style="width: 300px">
-                Project
+            <th style="width: 200px">
+                Sprint
             </th>
             <th style="width: 100px">
                 Status
@@ -25,14 +25,47 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var story in Model.Stories)
-        { 
-            <tr>
+        @{
+            var currentProjectId = 0;
+            var currentProjectName = string.Empty;
+        }
+        @foreach (var story in Model.Stories
+            .OrderBy(story => story.ProjectName)
+            .ThenBy(story => story.SprintName)
+            .ThenBy(story => story.StoryId))
+        {
+            if (currentProjectId != story.ProjectId)
+            {
+                if (currentProjectId != 0)
+                {
+            <tr class="group-footer">
+                <td colspan="4">
+                    Total
+                </td>
+                <td class="number">@Model.Stories.Where(row => row.ProjectId == currentProjectId).Sum(row => row.Duration).ToString("N2")
+                </td>
+            </tr>
+                }
+            <tr class="group-header">
+                <td colspan="5">@Html.ActionLink(story.ProjectName, "Details", "Project", new { id = story.ProjectId }, null)
+                </td>
+            </tr>
+                currentProjectId = story.ProjectId;
+                currentProjectName = story.ProjectName;
+            }
+            <tr data-project-name="@story.ProjectName" data-status-name="@story.StatusName" data-assigned-to-name="@story.AssignedToName">
                 <td>
                     @Html.ActionLink(story.StoryId.ToString(), "Details", new { id = story.StoryId })
                 </td>
                 <td>
-                    @Html.ActionLink(story.ProjectName, "Details", "Project", new { id = story.ProjectId }, null)
+                    @if (story.SprintId == 0)
+                    {
+                        <text>None</text>
+                    }
+                    else
+                    {
+                        <text>@Html.ActionLink(story.SprintName, "Details", "Sprint", new { id = story.SprintId }, null)</text>
+                    }
                 </td>
                 <td>@story.StatusName
                 </td>
@@ -43,6 +76,13 @@
                 </td>
             </tr>
         }
+        <tr class="group-footer">
+            <td colspan="4">
+                Total
+            </td>
+            <td class="number">@Model.Stories.Where(row => row.ProjectId == currentProjectId).Sum(row => row.Duration).ToString("N2")
+            </td>
+        </tr>
     </tbody>
     <tfoot>
         <tr>
@@ -55,3 +95,6 @@
         </tr>
     </tfoot>
 </table>
+@section SideBar
+{
+}

@@ -888,6 +888,16 @@ tr
 {
 }
 
+tr.group-header
+{
+    font-weight: bold;
+}
+
+tr.group-footer
+{
+    font-weight: bold;    
+}
+
 th, td
 {
     padding: 10px 0px 10px 0px;

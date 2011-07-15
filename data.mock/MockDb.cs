@@ -18,8 +18,6 @@ namespace Epiworx.Data.Mock
         public static List<FilterData> Filters { get; private set; }
         public static List<HourData> Hours { get; private set; }
         public static List<NoteData> Notes { get; private set; }
-        public static List<OrganizationData> Organizations { get; private set; }
-        public static List<OrganizationUserMemberData> OrganizationUserMembers { get; private set; }
         public static List<ProjectData> Projects { get; private set; }
         public static List<ProjectUserMemberData> ProjectUserMembers { get; private set; }
         public static List<SourceData> Sources { get; private set; }
@@ -29,7 +27,6 @@ namespace Epiworx.Data.Mock
         public static List<StoryData> Stories { get; private set; }
         public static List<TimelineData> Timelines { get; private set; }
         public static List<UserData> Users { get; private set; }
-        public static List<WeekData> Weeks { get; private set; }
 
         static MockDb()
         {
@@ -44,10 +41,6 @@ namespace Epiworx.Data.Mock
             Hours = new List<HourData>();
 
             Notes = new List<NoteData>();
-
-            Organizations = new List<OrganizationData>();
-
-            OrganizationUserMembers = new List<OrganizationUserMemberData>();
 
             Projects = new List<ProjectData>();
 
@@ -93,8 +86,6 @@ namespace Epiworx.Data.Mock
                                 ModifiedDate = DateTime.Parse("1/1/2011")
                             }
                     };
-
-            Weeks = new List<WeekData>();
         }
     }
 }

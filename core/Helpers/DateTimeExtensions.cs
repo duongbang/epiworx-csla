@@ -75,6 +75,18 @@ namespace Epiworx.Core
             return startDate;
         }
 
+        public static DateTime ToStartOfWeek(this DateTime dateTime, DayOfWeek dayOfWeek)
+        {
+            var startDate = dateTime;
+
+            while (startDate.DayOfWeek != dayOfWeek)
+            {
+                startDate = startDate.AddDays(-1);
+            }
+
+            return startDate;
+        }
+
         public static DateTime ToStartOfMonth(this DateTime dateTime)
         {
             var startDate = dateTime;
@@ -127,6 +139,11 @@ namespace Epiworx.Core
         public static DateTime ToEndOfWeek(this DateTime dateTime)
         {
             return dateTime.ToStartOfWeek().AddDays(6);
+        }
+
+        public static DateTime ToEndOfWeek(this DateTime dateTime, DayOfWeek dayOfWeek)
+        {
+            return dateTime.ToStartOfWeek(dayOfWeek).AddDays(6);
         }
 
         public static DateTime ToEndOfMonth(this DateTime dateTime)

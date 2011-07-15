@@ -7,9 +7,6 @@
 <table>
     <thead>
         <tr>
-            <th style="width: 100px;">
-                Period
-            </th>
             <th style="width: 150px;">
                 Start on
             </th>
@@ -22,25 +19,11 @@
         </tr>
     </thead>
     <tbody>
-        @{      
-            var currentPeriod = 0;
-        }
         @foreach (var week in Model.Weeks
                 .Where(row => row.StartDate <= DateTime.Now.Date)
                 .OrderByDescending(row => row.StartDate))
         {
             <tr>
-                <td>
-                    @if (currentPeriod != week.Period)
-                    { 
-                        <text>@week.Period</text> 
-                        currentPeriod = week.Period;
-                    }
-                    else
-                    {  
-                        <text>&nbsp;</text>
-                    }
-                </td>
                 <td>@week.StartDate.ToShortDateString()
                 </td>
                 <td>@week.EndDate.ToShortDateString()
@@ -58,7 +41,7 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="3">
+            <td colspan="2">
                 Total
             </td>
             <td class="number">
@@ -71,5 +54,4 @@
 {
     @Html.Partial("_PartYearList")
     @Html.Partial("_PartUserList")
-    @Html.Partial("_PartPeriodList")
 }

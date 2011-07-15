@@ -14,7 +14,6 @@ namespace Epiworx.Business
         {
             using (this.BypassPropertyChecks)
             {
-                this.ProjectId = criteria.ProjectId ?? 0;
                 this.UserId = criteria.UserId ?? 0;
                 this.ModifiedDate = DateTime.Now;
                 this.CreatedDate = DateTime.Now;

@@ -58,8 +58,6 @@
     </Compile>
     <Compile Include="AttachmentDataFactory.cs" />
     <Compile Include="BusinessIdentityDataFactory.cs" />
-    <Compile Include="OrganizationDataFactory.cs" />
-    <Compile Include="OrganizationUserMemberDataFactory.cs" />
     <Compile Include="TimelineDataFactory.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DataFactoryManager.cs" />
@@ -76,7 +74,6 @@
     <Compile Include="StatusDataFactory.cs" />
     <Compile Include="StoryDataFactory.cs" />
     <Compile Include="UserDataFactory.cs" />
-    <Compile Include="WeekDataFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Application.edmx">

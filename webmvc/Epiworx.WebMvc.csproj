@@ -63,10 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\OrganizationController.cs" />
-    <Compile Include="Controllers\OrganizationUserController.cs" />
     <Compile Include="Controllers\TimelineController.cs" />
-    <Compile Include="Controllers\WeekController.cs" />
     <Compile Include="Controllers\NoteAttachmentController.cs" />
     <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Controllers\FilterController.cs" />
@@ -88,6 +85,7 @@
     <Compile Include="Core\ActionItemCollection.cs" />
     <Compile Include="Core\Parameter.cs" />
     <Compile Include="Core\ParameterCollection.cs" />
+    <Compile Include="Helpers\CriteriaHelper.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Helpers\FormsAuthenticationService.cs" />
     <Compile Include="Helpers\HtmlHelperExtensions.cs" />
@@ -102,9 +100,6 @@
     <Compile Include="Models\Account\AccountRegisterSuccessModel.cs" />
     <Compile Include="Models\Attachment\AttachmentFormModel.cs" />
     <Compile Include="Models\Attachment\AttachmentListModel.cs" />
-    <Compile Include="Models\OrganizationUser\OrganizationUserFormModel.cs" />
-    <Compile Include="Models\Organization\OrganizationFormModel.cs" />
-    <Compile Include="Models\Organization\OrganizationListModel.cs" />
     <Compile Include="Models\HourSummaryByDate\HourSummaryByDateListModel.cs" />
     <Compile Include="Models\HourSummary\HourSummaryListModel.cs" />
     <Compile Include="Models\Timeline\TimelineFormModel.cs" />
@@ -112,9 +107,6 @@
     <Compile Include="Models\Hour\HourIndexModel.cs" />
     <Compile Include="Models\HourSummary\HourSummary.cs" />
     <Compile Include="Models\Story\StoryIndexModel.cs" />
-    <Compile Include="Models\Week\WeekCreateModel.cs" />
-    <Compile Include="Models\Week\WeekEditModel.cs" />
-    <Compile Include="Models\Week\WeekListModel.cs" />
     <Compile Include="Models\Feed\FeedListModel.cs" />
     <Compile Include="Models\Find\FindIndexModel.cs" />
     <Compile Include="Models\HourSummaryByDate\HourSummaryByDate.cs" />
@@ -134,6 +126,8 @@
     <Compile Include="Models\Project\ProjectFormModel.cs" />
     <Compile Include="Models\User\UserFormModel.cs" />
     <Compile Include="Models\User\UserListModel.cs" />
+    <Compile Include="Models\Week\Week.cs" />
+    <Compile Include="Models\Week\WeekCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -213,16 +207,6 @@
     <Content Include="Views\Shared\_PartProjectList.cshtml" />
     <Content Include="Views\Hour\_PartUserList.cshtml" />
     <Content Include="Views\Project\_PartSprintByProjectList.cshtml" />
-    <Content Include="Views\Hour\_PartPeriodList.cshtml" />
-    <Content Include="Views\Organization\_PartStatusList.cshtml" />
-    <Content Include="Views\Organization\_PartUserList.cshtml" />
-    <Content Include="Views\Organization\_OrganizationForm.cshtml" />
-    <Content Include="Views\Organization\_OrganizationFormCommands.cshtml" />
-    <Content Include="Views\Organization\Create.cshtml" />
-    <Content Include="Views\Organization\Edit.cshtml" />
-    <Content Include="Views\OrganizationUser\Create.cshtml" />
-    <Content Include="Views\Organization\Details.cshtml" />
-    <Content Include="Views\Organization\Index.cshtml" />
     <None Include="Web.config" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -460,30 +444,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_FeedList.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Week\_PartYearList.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Week\_WeekEdit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Week\_WeekEditCommands.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Week\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Week\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Week\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Week\_WeekCreateCommands.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Week\_WeekCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_PartHourSummaryList.cshtml" />

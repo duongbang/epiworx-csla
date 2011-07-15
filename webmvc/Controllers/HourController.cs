@@ -5,50 +5,51 @@ using System.Web;
 using System.Web.Mvc;
 using Epiworx.Business;
 using Epiworx.Business.Security;
-
+using Epiworx.Core;
 using Epiworx.Data;
 using Epiworx.WebMvc.Helpers;
 using Epiworx.WebMvc.Models;
 
 namespace Epiworx.WebMvc.Controllers
 {
+
     [Authorize]
     public class HourController : Controller
     {
         public ActionResult Index(int? year, int? userId)
         {
             var model = new HourIndexModel();
-
-            var weeks = WeekRepository.WeekFetchInfoList();
-            var startDate = weeks
-                .Where(row => row.Year == DateTime.Now.Year || row.Year == year)
-                .Min(row => row.StartDate);
-            var endDate = weeks
-                .Where(row => row.Year == DateTime.Now.Year || row.Year == year)
-                .Max(row => row.StartDate);
+            var projects = ProjectRepository.ProjectFetchInfoList();
 
             model.UserId = userId ?? ((IBusinessIdentity)Csla.ApplicationContext.User.Identity).UserId;
+
+            var weeks = WeekCollection.GetWeeks(year ?? DateTime.Now.Year);
+
+            model.Weeks = weeks;
 
             var criteria =
                 new HourDataCriteria
                     {
-                        Date = CriteriaHelper.ToDateRangeCriteria(startDate, endDate),
+                        Date = CriteriaHelper.ToDateRangeCriteria(weeks.StartDate, weeks.EndDate),
                         UserId = model.UserId
                     };
 
             var hours = HourRepository.HourFetchInfoList(criteria);
 
             model.Hours = hours;
-            model.Weeks = weeks.Where(row => row.Year == DateTime.Now.Year || row.Year == year);
-            model.Year = year ?? DateTime.Now.Year;
-            model.Years = weeks.Select(row => row.Year).Distinct();
 
-            var users = UserRepository.UserFetchInfoList(
-                new UserDataCriteria
-                    {
-                        IsActive = true,
-                        IsArchived = false
-                    });
+            model.Year = year ?? DateTime.Now.Year;
+
+            var years = new List<int>();
+
+            for (var currentYear = year ?? DateTime.Now.Year; currentYear <= DateTime.Now.Year; currentYear++)
+            {
+                years.Add(currentYear);
+            }
+
+            model.Years = years;
+
+            var users = UserRepository.UserFetchInfoList(projects);
 
             model.Users = users;
 

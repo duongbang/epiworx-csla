@@ -19,6 +19,7 @@ namespace Epiworx.WebMvc.Models
 
         public UserFormModel()
         {
+            this.Title = "User";
         }
     }
 }

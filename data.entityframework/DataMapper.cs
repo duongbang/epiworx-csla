@@ -135,56 +135,6 @@ namespace Epiworx.Data.EntityFramework
             destination.ModifiedDate = source.ModifiedDate;
         }
 
-        internal static void Map(Organization source, OrganizationData destination)
-        {
-            destination.OrganizationId = source.OrganizationId;
-            destination.Name = source.Name;
-            destination.Description = source.Description;
-            destination.IsArchived = source.IsArchived;
-            destination.IsActive = source.IsActive;
-            destination.CreatedBy = source.CreatedBy;
-            destination.CreatedDate = source.CreatedDate;
-            destination.ModifiedBy = source.ModifiedBy;
-            destination.ModifiedDate = source.ModifiedDate;
-        }
-
-        internal static void Map(OrganizationData source, Organization destination)
-        {
-            destination.OrganizationId = source.OrganizationId;
-            destination.Name = source.Name;
-            destination.Description = source.Description;
-            destination.IsArchived = source.IsArchived;
-            destination.IsActive = source.IsActive;
-            destination.ModifiedBy = source.ModifiedBy;
-            destination.ModifiedDate = source.ModifiedDate;
-            destination.CreatedBy = source.CreatedBy;
-            destination.CreatedDate = source.CreatedDate;
-        }
-
-        internal static void Map(OrganizationUserMember source, OrganizationUserMemberData destination)
-        {
-            destination.OrganizationUserMemberId = source.OrganizationUserMemberId;
-            destination.OrganizationId = source.OrganizationId;
-            destination.UserId = source.UserId;
-            destination.RoleId = source.RoleId;
-            destination.CreatedBy = source.CreatedBy;
-            destination.CreatedDate = source.CreatedDate;
-            destination.ModifiedBy = source.ModifiedBy;
-            destination.ModifiedDate = source.ModifiedDate;
-        }
-
-        internal static void Map(OrganizationUserMemberData source, OrganizationUserMember destination)
-        {
-            destination.OrganizationUserMemberId = source.OrganizationUserMemberId;
-            destination.OrganizationId = source.OrganizationId;
-            destination.UserId = source.UserId;
-            destination.RoleId = source.RoleId;
-            destination.ModifiedBy = source.ModifiedBy;
-            destination.ModifiedDate = source.ModifiedDate;
-            destination.CreatedBy = source.CreatedBy;
-            destination.CreatedDate = source.CreatedDate;
-        }
-
         internal static void Map(Project source, ProjectData destination)
         {
             destination.ProjectId = source.ProjectId;
@@ -421,32 +371,6 @@ namespace Epiworx.Data.EntityFramework
             destination.IsActive = source.IsActive;
             destination.ModifiedDate = source.ModifiedDate;
             destination.CreatedDate = source.CreatedDate;
-        }
-
-        internal static void Map(Week source, WeekData destination)
-        {
-            destination.WeekId = source.WeekId;
-            destination.EndDate = source.EndDate;
-            destination.Period = source.Period;
-            destination.StartDate = source.StartDate;
-            destination.Year = source.Year;
-            destination.CreatedBy = source.CreatedBy;
-            destination.CreatedDate = source.CreatedDate;
-            destination.ModifiedBy = source.ModifiedBy;
-            destination.ModifiedDate = source.ModifiedDate;
-        }
-
-        internal static void Map(WeekData source, Week destination)
-        {
-            destination.WeekId = source.WeekId;
-            destination.EndDate = source.EndDate;
-            destination.Period = source.Period;
-            destination.StartDate = source.StartDate;
-            destination.Year = source.Year;
-            destination.CreatedBy = source.CreatedBy;
-            destination.CreatedDate = source.CreatedDate;
-            destination.ModifiedBy = source.ModifiedBy;
-            destination.ModifiedDate = source.ModifiedDate;
         }
     }
 }

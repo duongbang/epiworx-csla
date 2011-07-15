@@ -4,14 +4,6 @@
         <h3>
             Filters</h3>
         <h4>
-            Projects</h4>
-        <ul class="filter block" data-filter="project-name">
-            @foreach (var projectName in Model.Stories.Select(row => row.ProjectName).Distinct().OrderBy(row => row))
-            {
-                <li data-filter-value="@projectName"><a href="">@projectName</a></li>
-            }
-        </ul>
-        <h4>
             Statuses</h4>
         <ul class="filter block" data-filter="status-name">
             @foreach (var statusName in Model.Stories.Select(row => row.StatusName).Distinct().OrderBy(row => row))
@@ -41,6 +33,8 @@
         var filter = $(this).parent("li").parent("ul").data("filter");
         var filterValue = $(this).parent("li").data("filter-value");
         $("table.stories tbody tr[data-" + filter + "='" + filterValue + "']").show();
+        $("table.stories tbody .group-header").show();
+        $("table.stories tbody .group-footer").show();
     });
 
 </script>

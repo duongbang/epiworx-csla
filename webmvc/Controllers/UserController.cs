@@ -19,18 +19,13 @@ namespace Epiworx.WebMvc.Controllers
             string userName)
         {
             var model = new UserListModel();
-            var users = UserRepository.UserFetchInfoList(model.OrganizationId);
+            var projects = ProjectRepository.ProjectFetchInfoList();
+            var users = UserRepository.UserFetchInfoList(projects);
 
             model.Users = users;
 
-            var projects = ProjectRepository.ProjectFetchInfoList(
-                new ProjectDataCriteria
-                    {
-                        IsActive = true,
-                        IsArchived = false
-                    });
-
-            var stories = StoryRepository.StoryFetchInfoList(projects.ToArray(), false);
+            var stories = StoryRepository.StoryFetchInfoList(
+                projects.Where(row => row.IsActive && !row.IsArchived).ToArray(), false);
 
             model.Stories = stories;
 
@@ -46,8 +41,8 @@ namespace Epiworx.WebMvc.Controllers
         {
             var model = new UserFormModel();
             var user = UserRepository.UserFetch(id);
-            var startDate = DateTime.Now.AddDays(-48).ToStartOfWeek().Date;
-            var endDate = DateTime.Now.ToEndOfWeek().Date;
+            var startDate = DateTime.Now.AddDays(-48).ToStartOfWeek(Settings.StartDayOfWeek).Date;
+            var endDate = DateTime.Now.ToStartOfWeek(Settings.StartDayOfWeek).Date.AddDays(6);
             var hours = HourRepository.HourFetchInfoList(user, startDate, endDate);
 
             model.User = user;
@@ -69,7 +64,7 @@ namespace Epiworx.WebMvc.Controllers
                 {
                     User = user,
                     Hours = this.FetchHoursForWeek(
-                        DateTime.Now.ToStartOfWeek(),
+                        DateTime.Now.ToStartOfWeek(Settings.StartDayOfWeek),
                         hours)
                 };
             model.TrailingWeeksHourSummaryByDateListModel =
@@ -83,18 +78,13 @@ namespace Epiworx.WebMvc.Controllers
                 };
             model.Stories = StoryRepository.StoryFetchInfoList(model.User, false);
 
-            var weeks = WeekRepository.WeekFetchInfoList(
-                 DateTime.Now.Year);
-            var currentWeek = weeks.First(row => DateTime.Now.Date >= row.StartDate && DateTime.Now.Date <= row.EndDate);
-            var currentPeriodStartDate = weeks.Where(row => row.Period == currentWeek.Period).Min(row => row.StartDate);
-            var currentPeriodEndDate = weeks.Where(row => row.Period == currentWeek.Period).Max(row => row.EndDate);
+            var weeks = WeekCollection.GetWeeks(DateTime.Now.Year);
 
             hours = HourRepository.HourFetchInfoList(
                 user, weeks.Min(row => row.StartDate), weeks.Max(row => row.EndDate));
             var hourSummaries = new List<HourSummary>();
 
-            hourSummaries.Add(new HourSummary { Name = "Week", Value = (double)hours.Where(row => row.Date >= currentWeek.StartDate.Date && row.Date <= currentWeek.EndDate.Date).Sum(row => row.Duration), NormalValue = 25 });
-            hourSummaries.Add(new HourSummary { Name = "Period", Value = (double)hours.Where(row => row.Date >= currentPeriodStartDate.Date && row.Date <= currentPeriodEndDate.Date).Sum(row => row.Duration), NormalValue = 100 });
+            hourSummaries.Add(new HourSummary { Name = "Week", Value = (double)hours.Where(row => row.Date >= weeks.StartDate.Date && row.Date <= weeks.StartDate.AddDays(6)).Sum(row => row.Duration), NormalValue = 25 });
             hourSummaries.Add(new HourSummary { Name = "Year", Value = (double)hours.Sum(row => row.Duration), NormalValue = 1250 });
 
             model.HourSummaryListModel =
@@ -114,7 +104,7 @@ namespace Epiworx.WebMvc.Controllers
 
             var currentDate = startDate;
 
-            while (currentDate <= startDate.ToEndOfWeek())
+            while (currentDate <= startDate.AddDays(6))
             {
                 result.Add(
                     new HourSummaryByDate
@@ -148,7 +138,7 @@ namespace Epiworx.WebMvc.Controllers
                 currentDate = currentDate.AddDays(-7);
             }
 
-            return result;
+            return result.OrderByDescending(row => row.StartDate);
         }
 
         public ActionResult Create()

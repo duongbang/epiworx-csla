@@ -196,13 +196,13 @@ namespace Epiworx.Data.EntityFramework
                 query = query.Where(row => row.CreatedDate <= criteria.CreatedDate.DateTo);
             }
 
-            if (criteria.OrganizationId != null)
+            if (criteria.ProjectId != null)
             {
                 query = query.Join(
-                    ctx.ObjectContext.OrganizationUserMembers.Where(oum => oum.OrganizationId == criteria.OrganizationId),
+                    ctx.ObjectContext.ProjectUserMembers.Where(pum => criteria.ProjectId.Contains(pum.ProjectId)),
                     u => u.UserId,
-                    oum => oum.UserId,
-                    (u, oum) => u);
+                    pum => pum.UserId,
+                    (u, pum) => u).Distinct();
             }
 
             if (criteria.Text != null)

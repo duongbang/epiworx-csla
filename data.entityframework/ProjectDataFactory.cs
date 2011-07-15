@@ -180,7 +180,7 @@ namespace Epiworx.Data.EntityFramework
                     ctx.ObjectContext.ProjectUserMembers.Where(pum => pum.UserId == criteria.UserId),
                     p => p.ProjectId,
                     pum => pum.ProjectId,
-                    (p, cssm) => p);
+                    (p, pum) => p);
             }
 
             if (criteria.CreatedBy != null)

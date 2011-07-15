@@ -18,11 +18,12 @@ namespace Epiworx.Business
                 return;
             }
 
-            var data = ProjectUserInfoList.FetchProjectUserInfoList(new ProjectUserMemberDataCriteria
-                {
-                    ProjectId = target.ProjectId,
-                    UserId = target.UserId
-                });
+            var data = ProjectUserInfoList.FetchProjectUserInfoList(
+                new ProjectUserMemberDataCriteria
+                    {
+                        ProjectId = target.ProjectId,
+                        UserId = target.UserId
+                    });
 
             if (data.Count(row => row.ProjectId != target.ProjectId && row.UserId != target.UserId) != 0)
             {
