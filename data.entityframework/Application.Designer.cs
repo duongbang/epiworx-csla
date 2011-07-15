@@ -2750,8 +2750,7 @@ namespace Epiworx.Data.EntityFramework
         /// <param name="createdDate">Initial value of the CreatedDate property.</param>
         /// <param name="modifiedBy">Initial value of the ModifiedBy property.</param>
         /// <param name="modifiedDate">Initial value of the ModifiedDate property.</param>
-        /// <param name="organizationId">Initial value of the OrganizationId property.</param>
-        public static Project CreateProject(global::System.Int32 projectId, global::System.String description, global::System.Boolean isActive, global::System.Boolean isArchived, global::System.String name, global::System.Int32 createdBy, global::System.DateTime createdDate, global::System.Int32 modifiedBy, global::System.DateTime modifiedDate, global::System.Int32 organizationId)
+        public static Project CreateProject(global::System.Int32 projectId, global::System.String description, global::System.Boolean isActive, global::System.Boolean isArchived, global::System.String name, global::System.Int32 createdBy, global::System.DateTime createdDate, global::System.Int32 modifiedBy, global::System.DateTime modifiedDate)
         {
             Project project = new Project();
             project.ProjectId = projectId;
@@ -2763,7 +2762,6 @@ namespace Epiworx.Data.EntityFramework
             project.CreatedDate = createdDate;
             project.ModifiedBy = modifiedBy;
             project.ModifiedDate = modifiedDate;
-            project.OrganizationId = organizationId;
             return project;
         }
 
@@ -2988,30 +2986,6 @@ namespace Epiworx.Data.EntityFramework
         private global::System.DateTime _ModifiedDate;
         partial void OnModifiedDateChanging(global::System.DateTime value);
         partial void OnModifiedDateChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 OrganizationId
-        {
-            get
-            {
-                return _OrganizationId;
-            }
-            set
-            {
-                OnOrganizationIdChanging(value);
-                ReportPropertyChanging("OrganizationId");
-                _OrganizationId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("OrganizationId");
-                OnOrganizationIdChanged();
-            }
-        }
-        private global::System.Int32 _OrganizationId;
-        partial void OnOrganizationIdChanging(global::System.Int32 value);
-        partial void OnOrganizationIdChanged();
 
         #endregion
     

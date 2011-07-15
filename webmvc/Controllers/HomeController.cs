@@ -68,7 +68,7 @@ namespace Epiworx.WebMvc.Controllers
                 new HourSummary
                     {
                         Name = "Week",
-                        Value = (double)hours.Where(row => row.Date >= weeks.StartDate.Date && row.Date <= weeks.EndDate.AddDays(6)).Sum(row => row.Duration),
+                        Value = (double)hours.Where(row => row.Date >= weeks.StartDate.Date && row.Date <= weeks.StartDate.AddDays(6)).Sum(row => row.Duration),
                         NormalValue = 25
                     });
             hourSummaries.Add(
