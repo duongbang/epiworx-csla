@@ -3,9 +3,34 @@
     <div class="wrapper">
         <ul>
             <li>Welcome <strong>@Context.User.Identity.Name</strong>!</li>
+            @if (Model.OrganizationId != -1)
+            { 
+                <li>
+                    <select id="OrganizationId" name="OrganizationId">
+                        @foreach (var organization in Model.Organizations
+                        .OrderBy(row => row.Name))
+                        {
+                            <option value="@organization.OrganizationId"@if (organization.OrganizationId == Model.OrganizationId)
+                                                                        { <text> selected</text>}>@organization.Description</option>
+                        }
+                        <option value="-1">Add a new organization</option>
+                    </select>
+                </li>
+            }
             <li>@Html.ActionLink("Inbox", "Index", "Message")</li>
             <li>@Html.ActionLink("Settings", "Settings", "Account")</li>
             <li>@Html.ActionLink("Sign Out", "LogOff", "Account")</li>
         </ul>
     </div>
 </div>
+<script type="text/javascript">
+    $("#OrganizationId").change(function () {
+        var selectedValue = $(this).val();
+        if (selectedValue == "-1") {           
+            location.href = "@Url.Action("Create", "Organization")";
+        }
+        else {
+            location.href = "@Url.Action("Change", "Organization")/" + selectedValue;
+        }
+    });
+</script>

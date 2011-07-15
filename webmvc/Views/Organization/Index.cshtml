@@ -1,0 +1,58 @@
+﻿@model Epiworx.WebMvc.Models.OrganizationListModel
+@using Epiworx.WebMvc.Helpers
+<div class="hgroup">
+    <h2>
+        Organizations</h2>
+</div>
+<ul class="filter">
+    <li><strong>Filters</strong></li>
+    <li class="selected"><a href="" data-filter="Active">Active</a></li>
+    <li><a href="" data-filter="Inactive">Inactive</a></li>
+    <li><a href="" data-filter="Archived">Archived</a></li>
+</ul>
+<table class="organizations">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var organization in Model.Organizations.OrderBy(row => row.Name))
+        { 
+            <tr data-active="@organization.IsActive" data-archived="@organization.IsArchived">
+                <td>@Html.ActionLink(organization.Name, "Details", new { id = organization.OrganizationId }, null)
+                    <div class="clip" title="@organization.Description">@organization.Description</div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section SideBar
+{
+    @Html.Partial("_PartActionItemList")
+}
+<script type="text/javascript">
+
+    $("table.organizations tr[data-active='False']").hide();
+
+    $(".filter a").click(function (e) {
+        e.preventDefault();
+        $(".filter li").removeClass("selected");
+        $(this).parent("li").addClass("selected");
+        $("table.organizations tbody tr").hide();
+        switch ($(this).data("filter")) {
+            case "Active":
+                $("table.organizations tbody tr[data-active='True']").show();
+                break;
+            case "Inactive":
+                $("table.organizations tbody tr[data-active='False'][data-archived='False']").show();
+                break;
+            case "Archived":
+                $("table.organizations tbody tr[data-archived='True']").show();
+                break;
+        }
+    });
+
+</script>

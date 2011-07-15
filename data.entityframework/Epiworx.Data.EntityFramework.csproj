@@ -58,6 +58,8 @@
     </Compile>
     <Compile Include="AttachmentDataFactory.cs" />
     <Compile Include="BusinessIdentityDataFactory.cs" />
+    <Compile Include="OrganizationDataFactory.cs" />
+    <Compile Include="OrganizationUserMemberDataFactory.cs" />
     <Compile Include="TimelineDataFactory.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DataFactoryManager.cs" />

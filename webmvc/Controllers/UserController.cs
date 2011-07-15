@@ -19,13 +19,7 @@ namespace Epiworx.WebMvc.Controllers
             string userName)
         {
             var model = new UserListModel();
-            var criteria =
-                new UserDataCriteria
-                    {
-                        UserId = userId,
-                        Name = userName
-                    };
-            var users = UserRepository.UserFetchInfoList(criteria);
+            var users = UserRepository.UserFetchInfoList(model.OrganizationId);
 
             model.Users = users;
 

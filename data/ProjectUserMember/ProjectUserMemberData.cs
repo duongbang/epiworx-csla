@@ -18,9 +18,5 @@ namespace Epiworx.Data
         public int ModifiedBy { get; set; }
         public UserData ModifiedByUser { get; set; }
         public DateTime ModifiedDate { get; set; }
-
-        public ProjectUserMemberData()
-        {
-        }
     }
 }

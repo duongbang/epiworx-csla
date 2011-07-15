@@ -15,6 +15,7 @@ namespace Epiworx.Business
             using (this.BypassPropertyChecks)
             {
                 this.IsActive = true;
+                this.IsArchived = false;
                 this.ModifiedDate = DateTime.Now;
                 this.CreatedDate = DateTime.Now;
             }

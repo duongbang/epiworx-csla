@@ -1,0 +1,19 @@
+﻿@model Epiworx.WebMvc.Models.OrganizationFormModel
+@using Epiworx.WebMvc.Helpers
+<fieldset>
+    <legend>Organization</legend>
+    <label for="Name">
+        Name</label>
+    <input type="text" id="Name" name="Name" value="@Model.Organization.Name" class="big" />
+    <span class="tip">This name must be unique with no spaces, e.g., ufp</span>
+    <label for="Description">
+        Formal name</label>
+    <input type="text" id="Description" name="Description" value="@Model.Organization.Description" class="big" />
+    <span class="tip">This your organizations more formal name, the one you might do business as, e.g. United Federation of Planets.</span>
+    <label for="IsActive">
+        <input type="checkbox" id="IsActive" name="IsActive" @Html.ToChecked(Model.Organization.IsActive)/>This
+        organization is active</label>
+    <label for="IsArchived">
+        <input type="checkbox" id="IsArchived" name="IsArchived" @Html.ToChecked(Model.Organization.IsArchived)/>This
+        organization is archived</label>
+</fieldset>

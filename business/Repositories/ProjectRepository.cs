@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
+using Epiworx.Business.Security;
 using Epiworx.Core;
 using Epiworx.Data;
 
 namespace Epiworx.Business
 {
-    using System.Security;
-
-    using Epiworx.Business.Security;
-
     [Serializable]
     public class ProjectRepository
     {

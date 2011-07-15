@@ -1,0 +1,23 @@
+﻿@model Epiworx.WebMvc.Models.OrganizationFormModel
+@using Epiworx.WebMvc.Helpers
+@using Epiworx.WebMvc.Models
+<div class="hgroup">
+    <h2>
+        @Model.Organization.Name</h2>
+</div>
+<fieldset>
+    <legend>Organization</legend>
+    <p>
+        <label>
+            Name</label>
+        <span class="big">@Model.Organization.Name</span></p>
+    <p>
+        <label>
+            Description</label>
+        <span>@Model.Organization.Description</span></p>
+</fieldset>
+
+@section SideBar
+{
+    @Html.Partial("_PartActionItemList")
+}

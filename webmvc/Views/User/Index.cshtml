@@ -1,16 +1,9 @@
 ﻿@model Epiworx.WebMvc.Models.UserListModel
 @using Epiworx.WebMvc.Helpers
 <div class="hgroup">
-    <img src="@Url.Content("~/Content/user.png")" />
     <h2>
         Users</h2>
 </div>
-<ul class="filter">
-    <li><strong>Filters</strong></li>
-    <li class="selected"><a href="" data-filter="Active">Active</a></li>
-    <li><a href="" data-filter="Inactive">Inactive</a></li>
-    <li><a href="" data-filter="Archived">Archived</a></li>
-</ul>
 <table class="users">
     <thead>
         <tr>
@@ -104,26 +97,3 @@
         </tr>
     </tfoot>
 </table>
-<script type="text/javascript">
-
-    $("table.users tr[data-active='False']").hide();
-
-    $(".filter a").click(function (e) {
-        e.preventDefault();
-        $(".filter li").removeClass("selected");
-        $(this).parent("li").addClass("selected");
-        $("table.users tbody tr").hide();
-        switch ($(this).data("filter")) {
-            case "Active":
-                $("table.users tbody tr[data-active='True']").show();
-                break;
-            case "Inactive":
-                $("table.users tbody tr[data-active='False'][data-archived='False']").show();
-                break;
-            case "Archived":
-                $("table.users tbody tr[data-archived='True']").show();
-                break;
-        }
-    });
-
-</script>

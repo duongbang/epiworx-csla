@@ -44,6 +44,17 @@ namespace Epiworx.Business
                 new UserDataCriteria());
         }
 
+        public static UserInfoList UserFetchInfoList(int organizationId)
+        {
+            OrganizationUserRepository.AuthorizeOrganizationUser(organizationId);
+
+            return UserRepository.UserFetchInfoList(
+                new UserDataCriteria
+                    {
+                        OrganizationId = organizationId
+                    });
+        }
+
         public static UserInfoList UserFetchInfoList(UserDataCriteria criteria)
         {
             return UserInfoList.FetchUserInfoList(criteria);

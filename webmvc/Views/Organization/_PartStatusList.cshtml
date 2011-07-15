@@ -1,0 +1,16 @@
+﻿@model Epiworx.WebMvc.Models.OrganizationFormModel
+<div class="part">
+    <div class="wrapper">
+        <div class="hgroup">
+            <h3>
+                Statuses</h3>
+        </div>
+        <ul>
+            @foreach (var status in Model.Statuses)
+            {
+                <li>@Html.ActionLink(status.Name, "List", "Story", new { organizationId = Model.Organization.OrganizationId, statusId = status.StatusId, isArchived = "false" }, null)@Html.ActionLink("Edit", "Edit", "Status", new { id = status.StatusId }, new { @class = "action" })</li>
+            }
+            <li>@Html.ActionLink("Archived", "List", "Story", new { organizationId = Model.Organization.OrganizationId, isArchived = "true" }, null)</li>
+        </ul>
+    </div>
+</div>

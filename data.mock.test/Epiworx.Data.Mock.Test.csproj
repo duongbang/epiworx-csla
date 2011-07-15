@@ -51,6 +51,10 @@
   <ItemGroup>
     <Compile Include="Attachment\AttachmentTest.cs" />
     <Compile Include="Attachment\AttachmentTestHelper.cs" />
+    <Compile Include="OrganizationUserMember\OrganizationUserMemberTest.cs" />
+    <Compile Include="OrganizationUserMember\OrganizationUserMemberTestHelper.cs" />
+    <Compile Include="Organization\OrganizationTest.cs" />
+    <Compile Include="Organization\OrganizationTestHelper.cs" />
     <Compile Include="Timeline\TimelineTest.cs" />
     <Compile Include="Timeline\TimelineTestHelper.cs" />
     <Compile Include="FeedSourceMember\FeedSourceMemberTest.cs" />

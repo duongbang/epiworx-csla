@@ -105,7 +105,6 @@
 .feed
 {
     margin-bottom: 20px;
-    font-weight: bold;
     min-height: 80px;
     border-bottom-style: solid;
     border-bottom-width: 1px;
@@ -679,8 +678,8 @@ ul.stories .date
 #header h1
 {
     font-size: 18px;
-    margin-top: -1px;
     float: left;
+    margin-top: 4px;
     text-transform: lowercase;
 }
 
@@ -696,10 +695,17 @@ ul.stories .date
     margin-left: 10px;
 }
 
+#header-profile select 
+{
+    font-size: 10px;
+    margin: 0px;
+    width: auto;
+}
+
 #header-menu
 {
     float: left;
-    margin: 2px 0px 0px 20px;
+    margin: 8px 0px 0px 20px;
 }
 
 #header-menu li
@@ -711,31 +717,6 @@ ul.stories .date
 
 #header-menu li:hover
 {
-}
-
-#header-find
-{
-    float: right;
-}
-
-#header-find a
-{
-    font-size: 14px;
-    float: left;
-    margin: 10px 10px 0px 0px;
-}
-
-#header-find input[type="text"]
-{
-    width: 290px;
-    float: left;
-}
-
-#header-find img
-{
-    position: absolute;
-    margin-top: 10px;
-    margin-left: -24px;
 }
 
 #main
@@ -861,6 +842,14 @@ textarea
 fieldset
 {
     margin-bottom: 20px;
+}
+
+fieldset .tip
+{
+    color: #009933;
+    font-size: 12px;
+    display: block;
+    margin-bottom: 10px;
 }
 
 fieldset label

@@ -1,0 +1,30 @@
+﻿@model Epiworx.WebMvc.Models.OrganizationUserFormModel
+@using Epiworx.WebMvc.Helpers
+<div class="hgroup">
+    <h2>
+        Add Collaborators</h2>
+</div>
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>Add Collaborators</legend>
+        <label>
+            Select a user you would like to add as a collaborator:</label>
+        <ul class="collaborators">
+            @foreach (var user in Model.Users)
+            { 
+                <li>@user.Name@if (!Model.OrganizationUsers.Any(row => row.UserId == user.UserId))
+                              {<text><a href="@Url.Action("Details", "Organization", new { id = @Model.OrganizationUser.OrganizationId })" data-user-id="@user.UserId">Add</a></text>}
+                              else
+                              {<text><span>@Model.OrganizationUsers.Single(row => row.UserId == user.UserId).RoleName</span></text>}</li>
+            }
+        </ul>
+    </fieldset>
+}
+<script type="text/javascript">
+
+    $(".collaborators li a").click(function (e) {
+        $.post("@Url.Action("Create", "OrganizationUser")", { organizationId: @Model.OrganizationUser.OrganizationId, userId: $(this).attr("data-user-id")});
+    });
+
+</script>

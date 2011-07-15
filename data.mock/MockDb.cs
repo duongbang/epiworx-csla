@@ -18,6 +18,8 @@ namespace Epiworx.Data.Mock
         public static List<FilterData> Filters { get; private set; }
         public static List<HourData> Hours { get; private set; }
         public static List<NoteData> Notes { get; private set; }
+        public static List<OrganizationData> Organizations { get; private set; }
+        public static List<OrganizationUserMemberData> OrganizationUserMembers { get; private set; }
         public static List<ProjectData> Projects { get; private set; }
         public static List<ProjectUserMemberData> ProjectUserMembers { get; private set; }
         public static List<SourceData> Sources { get; private set; }
@@ -42,6 +44,10 @@ namespace Epiworx.Data.Mock
             Hours = new List<HourData>();
 
             Notes = new List<NoteData>();
+
+            Organizations = new List<OrganizationData>();
+
+            OrganizationUserMembers = new List<OrganizationUserMemberData>();
 
             Projects = new List<ProjectData>();
 
@@ -89,36 +95,6 @@ namespace Epiworx.Data.Mock
                     };
 
             Weeks = new List<WeekData>();
-        }
-
-        public static void LoadData<T>(T obj)
-        {
-            var filename = ConfigurationManager.AppSettings["SampleDataFolder"];
-            var serializer = new XmlSerializer(obj.GetType());
-
-            FileStream fs = null;
-
-            if (obj.GetType() == typeof(List<UserData>))
-            {
-                fs = new FileStream(string.Format("{0}UserData.xml", filename), FileMode.Open);
-                MockDb.Users = (List<UserData>)serializer.Deserialize(fs);
-            }
-
-            fs.Close();
-        }
-
-        public static void SaveData<T>(T obj, string filename)
-        {
-            var serializer = new XmlSerializer(obj.GetType());
-            var ns = new XmlSerializerNamespaces();
-
-            ns.Add(string.Empty, string.Empty);
-
-            var writer = new StreamWriter(filename);
-
-            serializer.Serialize(writer, obj, ns);
-
-            writer.Close();
         }
     }
 }
