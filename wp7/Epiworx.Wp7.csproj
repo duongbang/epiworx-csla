@@ -51,6 +51,7 @@
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Controls.Maps, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="System.Device" />
     <Reference Include="System.Runtime.Serialization" />
@@ -65,8 +66,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FeedData.cs" />
+    <Compile Include="FeedSourceData.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Helpers\CryptoHelper.cs" />
+    <Compile Include="Helpers\DateTimeExtensions.cs" />
     <Compile Include="HomeControl.xaml.cs">
       <DependentUpon>HomeControl.xaml</DependentUpon>
     </Compile>
@@ -79,10 +83,12 @@
     <Compile Include="NewsFeedControl.xaml.cs">
       <DependentUpon>NewsFeedControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProjectData.cs" />
     <Compile Include="ProjectsControl.xaml.cs">
       <DependentUpon>ProjectsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SourceData.cs" />
     <Compile Include="TimelineData.cs" />
     <Compile Include="TokenData.cs" />
     <Compile Include="UserData.cs" />

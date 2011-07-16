@@ -19,6 +19,10 @@ namespace Epiworx.Wp7
         public bool IsArchived { get; set; }
         public UserData CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
+        public string RelativeCreatedDate
+        {
+            get { return this.CreatedDate.ToRelativeDate(); }
+        }
         public UserData ModifiedBy { get; set; }
         public DateTime ModifiedDate { get; set; }
 
@@ -31,6 +35,7 @@ namespace Epiworx.Wp7
         {
             if (data == null)
             {
+                this.Body = "Move along, nothing to report here";
                 return;
             }
 

@@ -71,6 +71,8 @@
     <Compile Include="Data\Token.cs" />
     <Compile Include="Data\TokenRepository.cs" />
     <Compile Include="Models\BrokenRuleData.cs" />
+    <Compile Include="Models\FeedData.cs" />
+    <Compile Include="Models\FeedSourceData.cs" />
     <Compile Include="Models\LoginData.cs" />
     <Compile Include="Models\ProjectData.cs" />
     <Compile Include="Data\Security.Designer.cs">
@@ -78,6 +80,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Security.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\SourceData.cs" />
     <Compile Include="Models\TimelineData.cs" />
     <Compile Include="Models\TokenData.cs" />
     <Compile Include="Models\UserData.cs" />

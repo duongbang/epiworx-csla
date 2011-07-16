@@ -39,6 +39,23 @@ namespace Epiworx.WcfRestService
             return result;
         }
 
+        [WebGet(UriTemplate = "feed?maximumRecords={maximumRecords}&token={token}")]
+        public List<FeedData> GetFeed(string maximumRecords, string token)
+        {
+            this.ValidateToken(token);
+
+            this.Login(token);
+
+            var feeds = FeedRepository.FeedFetchInfoList(int.Parse(maximumRecords));
+
+            var result = feeds.Select(row => new FeedData(row))
+                .ToList();
+
+            this.Logout();
+
+            return result;
+        }
+
         [WebGet(UriTemplate = "project/{id}?token={token}")]
         public ProjectData GetProject(string id, string token)
         {

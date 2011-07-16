@@ -95,14 +95,20 @@ namespace Epiworx.Wp7
             {
                 case "projects":
                     this.PageTitle.Text = this.ProjectsControl.Title;
+                    this.ProjectsControl.Token = this.LogonControl.Token;
+                    this.ProjectsControl.Load();
                     this.ProjectsControl.Visibility = Visibility.Visible;
                     break;
                 case "news feed":
                     this.PageTitle.Text = this.NewsFeedControl.Title;
+                    this.NewsFeedControl.Token = this.LogonControl.Token;
+                    this.NewsFeedControl.Load();
                     this.NewsFeedControl.Visibility = Visibility.Visible;
                     break;
                 case "users":
                     this.PageTitle.Text = this.UsersControl.Title;
+                    this.UsersControl.Token = this.LogonControl.Token;
+                    this.UsersControl.Load();
                     this.UsersControl.Visibility = Visibility.Visible;
                     break;
                 case "log out":

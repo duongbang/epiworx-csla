@@ -9,16 +9,21 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Windows.Media.Imaging;
 using System.Xml.Linq;
+using Epiworx.Wp7.Helpers;
 
 namespace Epiworx.Wp7
 {
-
     public class UserData
     {
         public int UserId { get; set; }
         public string Email { get; set; }
         public string Name { get; set; }
+        public BitmapImage Image
+        {
+            get { return DataHelper.GetGravatar(this.Email); }
+        }
         public TimelineData Status { get; set; }
 
         public UserData()

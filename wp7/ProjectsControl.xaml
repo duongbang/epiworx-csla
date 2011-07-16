@@ -8,8 +8,25 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     d:DesignHeight="480" d:DesignWidth="480">
-    
+
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneChromeBrush}">
-        <TextBlock>I am the projects page!</TextBlock>
+        
+        <ListBox x:Name="ProjectsListBox">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="{Binding Name}" FontSize="30" />
+                        <TextBlock Text="{Binding Status.Body}" TextWrapping="Wrap"/>
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding StatusState}">
+                            <Image Source="{Binding Status.CreatedBy.Image}" Height="32" Width="32" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding Status.CreatedBy.Name}" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding Status.RelativeCreatedDate}" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
     </Grid>
+
 </UserControl>
