@@ -9,13 +9,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using Microsoft.Phone.Controls;
 
 namespace Epiworx.Wp7
 {
-    public partial class LogonPage : PhoneApplicationPage
+    public partial class UsersControl : UserControl
     {
-        public LogonPage()
+        public string Title
+        {
+            get { return "users"; }
+        }
+
+        public UsersControl()
         {
             InitializeComponent();
         }

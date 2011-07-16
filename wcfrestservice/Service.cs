@@ -84,6 +84,26 @@ namespace Epiworx.WcfRestService
             return result;
         }
 
+        [WebGet(UriTemplate = "user/?token={token}")]
+        public UserData GetMe(string token)
+        {
+            this.ValidateToken(token);
+
+            this.Login(token);
+
+            var result = new UserData(
+                UserRepository.UserFetch());
+
+            result.Timelines = TimelineRepository.TimelineFetchInfoList(result.UserId, SourceType.User)
+                .OrderByDescending(timeline => timeline.CreatedDate)
+                .Select(timeline => new TimelineData(timeline)).
+                ToList();
+
+            this.Logout();
+
+            return result;
+        }
+
         [WebGet(UriTemplate = "user/{id}?token={token}")]
         public UserData GetUser(string id, string token)
         {

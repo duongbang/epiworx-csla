@@ -26,6 +26,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx.Core", "core\Epiwor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx.Business.Security", "business.security\Epiworx.Business.Security.csproj", "{266B5D33-88BB-4502-91B7-952D4DBA06BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx.Wp7", "wp7\Epiworx.Wp7.csproj", "{C36CF21A-3B38-438A-AC64-5D9B700610CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epiworx.WcfRestService", "wcfrestservice\Epiworx.WcfRestService.csproj", "{B8E9A863-2B92-432B-9F7F-E89772E31F1B}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Epiworx.vsmdi
@@ -129,6 +133,30 @@ Global
 		{266B5D33-88BB-4502-91B7-952D4DBA06BB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{266B5D33-88BB-4502-91B7-952D4DBA06BB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{266B5D33-88BB-4502-91B7-952D4DBA06BB}.Release|x86.ActiveCfg = Release|Any CPU
+		{C36CF21A-3B38-438A-AC64-5D9B700610CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C36CF21A-3B38-438A-AC64-5D9B700610CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C36CF21A-3B38-438A-AC64-5D9B700610CB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C36CF21A-3B38-438A-AC64-5D9B700610CB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C36CF21A-3B38-438A-AC64-5D9B700610CB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C36CF21A-3B38-438A-AC64-5D9B700610CB}.Debug|Mixed Platforms.Deploy.0 = Debug|Any CPU
+		{C36CF21A-3B38-438A-AC64-5D9B700610CB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C36CF21A-3B38-438A-AC64-5D9B700610CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C36CF21A-3B38-438A-AC64-5D9B700610CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C36CF21A-3B38-438A-AC64-5D9B700610CB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C36CF21A-3B38-438A-AC64-5D9B700610CB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C36CF21A-3B38-438A-AC64-5D9B700610CB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C36CF21A-3B38-438A-AC64-5D9B700610CB}.Release|Mixed Platforms.Deploy.0 = Release|Any CPU
+		{C36CF21A-3B38-438A-AC64-5D9B700610CB}.Release|x86.ActiveCfg = Release|Any CPU
+		{B8E9A863-2B92-432B-9F7F-E89772E31F1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8E9A863-2B92-432B-9F7F-E89772E31F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8E9A863-2B92-432B-9F7F-E89772E31F1B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B8E9A863-2B92-432B-9F7F-E89772E31F1B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B8E9A863-2B92-432B-9F7F-E89772E31F1B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B8E9A863-2B92-432B-9F7F-E89772E31F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8E9A863-2B92-432B-9F7F-E89772E31F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8E9A863-2B92-432B-9F7F-E89772E31F1B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B8E9A863-2B92-432B-9F7F-E89772E31F1B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B8E9A863-2B92-432B-9F7F-E89772E31F1B}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

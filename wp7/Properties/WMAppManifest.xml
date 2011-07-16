@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.0">
-  <App xmlns="" ProductID="{b2ddf748-15e9-4773-81a3-14c78ff424a3}" Title="Epiworx" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="wp7 author" Description="Sample description" Publisher="wp7">
+  <App xmlns="" ProductID="{da3cca4f-d29f-4db7-a02a-8cb2db61f1d1}" Title="Epiworx" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="wp7 author" Description="Sample description" Publisher="wp7">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES" />

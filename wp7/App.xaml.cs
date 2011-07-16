@@ -17,24 +17,15 @@ namespace Epiworx.Wp7
 {
     public partial class App : Application
     {
-        private static MainViewModel viewModel = null;
-
-        public static MainViewModel ViewModel
-        {
-            get
-            {
-                // Delay creation of the view model until necessary
-                if (viewModel == null)
-                {
-                    viewModel = new MainViewModel();
-                }
-
-                return viewModel;
-            }
-        }
-
+        /// <summary>
+        /// Provides easy access to the root frame of the Phone Application.
+        /// </summary>
+        /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
 
+        /// <summary>
+        /// Constructor for the Application object.
+        /// </summary>
         public App()
         {
             // Global handler for uncaught exceptions. 
@@ -71,18 +62,12 @@ namespace Epiworx.Wp7
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
-            // Ensure that application state is restored appropriately
-            if (!App.ViewModel.IsDataLoaded)
-            {
-                App.ViewModel.LoadData();
-            }
         }
 
         // Code to execute when the application is deactivated (sent to background)
         // This code will not execute when the application is closing
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
-            // Ensure that required application state is persisted here.
         }
 
         // Code to execute when the application is closing (eg, user hit Back)
@@ -120,9 +105,7 @@ namespace Epiworx.Wp7
         private void InitializePhoneApplication()
         {
             if (phoneApplicationInitialized)
-            {
                 return;
-            }
 
             // Create the frame but don't set it as RootVisual yet; this allows the splash
             // screen to remain active until the application is ready to render.
@@ -141,9 +124,7 @@ namespace Epiworx.Wp7
         {
             // Set the root visual to allow the application to render
             if (RootVisual != RootFrame)
-            {
                 RootVisual = RootFrame;
-            }
 
             // Remove this handler since it is no longer needed
             RootFrame.Navigated -= CompleteInitializePhoneApplication;
