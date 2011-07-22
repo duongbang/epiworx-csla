@@ -15,6 +15,21 @@ namespace Epiworx.Wp7.Helpers
 {
     public class DataHelper
     {
+        public static string ToString(bool? value)
+        {
+            if (!value.HasValue)
+            {
+                return string.Empty;
+            }
+
+            if (value.Value)
+            {
+                return "true";
+            }
+
+            return "false";
+        }
+
         public static string GetUrl(string email)
         {
             var sb = new StringBuilder();

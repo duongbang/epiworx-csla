@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <None Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -68,6 +68,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Data\Token.cs" />
     <Compile Include="Data\TokenRepository.cs" />
     <Compile Include="Models\BrokenRuleData.cs" />
@@ -92,7 +93,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Packages.config" />
+    <None Include="Packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\business.security\Epiworx.Business.Security.csproj">

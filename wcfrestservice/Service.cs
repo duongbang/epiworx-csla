@@ -10,6 +10,7 @@ using Epiworx.Business;
 using Epiworx.Business.Security;
 using Epiworx.Data;
 using Epiworx.WcfRestService.Data;
+using Epiworx.WcfRestService.Helpers;
 
 namespace Epiworx.WcfRestService
 {
@@ -39,14 +40,19 @@ namespace Epiworx.WcfRestService
             return result;
         }
 
-        [WebGet(UriTemplate = "feed?maximumRecords={maximumRecords}&token={token}")]
-        public List<FeedData> GetFeed(string maximumRecords, string token)
+        [WebGet(UriTemplate = "feed?createdDate={createdDate}&maximumRecords={maximumRecords}&token={token}")]
+        public List<FeedData> GetFeed(string createdDate, string maximumRecords, string token)
         {
             this.ValidateToken(token);
 
             this.Login(token);
 
-            var feeds = FeedRepository.FeedFetchInfoList(int.Parse(maximumRecords));
+            var feeds = FeedRepository.FeedFetchInfoList(
+                new FeedDataCriteria
+                    {
+                        MaximumRecords = DataHelper.ToInteger(maximumRecords),
+                        CreatedDate = DataHelper.ToDateRange(createdDate)
+                    });
 
             var result = feeds.Select(row => new FeedData(row))
                 .ToList();
@@ -71,18 +77,23 @@ namespace Epiworx.WcfRestService
             return result;
         }
 
-        [WebGet(UriTemplate = "project?token={token}")]
-        public List<ProjectData> GetProjects(string token)
+        [WebGet(UriTemplate = "project?active={active}&archived={archived}&token={token}")]
+        public List<ProjectData> GetProjects(string active, string archived, string token)
         {
             this.ValidateToken(token);
 
             this.Login(token);
 
             var projects = ProjectRepository.ProjectFetchInfoList(
-                new ProjectDataCriteria());
+                new ProjectDataCriteria
+                    {
+                        IsActive = DataHelper.ToBoolean(active),
+                        IsArchived = DataHelper.ToBoolean(archived)
+                    });
 
             var timelines = TimelineRepository.TimelineFetchInfoList(
-                 projects.Select(row => row.ProjectId).Distinct().ToArray(), SourceType.Project);
+                 projects.Select(row => row.ProjectId).Distinct().ToArray(),
+                 SourceType.Project);
 
             var result = projects.Select(row => new ProjectData(row))
                 .ToList();

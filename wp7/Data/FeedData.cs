@@ -22,6 +22,10 @@ namespace Epiworx.Wp7
         public SourceData Source { get; set; }
         public UserData CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
+        public string Text
+        {
+            get { return string.Format("{0} {1} {2} {3}", this.CreatedBy.Name, this.Action, this.Source.Type, this.Source.Name); }
+        }
         public string RelativeCreatedDate
         {
             get { return this.CreatedDate.ToRelativeDate(); }

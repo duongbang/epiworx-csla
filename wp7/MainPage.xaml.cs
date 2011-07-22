@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Net;
 using System.Windows;
@@ -9,131 +8,148 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml.Linq;
 using Microsoft.Phone.Controls;
+using Epiworx.Wp7.Models;
 
 namespace Epiworx.Wp7
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        private enum NavigationLocation
+        {
+            NewsFeed = 0,
+            Projects = 1,
+            Users = 2,
+            Logout = 3
+        }
+
+        public MainModel Model { get; set; }
+        private string Token { get; set; }
+
         public MainPage()
         {
             InitializeComponent();
-
-            this.PageTitle.Text = this.LogonControl.Title;
-            this.LogonControl.SignInCompleted += OnSignInCompleted;
-            this.HomeControl.SelectedItemChanged += OnSelectedItemChanged;
-
-            if (IsolatedStorageSettings.ApplicationSettings.Contains("Name")
-                && IsolatedStorageSettings.ApplicationSettings.Contains("Password"))
-            {
-                this.Login();
-            }
         }
 
-        private void Login()
+        private void Load()
         {
-            this.LogonControl.Visibility = Visibility.Collapsed;
-            this.HomeControl.Visibility = Visibility.Visible;
-            this.PageTitle.Text = this.HomeControl.Title;
+            this.BusyIndicator.Visibility = Visibility.Visible;
+
+            this.Model = new MainModel();
+
+            this.Model.Token = this.Token;
+
+            this.Model.LoadProfileCompleted += LoadProfileCompleted;
+            this.Model.LoadCompleted += LoadCompleted;
+
+            this.Model.Load();
+        }
+
+        private void LoadCompleted(object sender, EventArgs e)
+        {
+            this.ProjectsControl.Model = this.Model.ProjectsModel;
+            this.UsersControl.Model = this.Model.UsersModel;
+            this.NewsFeedControl.Model = this.Model.NewsFeedModel;
+
+            this.BusyIndicator.Visibility = Visibility.Collapsed;
+        }
+
+        private void LoadProfileCompleted(object sender, EventArgs e)
+        {
+            this.ProfileControl.Model = this.Model.ProfileModel;
+        }
+
+        private void NavigateToLogonPage()
+        {
+            NavigationService.Navigate(new Uri("/LogonPage.xaml", UriKind.Relative));
+        }
+
+        private void NavigateToNewsFeedPage()
+        {
+            NavigationService.Navigate(new Uri(string.Format("/NewsFeedPage.xaml?token={0}", this.Token), UriKind.Relative));
+        }
+
+        private void NavigateToProjectsPage()
+        {
+            NavigationService.Navigate(new Uri(string.Format("/ProjectsPage.xaml?token={0}", this.Token), UriKind.Relative));
+        }
+
+        private void NavigateToUsersPage()
+        {
+            NavigationService.Navigate(new Uri(string.Format("/UsersPage.xaml?token={0}", this.Token), UriKind.Relative));
+        }
+
+        private void ClearNavigation()
+        {
+            this.NavigationListBox.SelectedItem = null;
+        }
+
+        private void HandleNavigationRequest(NavigationLocation request)
+        {
+            switch (request)
+            {
+                case NavigationLocation.NewsFeed:
+                    this.NavigateToNewsFeedPage();
+                    break;
+                case NavigationLocation.Projects:
+                    this.NavigateToProjectsPage();
+                    break;
+                case NavigationLocation.Users:
+                    this.NavigateToUsersPage();
+                    break;
+                case NavigationLocation.Logout:
+                    this.Logout();
+                    break;
+            }
         }
 
         private void Logout()
         {
-            IsolatedStorageSettings.ApplicationSettings.Remove("Name");
-            IsolatedStorageSettings.ApplicationSettings.Remove("Password");
+            var model = new LogoutModel();
 
-            this.LogonControl.Clear();
-            this.PageTitle.Text = this.LogonControl.Title;
-            this.LogonControl.Visibility = Visibility.Visible;
-            this.HomeControl.Visibility = Visibility.Collapsed;
-            this.ProjectsControl.Visibility = Visibility.Collapsed;
-            this.NewsFeedControl.Visibility = Visibility.Collapsed;
-            this.UsersControl.Visibility = Visibility.Collapsed;
+            model.LogoutCompleted += LogoutCompleted;
+
+            model.Logout();
         }
 
-        private void OnSignInCompleted(object sender, EventArgs e)
+        private void LogoutCompleted(object sender, EventArgs e)
         {
-            this.PageTitle.Text = this.HomeControl.Title;
-            this.LogonControl.Visibility = Visibility.Collapsed;
-            this.HomeControl.Visibility = Visibility.Visible;
+            this.Token = string.Empty;
 
-            this.GetMe();
+            NavigationService.Navigate(new Uri("/LogonPage.xaml", UriKind.Relative));
         }
 
-        private void GetMe()
+        private bool HasAuthenticationToken()
         {
-            var proxy = new WebClient();
-
-            var uri = string.Format(
-                "http://localhost/EpiworxWcfRestService/Service/user/?token={0}",
-                this.LogonControl.Token);
-
-            proxy.OpenReadCompleted += OnGetMeCompleted;
-
-            proxy.OpenReadAsync(new Uri(uri, UriKind.Absolute));
-        }
-
-        private void OnGetMeCompleted(object sender, OpenReadCompletedEventArgs e)
-        {
-            var xml = XElement.Load(e.Result);
-
-            var result = new UserData(xml);
-
-            this.HomeControl.User = result;
-        }
-
-        private void OnSelectedItemChanged(object sender, EventArgs e)
-        {
-            this.HomeControl.Visibility = Visibility.Collapsed;
-            this.ProjectsControl.Visibility = Visibility.Collapsed;
-            this.NewsFeedControl.Visibility = Visibility.Collapsed;
-            this.UsersControl.Visibility = Visibility.Collapsed;
-
-            switch (this.HomeControl.SelectedItem)
+            if (this.NavigationContext.QueryString.ContainsKey("token"))
             {
-                case "projects":
-                    this.PageTitle.Text = this.ProjectsControl.Title;
-                    this.ProjectsControl.Token = this.LogonControl.Token;
-                    this.ProjectsControl.Load();
-                    this.ProjectsControl.Visibility = Visibility.Visible;
-                    break;
-                case "news feed":
-                    this.PageTitle.Text = this.NewsFeedControl.Title;
-                    this.NewsFeedControl.Token = this.LogonControl.Token;
-                    this.NewsFeedControl.Load();
-                    this.NewsFeedControl.Visibility = Visibility.Visible;
-                    break;
-                case "users":
-                    this.PageTitle.Text = this.UsersControl.Title;
-                    this.UsersControl.Token = this.LogonControl.Token;
-                    this.UsersControl.Load();
-                    this.UsersControl.Visibility = Visibility.Visible;
-                    break;
-                case "log out":
-                    this.Logout();
-                    break;
-                default:
-                    break;
+                this.Token = this.NavigationContext.QueryString["token"];
+
+                return true;
+            }
+
+            return false;
+        }
+
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (this.HasAuthenticationToken())
+            {
+                this.ClearNavigation();
+
+                this.Load();
+            }
+            else
+            {
+                this.NavigateToLogonPage();
             }
         }
 
-        private void PhoneApplicationPage_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
+        private void NavigationListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.HomeControl.Visibility != Visibility.Visible
-                && this.LogonControl.Visibility != Visibility.Visible)
-            {
-                this.HomeControl.Clear();
-
-                this.PageTitle.Text = this.HomeControl.Title;
-                this.HomeControl.Visibility = Visibility.Visible;
-                this.ProjectsControl.Visibility = Visibility.Collapsed;
-                this.NewsFeedControl.Visibility = Visibility.Collapsed;
-                this.UsersControl.Visibility = Visibility.Collapsed;
-
-                e.Cancel = true;
-            }
+            this.HandleNavigationRequest((NavigationLocation)this.NavigationListBox.SelectedIndex);
         }
     }
 }
