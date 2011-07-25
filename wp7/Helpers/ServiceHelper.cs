@@ -17,7 +17,7 @@ namespace Epiworx.Wp7.Helpers
         {
             get
             {
-                return "http://localhost/EpiworxWcfRestService/Service";
+                return "http://localhost/epiworxwcfservice/service";
             }
         }
     }
